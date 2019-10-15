@@ -1,8 +1,8 @@
 <html>
 <head>
     <style>
-        #gx, #gy, #gz {
-        width:320px; height:320px;
+        #gx, #gy, #gz, #gx2, #gy2, #gz2 {
+        width:300px; height:300px;
         display: inline-block;
         margin: 1em;
     }
@@ -23,11 +23,11 @@
         /*}*/
     </style>
     <script type="text/javascript"
-            src="Library/dygraph/dygraph.js"></script>
-    <link rel="stylesheet" src="Library/dygraph/dygraph.css" />
-    <script src='Library/jquery-3-4-1.min.js'></script>
-    <script src="Library/justgage-1.2.2/raphael-2.1.4.min.js"></script>
-    <script src="Library/justgage-1.2.2/justgage.js"></script>
+            src="../Library/dygraph/dygraph.js"></script>
+    <link rel="stylesheet" src="../Library/dygraph/dygraph.css" />
+    <script src='../Library/jquery-3-4-1.min.js'></script>
+    <script src="../Library/justgage-1.2.2/raphael-2.1.4.min.js"></script>
+    <script src="../Library/justgage-1.2.2/justgage.js"></script>
 </head>
 <script>
     function myFunction(objButton) {
@@ -47,29 +47,42 @@
 <button onclick="myFunction(this)" value="station_one" id="station_one">station one</button>
 <button onclick="myFunction(this)" value="station_two" id="station_two">station two</button>
 
-<h2>The gauges represent live X-Y-Z data from the ESP-1 Station in Middletown, NY with a 2-minute delay</h2>
-<div id="gx"></div>
-<div id="gy"></div>
-<div id="gz"></div>
 
-<div id = "livechart">
+<div id="gauge">
+    <h1>New 5s Average Gage</h1>
+    <div class="station_one">
+        <h2>Station One</h2>
+        <div id="gx"></div>
+        <div id="gy"></div>
+        <div id="gz"></div>
+    </div><br>
+    <div class="station_two">
+        <h2>Station Two</h2>
+        <div id="gx2"></div>
+        <div id="gy2"></div>
+        <div id="gz2"></div>
+    </div>
+</div>
+
+<div id="livechart">
     <h1>Live Chart</h1>
-    <div class = "station_two">
-        <h2>The charts represent 2 minutes of live data from the ESP-1 Station, with a 2-minute delay</h2>
-
-        <h3>X</h3>
+    <div class="station_one">
+        <h2>Station One</h2><br>
         <div id="graphx"></div>
-        <h3>Y</h3>
         <div id="graphy"></div>
-        <h3>Z</h3>
         <div id="graphz"></div>
     </div>
-
+    <div class="station_two">
+        <h2>Station Two</h2><br>
+        <div id="graphx2"></div>
+        <div id="graphy2"></div>
+        <div id="graphz2"></div>
+    </div>
 </div>
 
 <div id="modal">
     <h1>Vector</h1>
-    <p class= "para"><br><br>Data updates every 5 seconds, although there is a delay of 1 to 3 minutes.</p>
+    <p class= "para">Here is the info about the earthquake, the values of the axis are on the labels.<br><br>Data updates every 5 seconds, although there is a delay of 1 to 3 minutes.</p>
     <div class="station_one" id="vector">
 <!--        <h2>Station One</h2>-->
         <div id="myModal" class="modal">
@@ -179,18 +192,22 @@
 
     function query() {
         $.ajax({
-            url: "https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:8008/query",
+            url: "http://localhost:3005/query",
             method: "get",
             //Says success isn't used but it is
             success: function(res){
+                // console.log(res);
                 var x_arr = [];
                 var y_arr = [];
                 var z_arr = [];
 
                 res.forEach(function(el,i) {
+                        // var time = new Date(el.time);
+                        // console.log(time);
                         x_arr[i] = [new Date(el.time), el.mean];
                         y_arr[i] = [new Date(el.time), el.mean_1];
                         z_arr[i] = [new Date(el.time), el.mean_2];
+                        // console.log(x_arr[i])
                     }
                 );
 
@@ -358,6 +375,7 @@
                     {
                         labels: [ "time", "X" ]
                     }
+
                 );
                 console.log(statwo);
                 gx2.refresh(Math.abs(statwo[0]));
