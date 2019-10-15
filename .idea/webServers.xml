@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="acbdb348-28c1-4969-862a-4ddd31d9f839" name="mockup.esp.aworldbridgelabs.com" url="http://localhost:63342/ESP_DataVis_2D">
+        <fileTransfer host="mockup.esp.aworldbridgelabs.com" port="5532" rootFolder="/var/www/espmockup" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="5532" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
