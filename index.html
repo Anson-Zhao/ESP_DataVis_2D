@@ -1,23 +1,23 @@
 <html>
 <head>
     <style>
-        #gx, #gy, #gz {
-        width:320px; height:320px;
+        #gx, #gy, #gz, #gx2, #gy2, #gz2 {
+        width:300px; height:300px;
         display: inline-block;
         margin: 1em;
     }
-        #graphx, #graphx2, #graphy, #graphy2, #graphz, #graphz2{
+        #graphx, #graphx2, #graphy, #graphy2, #graphz, #graphz2, #vector, #vector2{
             display: inline-block;
         }
-        #vector, #vector2{
+        #but1, #but2, #but3, #but4{
             display: inline-block;
         }
-        .station_one, .station_two{
-            display: inline-block;
+        #station_one, #station_two{
+            background-color: gray;
         }
         /*.station_one {*/
         /*    display: none;*/
-        /*};*/
+        /*}*/
         /*.station_two {*/
         /*    display: none;*/
         /*}*/
@@ -34,50 +34,82 @@
         var x = document.getElementsByClassName(objButton.value);
         // console.log(objButton.value);
         var y = '.'+objButton.value;
+        var z = '#'+objButton.value;
         console.log(y);
         if (x[0].style.display === "none") {
-            $(y).show()
+            $(y).show();
+            $(z).css('backgroundColor', 'gray');
         } else {
-            $(y).hide()
+            $(y).hide();
+            $(z).css('backgroundColor', 'white');
         }
 
     }
 </script>
 <body>
+<div id="but1">
+<p>Middletown, NY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <button onclick="myFunction(this)" value="station_one" id="station_one">station one</button>
+</div>
+<div id="but2">
+<p>Socal, CL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <button onclick="myFunction(this)" value="station_two" id="station_two">station two</button>
+</div>
+<div id="but3">
+    <p>Not Avaliable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <button onclick="myFunction(this)" value="station_three" id="station_three">station three</button>
+</div>
+<div id="but4">
+    <p>Not Avaliable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <button onclick="myFunction(this)" value="station_four" id="station_four">station four</button>
+</div>
 
-<h2>The gauges represent live X-Y-Z data from the ESP-1 Station in Middletown, NY with a 2-minute delay</h2>
-<div id="gx"></div>
-<div id="gy"></div>
-<div id="gz"></div>
+<div id="gauge">
+    <h2>The gauges represent live X-Y-Z data from the ESP-1 Station in Middletown, NY with a 2-minute delay</h2>
+    <div class="station_one">
+        <h2>Station One</h2>
+        <div id="gx"></div>
+        <div id="gy"></div>
+        <div id="gz"></div>
+    </div><br>
+    <div class="station_two">
+        <h2>Station Two</h2>
+        <div id="gx2"></div>
+        <div id="gy2"></div>
+        <div id="gz2"></div>
+    </div>
+</div>
 
-<div id = "livechart">
+<div id="livechart">
     <h1>Live Chart</h1>
-    <div class = "station_two">
-        <h2>The charts represent 2 minutes of live data from the ESP-1 Station, with a 2-minute delay</h2>
-
-        <h3>X</h3>
+    <h2>The charts represent 2 minutes of live data from the ESP-1 Station, with a 2-minute delay</h2>
+    <div class="station_one">
+        <h2>Station One</h2><br>
         <div id="graphx"></div>
         <h3>Y</h3>
         <div id="graphy"></div>
         <h3>Z</h3>
         <div id="graphz"></div>
     </div>
-
+    <div class="station_two">
+        <h2>Station Two</h2><br>
+        <div id="graphx2"></div>
+        <div id="graphy2"></div>
+        <div id="graphz2"></div>
+    </div>
 </div>
 
 <div id="modal">
     <h1>Vector</h1>
-    <p class= "para"><br><br>Data updates every 5 seconds, although there is a delay of 1 to 3 minutes.</p>
+    <p class= "para">Here is the info about the earthquake, the values of the axis are on the labels.<br><br>Data updates every 5 seconds, although there is a delay of 1 to 3 minutes.</p>
     <div class="station_one" id="vector">
 <!--        <h2>Station One</h2>-->
         <div id="myModal" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
 <!--                <div class="modal-header">Station One</div>-->
-                <div class="modal-body">
-                    <img src="3D_Vector_Arrow.png" alt = "ESP Vector" id = "myImg">
+                <div class="modal-body" >
+                    <img src="3D_Vector_Arrow.png" alt = "ESP Vector" id = "myImg" class="station_one">
                 <div id="233"></div>
                 </div>
             </div>
@@ -89,8 +121,8 @@
             <!-- Modal content -->
             <div class="modal-content">
 <!--                <div class="modal-header">Station Two</div>-->
-                <div class="modal-body">
-                    <img src="3D_Vector_Arrow2.png" alt = "ESP Vector" id = "myImg2">
+                <div class="modal-body" >
+                    <img src="3D_Vector_Arrow2.png" alt = "ESP Vector" id = "myImg2" class="station_two">
                     <div id="2332"></div>
                 </div>
             </div>
@@ -179,7 +211,7 @@
 
     function query() {
         $.ajax({
-            url: "https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:8008/query",
+            url: "http://localhost:3005/query",
             method: "get",
             //Says success isn't used but it is
             success: function(res){
