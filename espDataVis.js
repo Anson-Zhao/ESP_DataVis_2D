@@ -7,16 +7,7 @@ const influx = new Influx.InfluxDB({
     database: 'RayESP',
     username: "rayf",
     password: "RayESP8010",
-    port: 8086,
-    schema: [
-        {
-            measurement: 'station_one',
-            fields: {
-            },
-            tags: [
-            ]
-        }
-    ]
+    port: 8086
 });
 
 function convertToCSV(objArray,m) {
@@ -56,11 +47,28 @@ function avg(res,len){
 var pastTime = "4m";
 var nowTime = "2m";
 var queryA = 'SELECT MEAN("X"), MEAN("Y"), MEAN("Z") FROM station_one WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime + ' GROUP BY time(1s)';
-
+var queryA2 = 'SELECT MEAN("X"), MEAN("Y"), MEAN("Z") FROM station_two WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime + ' GROUP BY time(1s)';
+// var queryX = "SELECT MEAN(\"X\") FROM ar WHERE time>'2019-07-23T20:25:00Z' AND time<'2019-07-23T20:29:00Z' GROUP BY time(1s)";
+// var queryY = "SELECT MEAN(\"Y\") FROM ar WHERE time>'2019-07-23T20:25:00Z' AND time<'2019-07-23T20:29:00Z' GROUP BY time(1s)";
+// var queryZ = "SELECT MEAN(\"Z\") FROM ar WHERE time>'2019-07-23T20:25:00Z' AND time<'2019-07-23T20:29:00Z' GROUP BY time(1s)";
+var x_csv,y_csv,z_csv,gx,gy,gz;
+var life = [];
 
 app.get('/query', function (req, res) {
 
     influx.query(queryA).then
+    (result => {
+        console.log(result);
+
+        res.send(result);
+
+    }).catch(err => {
+        console.log(err)
+    });
+
+});
+app.get('/query2', function (req, res) {
+    influx.query(queryA2).then
     (result => {
         console.log(result);
         res.send(result);
