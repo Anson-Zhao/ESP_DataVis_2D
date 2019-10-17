@@ -58,7 +58,7 @@ app.get('/query', function (req, res) {
 
     influx.query(queryA).then
     (result => {
-        console.log(result);
+        // console.log(result);
 
         res.send(result);
 
@@ -70,10 +70,20 @@ app.get('/query', function (req, res) {
 app.get('/query2', function (req, res) {
     influx.query(queryA2).then
     (result => {
-        console.log(result);
+        // console.log(result);
         res.send(result);
     }).catch(err => {
         console.log(err)
+    });
+});
+app.get('/newWind', function (req, res) {
+    var queryH = 'SELECT MEAN("X"), MEAN("Y"), MEAN("Z") FROM ' + req.query.stationIs + ' WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'" + ' GROUP BY time(1s)';
+
+    influx.query(queryH).then
+    (result => {
+        res.send(result)
+    }).catch(err => {
+        res.status(500).send(err.stack)
     });
 });
 app.listen('3005');

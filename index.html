@@ -22,12 +22,12 @@
         /*    display: none;*/
         /*}*/
     </style>
-    <script type="text/javascript"
-            src="Library/dygraph/dygraph.js"></script>
     <link rel="stylesheet" src="Library/dygraph/dygraph.css" />
-    <script src='Library/jquery-3-4-1.min.js'></script>
-    <script src="Library/justgage-1.2.2/raphael-2.1.4.min.js"></script>
-    <script src="Library/justgage-1.2.2/justgage.js"></script>
+
+    <script type="text/javascript" src="jsLibrary/dygraph/dygraph.js"></script>
+    <script src='jsLibrary/jquery-3-4-1.min.js'></script>
+    <script src="jsLibrary/justgage-1.2.2/raphael-2.1.4.min.js"></script>
+    <script src="jsLibrary/justgage-1.2.2/justgage.js"></script>
 </head>
 <script>
     function myFunction(objButton) {
@@ -47,22 +47,30 @@
     }
 </script>
 <body>
+<div id="but0">
+    <!--    <p>Historical Data Charts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>-->
+    <button onclick='window.location.replace("historical.html")'>Historical Data</button>
+</div>
+<br><br>
 <div id="but1">
-<p>Middletown, NY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>Middletown, NY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <button onclick="myFunction(this)" value="station_one" id="station_one">station one</button>
 </div>
 <div id="but2">
-<p>Socal, CL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>Socal, CA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <button onclick="myFunction(this)" value="station_two" id="station_two">station two</button>
 </div>
 <div id="but3">
-    <p>Not Avaliable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <p>Not Avaliable &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
     <button onclick="myFunction(this)" value="station_three" id="station_three">station three</button>
 </div>
 <div id="but4">
-    <p>Not Avaliable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <p>Not Avaliable &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
     <button onclick="myFunction(this)" value="station_four" id="station_four">station four</button>
 </div>
+
+
+
 
 <div id="gauge">
     <h2>The gauges represent live X-Y-Z data from the ESP-1 Station in Middletown, NY with a 2-minute delay</h2>
@@ -272,7 +280,8 @@
                 // var fs = require('fs');
                 // var cont = xa, ya, za;
                 // fs.write(test.csv, cont, 'a');
-                D3Chart();
+
+                // D3Chart();
 
 
 
@@ -397,7 +406,8 @@
                 // var fs = require('fs');
                 // var cont = xa, ya, za;
                 // fs.write(test.csv, cont, 'a');
-                D3Chart2();
+
+                // D3Chart2();
 
 
 
@@ -430,95 +440,95 @@
 <script>
 // Step - 1. Call the document load function.
 
-var D3Chart = function() {
-// Step 2 : Call the action on submit evenet :
-// step 3:  Call the Ajax Function
-    $.ajax( {
-    // Step 4: Create here the data for the field values. Request Method 'POST' OR 'GET' and Url for Processing the form.
-        data : {
-            key1: staone[0],
-            key2: staone[1],
-            key3: staone[2],
-        },
-        type : 'GET',
-        url : 'http://localhost:7000/process',
-        success: function(res){
-            console.log(res);
-
-            // $.fn.redraw = function(){
-            //     $(this).each(function(){
-            //         var redraw = this.offsetHeight;
-            //     });
-            // };
-            // $('#myImg').redraw();
-
-            // var image_x = document.getElementById('myImg');
-            // image_x.parentNode.removeChild(image_x);
-            // $("<img>")
-            //     .attr("src","3D_Vector_Arrow.png")
-            //     .attr("id","#myImg")
-            //     .appendTo("#233")
-            // document.getElementById("placehere").appendChild(elem);
-            // document.getElementById("myImg").src="3D_Vector_Arrow.png";
-
-            $("#myImg").remove();
-            $("<img>")
-                .attr("src","3D_Vector_Arrow.png?"+ (new Date).getTime())
-                .attr("id","myImg")
-                .attr("alt","ESP Vector")
-                .appendTo("#233");
-
-            // Use an off-screen image to load the next frame.
-            // var img = new Image();
-
-            // When it is loaded...
-
-                // Set the on-screen image to the same source. This should be instant because
-                // it is already loaded.
-                // document.getElementById("frame").src = img.src;
-                // img.src = "frame.jpg?" + (new Date).getTime();
-
-                // Schedule loading the next frame.
-                // setTimeout(function() {
-                //     img.src = "frame.jpg?" + (new Date).getTime();
-                // }, 1000/15); // 15 FPS (more or less)
-
-
-            // Start the loading process.
-            // img.src = "frame.jpg?" + (new Date).getTime();
-        }
-    });
-// Step 5: Call the success function.
-// Step 6 : Wrtite the code for the data retured from the Server url: '/example'
-// Step 7 : Prevent the enitre submit event to do default action
-// event.preventDefault();
-
-};
+// var D3Chart = function() {
+// // Step 2 : Call the action on submit evenet :
+// // step 3:  Call the Ajax Function
+//     $.ajax( {
+//     // Step 4: Create here the data for the field values. Request Method 'POST' OR 'GET' and Url for Processing the form.
+//         data : {
+//             key1: staone[0],
+//             key2: staone[1],
+//             key3: staone[2],
+//         },
+//         type : 'GET',
+//         url : 'http://localhost:7000/process',
+//         success: function(res){
+//             console.log(res);
+//
+//             // $.fn.redraw = function(){
+//             //     $(this).each(function(){
+//             //         var redraw = this.offsetHeight;
+//             //     });
+//             // };
+//             // $('#myImg').redraw();
+//
+//             // var image_x = document.getElementById('myImg');
+//             // image_x.parentNode.removeChild(image_x);
+//             // $("<img>")
+//             //     .attr("src","3D_Vector_Arrow.png")
+//             //     .attr("id","#myImg")
+//             //     .appendTo("#233")
+//             // document.getElementById("placehere").appendChild(elem);
+//             // document.getElementById("myImg").src="3D_Vector_Arrow.png";
+//
+//             $("#myImg").remove();
+//             $("<img>")
+//                 .attr("src","3D_Vector_Arrow.png?"+ (new Date).getTime())
+//                 .attr("id","myImg")
+//                 .attr("alt","ESP Vector")
+//                 .appendTo("#233");
+//
+//             // Use an off-screen image to load the next frame.
+//             // var img = new Image();
+//
+//             // When it is loaded...
+//
+//                 // Set the on-screen image to the same source. This should be instant because
+//                 // it is already loaded.
+//                 // document.getElementById("frame").src = img.src;
+//                 // img.src = "frame.jpg?" + (new Date).getTime();
+//
+//                 // Schedule loading the next frame.
+//                 // setTimeout(function() {
+//                 //     img.src = "frame.jpg?" + (new Date).getTime();
+//                 // }, 1000/15); // 15 FPS (more or less)
+//
+//
+//             // Start the loading process.
+//             // img.src = "frame.jpg?" + (new Date).getTime();
+//         }
+//     });
+// // Step 5: Call the success function.
+// // Step 6 : Wrtite the code for the data retured from the Server url: '/example'
+// // Step 7 : Prevent the enitre submit event to do default action
+// // event.preventDefault();
+//
+// };
 </script>
 
-<script>
-    var D3Chart2 = function() {
-        $.ajax( {
-            data : {
-                key1: statwo[0],
-                key2: statwo[1],
-                key3: statwo[2],
-            },
-            type : 'GET',
-            url : 'http://localhost:7000/process2',
-            success: function(res){
-                console.log(res);
-                $("#myImg2").remove();
-                $("<img>")
-                    .attr("src","3D_Vector_Arrow2.png?"+ (new Date).getTime())
-                    .attr("id","myImg2")
-                    .attr("alt","ESP Vector")
-                    .appendTo("#2332");
+<!--<script>-->
+<!--    var D3Chart2 = function() {-->
+<!--        $.ajax( {-->
+<!--            data : {-->
+<!--                key1: statwo[0],-->
+<!--                key2: statwo[1],-->
+<!--                key3: statwo[2],-->
+<!--            },-->
+<!--            type : 'GET',-->
+<!--            url : 'http://localhost:7000/process2',-->
+<!--            success: function(res){-->
+<!--                console.log(res);-->
+<!--                $("#myImg2").remove();-->
+<!--                $("<img>")-->
+<!--                    .attr("src","3D_Vector_Arrow2.png?"+ (new Date).getTime())-->
+<!--                    .attr("id","myImg2")-->
+<!--                    .attr("alt","ESP Vector")-->
+<!--                    .appendTo("#2332");-->
 
-            }
-        });
-    };
-</script>
+<!--            }-->
+<!--        });-->
+<!--    };-->
+<!--</script>-->
 
 <script>
     // setTimeout(function(){

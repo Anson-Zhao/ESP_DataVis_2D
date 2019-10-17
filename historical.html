@@ -92,10 +92,8 @@
     </style>
 </head>
 <body>
-<script type="text/javascript"
-        src="../Library/dygraph/dygraph.js"></script>
-<link rel="stylesheet" src="../Library/dygraph/dygraph.css" />
-<script src='../Library/jquery-3-4-1.min.js'></script>
+<script type="text/javascript" src="jsLibrary/dygraph/dygraph.js"></script>
+<script src='jsLibrary/jquery-3-4-1.min.js'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.17/js/jquery.dataTables.min.js"></script>
@@ -103,6 +101,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
+<link rel="stylesheet" href="jsLibrary/dygraph/dygraph.css" />
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
 <link rel="stylesheet" href="//unpkg.com/flatpickr/dist/flatpickr.min.css">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -131,6 +130,8 @@
                 <option value="station_four">Not avaliable</option>
             </select><br><br>
             <input type="button" onclick="enabled = false; query();" class="button button2" value="Filter">
+            <br><br>
+            <input type="button" onclick='window.location.replace("index.html")' class="button button2" value="Go To Mockup Home">
             <br><br><br>
             <div id="graphx"></div>
             <div id="graphy"></div>
@@ -150,31 +151,18 @@
         timeFrom = document.getElementById("begin").value;
         timeTo = document.getElementById("end").value;
         stationIs = document.getElementById("station").value;
-        // var a=0;
-        // var stations = document.getElementsByClassName("station");
-        // console.log(stations);
-        // for(var i=0; i<stations.length; i++){
-        //     if(stations[i].checked==true) {
-        //         stationIs[a] = stations[i].value;
-        //         console.log(stationIs[a]);
-        //         a++
-        //     }
-        // }
-        console.log(timeFrom);
-        console.log(timeTo);
-        console.log(stationIs);
 
-        querystr = "timeFrom:" + timeFrom + "&timeTo:" + timeTo + "&stationIs:" + stationIs;
-        console.log(querystr);
+        // querystr = "timeFrom:" + timeFrom + "&timeTo:" + timeTo + "&stationIs:" + stationIs;
+        // console.log(querystr);
 
         if (timeFrom && timeTo) {
-            queryAndDisplay(querystr);
+            queryAndDisplay();
         } else {
             confirm("Please select BOTH dates.");
         }
     }
 
-    var queryAndDisplay = function (querystr) {
+    var queryAndDisplay = function () {
         $.ajax({
             url: 'http://localhost:3005/newWind',
             type: 'GET',
@@ -233,33 +221,7 @@
                         labels: [ "time", "X" ],
                         title: "X"
                     }
-
                 );
-
-                // Wind_Speed2 = [];
-                // var j = 0;
-                // for (var i = 0; i < result.length; i++) {
-                //     if (i === result.length - 1) {
-                //         if (!!result[i].time) {
-                //             if (j === 0) {
-                //                 Wind_Speed2.push({ x: new Date(result[i].time), y: result[i].Wind_Speed});
-                //                 j = 1;
-                //             } else {
-                //                 Wind_Speed2.push({ x: new Date(result[i].time), y: result[i].Wind_Speed});
-                //             }
-                //         }
-                //     } else {
-                //         if (!!result[i].time) {
-                //             if (j === 0) {
-                //                 Wind_Speed2.push({ x: new Date(result[i].time), y: result[i].Wind_Speed});
-                //                 j = 1;
-                //             } else {
-                //                 Wind_Speed2.push({ x: new Date(result[i].time), y: result[i].Wind_Speed});
-                //             }
-                //         }
-                //     }
-                // }
-                // windspeedChartDisplay2();
             }
         });
     }
