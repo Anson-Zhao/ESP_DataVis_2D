@@ -70,8 +70,6 @@
 </div>
 
 
-
-
 <div id="gauge">
     <h2>The gauges represent live X-Y-Z data from the ESP-1 Station in Middletown, NY with a 2-minute delay</h2>
     <div class="station_one">
@@ -139,14 +137,9 @@
 <br><br><br><br><br><br><br><br><br>
 
 
-
-
-
 <button onclick = "query();query2();" id = "fakeBu"></button>
 <!--<button onclick = "query()" id = "someButton"></button>-->
 <script type="text/javascript">
-</script>
-<script>
     var staone = [],
         statwo = [];
     function avg(res,len){
@@ -163,8 +156,7 @@
         za = za/len;
         return [xa, ya, za];
     }
-</script>
-<script>
+
     var gx,gy,gz;
     gx = new JustGage({
         id: "gx",
@@ -288,9 +280,7 @@
             }
         });
     }
-</script>
 
-<script>
     var gx2,gy2,gz2;
     gx2 = new JustGage({
         id: "gx2",
@@ -414,30 +404,7 @@
             }
         });
     }
-</script>
 
-<!--<script>-->
-
-
-<!--fail-->
-<!--<script type="text/javascript">-->
-    <!--function toPython(usrdata) {-->
-        <!--$.ajax({-->
-            <!--url: "http://yoursite.com:8080",-->
-            <!--type: "POST",-->
-            <!--data: {information: "You have a very nice website, sir.", userdata: usrdata},-->
-            <!--dataType: "json",-->
-            <!--success: function (data) {-->
-                <!--&lt;!&ndash; do something here &ndash;&gt;-->
-                <!--$('#somediv').html(data);-->
-            <!--}-->
-        <!--});-->
-    <!--}-->
-    <!--$("#someButton").bind('click', toPython(something));-->
-<!--</script>-->
-
-
-<script>
 // Step - 1. Call the document load function.
 
 // var D3Chart = function() {
@@ -504,58 +471,53 @@
 // // event.preventDefault();
 //
 // };
-</script>
-
-<!--<script>-->
-<!--    var D3Chart2 = function() {-->
-<!--        $.ajax( {-->
-<!--            data : {-->
-<!--                key1: statwo[0],-->
-<!--                key2: statwo[1],-->
-<!--                key3: statwo[2],-->
-<!--            },-->
-<!--            type : 'GET',-->
-<!--            url : 'http://localhost:7000/process2',-->
-<!--            success: function(res){-->
-<!--                console.log(res);-->
-<!--                $("#myImg2").remove();-->
-<!--                $("<img>")-->
-<!--                    .attr("src","3D_Vector_Arrow2.png?"+ (new Date).getTime())-->
-<!--                    .attr("id","myImg2")-->
-<!--                    .attr("alt","ESP Vector")-->
-<!--                    .appendTo("#2332");-->
-
-<!--            }-->
-<!--        });-->
-<!--    };-->
-<!--</script>-->
-
-<script>
-    // setTimeout(function(){
-    //     window.location.reload(1);
+// <!--    var D3Chart2 = function() {-->
+// <!--        $.ajax( {-->
+// <!--            data : {-->
+// <!--                key1: statwo[0],-->
+// <!--                key2: statwo[1],-->
+// <!--                key3: statwo[2],-->
+// <!--            },-->
+// <!--            type : 'GET',-->
+// <!--            url : 'http://localhost:7000/process2',-->
+// <!--            success: function(res){-->
+// <!--                console.log(res);-->
+// <!--                $("#myImg2").remove();-->
+// <!--                $("<img>")-->
+// <!--                    .attr("src","3D_Vector_Arrow2.png?"+ (new Date).getTime())-->
+// <!--                    .attr("id","myImg2")-->
+// <!--                    .attr("alt","ESP Vector")-->
+// <!--                    .appendTo("#2332");-->
+//
+// <!--            }-->
+// <!--        });-->
+// <!--    };-->
+//
+//    // setTimeout(function(){
+//     //     window.location.reload(1);
     // }, 5000);
+
     setInterval(function () {document.getElementById("fakeBu").click();}, 5000);
-</script>
 
-<script>
-    // Use an off-screen image to load the next frame.
-    var img = new Image();
-
-    // When it is loaded...
-    img.addEventListener("load", function() {
-
-        // Set the on-screen image to the same source. This should be instant because
-        // it is already loaded.
-        document.getElementById("frame").src = img.src;
-
-        // Schedule loading the next frame.
-        setTimeout(function() {
-            img.src = "frame.jpg?" + (new Date).getTime();
-        }, 1000/15); // 15 FPS (more or less)
-    });
-
-    // Start the loading process.
-    img.src = "frame.jpg?" + (new Date).getTime();
+    // // Load 3D Vector Image
+    // // Use an off-screen image to load the next frame.
+    // var img = new Image();
+    //
+    // // When it is loaded...
+    // img.addEventListener("load", function() {
+    //
+    //     // Set the on-screen image to the same source. This should be instant because
+    //     // it is already loaded.
+    //     document.getElementById("frame").src = img.src;
+    //
+    //     // Schedule loading the next frame.
+    //     setTimeout(function() {
+    //         img.src = "frame.jpg?" + (new Date).getTime();
+    //     }, 1000/15); // 15 FPS (more or less)
+    // });
+    //
+    // // Start the loading process.
+    // img.src = "frame.jpg?" + (new Date).getTime();
 </script>
 
 </body>
