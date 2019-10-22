@@ -48,24 +48,7 @@
     <script src="jsLibrary/justgage-1.2.2/raphael-2.1.4.min.js"></script>
     <script src="jsLibrary/justgage-1.2.2/justgage.js"></script>
 </head>
-<script>
-    function myFunction(objButton) {
-        var x = document.getElementsByClassName(objButton.value);
-        // console.log(objButton.value);
-        var y = '.'+objButton.value;
-        var z = '#'+objButton.value;
-        console.log(y);
-        if (x[0].style.display === "none") {
-            $(y).show();
-            $(z).css('backgroundColor', 'gray');
-        } else {
-            $(y).hide();
-            $(z).css('backgroundColor', 'white');
-        }
-
-    }
-</script>
-<body>
+<body onload="init()">
 <div id="but0">
     <!--    <p>Historical Data Charts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>-->
     <button onclick='window.location.replace("historical.html")'>Historical Data</button>
@@ -87,7 +70,6 @@
     <p>Not Avaliable &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
     <button onclick="myFunction(this)" value="station_four" id="station_four">ESP 04</button>
 </div>
-
 
 <div id="gauge">
     <h2>The gauges represent live X (N-S), Y (E-W), Z (+ - altitude) from the ESP Stations with a 2-minute delay</h2>
@@ -122,43 +104,44 @@
     </div>
 </div>
 
-<!--<div id="modal">-->
-<!--    <h1>Vector</h1>-->
-<!--    <p class= "para">Here is the info about the earthquake, the values of the axis are on the labels.<br><br>Data updates every 5 seconds, although there is a delay of 1 to 3 minutes.</p>-->
-<!--    <div class="station_one" id="vector">-->
-<!--&lt;!&ndash;        <h2>Station One</h2>&ndash;&gt;-->
-<!--        <div id="myModal" class="modal">-->
-<!--            &lt;!&ndash; Modal content &ndash;&gt;-->
-<!--            <div class="modal-content">-->
-<!--&lt;!&ndash;                <div class="modal-header">Station One</div>&ndash;&gt;-->
-<!--                <div class="modal-body" >-->
-<!--                    <img src="3D_Vector_Arrow.png" alt = "ESP Vector" id = "myImg" class="station_one">-->
-<!--                <div id="233"></div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="station_two" id="vector2">-->
-<!--&lt;!&ndash;        <h2>Station Two</h2>&ndash;&gt;-->
-<!--        <div id="myModal2" class="modal">-->
-<!--            &lt;!&ndash; Modal content &ndash;&gt;-->
-<!--            <div class="modal-content">-->
-<!--&lt;!&ndash;                <div class="modal-header">Station Two</div>&ndash;&gt;-->
-<!--                <div class="modal-body" >-->
-<!--                    <img src="3D_Vector_Arrow2.png" alt = "ESP Vector" id = "myImg2" class="station_two">-->
-<!--                    <div id="2332"></div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+<div id = 'direction'>
+    <h1>Direction and Depth</h1>
+    <p>Updates every 5 seconds, with a 2-minute delay</p>
+    <div class="station_one" >
+        <h3>ESP 01</h3>
+        <canvas  id="compass1" width="300" height="300"></canvas>
+        <canvas  id="depth1" width="300" height="300"></canvas>
+    </div>
 
+    <div class="station_two" >
+        <h3>ESP 02</h3>
+        <canvas id="compass2" width="300" height="300"></canvas>
+        <canvas id="depth2" width="300" height="300"></canvas>
+    </div>
+</div>
 <br><br><br><br><br><br><br><br><br>
 
 
 <button onclick = "query();query2();" id = "fakeBu"></button>
-<!--<button onclick = "query()" id = "someButton"></button>-->
+
 <script type="text/javascript">
+
+    function myFunction(objButton) {
+        var x = document.getElementsByClassName(objButton.value);
+        // console.log(objButton.value);
+        var y = '.'+objButton.value;
+        var z = '#'+objButton.value;
+        console.log(y);
+        if (x[0].style.display === "none") {
+            $(y).show();
+            $(z).css('backgroundColor', 'gray');
+        } else {
+            $(y).hide();
+            $(z).css('backgroundColor', 'white');
+        }
+
+    }
+
     document.getElementById("fakeBu").click();
     var staone = [],
         statwo = [];
@@ -211,21 +194,6 @@
 
     });
     gz.refresh(0);
-
-    // var xa, ya, ga;
-    // function avg(res,len){
-    //
-    //     var arr = res.slice(Math.max(res.length - len, 1));
-    //     xa = ya = za = 0;
-    //     for(var i = 0; i<arr.length; i++){
-    //         xa += arr[i].mean;
-    //         ya += arr[i].mean_1;
-    //         za += arr[i].mean_2
-    //     }
-    //     xa = xa/len;
-    //     ya = ya/len;
-    //     za = za/len;
-    // }
 
     function query() {
         $.ajax({
@@ -290,14 +258,6 @@
                 gy.refresh(Math.abs(staone[1]));
                 gz.refresh(Math.abs(staone[2]));
 
-                // var fs = require('fs');
-                // var cont = xa, ya, za;
-                // fs.write(test.csv, cont, 'a');
-
-                // D3Chart();
-
-
-
             }
         });
     }
@@ -314,6 +274,7 @@
 
     });
     gx2.refresh(0);
+
     gy2 = new JustGage({
         id: "gy2",
         title: "Y2",
@@ -325,6 +286,7 @@
 
     });
     gy2.refresh(0);
+
     gz2 = new JustGage({
         id: "gz2",
         title: "Z2",
@@ -337,20 +299,6 @@
     });
     gz2.refresh(0);
 
-    // var xa2, ya2, ga2;
-    // function avg(res,len){
-    //
-    //     var arr = res.slice(Math.max(res.length - len, 1));
-    //     xa2 = ya2 = za2 = 0;
-    //     for(var i = 0; i<arr.length; i++){
-    //         xa2 += arr[i].mean;
-    //         ya2 += arr[i].mean_1;
-    //         za2 += arr[i].mean_2
-    //     }
-    //     xa2 = xa2/len;
-    //     ya2 = ya2/len;
-    //     za2 = za2/len;
-    // }
 
     function query2() {
         $.ajax({
@@ -418,128 +366,159 @@
                 gy2.refresh(Math.abs(statwo[1]));
                 gz2.refresh(Math.abs(statwo[2]));
 
-                // var fs = require('fs');
-                // var cont = xa, ya, za;
-                // fs.write(test.csv, cont, 'a');
-
-                // D3Chart2();
             }
         });
     }
 
-// Step - 1. Call the document load function.
 
-// var D3Chart = function() {
-// // Step 2 : Call the action on submit evenet :
-// // step 3:  Call the Ajax Function
-//     $.ajax( {
-//     // Step 4: Create here the data for the field values. Request Method 'POST' OR 'GET' and Url for Processing the form.
-//         data : {
-//             key1: staone[0],
-//             key2: staone[1],
-//             key3: staone[2],
-//         },
-//         type : 'GET',
-//         url : 'http://localhost:7000/process',
-//         success: function(res){
-//             console.log(res);
-//
-//             // $.fn.redraw = function(){
-//             //     $(this).each(function(){
-//             //         var redraw = this.offsetHeight;
-//             //     });
-//             // };
-//             // $('#myImg').redraw();
-//
-//             // var image_x = document.getElementById('myImg');
-//             // image_x.parentNode.removeChild(image_x);
-//             // $("<img>")
-//             //     .attr("src","3D_Vector_Arrow.png")
-//             //     .attr("id","#myImg")
-//             //     .appendTo("#233")
-//             // document.getElementById("placehere").appendChild(elem);
-//             // document.getElementById("myImg").src="3D_Vector_Arrow.png";
-//
-//             $("#myImg").remove();
-//             $("<img>")
-//                 .attr("src","3D_Vector_Arrow.png?"+ (new Date).getTime())
-//                 .attr("id","myImg")
-//                 .attr("alt","ESP Vector")
-//                 .appendTo("#233");
-//
-//             // Use an off-screen image to load the next frame.
-//             // var img = new Image();
-//
-//             // When it is loaded...
-//
-//                 // Set the on-screen image to the same source. This should be instant because
-//                 // it is already loaded.
-//                 // document.getElementById("frame").src = img.src;
-//                 // img.src = "frame.jpg?" + (new Date).getTime();
-//
-//                 // Schedule loading the next frame.
-//                 // setTimeout(function() {
-//                 //     img.src = "frame.jpg?" + (new Date).getTime();
-//                 // }, 1000/15); // 15 FPS (more or less)
-//
-//
-//             // Start the loading process.
-//             // img.src = "frame.jpg?" + (new Date).getTime();
-//         }
-//     });
-// // Step 5: Call the success function.
-// // Step 6 : Wrtite the code for the data retured from the Server url: '/example'
-// // Step 7 : Prevent the enitre submit event to do default action
-// // event.preventDefault();
-//
-// };
-// <!--    var D3Chart2 = function() {-->
-// <!--        $.ajax( {-->
-// <!--            data : {-->
-// <!--                key1: statwo[0],-->
-// <!--                key2: statwo[1],-->
-// <!--                key3: statwo[2],-->
-// <!--            },-->
-// <!--            type : 'GET',-->
-// <!--            url : 'http://localhost:7000/process2',-->
-// <!--            success: function(res){-->
-// <!--                console.log(res);-->
-// <!--                $("#myImg2").remove();-->
-// <!--                $("<img>")-->
-// <!--                    .attr("src","3D_Vector_Arrow2.png?"+ (new Date).getTime())-->
-// <!--                    .attr("id","myImg2")-->
-// <!--                    .attr("alt","ESP Vector")-->
-// <!--                    .appendTo("#2332");-->
-//
-// <!--            }-->
-// <!--        });-->
-// <!--    };-->
-//
-//    // setTimeout(function(){
-//     //     window.location.reload(1);
-    // }, 5000);
+    setInterval(function () {document.getElementById("fakeBu").click();}, 5000);
 
-    setInterval(function () {document.getElementById("fakeBu").click();}, 30000);
+    // Global variable
+    var img = null,
+        needle = null,
+        ctx = null,
+        degrees = 0;
 
-    // // Load 3D Vector Image
-    // // Use an off-screen image to load the next frame.
-    // var img = new Image();
-    //
-    // // When it is loaded...
-    // img.addEventListener("load", function() {
-    //
-    //     // Set the on-screen image to the same source. This should be instant because
-    //     // it is already loaded.
-    //     document.getElementById("frame").src = img.src;
-    //
-    //     // Schedule loading the next frame.
-    //     setTimeout(function() {
-    //         img.src = "frame.jpg?" + (new Date).getTime();
-    //     }, 1000/15); // 15 FPS (more or less)
-    // });
-    //
-    // // Start the loading process.
-    // img.src = "frame.jpg?" + (new Date).getTime();
+
+    function clearCanvas() {
+        // clear canvas
+        ctx.clearRect(0, 0, 300, 300);
+        // ctx2.clearRect(0, 0, 300, 300);
+    }
+    function calcAngleDegrees(x, y) {
+        return Math.atan2(y, x) * 180 / Math.PI;
+    }
+
+    function draw() {
+
+        console.log(staone);
+
+        console.log('Station 1 heading:'+calcAngleDegrees(staone[0], staone[1]));
+
+        let degrees = calcAngleDegrees(staone[0], staone[1]);
+        clearCanvas();
+
+        // Draw the compass onto the canvas
+        ctx.drawImage(img, 0, 0);
+
+        // Save the current drawing state
+        ctx.save();
+
+        // Now move across and down half the
+        ctx.translate(153, 140);
+
+        // Rotate around this point
+        ctx.rotate(degrees * (Math.PI / 180));
+
+        // Draw the image back and up
+        ctx.drawImage(needle, -172, -172);
+
+        // Restore the previous drawing state
+        ctx.restore();
+    }
+
+    function draw2() {
+
+        console.log(statwo);
+
+        console.log('Station 2 heading2:'+calcAngleDegrees(statwo[0], statwo[1]));
+
+        let degrees2 = calcAngleDegrees(statwo[0], statwo[1]);
+        clearCanvas2();
+
+        // Draw the compass onto the canvas
+        ctx2.drawImage(img2, 0, 0);
+
+        // Save the current drawing state
+        ctx2.save();
+
+        // Now move across and down half the
+        ctx2.translate(153, 140);
+
+        // Rotate around this point
+        ctx2.rotate(degrees2 * (Math.PI / 180));
+
+        // Draw the image back and up
+        ctx2.drawImage(needle2, -172, -172);
+
+        // Restore the previous drawing state
+        ctx2.restore();
+    }
+    function imgLoaded() {
+        // Image loaded event complete.  Start the timer
+        setInterval(draw, 5000);
+    }
+    function imgLoaded2() {
+        // Image loaded event complete.  Start the timer
+        setInterval(draw2, 5000);
+    }
+
+    var img2 = null,
+        needle2 = null,
+        ctx2 = null,
+        degrees2 = 0;
+
+
+    function clearCanvas2() {
+        // clear canvas
+        ctx2.clearRect(0, 0, 300, 300);
+        // ctx2.clearRect(0, 0, 300, 300);
+    }
+
+
+    function init() {
+        // Grab the compass element
+        var canvas2 = document.getElementById('compass2');
+
+        // Canvas supported?
+        if (canvas2.getContext('2d')) {
+            ctx2 = canvas2.getContext('2d');
+
+            // Load the needle image
+            needle2 = new Image();
+            needle2.src = 'compass/needle.png';
+
+            // Load the compass image
+            img2 = new Image();
+            img2.src = 'compass/compass.png';
+            img2.onload = imgLoaded2;
+        } else {
+            alert("Canvas not supported!");
+        }
+
+        // Grab the compass element
+        var canvas = document.getElementById('compass1');
+        // var canvas2 = document.getElementById('compass2');
+
+        // Canvas supported?
+        if (canvas.getContext('2d')) {
+            ctx = canvas.getContext('2d');
+
+            // Load the needle image
+            needle = new Image();
+            needle.src = 'compass/needle.png';
+
+            // Load the compass image
+            img = new Image();
+            img.src = 'compass/compass.png';
+            img.onload = imgLoaded;
+        } else {
+            alert("Canvas not supported!");
+        }
+
+    }
+
+    function calcDepthAngle(x, y) {
+        return Math.atan2(y, x) * 180 / Math.PI;
+    }
+
+    var depth = function () {
+        var bob = staone[0]/2+staone[1]/2;
+        console.log(bob);
+        console.log(calcDepthAngle(bob,staone[2]));
+    };
+    setInterval(depth, 5000);
+
 </script>
 
 </body>
