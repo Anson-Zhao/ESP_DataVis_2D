@@ -6,29 +6,29 @@
         display: inline-block;
         margin: 1em;
     }
-        /*#graphx, #graphx2, #graphy, #graphy2, #graphz, #graphz2, #vector, #vector2{*/
-        /*    display: inline-block;*/
-        /*}*/
+        #graphx, #graphx2, #graphy, #graphy2, #graphz, #graphz2, #vector, #vector2{
+            display: inline-block;
+        }
         #but1, #but2, #but3, #but4{
             display: inline-block;
         }
         #station_one, #station_two{
             background-color: gray;
         }
-        .child{
-            float: left;
-            width: 500px;
-            height: 300px;
-        }
-        #livechart {
-            overflow: hidden;
-            width: 2000px;
-        }
+        /*.child{*/
+        /*    float: left;*/
+        /*    width: 500px;*/
+        /*    height: 300px;*/
+        /*}*/
+        /*#livechart {*/
+        /*    overflow: hidden;*/
+        /*    width: 2000px;*/
+        /*}*/
 
-        .contain {
-            overflow: hidden;
-            width: 1500px;
-        }
+        /*.contain {*/
+        /*    overflow: hidden;*/
+        /*    width: 1500px;*/
+        /*}*/
 
         /*.live {*/
         /*    float: left;*/
@@ -43,8 +43,8 @@
     </style>
     <link rel="stylesheet" src="jsLibrary/dygraph/dygraph.css" />
 
-    <script type="text/javascript" src="jsLibrary/dygraph/dygraph.js"></script>
     <script src='jsLibrary/jquery-3-4-1.min.js'></script>
+    <script type="text/javascript" src="jsLibrary/dygraph/dygraph.js"></script>
     <script src="jsLibrary/justgage-1.2.2/raphael-2.1.4.min.js"></script>
     <script src="jsLibrary/justgage-1.2.2/justgage.js"></script>
 </head>
@@ -73,32 +73,32 @@
 <br><br>
 <div id="but1">
 <p>Middletown, NY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-<button onclick="myFunction(this)" value="station_one" id="station_one">station one</button>
+<button onclick="myFunction(this)" value="station_one" id="station_one">ESP 01</button>
 </div>
 <div id="but2">
 <p>Soquel, CA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-<button onclick="myFunction(this)" value="station_two" id="station_two">station two</button>
+<button onclick="myFunction(this)" value="station_two" id="station_two">ESP 02</button>
 </div>
 <div id="but3">
     <p>Not Avaliable &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-    <button onclick="myFunction(this)" value="station_three" id="station_three">station three</button>
+    <button onclick="myFunction(this)" value="station_three" id="station_three">ESP 03</button>
 </div>
 <div id="but4">
     <p>Not Avaliable &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-    <button onclick="myFunction(this)" value="station_four" id="station_four">station four</button>
+    <button onclick="myFunction(this)" value="station_four" id="station_four">ESP 04</button>
 </div>
 
 
 <div id="gauge">
-    <h2>The gauges represent live X-Y-Z data from the ESP-1 Station in Middletown, NY with a 2-minute delay</h2>
+    <h2>The gauges represent live X (N-S), Y (E-W), Z (+ - altitude) from the ESP Stations with a 2-minute delay</h2>
     <div class="station_one">
-        <h2>ESP One, Middletown, NY</h2>
+        <h2>ESP 01, Middletown, NY</h2>
         <div id="gx"></div>
         <div id="gy"></div>
         <div id="gz"></div>
     </div><br>
     <div class="station_two">
-        <h2>ESP Two, Soquel, CA</h2>
+        <h2>ESP 02, Soquel, CA</h2>
         <div id="gx2"></div>
         <div id="gy2"></div>
         <div id="gz2"></div>
@@ -108,17 +108,17 @@
 <div id="livechart">
     <h1>Live Chart</h1>
     <h2>The charts represent 2 minutes of live data from the ESP-1 Station, with a 2-minute delay</h2>
-    <div class="station_one" class="contain">
-        <h2>ESP One, Middletown, NY</h2><br>
-        <div style="width: 500px;" id="graphx" class="child"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <div style="float: right; width: 500px;" id="graphy" class="child"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <div style="float: right; width: 500px;" id="graphz" class="child"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </div><br><br><br><br>
-    <div class="station_two" class="contain">
-        <h2>ESP Two, Soquel, CA</h2><br>
-        <div style="width: 500px;" id="graphx2" class="child"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <div style="width: 500px;" id="graphy2" class="child"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <div style="width: 500px;" id="graphz2" class="child"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="station_one">
+        <h2>Station 01</h2><br>
+        <div id="graphx"></div>
+        <div id="graphy"></div>
+        <div id="graphz"></div>
+    </div>
+    <div class="station_two">
+        <h2>Station 02</h2><br>
+        <div id="graphx2"></div>
+        <div id="graphy2"></div>
+        <div id="graphz2"></div>
     </div>
 </div>
 
@@ -229,6 +229,7 @@
 
     function query() {
         $.ajax({
+            // url: "https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query",
             url: "http://localhost:3005/query",
             method: "get",
             //Says success isn't used but it is
@@ -254,7 +255,7 @@
                     z_arr,
                     {
                         labels: [ "time", "Z" ],
-                        title: "Z"
+                        title: "Z (+Z is positive altitude, -Z is below ground)"
                     }
 
                 );
@@ -267,7 +268,7 @@
                     y_arr,
                 {
                     labels: [ "time", "Y" ],
-                    title: "Y"
+                    title: "Y (+Y is east, -Y is west)"
                 }
 
                 );
@@ -280,7 +281,7 @@
                     x_arr,
                     {
                         labels: [ "time", "X" ],
-                        title: "X"
+                        title: "X (+X is north, -X is south)"
                     }
 
                 );
@@ -353,6 +354,7 @@
 
     function query2() {
         $.ajax({
+            // url: "https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query2",
             url: "http://localhost:3005/query2",
             method: "get",
             //Says success isn't used but it is
@@ -382,7 +384,7 @@
                     z_arr,
                     {
                         labels: [ "time", "Z" ],
-                        title: "Z"
+                        title: "Z (+Z is positive altitude, -Z is below ground)"
                     }
 
                 );
@@ -395,7 +397,7 @@
                     y_arr,
                     {
                         labels: [ "time", "Y" ],
-                        title: "Y"
+                        title: "Y (+Y is east, -Y is west)"
                     }
 
                 );
@@ -408,7 +410,7 @@
                     x_arr,
                     {
                         labels: [ "time", "X" ],
-                        title: "X"
+                        title: "X (+X is north, -X is south)"
                     }
                 );
                 console.log(statwo);
@@ -421,9 +423,6 @@
                 // fs.write(test.csv, cont, 'a');
 
                 // D3Chart2();
-
-
-
             }
         });
     }

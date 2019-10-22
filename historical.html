@@ -124,10 +124,10 @@
             <h4 class="floatingBox">Select Station:</h4>
             <select id="station">
                 <option></option>
-                <option value="station_one">station one, Middletown, NY</option>
-                <option value="station_two">station two, Soquel, CA</option>
-                <option value="station_three">Not avaliable</option>
-                <option value="station_four">Not avaliable</option>
+                <option value="station_one">ESP 01, Middletown, NY</option>
+                <option value="station_two">ESP 02, Soquel, CA</option>
+                <option value="station_three">ESP 3, CA N/A</option>
+                <option value="station_four">ESP 4, CA N/A</option>
             </select><br><br>
             <input type="button" onclick="enabled = false; query();" class="button button2" value="Filter">
             <br><br>
@@ -164,6 +164,7 @@
 
     var queryAndDisplay = function () {
         $.ajax({
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newWind',
             url: 'http://localhost:3005/newWind',
             type: 'GET',
             dataType: 'json',
@@ -193,7 +194,7 @@
                     z_arr,
                     {
                         labels: [ "time", "Z" ],
-                        title: "Z Depth"
+                        title: "Z (+Z is positive altitude, -Z is below ground)"
                     }
 
                 );
@@ -206,7 +207,7 @@
                     y_arr,
                     {
                         labels: [ "time", "Y" ],
-                        title: "Y East"
+                        title: "Y (+Y is east, -Y is west)"
                     }
 
                 );
@@ -219,7 +220,7 @@
                     x_arr,
                     {
                         labels: [ "time", "X" ],
-                        title: "X North"
+                        title: "X (+X is north, -X is south)"
                     }
                 );
             }
