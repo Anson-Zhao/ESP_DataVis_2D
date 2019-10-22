@@ -6,15 +6,34 @@
         display: inline-block;
         margin: 1em;
     }
-        #graphx, #graphx2, #graphy, #graphy2, #graphz, #graphz2, #vector, #vector2{
-            display: inline-block;
-        }
+        /*#graphx, #graphx2, #graphy, #graphy2, #graphz, #graphz2, #vector, #vector2{*/
+        /*    display: inline-block;*/
+        /*}*/
         #but1, #but2, #but3, #but4{
             display: inline-block;
         }
         #station_one, #station_two{
             background-color: gray;
         }
+        .child{
+            float: left;
+            width: 500px;
+            height: 300px;
+        }
+        #livechart {
+            overflow: hidden;
+            width: 2000px;
+        }
+
+        .contain {
+            overflow: hidden;
+            width: 1500px;
+        }
+
+        /*.live {*/
+        /*    float: left;*/
+        /*    width: 500px;*/
+        /*}*/
         /*.station_one {*/
         /*    display: none;*/
         /*}*/
@@ -22,7 +41,7 @@
         /*    display: none;*/
         /*}*/
     </style>
-    <link rel="stylesheet" src="Library/dygraph/dygraph.css" />
+    <link rel="stylesheet" src="jsLibrary/dygraph/dygraph.css" />
 
     <script type="text/javascript" src="jsLibrary/dygraph/dygraph.js"></script>
     <script src='jsLibrary/jquery-3-4-1.min.js'></script>
@@ -57,7 +76,7 @@
 <button onclick="myFunction(this)" value="station_one" id="station_one">station one</button>
 </div>
 <div id="but2">
-<p>Socal, CA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>Soquel, CA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <button onclick="myFunction(this)" value="station_two" id="station_two">station two</button>
 </div>
 <div id="but3">
@@ -73,13 +92,13 @@
 <div id="gauge">
     <h2>The gauges represent live X-Y-Z data from the ESP-1 Station in Middletown, NY with a 2-minute delay</h2>
     <div class="station_one">
-        <h2>Station One</h2>
+        <h2>ESP One, Middletown, NY</h2>
         <div id="gx"></div>
         <div id="gy"></div>
         <div id="gz"></div>
     </div><br>
     <div class="station_two">
-        <h2>Station Two</h2>
+        <h2>ESP Two, Soquel, CA</h2>
         <div id="gx2"></div>
         <div id="gy2"></div>
         <div id="gz2"></div>
@@ -89,17 +108,17 @@
 <div id="livechart">
     <h1>Live Chart</h1>
     <h2>The charts represent 2 minutes of live data from the ESP-1 Station, with a 2-minute delay</h2>
-    <div class="station_one">
-        <h2>Station One</h2><br>
-        <div id="graphx"></div>
-        <div id="graphy"></div>
-        <div id="graphz"></div>
-    </div>
-    <div class="station_two">
-        <h2>Station Two</h2><br>
-        <div id="graphx2"></div>
-        <div id="graphy2"></div>
-        <div id="graphz2"></div>
+    <div class="station_one" class="contain">
+        <h2>ESP One, Middletown, NY</h2><br>
+        <div style="width: 500px;" id="graphx" class="child"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div style="float: right; width: 500px;" id="graphy" class="child"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div style="float: right; width: 500px;" id="graphz" class="child"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div><br><br><br><br>
+    <div class="station_two" class="contain">
+        <h2>ESP Two, Soquel, CA</h2><br>
+        <div style="width: 500px;" id="graphx2" class="child"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div style="width: 500px;" id="graphy2" class="child"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div style="width: 500px;" id="graphz2" class="child"></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
 </div>
 
@@ -140,6 +159,7 @@
 <button onclick = "query();query2();" id = "fakeBu"></button>
 <!--<button onclick = "query()" id = "someButton"></button>-->
 <script type="text/javascript">
+    document.getElementById("fakeBu").click();
     var staone = [],
         statwo = [];
     function avg(res,len){
@@ -361,7 +381,8 @@
                     // CSV or path to a CSV file.
                     z_arr,
                     {
-                        labels: [ "time", "Z" ]
+                        labels: [ "time", "Z" ],
+                        title: "Z"
                     }
 
                 );
@@ -373,7 +394,8 @@
                     // CSV or path to a CSV file.
                     y_arr,
                     {
-                        labels: [ "time", "Y" ]
+                        labels: [ "time", "Y" ],
+                        title: "Y"
                     }
 
                 );
@@ -385,7 +407,8 @@
                     // CSV or path to a CSV file.
                     x_arr,
                     {
-                        labels: [ "time", "X" ]
+                        labels: [ "time", "X" ],
+                        title: "X"
                     }
                 );
                 console.log(statwo);
@@ -497,7 +520,7 @@
 //     //     window.location.reload(1);
     // }, 5000);
 
-    setInterval(function () {document.getElementById("fakeBu").click();}, 5000);
+    setInterval(function () {document.getElementById("fakeBu").click();}, 30000);
 
     // // Load 3D Vector Image
     // // Use an off-screen image to load the next frame.

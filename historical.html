@@ -6,9 +6,9 @@
     <style>
         body { padding-left:80px; padding-bottom: 300px; word-wrap:break-word;}
 
-        #graphx, #graphx2, #graphy, #graphy2, #graphz, #graphz2, #vector, #vector2{
-            display: inline-block;
-        }
+        /*#graphx, #graphx2, #graphy, #graphy2, #graphz, #graphz2, #vector, #vector2{*/
+        /*    display: inline-block;*/
+        /*}*/
         #windspeedChart, #windGraph {
             width: 1300px;
             height: 500px;
@@ -125,7 +125,7 @@
             <select id="station">
                 <option></option>
                 <option value="station_one">station one, Middletown, NY</option>
-                <option value="station_two">station two, Socal, CA</option>
+                <option value="station_two">station two, Soquel, CA</option>
                 <option value="station_three">Not avaliable</option>
                 <option value="station_four">Not avaliable</option>
             </select><br><br>
@@ -193,7 +193,7 @@
                     z_arr,
                     {
                         labels: [ "time", "Z" ],
-                        title: "Z"
+                        title: "Z Depth"
                     }
 
                 );
@@ -206,7 +206,7 @@
                     y_arr,
                     {
                         labels: [ "time", "Y" ],
-                        title: "Y"
+                        title: "Y East"
                     }
 
                 );
@@ -219,7 +219,7 @@
                     x_arr,
                     {
                         labels: [ "time", "X" ],
-                        title: "X"
+                        title: "X North"
                     }
                 );
             }
