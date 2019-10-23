@@ -41,7 +41,7 @@
         /*    display: none;*/
         /*}*/
     </style>
-    <link rel="stylesheet" src="jsLibrary/dygraph/dygraph.css" />
+    <link rel="stylesheet" href="jsLibrary/dygraph/dygraph.css" />
 
     <script src='jsLibrary/jquery-3-4-1.min.js'></script>
     <script type="text/javascript" src="jsLibrary/dygraph/dygraph.js"></script>
@@ -388,11 +388,15 @@
     function calcAngleDegrees(x, y) {
         return Math.atan2(y, x) * 180 / Math.PI;
     }
+    function calcDepthAngle(x, y) {
+        return Math.atan2(y, x) * 180 / Math.PI;
+    }
+
+    function calcHypotenuse(a, b) {
+        return(Math.sqrt((a * a) + (b * b)));
+    }
 
     function draw() {
-
-        console.log(staone);
-
         console.log('Station 1 heading:'+calcAngleDegrees(staone[0], staone[1]));
 
         let degrees = calcAngleDegrees(staone[0], staone[1]);
@@ -418,9 +422,6 @@
     }
 
     function draw2() {
-
-        console.log(statwo);
-
         console.log('Station 2 heading2:'+calcAngleDegrees(statwo[0], statwo[1]));
 
         let degrees2 = calcAngleDegrees(statwo[0], statwo[1]);
@@ -466,6 +467,60 @@
     }
 
 
+    // function init() {
+    //     // Grab the compass element
+    //     var canvas2 = document.getElementById('compass2');
+    //
+    //     // Canvas supported?
+    //     if (canvas2.getContext('2d')) {
+    //         ctx2 = canvas2.getContext('2d');
+    //
+    //         // Load the needle image
+    //         needle2 = new Image();
+    //         needle2.src = 'compass/needle.png';
+    //
+    //         // Load the compass image
+    //         img2 = new Image();
+    //         img2.src = 'compass/compass.png';
+    //         img2.onload = imgLoaded2;
+    //     } else {
+    //         alert("Canvas not supported!");
+    //     }
+    //
+    //     // Grab the compass element
+    //     var canvas = document.getElementById('compass1');
+    //     // var canvas2 = document.getElementById('compass2');
+    //
+    //     // Canvas supported?
+    //     if (canvas.getContext('2d')) {
+    //         ctx = canvas.getContext('2d');
+    //
+    //         // Load the needle image
+    //         needle = new Image();
+    //         needle.src = 'compass/needle.png';
+    //
+    //         // Load the compass image
+    //         img = new Image();
+    //         img.src = 'compass/compass.png';
+    //         img.onload = imgLoaded;
+    //     } else {
+    //         alert("Canvas not supported!");
+    //     }
+    //
+    // }
+
+
+    var imgD1 = null,
+        ctxD1 = null;
+
+
+
+    var depth = function () {
+       var depthX =  calcHypotenuse(staone[0], staone[1]);
+       console.log('station 1 depth angle:'+calcDepthAngle(depthX, staone[2]))
+    };
+    setInterval(depth, 5000);
+
     function init() {
         // Grab the compass element
         var canvas2 = document.getElementById('compass2');
@@ -506,18 +561,9 @@
             alert("Canvas not supported!");
         }
 
-    }
 
-    function calcDepthAngle(x, y) {
-        return Math.atan2(y, x) * 180 / Math.PI;
-    }
 
-    var depth = function () {
-        var bob = staone[0]/2+staone[1]/2;
-        console.log(bob);
-        console.log(calcDepthAngle(bob,staone[2]));
-    };
-    setInterval(depth, 5000);
+    }
 
 </script>
 
