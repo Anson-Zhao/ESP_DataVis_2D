@@ -25,7 +25,7 @@
             float: left;
         }
 
-        .charts, .gauges {
+        .charts, .gauges, .compasses {
             width: max-content;
             display: inline-table;
         }
@@ -39,7 +39,7 @@
     <script src="jsLibrary/justgage-1.2.2/justgage.js"></script>
 </head>
 
-<body onload="init()">
+<body>
 
 <div id="but0">
     <!--    <p>Historical Data Charts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>-->
@@ -109,7 +109,7 @@
         <canvas  id="compass1" width="300" height="300"></canvas>
         <canvas  id="depth1" width="300" height="300"></canvas>
     </div>
-
+    <br>
     <div class="compasses" >
         <h3>ESP 02</h3>
         <canvas id="compass2" width="300" height="300"></canvas>
@@ -387,100 +387,150 @@
 
     setInterval(function () {document.getElementById("fakeBu").click();}, 5000);
 
-    // Global variable
-    var img = null,
-        needle = null,
-        ctx = null,
-        degrees = 0;
-
-
-    function clearCanvas() {
-        // clear canvas
-        ctx.clearRect(0, 0, 300, 300);
-        // ctx2.clearRect(0, 0, 300, 300);
-    }
-    function calcAngleDegrees(x, y) {
-        return Math.atan2(y, x) * 180 / Math.PI;
-    }
-    function calcDepthAngle(x, y) {
-        return Math.atan2(y, x) * 180 / Math.PI;
-    }
-
-    function calcHypotenuse(a, b) {
-        return(Math.sqrt((a * a) + (b * b)));
-    }
-
-    function draw() {
-        console.log('Station 1 heading:'+calcAngleDegrees(staone[0], staone[1]));
-
-        let degrees = calcAngleDegrees(staone[0], staone[1]);
-        clearCanvas();
-
-        // Draw the compass onto the canvas
-        ctx.drawImage(img, 0, 0);
-
-        // Save the current drawing state
-        ctx.save();
-
-        // Now move across and down half the
-        ctx.translate(153, 140);
-
-        // Rotate around this point
-        ctx.rotate(degrees * (Math.PI / 180));
-
-        // Draw the image back and up
-        ctx.drawImage(needle, -172, -172);
-
-        // Restore the previous drawing state
-        ctx.restore();
-    }
-
-    function draw2() {
-        console.log('Station 2 heading2:'+calcAngleDegrees(statwo[0], statwo[1]));
-
-        let degrees2 = calcAngleDegrees(statwo[0], statwo[1]);
-        clearCanvas2();
-
-        // Draw the compass onto the canvas
-        ctx2.drawImage(img2, 0, 0);
-
-        // Save the current drawing state
-        ctx2.save();
-
-        // Now move across and down half the
-        ctx2.translate(153, 140);
-
-        // Rotate around this point
-        ctx2.rotate(degrees2 * (Math.PI / 180));
-
-        // Draw the image back and up
-        ctx2.drawImage(needle2, -172, -172);
-
-        // Restore the previous drawing state
-        ctx2.restore();
-    }
-    function imgLoaded() {
-        // Image loaded event complete.  Start the timer
-        setInterval(draw, 5000);
-    }
-    function imgLoaded2() {
-        // Image loaded event complete.  Start the timer
-        setInterval(draw2, 5000);
-    }
-
-    var img2 = null,
-        needle2 = null,
-        ctx2 = null,
-        degrees2 = 0;
-
-
-    function clearCanvas2() {
-        // clear canvas
-        ctx2.clearRect(0, 0, 300, 300);
-        // ctx2.clearRect(0, 0, 300, 300);
-    }
-
-
+    // // Global variable
+    // var img = null,
+    //     needle = null,
+    //     ctx = null,
+    //     degrees = 0;
+    //
+    //
+    // function clearCanvas() {
+    //     // clear canvas
+    //     ctx.clearRect(0, 0, 300, 300);
+    //     // ctx2.clearRect(0, 0, 300, 300);
+    // }
+    // function calcAngleDegrees(x, y) {
+    //     return Math.atan2(y, x) * 180 / Math.PI;
+    // }
+    // function calcHypotenuse(a, b) {
+    //     return(Math.sqrt((a * a) + (b * b)));
+    // }
+    //
+    // function draw() {
+    //     console.log('Station 1 heading:'+calcAngleDegrees(staone[0], staone[1]));
+    //
+    //     let degrees = calcAngleDegrees(staone[0], staone[1]);
+    //     clearCanvas();
+    //
+    //     // Draw the compass onto the canvas
+    //     ctx.drawImage(img, 0, 0);
+    //
+    //     // Save the current drawing state
+    //     ctx.save();
+    //
+    //     // Now move across and down half the
+    //     ctx.translate(153, 140);
+    //
+    //     // Rotate around this point
+    //     ctx.rotate(degrees * (Math.PI / 180));
+    //
+    //     // Draw the image back and up
+    //     ctx.drawImage(needle, -172, -172);
+    //
+    //     // Restore the previous drawing state
+    //     ctx.restore();
+    // }
+    //
+    // function draw2() {
+    //     console.log('Station 2 heading2:'+calcAngleDegrees(statwo[0], statwo[1]));
+    //
+    //     let degrees2 = calcAngleDegrees(statwo[0], statwo[1]);
+    //     clearCanvas2();
+    //
+    //     // Draw the compass onto the canvas
+    //     ctx2.drawImage(img2, 0, 0);
+    //
+    //     // Save the current drawing state
+    //     ctx2.save();
+    //
+    //     // Now move across and down half the
+    //     ctx2.translate(153, 140);
+    //
+    //     // Rotate around this point
+    //     ctx2.rotate(degrees2 * (Math.PI / 180));
+    //
+    //     // Draw the image back and up
+    //     ctx2.drawImage(needle2, -172, -172);
+    //
+    //     // Restore the previous drawing state
+    //     ctx2.restore();
+    // }
+    // function imgLoaded() {
+    //     // Image loaded event complete.  Start the timer
+    //     setInterval(draw, 5000);
+    // }
+    // function imgLoaded2() {
+    //     // Image loaded event complete.  Start the timer
+    //     setInterval(draw2, 5000);
+    // }
+    //
+    // var img2 = null,
+    //     needle2 = null,
+    //     ctx2 = null,
+    //     degrees2 = 0;
+    //
+    //
+    // function clearCanvas2() {
+    //     // clear canvas
+    //     ctx2.clearRect(0, 0, 300, 300);
+    //     // ctx2.clearRect(0, 0, 300, 300);
+    // }
+    //
+    //
+    // // function init() {
+    // //     // Grab the compass element
+    // //     var canvas2 = document.getElementById('compass2');
+    // //
+    // //     // Canvas supported?
+    // //     if (canvas2.getContext('2d')) {
+    // //         ctx2 = canvas2.getContext('2d');
+    // //
+    // //         // Load the needle image
+    // //         needle2 = new Image();
+    // //         needle2.src = 'compass/needle.png';
+    // //
+    // //         // Load the compass image
+    // //         img2 = new Image();
+    // //         img2.src = 'compass/compass.png';
+    // //         img2.onload = imgLoaded2;
+    // //     } else {
+    // //         alert("Canvas not supported!");
+    // //     }
+    // //
+    // //     // Grab the compass element
+    // //     var canvas = document.getElementById('compass1');
+    // //     // var canvas2 = document.getElementById('compass2');
+    // //
+    // //     // Canvas supported?
+    // //     if (canvas.getContext('2d')) {
+    // //         ctx = canvas.getContext('2d');
+    // //
+    // //         // Load the needle image
+    // //         needle = new Image();
+    // //         needle.src = 'compass/needle.png';
+    // //
+    // //         // Load the compass image
+    // //         img = new Image();
+    // //         img.src = 'compass/compass.png';
+    // //         img.onload = imgLoaded;
+    // //     } else {
+    // //         alert("Canvas not supported!");
+    // //     }
+    // //
+    // // }
+    //
+    //
+    // var imgD1 = null,
+    //     ctxD1 = null;
+    //
+    //
+    //
+    // var depth = function () {
+    //    var depthX =  calcHypotenuse(staone[0], staone[1]);
+    //    console.log('station 1 depth angle:'+calcDepthAngle(depthX, staone[2]))
+    // };
+    // setInterval(depth, 5000);
+    //
     // function init() {
     //     // Grab the compass element
     //     var canvas2 = document.getElementById('compass2');
@@ -491,11 +541,11 @@
     //
     //         // Load the needle image
     //         needle2 = new Image();
-    //         needle2.src = 'compass/needle.png';
+    //         needle2.src = 'jsLibrary/compass/needle.png';
     //
     //         // Load the compass image
     //         img2 = new Image();
-    //         img2.src = 'compass/compass.png';
+    //         img2.src = 'jsLibrary/compass/compass.png';
     //         img2.onload = imgLoaded2;
     //     } else {
     //         alert("Canvas not supported!");
@@ -511,75 +561,21 @@
     //
     //         // Load the needle image
     //         needle = new Image();
-    //         needle.src = 'compass/needle.png';
+    //         needle.src = 'jsLibrary/compass/needle.png';
     //
     //         // Load the compass image
     //         img = new Image();
-    //         img.src = 'compass/compass.png';
+    //         img.src = 'jsLibrary/compass/compass.png';
     //         img.onload = imgLoaded;
     //     } else {
     //         alert("Canvas not supported!");
     //     }
     //
+    //
+    //
     // }
 
-
-    var imgD1 = null,
-        ctxD1 = null;
-
-
-
-    var depth = function () {
-       var depthX =  calcHypotenuse(staone[0], staone[1]);
-       console.log('station 1 depth angle:'+calcDepthAngle(depthX, staone[2]))
-    };
-    setInterval(depth, 5000);
-
-    function init() {
-        // Grab the compass element
-        var canvas2 = document.getElementById('compass2');
-
-        // Canvas supported?
-        if (canvas2.getContext('2d')) {
-            ctx2 = canvas2.getContext('2d');
-
-            // Load the needle image
-            needle2 = new Image();
-            needle2.src = 'jsLibrary/compass/needle.png';
-
-            // Load the compass image
-            img2 = new Image();
-            img2.src = 'jsLibrary/compass/compass.png';
-            img2.onload = imgLoaded2;
-        } else {
-            alert("Canvas not supported!");
-        }
-
-        // Grab the compass element
-        var canvas = document.getElementById('compass1');
-        // var canvas2 = document.getElementById('compass2');
-
-        // Canvas supported?
-        if (canvas.getContext('2d')) {
-            ctx = canvas.getContext('2d');
-
-            // Load the needle image
-            needle = new Image();
-            needle.src = 'jsLibrary/compass/needle.png';
-
-            // Load the compass image
-            img = new Image();
-            img.src = 'jsLibrary/compass/compass.png';
-            img.onload = imgLoaded;
-        } else {
-            alert("Canvas not supported!");
-        }
-
-
-
-    }
-
 </script>
-
+<script type="text/javascript" src = 'compassNeedle.js'></script>
 </body>
 </html>
