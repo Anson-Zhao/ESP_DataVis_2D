@@ -2,46 +2,36 @@
 <head>
     <style>
         #gx, #gy, #gz, #gx2, #gy2, #gz2 {
-        width:300px; height:300px;
-        display: inline-block;
-        margin: 1em;
-    }
-        #graphx, #graphx2, #graphy, #graphy2, #graphz, #graphz2, #vector, #vector2{
+            width:300px; height:300px;
+            display: inline-block;
+            margin: 1em;
+        }
+        /*#graphx, #graphx2, #graphy, #graphy2, #graphz, #graphz2, #vector, #vector2{*/
+        /*    display: inline-block;*/
+        /*}*/
+        #but1, #but2, #but3, #but4, #direction{
             display: inline-block;
         }
-        #but1, #but2, #but3, #but4{
-            display: inline-block;
+
+        h2 {
+            display: block;
         }
+
         #station_one, #station_two{
             background-color: gray;
         }
-        /*.child{*/
-        /*    float: left;*/
-        /*    width: 500px;*/
-        /*    height: 300px;*/
-        /*}*/
-        /*#livechart {*/
-        /*    overflow: hidden;*/
-        /*    width: 2000px;*/
-        /*}*/
 
-        /*.contain {*/
-        /*    overflow: hidden;*/
-        /*    width: 1500px;*/
-        /*}*/
+        .chart {
+            float: left;
+        }
 
-        /*.live {*/
-        /*    float: left;*/
-        /*    width: 500px;*/
-        /*}*/
-        /*.station_one {*/
-        /*    display: none;*/
-        /*}*/
-        /*.station_two {*/
-        /*    display: none;*/
-        /*}*/
+        .charts, .gauges {
+            width: max-content;
+            display: inline-table;
+        }
+
     </style>
-    <link rel="stylesheet" src="jsLibrary/dygraph/dygraph.css" />
+    <link rel="stylesheet" href="jsLibrary/dygraph/dygraph.css" />
 
     <script src='jsLibrary/jquery-3-4-1.min.js'></script>
     <script type="text/javascript" src="jsLibrary/dygraph/dygraph.js"></script>
@@ -52,33 +42,40 @@
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
 </head>
+
 <body onload="init()">
+
 <div id="but0">
     <!--    <p>Historical Data Charts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>-->
     <button onclick='window.location.replace("historical.html")'>Historical Data</button>
 </div>
 <br><br>
-<div id="but1">
-<p>Middletown, NY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-<button onclick="myFunction(this)" value="station_one" id="station_one">ESP 01</button>
-</div>
-<div id="but2">
-<p>Soquel, CA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-<button onclick="myFunction(this)" value="station_two" id="station_two">ESP 02</button>
-</div>
-<div id="but3">
-    <p>Not Avaliable &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-    <button onclick="myFunction(this)" value="station_three" id="station_three">ESP 03</button>
-</div>
-<div id="but4">
-    <p>Not Avaliable &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-    <button onclick="myFunction(this)" value="station_four" id="station_four">ESP 04</button>
+
+<!--Stations List-->
+<div>
+    <div id="but1">
+        <p>Middletown, NY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <button onclick="myFunction(this)" value="station_one" id="station_one">ESP 01</button>
+    </div>
+    <div id="but2">
+        <p>Soquel, CA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <button onclick="myFunction(this)" value="station_two" id="station_two">ESP 02</button>
+    </div>
+    <div id="but3">
+        <p>Not Avaliable &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <button onclick="myFunction(this)" value="station_three" id="station_three">ESP 03</button>
+    </div>
+    <div id="but4">
+        <p>Not Avaliable &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <button onclick="myFunction(this)" value="station_four" id="station_four">ESP 04</button>
+    </div>
 </div>
 
+<!--Gauges-->
 <div id="gauge">
     <h2>The gauges represent live X (N-S), Y (E-W), Z (+ - altitude) from the ESP Stations with a 2-minute delay</h2>
-    <div class="station_one">
-        <h2>ESP 01, Middletown, NY</h2>
+    <h2>ESP 01, Middletown, NY</h2><br><br>
+    <div class="gauges">
         <div id="gx"></div>
         <div id="gy"></div>
         <div id="gz"></div>
@@ -136,8 +133,8 @@
         </div>
 
     </div><br>
-    <div class="station_two">
-        <h2>ESP 02, Soquel, CA</h2>
+    <h2>ESP 02, Soquel, CA</h2><br><br>
+    <div class="gauges">
         <div id="gx2"></div>
         <div id="gy2"></div>
         <div id="gz2"></div>
@@ -147,30 +144,30 @@
 <div id="livechart">
     <h1>Live Chart</h1>
     <h2>The charts represent 2 minutes of live data from the ESP-1 Station, with a 2-minute delay</h2>
-    <div class="station_one">
-        <h2>Station 01</h2><br>
-        <div id="graphx"></div>
-        <div id="graphy"></div>
-        <div id="graphz"></div>
-    </div>
-    <div class="station_two">
-        <h2>Station 02</h2><br>
-        <div id="graphx2"></div>
-        <div id="graphy2"></div>
-        <div id="graphz2"></div>
+    <h2>ESP 01</h2><br>
+    <div class="charts">
+        <div class="chart" id="graphx"></div>
+        <div class="chart" id="graphy"></div>
+        <div class="chart" id="graphz"></div>
+    </div><br>
+    <h2>ESP 02</h2><br>
+    <div class="charts">
+        <div class="chart" id="graphx2"></div>
+        <div class="chart" id="graphy2"></div>
+        <div class="chart" id="graphz2"></div>
     </div>
 </div>
 
 <div id = 'direction'>
     <h1>Direction and Depth</h1>
     <p>Updates every 5 seconds, with a 2-minute delay</p>
-    <div class="station_one" >
+    <div class="compasses" >
         <h3>ESP 01</h3>
         <canvas  id="compass1" width="300" height="300"></canvas>
         <canvas  id="depth1" width="300" height="300"></canvas>
     </div>
 
-    <div class="station_two" >
+    <div class="compasses" >
         <h3>ESP 02</h3>
         <canvas id="compass2" width="300" height="300"></canvas>
         <canvas id="depth2" width="300" height="300"></canvas>
@@ -379,7 +376,6 @@
             $(y).hide();
             $(z).css('backgroundColor', 'white');
         }
-
     }
 
     document.getElementById("fakeBu").click();
@@ -468,8 +464,11 @@
                     // CSV or path to a CSV file.
                     z_arr,
                     {
-                        labels: [ "time", "Z" ],
-                        title: "Z (+Z is positive altitude, -Z is below ground)"
+                        labels: [ "Data", "Z" ],
+                        animatedZooms: true,
+                        legend: 'always',
+                        showRoller: true,
+                        title: "+Z is positive altitude, -Z is below ground",
                     }
 
                 );
@@ -481,8 +480,11 @@
                     // CSV or path to a CSV file.
                     y_arr,
                 {
-                    labels: [ "time", "Y" ],
-                    title: "Y (+Y is east, -Y is west)"
+                    labels: [ "Data", "Y" ],
+                    animatedZooms: true,
+                    legend: 'always',
+                    showRoller: true,
+                    title: "+Y is east, -Y is west"
                 }
 
                 );
@@ -494,8 +496,11 @@
                     // CSV or path to a CSV file.
                     x_arr,
                     {
-                        labels: [ "time", "X" ],
-                        title: "X (+X is north, -X is south)"
+                        labels: [ "Data", "X" ],
+                        animatedZooms: true,
+                        legend: 'always',
+                        showRoller: true,
+                        title: "+X is north, -X is south"
                     }
 
                 );
@@ -585,8 +590,11 @@
                     // CSV or path to a CSV file.
                     z_arr,
                     {
-                        labels: [ "time", "Z" ],
-                        title: "Z (+Z is positive altitude, -Z is below ground)"
+                        labels: [ "Data", "Z" ],
+                        animatedZooms: true,
+                        legend: 'always',
+                        showRoller: true,
+                        title: "+Z is positive altitude, -Z is below ground"
                     }
 
                 );
@@ -598,8 +606,11 @@
                     // CSV or path to a CSV file.
                     y_arr,
                     {
-                        labels: [ "time", "Y" ],
-                        title: "Y (+Y is east, -Y is west)"
+                        labels: [ "Data", "Y" ],
+                        animatedZooms: true,
+                        legend: 'always',
+                        showRoller: true,
+                        title: "+Y is east, -Y is west"
                     }
 
                 );
@@ -611,8 +622,11 @@
                     // CSV or path to a CSV file.
                     x_arr,
                     {
-                        labels: [ "time", "X" ],
-                        title: "X (+X is north, -X is south)"
+                        labels: [ "Data", "X" ],
+                        animatedZooms: true,
+                        legend: 'always',
+                        showRoller: true,
+                        title: "+X is north, -X is south"
                     }
                 );
                 console.log(statwo);
@@ -735,11 +749,11 @@
 
             // Load the needle image
             needle2 = new Image();
-            needle2.src = 'compass/needle.png';
+            needle2.src = 'jsLibrary/compass/needle.png';
 
             // Load the compass image
             img2 = new Image();
-            img2.src = 'compass/compass.png';
+            img2.src = 'jsLibrary/compass/compass.png';
             img2.onload = imgLoaded2;
         } else {
             alert("Canvas not supported!");
@@ -755,11 +769,11 @@
 
             // Load the needle image
             needle = new Image();
-            needle.src = 'compass/needle.png';
+            needle.src = 'jsLibrary/compass/needle.png';
 
             // Load the compass image
             img = new Image();
-            img.src = 'compass/compass.png';
+            img.src = 'jsLibrary/compass/compass.png';
             img.onload = imgLoaded;
         } else {
             alert("Canvas not supported!");

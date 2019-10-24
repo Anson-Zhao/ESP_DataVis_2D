@@ -6451,7 +6451,7 @@ Dygraph.startPan = DygraphInteraction.startPan;
              * @param {Object} attrs Various other attributes, e.g. errorBars determines
              * whether the input data contains error ranges. For a complete list of
              * options, see http://dygraphs.com/options.html.
-             */var Dygraph=function Dygraph(div,data,opts){this.__init__(div,data,opts);};Dygraph.NAME = "Dygraph";Dygraph.VERSION = "2.1.0"; // Various default values
+             */var Dygraph=function Dygraph(div,data,opts){this.__init__(div,data,opts);};Dygraph.NAME = "Dygraph";Dygraph.VERSION = "2.0.0"; // Various default values
             Dygraph.DEFAULT_ROLL_PERIOD = 1;Dygraph.DEFAULT_WIDTH = 480;Dygraph.DEFAULT_HEIGHT = 320; // For max 60 Hz. animation:
             Dygraph.ANIMATION_STEPS = 12;Dygraph.ANIMATION_DURATION = 200; /**
              * Standard plotters. These may be used by clients.
