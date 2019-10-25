@@ -17,7 +17,6 @@ $(document).ready(function () {
     // Grab the compass element
     let canvas = document.getElementById('compass1');
     // let canvas2 = document.getElementById('compass2');
-
     // Canvas supported?
     if (canvas.getContext('2d')) {
         ctx = canvas.getContext('2d');
@@ -52,20 +51,22 @@ $(document).ready(function () {
         alert("Canvas not supported!");
     }
 
-    let canvas3 = document.getElementById('depth1');
+    let canvasD1 = document.getElementById('depth1');
 
     // Canvas supported?
-    if (canvas3.getContext('2d')) {
-        ctxD1 = canvas3.getContext('2d');
-
+    //https://stackoverflow.com/questions/808826/draw-arrow-on-canvas-tag
+    if (canvasD1.getContext('2d')) {
+        ctxD1 = canvasD1.getContext('2d');
         // Load the needle image
         arrow1 = new Image();
-        // arrow1.src = 'jsLibrary/compass/arrow.png';
         arrow1.src = 'compass/arrow.png';
-        // Load the compass image
+        arrow1.style.height = '100px';
+        arrow1.style.width = '200px';
+        console.log(arrow1.style);
+        // // Load the compass image
         imgD1 = new Image();
-        imgD1.src = '';
-        imgD1.onload = imgLoadedD1;
+        imgD1.src = 'jsLibrary/compass/compass.png';
+        arrow1.onload = imgLoadedD1;
     } else {
         alert("Canvas not supported!");
     }
@@ -93,33 +94,6 @@ function clearCanvasD1() {
     ctxD1.clearRect(0, 0, 300, 300);
 }
 
-// function drawCompass(data) {
-//
-//     console.log(data);
-//
-//     console.log('Station 1 heading:'+calcAngleDegrees(data[0], data[1]));
-//
-//     let degrees = calcAngleDegrees(data[0], data[1]);
-//     clearCanvas();
-//
-//     // Draw the compass onto the canvas
-//     ctx.drawImage(img, 0, 0);
-//
-//     // Save the current drawing state
-//     ctx.save();
-//
-//     // Now move across and down half the
-//     ctx.translate(153, 140);
-//
-//     // Rotate around this point
-//     ctx.rotate(degrees * (Math.PI / 180));
-//
-//     // Draw the image back and up
-//     ctx.drawImage(needle, -172, -172);
-//
-//     // Restore the previous drawing state
-//     ctx.restore();
-// }
 
 function draw() {
 
@@ -153,13 +127,13 @@ function draw2() {
 
     console.log(statwo);
 
-    console.log('Station 2 heading2:'+calcAngleDegrees(statwo[0], statwo[1]));
+    console.log('Station 2 heading:'+calcAngleDegrees(statwo[0], statwo[1]));
 
     let degrees2 = calcAngleDegrees(statwo[0], statwo[1]);
     clearCanvas2();
 
     // Draw the compass onto the canvas
-    ctx2.drawImage(img2, 0, 0);
+    ctx2.drawImage(img2, -0, -0);
 
     // Save the current drawing state
     ctx2.save();
@@ -190,15 +164,14 @@ function drawD() {
     // Save the current drawing state
     ctxD1.save();
 
-    // Now move across and down half the
+    // // Now move across and down half the
     ctxD1.translate(153, 140);
 
     // Rotate around this point
-    ctxD1.rotate(degreesD1 * (Math.PI / 180));
-
+    ctxD1.rotate((-degreesD1) * (Math.PI / 180));
+    console.log(-degreesD1);
     // Draw the image back and up
-    // ctxD1.drawImage(arrow1, -172, -172);
-    ctxD1.drawImage(arrow1, 0, 0);
+    ctxD1.drawImage(arrow1, -250, -250);
 
     // Restore the previous drawing state
     ctxD1.restore();
