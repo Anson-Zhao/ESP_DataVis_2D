@@ -55,6 +55,50 @@
             top:1000px;
         }
 
+
+
+/*css of new gauge*/
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            font-size: 16px;
+        }
+
+        .gauge {
+            width: 100%;
+            max-width: 350px;
+            max-height: 350px;
+            min-width: 250px;
+            min-height: 250px;
+            padding: 0;
+            /*border: 1px solid #666;*/
+            /*background: #F8F8F8;*/
+        }
+
+        .gauge-data {
+            text-align: center;
+            color: #666;
+            display: block;
+        }
+
+        .gauge-data > * {
+            display: block;
+        }
+
+        .gauge-value {
+            font-size: 3em;
+        }
+
+        .gauge-text {
+            font-size: 1.0em;
+            font-weigt: normal;
+            margin-top: 10px;
+        }
+
+        .gauge-unit {
+            margin-top: 5px;
+            font-size: .9em;
+        }
     </style>
     <link rel="stylesheet" href="jsLibrary/dygraph/dygraph.css" />
 
@@ -66,6 +110,8 @@
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
 </head>
 
 <body onload="init()">
@@ -107,64 +153,65 @@
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="gauges">
-        <div id="gx" ></div>
+        <div id="gx"></div>
         <div id="gy"></div>
         <div id="gz"></div>
-        <canvas data-type="radial-gauge"
-                data-value="0"
-                data-width="300"
-                data-height="300"
-                data-units="nT"
-                data-title="X"
-                data-min-value="-400000"
-                data-max-value="400000"
-                data-major-ticks="[-400000,-300000,-200000,-100000,0,100000,200000,300000,400000]"
-                data-minor-ticks="2"
-                data-stroke-ticks="true"
-                data-highlights='[ {"from": -100000, "to": 100000, "color": "rgba(29, 123, 19, .3)"},
-                                   {"from": -100000, "to": -200000, "color": "rgba(231, 160, 8, .3)"},
-                                   {"from": 100000, "to": 200000, "color": "rgba(231, 160, 8, .3)"}],
-                                   {"from": 200000, "to": 400000, "color": "rgba(231, 49, 8, .3)"},
-                                   {"from": -200000, "to": -400000, "color": " rgba(231, 49, 8, .3)"}]]'
-                data-ticks-angle="225"
-                data-start-angle="67.5"
-                data-color-major-ticks="#ddd"
-                data-color-minor-ticks="#ddd"
-                data-color-title="#eee"
-                data-color-units="#ccc"
-                data-color-numbers="#eee"
-                data-color-plate="#222"
-                data-border-shadow-width="0"
-                data-borders="true"
-                data-needle-type="arrow"
-                data-needle-width="2"
-                data-needle-circle-size="7"
-                data-needle-circle-outer="true"
-                data-needle-circle-inner="false"
-                data-animation-duration="1500"
-                data-animation-rule="linear"
-                data-color-border-outer="#333"
-                data-color-border-outer-end="#111"
-                data-color-border-middle="#222"
-                data-color-border-middle-end="#111"
-                data-color-border-inner="#111"
-                data-color-border-inner-end="#333"
-                data-color-needle-shadow-down="#333"
-                data-color-needle-circle-outer="#333"
-                data-color-needle-circle-outer-end="#111"
-                data-color-needle-circle-inner="#111"
-                data-color-needle-circle-inner-end="#222"
-                data-value-box-border-radius="0"
-                data-color-value-box-rect="#222"
-                data-color-value-box-rect-end="#333"
-                id="ngx"
-        ></canvas>
+<!--        <canvas data-type="radial-gauge"-->
+<!--                data-value="0"-->
+<!--                data-width="300"-->
+<!--                data-height="300"-->
+<!--                data-units="nT"-->
+<!--                data-title="X"-->
+<!--                data-min-value="-400000"-->
+<!--                data-max-value="400000"-->
+<!--                data-major-ticks="[-400000,-300000,-200000,-100000,0,100000,200000,300000,400000]"-->
+<!--                data-minor-ticks="2"-->
+<!--                data-stroke-ticks="true"-->
+<!--                data-highlights='[ {"from": -100000, "to": 100000, "color": "rgba(29, 123, 19, .3)"},-->
+<!--                                   {"from": -100000, "to": -200000, "color": "rgba(231, 160, 8, .3)"},-->
+<!--                                   {"from": 100000, "to": 200000, "color": "rgba(231, 160, 8, .3)"}],-->
+<!--                                   {"from": 200000, "to": 400000, "color": "rgba(231, 49, 8, .3)"},-->
+<!--                                   {"from": -200000, "to": -400000, "color": " rgba(231, 49, 8, .3)"}]]'-->
+<!--                data-ticks-angle="225"-->
+<!--                data-start-angle="67.5"-->
+<!--                data-color-major-ticks="#ddd"-->
+<!--                data-color-minor-ticks="#ddd"-->
+<!--                data-color-title="#eee"-->
+<!--                data-color-units="#ccc"-->
+<!--                data-color-numbers="#eee"-->
+<!--                data-color-plate="#222"-->
+<!--                data-border-shadow-width="0"-->
+<!--                data-borders="true"-->
+<!--                data-needle-type="arrow"-->
+<!--                data-needle-width="2"-->
+<!--                data-needle-circle-size="7"-->
+<!--                data-needle-circle-outer="true"-->
+<!--                data-needle-circle-inner="false"-->
+<!--                data-animation-duration="1500"-->
+<!--                data-animation-rule="linear"-->
+<!--                data-color-border-outer="#333"-->
+<!--                data-color-border-outer-end="#111"-->
+<!--                data-color-border-middle="#222"-->
+<!--                data-color-border-middle-end="#111"-->
+<!--                data-color-border-inner="#111"-->
+<!--                data-color-border-inner-end="#333"-->
+<!--                data-color-needle-shadow-down="#333"-->
+<!--                data-color-needle-circle-outer="#333"-->
+<!--                data-color-needle-circle-outer-end="#111"-->
+<!--                data-color-needle-circle-inner="#111"-->
+<!--                data-color-needle-circle-inner-end="#222"-->
+<!--                data-value-box-border-radius="0"-->
+<!--                data-color-value-box-rect="#222"-->
+<!--                data-color-value-box-rect-end="#333"-->
+<!--                id="ngx"-->
+<!--        ></canvas>-->
         <div class="container">
-            <div id="gauge1" class="gauge"></div>
+            <div id="gaugeX" class="0" ></div>
+            <div id="gaugeY" class="1"></div>
+            <div id="gaugeZ" class="2"></div>
         </div>
 
     </div><br>
-
     <h2>ESP 02, Soquel, CA</h2><br><br>
     <div class="compasses" >
         <h3>ESP 02</h3>
@@ -206,230 +253,213 @@
 
 <button onclick = "query();query2();" id = "fakeBu"></button>
 
-<script>
-    $(function () {
-        var settings = {
-            gaugeMinValue : 0,
-            gaugeMaxValue : 8000,
-            gaugeStartValue : 3000,
-            gaugeStartAngle : -90,
-            gaugeEndAngle : 90,
-            gaugeUpdateInterval : 500 // ms
-        };
-
-        var options = {
-            tooltip : {
-                enabled : false
-            },
-            chart : {
-                type : 'gauge',
-                backgroundColor : 'rgba(255, 255, 255, 0)',
-                plotBackgroundColor : null,
-                plotBackgroundImage : null,
-                plotBorderWidth : 0,
-                plotShadow : false,
-                spacing : [5, 30, 5, 30],
-                style : {
-                    fontSize : '1em'
-                }
-            },
-
-            title : false,
-
-            pane : {
-                startAngle : settings.gaugeStartAngle,
-                endAngle : settings.gaugeEndAngle,
-                background : {
-                    backgroundColor : 'rgba(255, 255, 255, 0)',
-                    borderWidth : 0,
-                    innerRadius : '60%',
-                    outerRadius : '100%',
-                    shape : 'arc'
-                }
-            },
-
-            plotOptions : {
-                gauge : {
-                    /*dial: {
-                     radius: 0
-                     },
-                     pivot: {
-                     radius: 0
-                     },*/
-                    dataLabels : {
-                        borderWidth : 0,
-                        padding : 0,
-                        verticalAlign : 'middle',
-                        style : false,
-                        formatter : function () {
-                            var output = '<div class="gauge-data">';
-                            output += '<span class="gauge-value">' + this.y + '</span>';
-                            output += '</div>';
-
-                            return output;
-                        },
-                        useHTML : true
-                    }
-                },
-                pie : {
-                    dataLabels : {
-                        enabled : true,
-                        distance : -10,
-                        style : false
-                    },
-                    startAngle : settings.gaugeStartAngle,
-                    endAngle : settings.gaugeEndAngle,
-                    center : ['50%', '50%'],
-                    states : {
-                        hover : {
-                            enabled : false
-                        }
-                    }
-                }
-            },
-
-// the value axis
-            yAxis : {
-                offset : 0,
-                min : settings.gaugeMinValue,
-                max : settings.gaugeMaxValue,
-
-                title : false,
-
-                minorTickWidth : 0,
-
-                tickPixelInterval : 30,
-                tickWidth : 2,
-                tickPosition : 'outside',
-                tickLength : 14,
-                tickColor : '#ccc',
-                lineColor : '#ccc',
-                labels : {
-                    distance : 28,
-                    rotation : "0",
-                    step : 2,
-                },
-
-                plotBands : [{
-                    thickness : 10,
-                    outerRadius : "112%",
-                    from : 0,
-                    to : 2500,
-                    color : '#FB8585' // red
-                }, {
-                    thickness : 10,
-                    outerRadius : "112%",
-                    from : 2500,
-                    to : 5500,
-                    color : '#F9E7AE' // yellow,
-                }, {
-                    thickness : 10,
-                    outerRadius : "112%",
-                    from : 5500,
-                    to : 8000,
-                    color : '#83DAD9' // green
-                }]
-            },
-
-            series : [{
-                type : 'gauge',
-                data : [settings.gaugeStartValue],
-            }, {
-                type : 'pie',
-                innerSize : '87%',
-                data : [{
-                    y : settings.gaugeStartValue,
-                    name : "",
-                    color : "#0bbeba"
-                }, {
-                    y : settings.gaugeMaxValue - settings.gaugeStartValue,
-                    name : '',
-                    color : "#666666"
-                }]
-            }],
-
-            navigation : {
-                buttonOptions : {
-                    enabled : false
-                }
-            },
-
-            credits : false
-        };
-
-        $('#gauge1').highcharts(options, buildGraph);
-
-        function buildGraph(chart) {
-            if (!chart.renderer.forExport) {
-                setInterval(function () {
-                    var gaugePoint = chart.series[0].points[0],
-                        piePoint = chart.series[1],
-                        newVal,
-                        inc = Math.round((Math.random() - 0.5) * 1500);
-
-                    newVal = gaugePoint.y + inc;
-                    if (newVal < settings.gaugeMinValue || newVal > settings.gaugeMaxValue) {
-                        newVal = gaugePoint.y - inc;
-                    }
-
-                    // Update number gauge value
-                    gaugePoint.update(newVal);
-
-                    // Update pie with current value
-                    piePoint.points[0].update(newVal);
-                    piePoint.points[1].update(settings.gaugeMaxValue - newVal);
-
-                }, settings.gaugeUpdateInterval);
-            }
-        }
-    });
-</script>
-
-
-
-
-
 <script type="text/javascript">
+    // Global variable
+    var settings = {
+        gaugeMinValue: -200000,
+        gaugeMaxValue: 200000,
+        gaugeStartValue: 3000,
+        gaugeStartAngle: -90,
+        gaugeEndAngle: 90,
+        gaugeUpdateInterval: 5000 // ms
+    };
 
-    function myFunction(objButton) {
-        var x = document.getElementsByClassName(objButton.value);
-        // console.log(objButton.value);
-        var y = '.'+objButton.value;
-        var z = '#'+objButton.value;
-        console.log(y);
-        if (x[0].style.display === "none") {
-            $(y).show();
-            $(z).css('backgroundColor', 'gray');
-        } else {
-            $(y).hide();
-            $(z).css('backgroundColor', 'white');
-        }
-    }
+    var options = {
+        tooltip: {
+            enabled: false
+        },
+        chart: {
+            type: 'gauge',
+            backgroundColor: 'rgba(255, 255, 255, 0)',
+            plotBackgroundColor: null,
+            plotBackgroundImage: null,
+            plotBorderWidth: 0,
+            plotShadow: false,
+            spacing: [5, 30, 5, 30],
+            style: {
+                fontSize: '1em'
+            }
+        },
 
-    document.getElementById("fakeBu").click();
+        title: false,
+
+        pane: {
+            startAngle: settings.gaugeStartAngle,
+            endAngle: settings.gaugeEndAngle,
+            background: {
+                backgroundColor: 'rgba(255, 255, 255, 0)',
+                borderWidth: 0,
+                innerRadius: '60%',
+                outerRadius: '100%',
+                shape: 'arc'
+            }
+        },
+
+        plotOptions: {
+            gauge: {
+                /*dial: {
+                 radius: 0
+                 },
+                 pivot: {
+                 radius: 0
+                 },*/
+                dataLabels: {
+                    borderWidth: 0,
+                    padding: 0,
+                    verticalAlign: 'middle',
+                    style: false,
+                    formatter: function () {
+                        var output = '<div class="gauge-data">';
+                        output += '<span class="gauge-value">' + this.y + '</span>';
+                        output += '</div>';
+
+                        return output;
+                    },
+                    useHTML: true
+                }
+            },
+            pie: {
+                dataLabels: {
+                    enabled: true,
+                    distance: -10,
+                    style: false
+                },
+                startAngle: settings.gaugeStartAngle,
+                endAngle: settings.gaugeEndAngle,
+                center: ['50%', '50%'],
+                states: {
+                    hover: {
+                        enabled: false
+                    }
+                }
+            }
+        },
+
+        // the value axis
+        yAxis: {
+            offset: 0,
+            min: settings.gaugeMinValue,
+            max: settings.gaugeMaxValue,
+
+            title: false,
+
+            minorTickWidth: 0,
+
+            tickPixelInterval: 30,
+            tickWidth: 2,
+            tickPosition: 'outside',
+            tickLength: 14,
+            tickColor: '#ccc',
+            lineColor: '#ccc',
+            labels: {
+                distance: 28,
+                rotation: "0",
+                step: 2,
+            },
+
+            plotBands: [{
+                thickness: 10,
+                outerRadius: "112%",
+                from: -200000,
+                to: -100000,
+                color: '#FB8585' // red
+            }, {
+                thickness: 10,
+                outerRadius: "112%",
+                from: 200000,
+                to: 100000,
+                color: '#FB8585' // red
+            }, {
+                thickness: 10,
+                outerRadius: "112%",
+                from: -25000,
+                to: 25000,
+                color: '#83DAD9'
+            }, {
+                thickness: 10,
+                outerRadius: "112%",
+                from: 55000,
+                to: 100000,
+                color: '#F9E7AE'
+            }, {
+                thickness: 10,
+                outerRadius: "112%",
+                from: -55000,
+                to: -100000,
+                color: '#F9E7AE'
+            }, {
+                thickness: 10,
+                outerRadius: "112%",
+                from: 25000,
+                to: 55000,
+                color: '#F9E7AE'
+            }, {
+                thickness: 10,
+                outerRadius: "112%",
+                from: -25000,
+                to: -55000,
+                color: '#F9E7AE'
+            }]
+        },
+
+        series: [{
+            type: 'gauge',
+            data: [settings.gaugeStartValue],
+        }, {
+            // type : 'pie',
+            // innerSize : '87%',
+            // data : [{
+            //     y : settings.gaugeStartValue,
+            //     name : "",
+            //     color : "#0bbeba"
+            // }, {
+            //     y : settings.gaugeMaxValue - settings.gaugeStartValue,
+            //     name : '',
+            //     color : "#666666"
+            // }]
+        }],
+
+        navigation: {
+            buttonOptions: {
+                enabled: false
+            }
+        },
+
+        credits: false
+    };
+
+    var img = null,
+        needle = null,
+        ctx = null,
+        degrees = 0;
+
+    var img2 = null,
+        needle2 = null,
+        ctx2 = null,
+        degrees2 = 0;
 
     var staone = [],
         statwo = [];
 
-    function avg(res,len){
-        var xa, ya, za;
-        var arr = res.slice(Math.max(res.length - len, 1));
-        xa = ya = za = 0;
-        for(var i = 0; i<arr.length; i++){
-            xa += arr[i].mean;
-            ya += arr[i].mean_1;
-            za += arr[i].mean_2
-        }
-        xa = xa/len;
-        ya = ya/len;
-        za = za/len;
-        return [xa, ya, za];
-    }
 
 
+    $(document).ready(function () {
+
+        document.getElementById("fakeBu").click();
+
+        setInterval(function () {
+            document.getElementById("fakeBu").click();
+            depth
+        }, 5000);
+
+        // setInterval(depth, 5000);
 
 
+        // $('#gaugeX').highcharts(options, buildGraph);
+        // $('#gaugeY').highcharts(options, buildGraph);
+        // $('#gaugeZ').highcharts(options, buildGraph);
 
+    });
 
 
     var gx,gy,gz;
@@ -466,90 +496,6 @@
 
     });
     gz.refresh(0);
-
-    function query() {
-        $.ajax({
-            // url: "https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query",
-            url: "http://localhost:3005/query",
-            method: "get",
-            //Says success isn't used but it is
-            success: function(res){
-                var x_arr = [];
-                var y_arr = [];
-                var z_arr = [];
-
-                res.forEach(function(el,i) {
-                        x_arr[i] = [new Date(el.time), el.mean];
-                        y_arr[i] = [new Date(el.time), el.mean_1];
-                        z_arr[i] = [new Date(el.time), el.mean_2];
-                    }
-                );
-
-                staone = avg(res,5);
-
-                Z = new Dygraph(
-
-                    // containing div
-                    document.getElementById("graphz"),
-
-                    // CSV or path to a CSV file.
-                    z_arr,
-                    {
-                        labels: [ "Data", "Z" ],
-                        animatedZooms: true,
-                        legend: 'always',
-                        showRoller: true,
-                        title: "+Z is positive altitude, -Z is below ground",
-                    }
-
-                );
-                Y = new Dygraph(
-
-                    // containing div
-                    document.getElementById("graphy"),
-
-                    // CSV or path to a CSV file.
-                    y_arr,
-                {
-                    labels: [ "Data", "Y" ],
-                    animatedZooms: true,
-                    legend: 'always',
-                    showRoller: true,
-                    title: "+Y is east, -Y is west"
-                }
-
-                );
-                X = new Dygraph(
-
-                    // containing div
-                    document.getElementById("graphx"),
-
-                    // CSV or path to a CSV file.
-                    x_arr,
-                    {
-                        labels: [ "Data", "X" ],
-                        animatedZooms: true,
-                        legend: 'always',
-                        showRoller: true,
-                        title: "+X is north, -X is south"
-                    }
-
-                );
-                console.log(staone);
-                gx.refresh(Math.abs(staone[0]));
-                gy.refresh(Math.abs(staone[1]));
-                gz.refresh(Math.abs(staone[2]));
-                document.getElementById("ngx").setAttribute('data-value', staone[0]);
-
-            }
-        });
-    }
-
-
-
-
-
-
 
 
     var gx2,gy2,gz2;
@@ -589,6 +535,194 @@
     });
     gz2.refresh(0);
 
+
+    function init() {
+        // Grab the compass element
+        var canvas2 = document.getElementById('compass2');
+
+        // Canvas supported?
+        if (canvas2.getContext('2d')) {
+            ctx2 = canvas2.getContext('2d');
+
+            // Load the needle image
+            needle2 = new Image();
+            needle2.src = 'jsLibrary/compass/needle.png';
+
+            // Load the compass image
+            img2 = new Image();
+            img2.src = 'jsLibrary/compass/compass.png';
+            img2.onload = imgLoaded2;
+        } else {
+            alert("Canvas not supported!");
+        }
+
+        // Grab the compass element
+        var canvas = document.getElementById('compass1');
+        // var canvas2 = document.getElementById('compass2');
+
+        // Canvas supported?
+        if (canvas.getContext('2d')) {
+            ctx = canvas.getContext('2d');
+
+            // Load the needle image
+            needle = new Image();
+            needle.src = 'jsLibrary/compass/needle.png';
+
+            // Load the compass image
+            img = new Image();
+            img.src = 'jsLibrary/compass/compass.png';
+            img.onload = imgLoaded;
+        } else {
+            alert("Canvas not supported!");
+        }
+
+    }
+
+    function myFunction(objButton) {
+        var x = document.getElementsByClassName(objButton.value);
+        // console.log(objButton.value);
+        var y = '.'+objButton.value;
+        var z = '#'+objButton.value;
+        console.log(y);
+        if (x[0].style.display === "none") {
+            $(y).show();
+            $(z).css('backgroundColor', 'gray');
+        } else {
+            $(y).hide();
+            $(z).css('backgroundColor', 'white');
+        }
+    }
+
+    function buildGraph(chart) {
+        var a = $(this)[0].renderTo.className;
+        // console.log(chart);
+        // console.log(!chart.renderer.forExport);
+        if (!chart.renderer.forExport) {
+
+            console.log(options);
+            console.log(chart);
+            console.log(chart.series[0].points[0].y);
+
+            var gaugePoint = chart.series[0].points[0];
+            // piePoint = chart.series[1];
+            var newVal = parseInt(staone[a]);
+            // console.log(newVal);
+            // newVal;
+            //     ,
+            //     inc = Math.round((Math.random()) * 200000);
+            //
+            // newVal = gaugePoint.y + inc;
+            // if (newVal < settings.gaugeMinValue || newVal > settings.gaugeMaxValue) {
+            //     newVal = gaugePoint.y;
+            // }
+
+            // Update number gauge value
+            gaugePoint.update(newVal);
+            // console.log(piePoint);
+            // Update pie with current value
+            // piePoint.points[0].update(newVal);
+            // console.log(piePoint);
+            // piePoint.points[1].update(settings.gaugeMaxValue - newVal);
+
+        }
+    }
+
+    function avg(res,len){
+        var xa, ya, za;
+        var arr = res.slice(Math.max(res.length - len, 1));
+        xa = ya = za = 0;
+        for(var i = 0; i<arr.length; i++){
+            xa += arr[i].mean;
+            ya += arr[i].mean_1;
+            za += arr[i].mean_2
+        }
+        xa = xa/len;
+        ya = ya/len;
+        za = za/len;
+        return [xa, ya, za];
+    }
+
+    function query() {
+        $.ajax({
+            // url: "https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query",
+            url: "http://localhost:3005/query",
+            method: "get",
+            //Says success isn't used but it is
+            success: function(res){
+                var x_arr = [];
+                var y_arr = [];
+                var z_arr = [];
+
+                res.forEach(function(el,i) {
+                        x_arr[i] = [new Date(el.time), el.mean];
+                        y_arr[i] = [new Date(el.time), el.mean_1];
+                        z_arr[i] = [new Date(el.time), el.mean_2];
+                    }
+                );
+
+                staone = avg(res,5);
+                Z = new Dygraph(
+
+                    // containing div
+                    document.getElementById("graphz"),
+
+                    // CSV or path to a CSV file.
+                    z_arr,
+                    {
+                        labels: [ "Data", "Z" ],
+                        animatedZooms: true,
+                        legend: 'always',
+                        showRoller: true,
+                        title: "+Z is positive altitude, -Z is below ground",
+                    }
+
+                );
+                Y = new Dygraph(
+
+                    // containing div
+                    document.getElementById("graphy"),
+
+                    // CSV or path to a CSV file.
+                    y_arr,
+                    {
+                        labels: [ "Data", "Y" ],
+                        animatedZooms: true,
+                        legend: 'always',
+                        showRoller: true,
+                        title: "+Y is east, -Y is west"
+                    }
+
+                );
+                X = new Dygraph(
+
+                    // containing div
+                    document.getElementById("graphx"),
+
+                    // CSV or path to a CSV file.
+                    x_arr,
+                    {
+                        labels: [ "Data", "X" ],
+                        animatedZooms: true,
+                        legend: 'always',
+                        showRoller: true,
+                        title: "+X is north, -X is south"
+                    }
+
+                );
+                console.log(staone);
+                gx.refresh(Math.abs(staone[0]));
+                gy.refresh(Math.abs(staone[1]));
+                gz.refresh(Math.abs(staone[2]));
+
+                console.log(options);
+                $('#gaugeX').highcharts(options, buildGraph);
+                // $('#gaugeY').highcharts(options, buildGraph);
+                // $('#gaugeZ').highcharts(options, buildGraph);
+                // document.getElementById("ngx").setAttribute('data-value', staone[0]);
+
+            }
+        });
+    }
 
     function query2() {
         $.ajax({
@@ -669,28 +803,13 @@
         });
     }
 
-
-
-
-
-
-
-    setInterval(function () {document.getElementById("fakeBu").click();}, 5000);
-
-    // Global variable
-    var img = null,
-        needle = null,
-        ctx = null,
-        degrees = 0;
-
-
-    function clearCanvas() {
-        // clear canvas
-        ctx.clearRect(0, 0, 300, 300);
-        // ctx2.clearRect(0, 0, 300, 300);
+    function imgLoaded() {
+        // Image loaded event complete.  Start the timer
+        setInterval(draw, 30000);
     }
-    function calcAngleDegrees(x, y) {
-        return Math.atan2(y, x) * 180 / Math.PI;
+    function imgLoaded2() {
+        // Image loaded event complete.  Start the timer
+        setInterval(draw2, 30000);
     }
 
     function draw() {
@@ -749,20 +868,14 @@
         ctx2.restore();
     }
 
-    function imgLoaded() {
-        // Image loaded event complete.  Start the timer
-        setInterval(draw, 5000);
+    function clearCanvas() {
+        // clear canvas
+        ctx.clearRect(0, 0, 300, 300);
+        // ctx2.clearRect(0, 0, 300, 300);
     }
-    function imgLoaded2() {
-        // Image loaded event complete.  Start the timer
-        setInterval(draw2, 5000);
+    function calcAngleDegrees(x, y) {
+        return Math.atan2(y, x) * 180 / Math.PI;
     }
-
-    var img2 = null,
-        needle2 = null,
-        ctx2 = null,
-        degrees2 = 0;
-
 
     function clearCanvas2() {
         // clear canvas
@@ -820,12 +933,13 @@
         return Math.atan2(y, x) * 180 / Math.PI;
     }
 
-    var depth = function () {
+    function depth() {
         var bob = staone[0]/2+staone[1]/2;
         console.log(bob);
         console.log(calcDepthAngle(bob,staone[2]));
-    };
-    setInterval(depth, 5000);
+    }
+
+
 
 </script>
 
