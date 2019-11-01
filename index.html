@@ -2,9 +2,13 @@
 <head>
     <style>
         #gx, #gy, #gz, #gx2, #gy2, #gz2 {
-            width:300px; height:300px;
+            width:190px; height:200px;
             display: inline-block;
             margin: 1em;
+        }
+
+        #gz,#gz2{
+            margin-left: 100px;
         }
         /*#graphx, #graphx2, #graphy, #graphy2, #graphz, #graphz2, #vector, #vector2{*/
         /*    display: inline-block;*/
@@ -26,8 +30,29 @@
         }
 
         .charts, .gauges {
+            /*position:relative;*/
+            left: 90px;
             width: max-content;
             display: inline-table;
+        }
+        #compass1{
+            left: 30px;
+            top:350px;
+            float:left;
+        }
+        #compass2{
+            left: 80px;
+            top:1000px;
+            display: inline-block;
+        }
+        #depth1{
+            left: 540px;
+            top:350px;
+        }
+        #depth2{
+            position :absolute;
+            left: 550px;
+            top:1000px;
         }
 
     </style>
@@ -71,12 +96,25 @@
 <div id="gauge">
     <h2>The gauges represent live X (N-S), Y (E-W), Z (+ - altitude) from the ESP Stations with a 2-minute delay</h2>
     <h2>ESP 01, Middletown, NY</h2><br><br>
+    <div class="compasses" >
+        <!--            <h3>ESP 01</h3>-->
+        <canvas  id="compass1" width="400" height="300"></canvas>
+        <canvas  id="depth1" width="200" height="300"></canvas>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="gauges">
-        <div id="gx"></div>
+        <div id="gx" ></div>
         <div id="gy"></div>
         <div id="gz"></div>
     </div><br>
+
     <h2>ESP 02, Soquel, CA</h2><br><br>
+    <div class="compasses" >
+        <h3>ESP 02</h3>
+        <canvas id="compass2" width="300" height="300"></canvas>
+        <canvas id="depth2" width="200" height="300"></canvas>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="gauges">
         <div id="gx2"></div>
         <div id="gy2"></div>
@@ -104,17 +142,7 @@
 <div id = 'direction'>
     <h1>Direction and Depth</h1>
     <p>Updates every 5 seconds, with a 2-minute delay</p>
-    <div class="compasses" >
-        <h3>ESP 01</h3>
-        <canvas  id="compass1" width="300" height="300"></canvas>
-        <canvas  id="depth1" width="300" height="300"></canvas>
-    </div>
 
-    <div class="compasses" >
-        <h3>ESP 02</h3>
-        <canvas id="compass2" width="300" height="300"></canvas>
-        <canvas id="depth2" width="300" height="300"></canvas>
-    </div>
 </div>
 <br><br><br><br><br><br><br><br><br>
 
@@ -413,7 +441,7 @@
         clearCanvas();
 
         // Draw the compass onto the canvas
-        ctx.drawImage(img, 0, 0);
+        ctx.drawImage(img, 50, 0);
 
         // Save the current drawing state
         ctx.save();
@@ -425,7 +453,7 @@
         ctx.rotate(degrees * (Math.PI / 180));
 
         // Draw the image back and up
-        ctx.drawImage(needle, -172, -172);
+        ctx.drawImage(needle, -122, -190);
 
         // Restore the previous drawing state
         ctx.restore();
@@ -483,6 +511,7 @@
     function init() {
         // Grab the compass element
         var canvas2 = document.getElementById('compass2');
+        canvas2.style.position = "absolute";
 
         // Canvas supported?
         if (canvas2.getContext('2d')) {
@@ -502,6 +531,8 @@
 
         // Grab the compass element
         var canvas = document.getElementById('compass1');
+        canvas.style.position = "absolute";
+        document.getElementById('depth1').style.position = 'absolute';
         // var canvas2 = document.getElementById('compass2');
 
         // Canvas supported?
