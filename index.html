@@ -54,6 +54,11 @@
             left: 550px;
             top:1000px;
         }
+        .n0, .n1, .n2 {
+            width: 300px;
+            height: 300px;
+            display: inline-block;
+        }
 
 
 
@@ -79,6 +84,7 @@
             text-align: center;
             color: #666;
             display: block;
+            /*padding: 30px;*/
         }
 
         .gauge-data > * {
@@ -87,6 +93,9 @@
 
         .gauge-value {
             font-size: 3em;
+            position: relative;
+            padding-top: 20px;
+
         }
 
         .gauge-text {
@@ -156,62 +165,13 @@
         <div id="gx"></div>
         <div id="gy"></div>
         <div id="gz"></div>
-<!--        <canvas data-type="radial-gauge"-->
-<!--                data-value="0"-->
-<!--                data-width="300"-->
-<!--                data-height="300"-->
-<!--                data-units="nT"-->
-<!--                data-title="X"-->
-<!--                data-min-value="-400000"-->
-<!--                data-max-value="400000"-->
-<!--                data-major-ticks="[-400000,-300000,-200000,-100000,0,100000,200000,300000,400000]"-->
-<!--                data-minor-ticks="2"-->
-<!--                data-stroke-ticks="true"-->
-<!--                data-highlights='[ {"from": -100000, "to": 100000, "color": "rgba(29, 123, 19, .3)"},-->
-<!--                                   {"from": -100000, "to": -200000, "color": "rgba(231, 160, 8, .3)"},-->
-<!--                                   {"from": 100000, "to": 200000, "color": "rgba(231, 160, 8, .3)"}],-->
-<!--                                   {"from": 200000, "to": 400000, "color": "rgba(231, 49, 8, .3)"},-->
-<!--                                   {"from": -200000, "to": -400000, "color": " rgba(231, 49, 8, .3)"}]]'-->
-<!--                data-ticks-angle="225"-->
-<!--                data-start-angle="67.5"-->
-<!--                data-color-major-ticks="#ddd"-->
-<!--                data-color-minor-ticks="#ddd"-->
-<!--                data-color-title="#eee"-->
-<!--                data-color-units="#ccc"-->
-<!--                data-color-numbers="#eee"-->
-<!--                data-color-plate="#222"-->
-<!--                data-border-shadow-width="0"-->
-<!--                data-borders="true"-->
-<!--                data-needle-type="arrow"-->
-<!--                data-needle-width="2"-->
-<!--                data-needle-circle-size="7"-->
-<!--                data-needle-circle-outer="true"-->
-<!--                data-needle-circle-inner="false"-->
-<!--                data-animation-duration="1500"-->
-<!--                data-animation-rule="linear"-->
-<!--                data-color-border-outer="#333"-->
-<!--                data-color-border-outer-end="#111"-->
-<!--                data-color-border-middle="#222"-->
-<!--                data-color-border-middle-end="#111"-->
-<!--                data-color-border-inner="#111"-->
-<!--                data-color-border-inner-end="#333"-->
-<!--                data-color-needle-shadow-down="#333"-->
-<!--                data-color-needle-circle-outer="#333"-->
-<!--                data-color-needle-circle-outer-end="#111"-->
-<!--                data-color-needle-circle-inner="#111"-->
-<!--                data-color-needle-circle-inner-end="#222"-->
-<!--                data-value-box-border-radius="0"-->
-<!--                data-color-value-box-rect="#222"-->
-<!--                data-color-value-box-rect-end="#333"-->
-<!--                id="ngx"-->
-<!--        ></canvas>-->
-        <div class="container">
-            <div id="gaugeX" class="0" ></div>
-            <div id="gaugeY" class="1"></div>
-            <div id="gaugeZ" class="2"></div>
-        </div>
-
-    </div><br>
+    </div>
+    <div class="container">
+    <div id="gaugeX" class="n0" ></div>
+    <div id="gaugeY" class="n1"></div>
+    <div id="gaugeZ" class="n2"></div>
+    </div>
+    <br>
     <h2>ESP 02, Soquel, CA</h2><br><br>
     <div class="compasses" >
         <h3>ESP 02</h3>
@@ -223,6 +183,11 @@
         <div id="gx2"></div>
         <div id="gy2"></div>
         <div id="gz2"></div>
+    </div>
+    <div class="container">
+        <div id="gaugeX2" class="n0" ></div>
+        <div id="gaugeY2" class="n1"></div>
+        <div id="gaugeZ2" class="n2"></div>
     </div>
 </div>
 
@@ -256,9 +221,9 @@
 <script type="text/javascript">
     // Global variable
     var settings = {
-        gaugeMinValue: -200000,
-        gaugeMaxValue: 200000,
-        gaugeStartValue: 3000,
+        gaugeMinValue: -150000,
+        gaugeMaxValue: 150000,
+        gaugeStartValue: 0,
         gaugeStartAngle: -90,
         gaugeEndAngle: 90,
         gaugeUpdateInterval: 5000 // ms
@@ -297,17 +262,18 @@
 
         plotOptions: {
             gauge: {
-                /*dial: {
-                 radius: 0
-                 },
-                 pivot: {
-                 radius: 0
-                 },*/
+                // dial: {
+                //  radius: 0
+                //  },
+                //  pivot: {
+                //  radius: 0
+                //  },
                 dataLabels: {
                     borderWidth: 0,
                     padding: 0,
+                    fontSize: 3,
                     verticalAlign: 'middle',
-                    style: false,
+                    // style: false,
                     formatter: function () {
                         var output = '<div class="gauge-data">';
                         output += '<span class="gauge-value">' + this.y + '</span>';
@@ -344,79 +310,83 @@
             title: false,
 
             minorTickWidth: 0,
-
+            //the interval of the short line
             tickPixelInterval: 30,
             tickWidth: 2,
             tickPosition: 'outside',
-            tickLength: 14,
-            tickColor: '#ccc',
-            lineColor: '#ccc',
+            //the length of the short line
+            tickLength: 20,
+            tickColor: '#666666',
+            lineColor: '#666666',
             labels: {
-                distance: 28,
+                //distance between the line and number
+                distance: 33,
                 rotation: "0",
                 step: 2,
             },
 
             plotBands: [{
-                thickness: 10,
-                outerRadius: "112%",
-                from: -200000,
+                thickness: 20,
+                outerRadius: "120%",
+                from: -150000,
                 to: -100000,
                 color: '#FB8585' // red
             }, {
-                thickness: 10,
-                outerRadius: "112%",
-                from: 200000,
+                thickness: 20,
+                outerRadius: "120%",
+                from: 150000,
                 to: 100000,
                 color: '#FB8585' // red
             }, {
-                thickness: 10,
-                outerRadius: "112%",
-                from: -25000,
-                to: 25000,
+                thickness: 20,
+                outerRadius: "120%",
+                from: -50000,
+                to: 50000,
                 color: '#83DAD9'
             }, {
-                thickness: 10,
-                outerRadius: "112%",
-                from: 55000,
+                thickness: 20,
+                outerRadius: "120%",
+                from: 50000,
                 to: 100000,
                 color: '#F9E7AE'
             }, {
-                thickness: 10,
-                outerRadius: "112%",
-                from: -55000,
+                thickness: 20,
+                outerRadius: "120%",
+                from: -50000,
                 to: -100000,
                 color: '#F9E7AE'
-            }, {
-                thickness: 10,
-                outerRadius: "112%",
-                from: 25000,
-                to: 55000,
-                color: '#F9E7AE'
-            }, {
-                thickness: 10,
-                outerRadius: "112%",
-                from: -25000,
-                to: -55000,
-                color: '#F9E7AE'
-            }]
+            }
+            // , {
+            //     thickness: 10,
+            //     outerRadius: "112%",
+            //     from: 25000,
+            //     to: 55000,
+            //     color: '#F9E7AE'
+            // }, {
+            //     thickness: 10,
+            //     outerRadius: "112%",
+            //     from: -25000,
+            //     to: -55000,
+            //     color: '#F9E7AE'
+            // }
+            ]
         },
 
         series: [{
             type: 'gauge',
             data: [settings.gaugeStartValue],
         }, {
-            // type : 'pie',
-            // innerSize : '87%',
-            // data : [{
-            //     y : settings.gaugeStartValue,
-            //     name : "",
-            //     color : "#0bbeba"
-            // }, {
-            //     y : settings.gaugeMaxValue - settings.gaugeStartValue,
-            //     name : '',
-            //     color : "#666666"
-            // }]
+            type : 'pie',
+            innerSize : '94%',
+            data : [{
+                y : settings.gaugeStartValue,
+                name : "",
+                color : "#0bbeba"
+            }, {
+                y : settings.gaugeMaxValue - settings.gaugeStartValue,
+                name : '',
+                color : "#666666"
+            }]
         }],
 
         navigation: {
@@ -447,10 +417,10 @@
 
         document.getElementById("fakeBu").click();
 
-        setInterval(function () {
-            document.getElementById("fakeBu").click();
-            depth
-        }, 5000);
+        // setInterval(function () {
+        //     document.getElementById("fakeBu").click();
+        //     depth
+        // }, 5000);
 
         // setInterval(depth, 5000);
 
@@ -716,8 +686,8 @@
 
                 console.log(options);
                 $('#gaugeX').highcharts(options, buildGraph);
-                // $('#gaugeY').highcharts(options, buildGraph);
-                // $('#gaugeZ').highcharts(options, buildGraph);
+                $('#gaugeY').highcharts(options, buildGraph);
+                $('#gaugeZ').highcharts(options, buildGraph);
                 // document.getElementById("ngx").setAttribute('data-value', staone[0]);
 
             }
@@ -798,6 +768,9 @@
                 gx2.refresh(Math.abs(statwo[0]));
                 gy2.refresh(Math.abs(statwo[1]));
                 gz2.refresh(Math.abs(statwo[2]));
+                $('#gaugeX2').highcharts(options, buildGraph);
+                $('#gaugeY2').highcharts(options, buildGraph);
+                $('#gaugeZ2').highcharts(options, buildGraph);
 
             }
         });
