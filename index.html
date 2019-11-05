@@ -167,8 +167,10 @@
     }
 
     document.getElementById("fakeBu").click();
+
     var staone = [],
         statwo = [];
+
     function avg(res,len){
         var xa, ya, za;
         var arr = res.slice(Math.max(res.length - len, 1));
@@ -238,6 +240,7 @@
                 );
 
                 staone = avg(res,5);
+
                 Z = new Dygraph(
 
                     // containing div
@@ -486,6 +489,7 @@
         // Restore the previous drawing state
         ctx2.restore();
     }
+
     function imgLoaded() {
         // Image loaded event complete.  Start the timer
         setInterval(draw, 5000);
