@@ -111,27 +111,33 @@
 
 <!--<div id="windspeedChart" class="group">-->
 <!--    <div class="form-style-8">-->
+<input type="button" onclick='window.location.replace("index.html")' class="button button2" value="Go To Mockup Home">
         <h2>Selection</h2>
         <form>
 
-            <h4 class="floatingBox">Select Start Date:</h4>
+            <div><h4 class="floatingBox">Select Start Date:</h4>
             <input type="date" class="inputBoxDate datePicker date" placeholder="Select Date" id = "begin"/>
+            </div>
+            <div>
             <h4 class="floatingBox">Select End Date:</h4>
             <input type="date" class="inputBoxDate datePicker date" placeholder="Select Date" id = "end"/>
-<!--            <input class = "station" value="RayTest" type="checkbox">-->
+            </div>
+<!--    <input class = "station" value="RayTest" type="checkbox">&ndash;&gt;-->
 <!--            <input class = "station" value="Select Station" type="checkbox">-->
 <!--            <input class = "station" value="Select Station" type="checkbox">-->
-            <h4 class="floatingBox">Select Station:</h4>
+            <div>
+                <h4 class="floatingBox">Select Station:</h4>
             <select id="station">
                 <option></option>
                 <option value="station_one">ESP 01, Middletown, NY</option>
                 <option value="station_two">ESP 02, Soquel, CA</option>
                 <option value="station_three">ESP 3, CA N/A</option>
                 <option value="station_four">ESP 4, CA N/A</option>
-            </select><br><br>
-            <input type="button" onclick="enabled = false; query();" class="button button2" value="Filter">
+            </select></div><br><br>
+            <input type="button" onclick="enabled = false; query();" class="button button2" value="Get Data">
             <br><br>
-            <input type="button" onclick='window.location.replace("index.html")' class="button button2" value="Go To Mockup Home">
+            <button href='#' onclick='download_csv()'  >Download CSV</button>
+            <br><br>
             <br><br><br>
             <div id="graphx"></div>
             <div id="graphy"></div>
@@ -147,6 +153,7 @@
 <!--</div>-->
 <script>
     var timeFrom,timeTo,stationIs,querystr;
+    var download = "Time,X,Y,Z\n";
     function query() {
         timeFrom = document.getElementById("begin").value;
         timeTo = document.getElementById("end").value;
@@ -161,6 +168,9 @@
             confirm("Please select BOTH dates.");
         }
     }
+    var x_arr = [];
+    var y_arr = [];
+    var z_arr = [];
 
     var queryAndDisplay = function () {
         $.ajax({
@@ -171,18 +181,24 @@
             async: true,
             data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationIs},
             success: function (res) {
-                var x_arr = [];
-                var y_arr = [];
-                var z_arr = [];
+
+
 
                 res.forEach(function(el,i) {
                     // var time = new Date(el.time);
-                    // console.log(time);
+                    // console.log(el.time);
+                    // console.log(el.time._nanoISO);
+                    // console.log(el._nanoISO);
                     x_arr[i] = [new Date(el.time), el.mean];
                     y_arr[i] = [new Date(el.time), el.mean_1];
                     z_arr[i] = [new Date(el.time), el.mean_2];
-                    // console.log(x_arr[i])
+                    var a = '' + el.mean;
+                    var b = '' + el.mean_1;
+                    var c = '' + el.mean_2;
+                    var t = el.time;
+                    download += t+','+a+','+b+','+c+'\n';
                 });
+                console.log(download);
 
                 // console.log(res);
                 Z = new Dygraph(
@@ -225,7 +241,107 @@
                 );
             }
         });
+    };
+    // data = [
+    //     ['Foo', 'programmer'],
+    //     ['Bar', 'bus driver'],
+    //     ['Moo', 'Reindeer Hunter']
+    // ];
+    function download_csv() {
+        // var csv = 'Time,X,Y,Z\n';
+        // console.log(download);
+        // console.log(timeFrom);
+        // console.log(timeTo);
+        // download.forEach(function(row) {
+        //     csv += row.join(',');
+        //     csv += "\n";
+        // });
+
+        var exportFilename = timeFrom +'-'+ timeTo + 'ESPData';
+        var csvData = new Blob([download], {type: 'text/csv;charset=utf-8;'});
+        //IE11 & Edge
+        if (navigator.msSaveBlob) {
+            navigator.msSaveBlob(csvData, exportFilename);
+        } else {
+            //In FF link must be added to DOM to be clicked
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(csvData);
+            link.setAttribute('download', exportFilename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+    //
+    //     filename = args.filename || 'export.csv';
+    //     if (csv == null) return;
+    //     data = encodeURI(csv);
+    //     csv = 'data:text/csv;charset=utf-8,' + csv;
+    //     link = document.createElement('a');
+    //     link.setAttribute('href', data);
+    //     link.setAttribute('download', filename);
+    //     link.click();
+        console.log(csv);
+        // var hiddenElement = document.createElement('a');
+        // hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+        // hiddenElement.target = '_blank';
+        // hiddenElement.download = 'ESPdata.csv';
+        // hiddenElement.click();
+        // downloads (download.join("\n"), "hghghgyui.csv", 'text/csv').
     }
+
+    // var csv = 'Time,X,Y,Z\n';
+    // // var rowd = [];
+    // download.forEach(function(row) {
+    //     csv += row.join(',');
+    //     csv += "\n";
+    // });
+
+
+    // function downloads (content, fileName, mimeType)
+    // {
+    //     var a = document.createElement('a');
+    //     mimeType = mimeType || 'application/octet-stream';
+    //     if (navigator.msSaveBlob) { // IE10
+    //         return navigator.msSaveBlob(new Blob([content], { type: mimeType }), fileName);
+    //     } else if ('download' in a) { //html5 A[download]
+    //         a.href = 'data:' + mimeType + ',' + encodeURIComponent(content);
+    //         a.setAttribute('download', fileName);
+    //         document.body.appendChild(a);
+    //         a.click();
+    //         document.body.removeChild(a);
+    //         return true;
+    //     } else { //do iframe dataURL download (old ch+FF):
+    //         var f = document.createElement('iframe');
+    //         document.body.appendChild(f);
+    //         f.src = 'data:' + mimeType + ',' + encodeURIComponent(content);
+    //
+    //         setTimeout(function() {
+    //             document.body.removeChild(f);
+    //         }, 300);
+    //         return true;
+    //     }
+    // }
+    //Use like this
+    // var array = [];
+    // var len = array.length;
+    // var csvContent = "";
+    // for(var i = 0; i < len; i++) {
+    //     csvContent += array[i] + '\n';
+    // }
+    // var csvName = 'records.csv';
+    // function download_csv(){
+    //     downloads(csv, 'hahaha.csv', 'text/csv');
+    // }
+    // var csv = 'Time,X,Y,Z\n';
+    // console.log(download);
+    // console.log(timeFrom);
+    // console.log(timeTo);
+    // download.forEach(function(row) {
+    //     csv += row.join(',');
+    //     csv += "\n";
+    // });
+
 </script>
 </body>
 </html>

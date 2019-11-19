@@ -42,31 +42,69 @@
         }
         #compass2{
             left: 80px;
-            top:1000px;
+            top:1200px;
             display: inline-block;
         }
+
+        #depth2{
+            left:510px;
+            top:1200px;
+        }
+        #x-label{
+            position: absolute;
+            left:510px;
+            top:1180px;
+        }
+        #y-label{
+            position: absolute;
+            left:490px;
+            top:1200px;
+        }
+
         #depth1{
             left: 540px;
             top:350px;
         }
-        #depth2{
-            position :absolute;
-            left: 550px;
-            top:1000px;
+        #x-label1{
+            position: absolute;
+            left:540px;
+            top:330px;
         }
-        .n0, .n1, .n2 {
-            width: 300px;
-            height: 300px;
-            display: inline-block;
+        #y-label1{
+            position: absolute;
+            left:520px;
+            top:350px;
+        }
+        /*#depth2{*/
+        /*    position :absolute;*/
+        /*    left: 550px;*/
+        /*    top:1000px;*/
+        /*}*/
+        /*.n0, .n1, .n2 {*/
+        /*    !*width: 300px;*!*/
+        /*    !*height: 300px;*!*/
+        /*    display: inline-table;*/
+        /*}*/
+        #gaugeX, #gaugeX2, #gaugeY, #gaugeY2, #gaugeZ, #gaugeZ2{
+            /*float: left;*/
+            width: 250px;
+            height: 250px;
+            display: inline-table;
         }
 
 
 
 /*css of new gauge*/
         .container {
-            width: 50%;
+            /*width: 100%;*/
             margin: 0 auto;
             font-size: 16px;
+            left: 90px;
+            width: max-content;
+            display: inline-table;
+        }
+        .contain{
+            float: left;
         }
 
         .gauge {
@@ -120,6 +158,7 @@
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://frogcat.github.io/canvas-arrow/canvas-arrow.js"></script>`
 
 </head>
 
@@ -158,36 +197,40 @@
     <div class="compasses" >
         <!--            <h3>ESP 01</h3>-->
         <canvas  id="compass1" width="400" height="300"></canvas>
-        <canvas  id="depth1" width="200" height="300"></canvas>
+        <canvas  id="depth1" width="270" height="300"></canvas>
+        <canvas id="x-label1" width="270" height="20"></canvas>
+        <canvas id="y-label1" width="20" height="270"></canvas>
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <div class="gauges">
-        <div id="gx"></div>
-        <div id="gy"></div>
-        <div id="gz"></div>
-    </div>
+<!--    <div class="gauges">-->
+<!--        <div id="gx"></div>-->
+<!--        <div id="gy"></div>-->
+<!--        <div id="gz"></div>-->
+<!--    </div>-->
     <div class="container">
-    <div id="gaugeX" class="n0" ></div>
-    <div id="gaugeY" class="n1"></div>
-    <div id="gaugeZ" class="n2"></div>
+    <div id="gaugeX" class="contain n0"></div>
+    <div id="gaugeY" class="contain n1"></div>
+    <div id="gaugeZ" class="contain n2"></div>
     </div>
     <br>
     <h2>ESP 02, Soquel, CA</h2><br><br>
+
     <div class="compasses" >
-        <h3>ESP 02</h3>
         <canvas id="compass2" width="300" height="300"></canvas>
-        <canvas id="depth2" width="200" height="300"></canvas>
+        <canvas id="depth2" width="270" height="300"></canvas>
+        <canvas id="x-label" width="270" height="20"></canvas>
+        <canvas id="y-label" width="20" height="270"></canvas>
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <div class="gauges">
-        <div id="gx2"></div>
-        <div id="gy2"></div>
-        <div id="gz2"></div>
-    </div>
+<!--    <div class="gauges">-->
+<!--        <div id="gx2"></div>-->
+<!--        <div id="gy2"></div>-->
+<!--        <div id="gz2"></div>-->
+<!--    </div>-->
     <div class="container">
-        <div id="gaugeX2" class="n0" ></div>
-        <div id="gaugeY2" class="n1"></div>
-        <div id="gaugeZ2" class="n2"></div>
+        <div id="gaugeX2" class="contain n0"></div>
+        <div id="gaugeY2" class="contain n1"></div>
+        <div id="gaugeZ2" class="contain n2"></div>
     </div>
 </div>
 
@@ -208,11 +251,6 @@
     </div>
 </div>
 
-<div id = 'direction'>
-    <h1>Direction and Depth</h1>
-    <p>Updates every 5 seconds, with a 2-minute delay</p>
-
-</div>
 <br><br><br><br><br><br><br><br><br>
 
 
@@ -220,9 +258,10 @@
 
 <script type="text/javascript">
     // Global variable
+
     var settings = {
-        gaugeMinValue: -150000,
-        gaugeMaxValue: 150000,
+        gaugeMinValue: -100000,
+        gaugeMaxValue: 100000,
         gaugeStartValue: 0,
         gaugeStartAngle: -90,
         gaugeEndAngle: 90,
@@ -315,45 +354,45 @@
             tickWidth: 2,
             tickPosition: 'outside',
             //the length of the short line
-            tickLength: 20,
+            tickLength: 15,
             tickColor: '#666666',
             lineColor: '#666666',
             labels: {
                 //distance between the line and number
-                distance: 33,
+                distance: 25,
                 rotation: "0",
                 step: 2,
             },
 
             plotBands: [{
-                thickness: 20,
+                thickness: 15,
                 outerRadius: "120%",
-                from: -150000,
-                to: -100000,
+                from: -100000,
+                to: -75000,
                 color: '#FB8585' // red
             }, {
-                thickness: 20,
+                thickness: 15,
                 outerRadius: "120%",
-                from: 150000,
-                to: 100000,
+                from: 100000,
+                to: 75000,
                 color: '#FB8585' // red
             }, {
-                thickness: 20,
+                thickness: 15,
                 outerRadius: "120%",
                 from: -50000,
                 to: 50000,
                 color: '#83DAD9'
             }, {
-                thickness: 20,
+                thickness: 15,
                 outerRadius: "120%",
                 from: 50000,
-                to: 100000,
+                to: 75000,
                 color: '#F9E7AE'
             }, {
-                thickness: 20,
+                thickness: 15,
                 outerRadius: "120%",
                 from: -50000,
-                to: -100000,
+                to: -75000,
                 color: '#F9E7AE'
             }
             // , {
@@ -377,7 +416,7 @@
             data: [settings.gaugeStartValue],
         }, {
             type : 'pie',
-            innerSize : '94%',
+            innerSize : '96%',
             data : [{
                 y : settings.gaugeStartValue,
                 name : "",
@@ -411,26 +450,23 @@
     var staone = [],
         statwo = [];
 
-
-
     $(document).ready(function () {
 
         document.getElementById("fakeBu").click();
 
-        // setInterval(function () {
-        //     document.getElementById("fakeBu").click();
-        //     depth
-        // }, 5000);
+        setInterval(function () {
+            document.getElementById("fakeBu").click();
+            // depth
+        }, 5000);
 
-        // setInterval(depth, 5000);
-
+        setInterval(zArrow2, 5000);
+        setInterval(zArrow1, 5000);
 
         // $('#gaugeX').highcharts(options, buildGraph);
         // $('#gaugeY').highcharts(options, buildGraph);
         // $('#gaugeZ').highcharts(options, buildGraph);
 
     });
-
 
     var gx,gy,gz;
     gx = new JustGage({
@@ -443,7 +479,7 @@
         levelColorsGradient: true
 
     });
-    gx.refresh(0);
+    // gx.refresh(0);
     gy = new JustGage({
         id: "gy",
         title: "Y1",
@@ -454,7 +490,7 @@
         levelColorsGradient: false
 
     });
-    gy.refresh(0);
+    // gy.refresh(0);
     gz = new JustGage({
         id: "gz",
         title: "Z1",
@@ -465,8 +501,7 @@
         levelColorsGradient: false
 
     });
-    gz.refresh(0);
-
+    // gz.refresh(0);
 
     var gx2,gy2,gz2;
     gx2 = new JustGage({
@@ -479,8 +514,7 @@
         levelColorsGradient: true
 
     });
-    gx2.refresh(0);
-
+    // gx2.refresh(0);
     gy2 = new JustGage({
         id: "gy2",
         title: "Y2",
@@ -491,8 +525,7 @@
         levelColorsGradient: false
 
     });
-    gy2.refresh(0);
-
+    // gy2.refresh(0);
     gz2 = new JustGage({
         id: "gz2",
         title: "Z2",
@@ -503,50 +536,50 @@
         levelColorsGradient: false
 
     });
-    gz2.refresh(0);
+    // gz2.refresh(0);
 
-
-    function init() {
-        // Grab the compass element
-        var canvas2 = document.getElementById('compass2');
-
-        // Canvas supported?
-        if (canvas2.getContext('2d')) {
-            ctx2 = canvas2.getContext('2d');
-
-            // Load the needle image
-            needle2 = new Image();
-            needle2.src = 'jsLibrary/compass/needle.png';
-
-            // Load the compass image
-            img2 = new Image();
-            img2.src = 'jsLibrary/compass/compass.png';
-            img2.onload = imgLoaded2;
-        } else {
-            alert("Canvas not supported!");
-        }
-
-        // Grab the compass element
-        var canvas = document.getElementById('compass1');
-        // var canvas2 = document.getElementById('compass2');
-
-        // Canvas supported?
-        if (canvas.getContext('2d')) {
-            ctx = canvas.getContext('2d');
-
-            // Load the needle image
-            needle = new Image();
-            needle.src = 'jsLibrary/compass/needle.png';
-
-            // Load the compass image
-            img = new Image();
-            img.src = 'jsLibrary/compass/compass.png';
-            img.onload = imgLoaded;
-        } else {
-            alert("Canvas not supported!");
-        }
-
-    }
+    //
+    // function init() {
+    //     // Grab the compass element
+    //     var canvas2 = document.getElementById('compass2');
+    //
+    //     // Canvas supported?
+    //     if (canvas2.getContext('2d')) {
+    //         ctx2 = canvas2.getContext('2d');
+    //
+    //         // Load the needle image
+    //         needle2 = new Image();
+    //         needle2.src = 'jsLibrary/compass/needle.png';
+    //
+    //         // Load the compass image
+    //         img2 = new Image();
+    //         img2.src = 'jsLibrary/compass/compass.png';
+    //         img2.onload = imgLoaded2;
+    //     } else {
+    //         alert("Canvas not supported!");
+    //     }
+    //
+    //     // Grab the compass element
+    //     var canvas = document.getElementById('compass1');
+    //     // var canvas2 = document.getElementById('compass2');
+    //
+    //     // Canvas supported?
+    //     if (canvas.getContext('2d')) {
+    //         ctx = canvas.getContext('2d');
+    //
+    //         // Load the needle image
+    //         needle = new Image();
+    //         needle.src = 'jsLibrary/compass/needle.png';
+    //
+    //         // Load the compass image
+    //         img = new Image();
+    //         img.src = 'jsLibrary/compass/compass.png';
+    //         img.onload = imgLoaded;
+    //     } else {
+    //         alert("Canvas not supported!");
+    //     }
+    //
+    // }
 
     function myFunction(objButton) {
         var x = document.getElementsByClassName(objButton.value);
@@ -563,15 +596,48 @@
         }
     }
 
+    function buildGraph2(chart) {
+        var a = $(this)[0].renderTo.className.slice(-1);
+        console.log(a);
+        // console.log(!chart.renderer.forExport);
+        if (!chart.renderer.forExport) {
+
+            // console.log(options);
+            // console.log(chart);
+            // console.log(chart.series[0].points[0].y);
+
+            var gaugePoint = chart.series[0].points[0];
+            // piePoint = chart.series[1];
+            var newVal = parseInt(statwo[a]);
+            console.log(newVal);
+            // newVal;
+            //     ,
+            //     inc = Math.round((Math.random()) * 200000);
+            //
+            // newVal = gaugePoint.y + inc;
+            // if (newVal < settings.gaugeMinValue || newVal > settings.gaugeMaxValue) {
+            //     newVal = gaugePoint.y;
+            // }
+
+            // Update number gauge value
+            gaugePoint.update(newVal);
+            // console.log(piePoint);
+            // Update pie with current value
+            // piePoint.points[0].update(newVal);
+            // console.log(piePoint);
+            // piePoint.points[1].update(settings.gaugeMaxValue - newVal);
+
+        }
+    }
     function buildGraph(chart) {
-        var a = $(this)[0].renderTo.className;
+        var a = $(this)[0].renderTo.className.slice(-1);
         // console.log(chart);
         // console.log(!chart.renderer.forExport);
         if (!chart.renderer.forExport) {
 
-            console.log(options);
-            console.log(chart);
-            console.log(chart.series[0].points[0].y);
+            // console.log(options);
+            // console.log(chart);
+            // console.log(chart.series[0].points[0].y);
 
             var gaugePoint = chart.series[0].points[0];
             // piePoint = chart.series[1];
@@ -643,7 +709,7 @@
                         animatedZooms: true,
                         legend: 'always',
                         showRoller: true,
-                        title: "+Z is positive altitude, -Z is below ground",
+                        title: "+Z is positive altitude, -Z is below ground (unit: nanoTesla)",
                     }
 
                 );
@@ -659,7 +725,7 @@
                         animatedZooms: true,
                         legend: 'always',
                         showRoller: true,
-                        title: "+Y is east, -Y is west"
+                        title: "+Y is east, -Y is west (unit: nanoTesla)"
                     }
 
                 );
@@ -675,16 +741,16 @@
                         animatedZooms: true,
                         legend: 'always',
                         showRoller: true,
-                        title: "+X is north, -X is south"
+                        title: "+X is north, -X is south (unit: nanoTesla)"
                     }
 
                 );
                 console.log(staone);
-                gx.refresh(Math.abs(staone[0]));
-                gy.refresh(Math.abs(staone[1]));
-                gz.refresh(Math.abs(staone[2]));
+                // gx.refresh(Math.abs(staone[0]));
+                // gy.refresh(Math.abs(staone[1]));
+                // gz.refresh(Math.abs(staone[2]));
 
-                console.log(options);
+                // console.log(options);
                 $('#gaugeX').highcharts(options, buildGraph);
                 $('#gaugeY').highcharts(options, buildGraph);
                 $('#gaugeZ').highcharts(options, buildGraph);
@@ -693,7 +759,6 @@
             }
         });
     }
-
     function query2() {
         $.ajax({
             // url: "https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query2",
@@ -729,7 +794,7 @@
                         animatedZooms: true,
                         legend: 'always',
                         showRoller: true,
-                        title: "+Z is positive altitude, -Z is below ground"
+                        title: "+Z is positive altitude, -Z is below ground (unit: nanoTesla)"
                     }
 
                 );
@@ -745,7 +810,7 @@
                         animatedZooms: true,
                         legend: 'always',
                         showRoller: true,
-                        title: "+Y is east, -Y is west"
+                        title: "+Y is east, -Y is west (unit: nanoTesla)"
                     }
 
                 );
@@ -761,16 +826,16 @@
                         animatedZooms: true,
                         legend: 'always',
                         showRoller: true,
-                        title: "+X is north, -X is south"
+                        title: "+X is north, -X is south (unit: nanoTesla)"
                     }
                 );
                 console.log(statwo);
-                gx2.refresh(Math.abs(statwo[0]));
-                gy2.refresh(Math.abs(statwo[1]));
-                gz2.refresh(Math.abs(statwo[2]));
-                $('#gaugeX2').highcharts(options, buildGraph);
-                $('#gaugeY2').highcharts(options, buildGraph);
-                $('#gaugeZ2').highcharts(options, buildGraph);
+                // gx2.refresh(Math.abs(statwo[0]));
+                // gy2.refresh(Math.abs(statwo[1]));
+                // gz2.refresh(Math.abs(statwo[2]));
+                $('#gaugeX2').highcharts(options, buildGraph2);
+                $('#gaugeY2').highcharts(options, buildGraph2);
+                $('#gaugeZ2').highcharts(options, buildGraph2);
 
             }
         });
@@ -785,6 +850,7 @@
         setInterval(draw2, 30000);
     }
 
+    // draw the compass
     function draw() {
 
         console.log(staone);
@@ -795,7 +861,7 @@
         clearCanvas();
 
         // Draw the compass onto the canvas
-        ctx.drawImage(img, 50, 0);
+        ctx.drawImage(img, 0, 0);
 
         // Save the current drawing state
         ctx.save();
@@ -807,12 +873,11 @@
         ctx.rotate(degrees * (Math.PI / 180));
 
         // Draw the image back and up
-        ctx.drawImage(needle, -122, -190);
+        ctx.drawImage(needle, -172, -172);
 
         // Restore the previous drawing state
         ctx.restore();
     }
-
     function draw2() {
 
         console.log(statwo);
@@ -841,21 +906,26 @@
         ctx2.restore();
     }
 
-    function clearCanvas() {
-        // clear canvas
-        ctx.clearRect(0, 0, 300, 300);
-        // ctx2.clearRect(0, 0, 300, 300);
-    }
-    function calcAngleDegrees(x, y) {
-        return Math.atan2(y, x) * 180 / Math.PI;
-    }
-
     function clearCanvas2() {
         // clear canvas
         ctx2.clearRect(0, 0, 300, 300);
         // ctx2.clearRect(0, 0, 300, 300);
     }
+    function clearCanvas() {
+        // clear canvas
+        ctx.clearRect(0, 0, 300, 300);
+        // ctx2.clearRect(0, 0, 300, 300);
+    }
 
+    function calcAngleDegrees(x, y) {
+        return Math.atan2(y, x) * 180 / Math.PI;
+    }
+
+    function calcLength(x, y) {
+        var sum = Math.pow(x,2) + Math.pow(y,2) ;
+        console.log(sum);
+        return Math.sqrt(sum);
+    }
 
     function init() {
         // Grab the compass element
@@ -882,6 +952,7 @@
         var canvas = document.getElementById('compass1');
         canvas.style.position = "absolute";
         document.getElementById('depth1').style.position = 'absolute';
+        document.getElementById('depth2').style.position = 'absolute';
         // var canvas2 = document.getElementById('compass2');
 
         // Canvas supported?
@@ -902,15 +973,350 @@
 
     }
 
-    function calcDepthAngle(x, y) {
-        return Math.atan2(y, x) * 180 / Math.PI;
+    function coordinate(){
+        var grid_size = 30;
+        var x_axis_distance_grid_lines = 0;
+        var y_axis_distance_grid_lines = 0;
+        var x_axis_starting_point = { number: 5000, suffix: '' };
+        var y_axis_starting_point = { number: 5000, suffix: '' };
+
+        var canvas = document.getElementById("depth2");
+        var ctx = canvas.getContext("2d");
+
+        // canvas width
+        var canvas_width = canvas.width;
+
+        // canvas height
+        var canvas_height = canvas.height;
+
+        // no of vertical grid lines
+        var num_lines_x = Math.floor(canvas_height/grid_size);
+
+        // no of horizontal grid lines
+        var num_lines_y = Math.floor(canvas_width/grid_size);
+
+        // Draw grid lines along X-axis
+        for(var i=0; i<=num_lines_x; i++) {
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+
+            // If line represents X-axis draw in different color
+            if(i === x_axis_distance_grid_lines)
+                ctx.strokeStyle = "#000000";
+            else
+                ctx.strokeStyle = "#e9e9e9";
+
+            if(i === num_lines_x) {
+                ctx.moveTo(0, grid_size*i);
+                ctx.lineTo(canvas_width, grid_size*i);
+            }
+            else {
+                ctx.moveTo(0, grid_size*i+0.5);
+                ctx.lineTo(canvas_width, grid_size*i+0.5);
+            }
+            ctx.stroke();
+        }
+        // Draw grid lines along Y-axis
+        for(i=0; i<=num_lines_y; i++) {
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+
+            // If line represents Y-axis draw in different color
+            if(i == y_axis_distance_grid_lines)
+                ctx.strokeStyle = "#000000";
+            else
+                ctx.strokeStyle = "#e9e9e9";
+
+            if(i == num_lines_y) {
+                ctx.moveTo(grid_size*i, 0);
+                ctx.lineTo(grid_size*i, canvas_height);
+            }
+            else {
+                ctx.moveTo(grid_size*i+0.5, 0);
+                ctx.lineTo(grid_size*i+0.5, canvas_height);
+            }
+            ctx.stroke();
+        }
+
+        ctx.translate(y_axis_distance_grid_lines*grid_size, x_axis_distance_grid_lines*grid_size);
+
+        // Ticks marks along the positive X-axis
+        for(i=1; i<(num_lines_y - y_axis_distance_grid_lines); i++) {
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#000000";
+
+            // Draw a tick mark 6px long (-3 to 3)
+            ctx.moveTo(grid_size*i+0.5, -3);
+            ctx.lineTo(grid_size*i+0.5, 3);
+            ctx.stroke();
+
+            // Text value at that point
+            ctx.font = '9px Arial';
+            ctx.textAlign = 'start';
+            ctx.fillText(x_axis_starting_point.number*i + x_axis_starting_point.suffix, grid_size*i-2, 15);
+        }
+
+        // Ticks marks along the negative X-axis
+        for(i=1; i<y_axis_distance_grid_lines; i++) {
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#000000";
+
+            // Draw a tick mark 6px long (-3 to 3)
+            ctx.moveTo(-grid_size*i+0.5, -3);
+            ctx.lineTo(-grid_size*i+0.5, 3);
+            ctx.stroke();
+
+            // Text value at that point
+            ctx.font = '9px Arial';
+            ctx.textAlign = 'end';
+            ctx.fillText(-x_axis_starting_point.number*i + x_axis_starting_point.suffix, -grid_size*i+3, 15);
+        }
+
+        // Ticks marks along the positive Y-axis
+        // Positive Y-axis of graph is negative Y-axis of the canvas
+        for(i=1; i<(num_lines_x - x_axis_distance_grid_lines); i++) {
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#000000";
+
+            // Draw a tick mark 6px long (-3 to 3)
+            ctx.moveTo(-3, grid_size*i+0.5);
+            ctx.lineTo(3, grid_size*i+0.5);
+            ctx.stroke();
+
+            // Text value at that point
+            ctx.font = '9px Arial';
+            ctx.textAlign = 'start';
+            ctx.fillText(-y_axis_starting_point.number*i + y_axis_starting_point.suffix, 8, grid_size*i+3);
+        }
+
+        // Ticks marks along the negative Y-axis
+        // Negative Y-axis of graph is positive Y-axis of the canvas
+        for(i=1; i<x_axis_distance_grid_lines; i++) {
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#000000";
+
+            // Draw a tick mark 6px long (-3 to 3)
+            ctx.moveTo(-3, -grid_size*i+0.5);
+            ctx.lineTo(3, -grid_size*i+0.5);
+            ctx.stroke();
+
+            // Text value at that point
+            ctx.font = '9px Arial';
+            ctx.textAlign = 'start';
+            ctx.fillText(y_axis_starting_point.number*i + y_axis_starting_point.suffix, 8, -grid_size*i+3);
+        }
+
+        var labelX = document.getElementById("x-label");
+        var ctxLabelX = labelX.getContext("2d");
+        ctxLabelX.font = "10px Arial";
+        ctxLabelX.fillText("direction",labelX.width/2 -20, labelX.height/2);
+
+        var labelY = document.getElementById("y-label");
+        var ctxLabelY = labelY.getContext("2d");
+        ctxLabelY.translate(140, 105);
+        ctxLabelY.rotate(Math.PI/2);
+        ctxLabelY.fillText("depth",labelY.width/2, labelY.height/2);
+        // ctx.arrow()
+    }
+    coordinate();
+
+    function coordinate2(){
+        var grid_size = 30;
+        var x_axis_distance_grid_lines = 0;
+        var y_axis_distance_grid_lines = 0;
+        var x_axis_starting_point = { number: 5000, suffix: '' };
+        var y_axis_starting_point = { number: 5000, suffix: '' };
+
+        var canvas = document.getElementById("depth1");
+        var ctx = canvas.getContext("2d");
+
+        // canvas width
+        var canvas_width = canvas.width;
+
+        // canvas height
+        var canvas_height = canvas.height;
+
+        // no of vertical grid lines
+        var num_lines_x = Math.floor(canvas_height/grid_size);
+
+        // no of horizontal grid lines
+        var num_lines_y = Math.floor(canvas_width/grid_size);
+
+        // Draw grid lines along X-axis
+        for(var i=0; i<=num_lines_x; i++) {
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+
+            // If line represents X-axis draw in different color
+            if(i === x_axis_distance_grid_lines)
+                ctx.strokeStyle = "#000000";
+            else
+                ctx.strokeStyle = "#e9e9e9";
+
+            if(i === num_lines_x) {
+                ctx.moveTo(0, grid_size*i);
+                ctx.lineTo(canvas_width, grid_size*i);
+            }
+            else {
+                ctx.moveTo(0, grid_size*i+0.5);
+                ctx.lineTo(canvas_width, grid_size*i+0.5);
+            }
+            ctx.stroke();
+        }
+        // Draw grid lines along Y-axis
+        for(i=0; i<=num_lines_y; i++) {
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+
+            // If line represents Y-axis draw in different color
+            if(i == y_axis_distance_grid_lines)
+                ctx.strokeStyle = "#000000";
+            else
+                ctx.strokeStyle = "#e9e9e9";
+
+            if(i == num_lines_y) {
+                ctx.moveTo(grid_size*i, 0);
+                ctx.lineTo(grid_size*i, canvas_height);
+            }
+            else {
+                ctx.moveTo(grid_size*i+0.5, 0);
+                ctx.lineTo(grid_size*i+0.5, canvas_height);
+            }
+            ctx.stroke();
+        }
+
+        ctx.translate(y_axis_distance_grid_lines*grid_size, x_axis_distance_grid_lines*grid_size);
+
+        // Ticks marks along the positive X-axis
+        for(i=1; i<(num_lines_y - y_axis_distance_grid_lines); i++) {
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#000000";
+
+            // Draw a tick mark 6px long (-3 to 3)
+            ctx.moveTo(grid_size*i+0.5, -3);
+            ctx.lineTo(grid_size*i+0.5, 3);
+            ctx.stroke();
+
+            // Text value at that point
+            ctx.font = '9px Arial';
+            ctx.textAlign = 'start';
+            ctx.fillText(x_axis_starting_point.number*i + x_axis_starting_point.suffix, grid_size*i-2, 15);
+        }
+
+        // Ticks marks along the negative X-axis
+        for(i=1; i<y_axis_distance_grid_lines; i++) {
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#000000";
+
+            // Draw a tick mark 6px long (-3 to 3)
+            ctx.moveTo(-grid_size*i+0.5, -3);
+            ctx.lineTo(-grid_size*i+0.5, 3);
+            ctx.stroke();
+
+            // Text value at that point
+            ctx.font = '9px Arial';
+            ctx.textAlign = 'end';
+            ctx.fillText(-x_axis_starting_point.number*i + x_axis_starting_point.suffix, -grid_size*i+3, 15);
+        }
+
+        // Ticks marks along the positive Y-axis
+        // Positive Y-axis of graph is negative Y-axis of the canvas
+        for(i=1; i<(num_lines_x - x_axis_distance_grid_lines); i++) {
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#000000";
+
+            // Draw a tick mark 6px long (-3 to 3)
+            ctx.moveTo(-3, grid_size*i+0.5);
+            ctx.lineTo(3, grid_size*i+0.5);
+            ctx.stroke();
+
+            // Text value at that point
+            ctx.font = '9px Arial';
+            ctx.textAlign = 'start';
+            ctx.fillText(-y_axis_starting_point.number*i + y_axis_starting_point.suffix, 8, grid_size*i+3);
+        }
+
+        // Ticks marks along the negative Y-axis
+        // Negative Y-axis of graph is positive Y-axis of the canvas
+        for(i=1; i<x_axis_distance_grid_lines; i++) {
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "#000000";
+
+            // Draw a tick mark 6px long (-3 to 3)
+            ctx.moveTo(-3, -grid_size*i+0.5);
+            ctx.lineTo(3, -grid_size*i+0.5);
+            ctx.stroke();
+
+            // Text value at that point
+            ctx.font = '9px Arial';
+            ctx.textAlign = 'start';
+            ctx.fillText(y_axis_starting_point.number*i + y_axis_starting_point.suffix, 8, -grid_size*i+3);
+        }
+
+        var labelX = document.getElementById("x-label1");
+        var ctxLabelX = labelX.getContext("2d");
+        ctxLabelX.font = "10px Arial";
+        ctxLabelX.fillText("direction",labelX.width/2 -20, labelX.height/2);
+
+        var labelY = document.getElementById("y-label1");
+        var ctxLabelY = labelY.getContext("2d");
+        ctxLabelY.translate(140, 105);
+        ctxLabelY.rotate(Math.PI/2);
+        ctxLabelY.fillText("depth",labelY.width/2, labelY.height/2);
+        // ctx.arrow()
+    }
+    coordinate2();
+
+    function zArrow2(){
+        var compX = calcLength(statwo[0],statwo[1]);
+
+        var scaleX = compX/5000;
+        var x= scaleX*30;
+        console.log(Math.abs(statwo[2]));
+        var scaleY = Math.abs(statwo[2])/5000;
+        var y = scaleY*30;
+
+        var canvas = document.getElementById("depth2");
+        var context = canvas.getContext("2d");
+
+        context.beginPath();
+        context.arrow(0, 0, x, y, [0, 1, -10, 1, -10, 5]);
+        context.fill();
+    }
+    function zArrow1(){
+        var compX = calcLength(staone[0],staone[1]);
+
+        var scaleX = compX/5000;
+        var x= scaleX*30;
+        console.log(Math.abs(staone[2]));
+        var scaleY = Math.abs(staone[2])/5000;
+        var y = scaleY*30;
+
+        var canvas = document.getElementById("depth1");
+        var context = canvas.getContext("2d");
+
+        context.beginPath();
+        context.arrow(0, 0, x, y, [0, 1, -10, 1, -10, 5]);
+        context.fill();
     }
 
-    function depth() {
-        var bob = staone[0]/2+staone[1]/2;
-        console.log(bob);
-        console.log(calcDepthAngle(bob,staone[2]));
-    }
+    // function calcDepthAngle(x, y) {
+    //     return Math.atan2(y, x) * 180 / Math.PI;
+    // }
+    //
+    // function depth() {
+    //     var bob = staone[0]/2+staone[1]/2;
+    //     console.log(bob);
+    //     console.log(calcDepthAngle(bob,staone[2]));
+    // }
 
 
 
