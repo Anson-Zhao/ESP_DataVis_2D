@@ -81,9 +81,10 @@ app.get('/newWind', function (req, res) {
 
     influx.query(queryH).then
     (result => {
-        res.send(result)
+        res.send(result);
+        console.log(result)
     }).catch(err => {
         res.status(500).send(err.stack)
     });
 });
-app.listen('3005');
+app.listen('3006');
