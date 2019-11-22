@@ -2,14 +2,18 @@
 let img = null,
     needle = null,
     ctx = null,
-    degrees = 0;
+    degrees = 0,
+    img2 = null,
+    needle2 = null,
+    ctx2 = null,
+    degrees2 = 0;
 
 $(document).ready(function () {
 
     // Grab the compass element
     let canvas2 = document.getElementById('compass2');
 
-    // Canvas supported?
+    // Canvas supported? And load compass image
     if (canvas2.getContext('2d')) {
         ctx2 = canvas2.getContext('2d');
 
@@ -20,7 +24,8 @@ $(document).ready(function () {
         // Load the compass image
         img2 = new Image();
         img2.src = 'jsLibrary/compass/compass.png';
-        img2.onload = imgLoaded2;
+        // img2.onload = imgLoaded2;
+        setInterval(needleUpdate, 5000);
     } else {
         alert("Canvas not supported!");
     }
@@ -40,7 +45,8 @@ $(document).ready(function () {
         // Load the compass image
         img = new Image();
         img.src = 'jsLibrary/compass/compass.png';
-        img.onload = imgLoaded;
+        // img.onload = imgLoaded;
+        setInterval(draw, 5000);
     } else {
         alert("Canvas not supported!");
     }
@@ -48,23 +54,24 @@ $(document).ready(function () {
 });
 
 
-
 function clearCanvas() {
     // clear canvas
     ctx.clearRect(0, 0, 300, 300);
     // ctx2.clearRect(0, 0, 300, 300);
 }
+
 function calcAngleDegrees(x, y) {
     return Math.atan2(y, x) * 180 / Math.PI;
 }
 
-function drawCompass(data) {
+function needleUpdate(data) {
 
     console.log(data);
 
     console.log('Station 1 heading:'+calcAngleDegrees(data[0], data[1]));
 
-    let degrees = calcAngleDegrees(data[0], data[1]);
+    degrees = calcAngleDegrees(data[0], data[1]);
+
     clearCanvas();
 
     // Draw the compass onto the canvas
@@ -92,7 +99,7 @@ function draw() {
 
     console.log('Station 1 heading:'+calcAngleDegrees(staone[0], staone[1]));
 
-    let degrees = calcAngleDegrees(staone[0], staone[1]);
+    degrees = calcAngleDegrees(staone[0], staone[1]);
     clearCanvas();
 
     // Draw the compass onto the canvas
@@ -120,7 +127,7 @@ function draw2() {
 
     console.log('Station 2 heading2:'+calcAngleDegrees(statwo[0], statwo[1]));
 
-    let degrees2 = calcAngleDegrees(statwo[0], statwo[1]);
+    degrees2 = calcAngleDegrees(statwo[0], statwo[1]);
     clearCanvas2();
 
     // Draw the compass onto the canvas
@@ -150,16 +157,10 @@ function imgLoaded2() {
     setInterval(draw2, 5000);
 }
 
-let img2 = null,
-    needle2 = null,
-    ctx2 = null,
-    degrees2 = 0;
-
 
 function clearCanvas2() {
     // clear canvas
     ctx2.clearRect(0, 0, 300, 300);
-    // ctx2.clearRect(0, 0, 300, 300);
 }
 
 
