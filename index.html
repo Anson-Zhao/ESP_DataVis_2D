@@ -75,7 +75,16 @@
             left:490px;
             top:1200px;
         }
-
+        #y-label3{
+            position: absolute;
+            left:390px;
+            top:2120px;
+        }
+        #x-label3{
+            position: absolute;
+            left:450px;
+            top:2075px;
+        }
 
         /*#depth2{*/
         /*    position :absolute;*/
@@ -225,7 +234,7 @@
         <canvas id="x-label2" width="270" height="20"></canvas>
         <canvas id="y-label2" width="20" height="270"></canvas>
     </div>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br>
 <!--    <div class="gauges">-->
 <!--        <div id="gx2"></div>-->
 <!--        <div id="gy2"></div>-->
@@ -242,11 +251,11 @@
         <!--            <h3>ESP 01</h3>-->
         <canvas  id="compass3" width="400" height="300"></canvas>
         <canvas  id="needle3" width="400" height="300"></canvas>
-        <canvas  id="depth3" width="270" height="300"></canvas>
+        <canvas  id="depth3" width="360" height="300"></canvas>
         <canvas id="x-label3" width="270" height="20"></canvas>
         <canvas id="y-label3" width="20" height="270"></canvas>
     </div>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br>
     <!--    <div class="gauges">-->
     <!--        <div id="gx"></div>-->
     <!--        <div id="gy"></div>-->
@@ -495,7 +504,6 @@
         setInterval(coordinate, 5000);
         setInterval(coordinate2, 5000);
         setInterval(coordinate3, 5000);
-
         // $('#gaugeX').highcharts(options, buildGraph);
         // $('#gaugeY').highcharts(options, buildGraph);
         // $('#gaugeZ').highcharts(options, buildGraph);
@@ -570,8 +578,6 @@
     //     levelColorsGradient: false
     //
     // });
-
-
     // gz2.refresh(0);
 
     //
@@ -975,29 +981,18 @@
     function imgLoaded() {
         // Image loaded event complete.  Start the timer
         console.log('loaded');
-        setInterval(draw, 30000);
+        setInterval(draw, 5000);
     }
 
     function imgLoaded2() {
         // Image loaded event complete.  Start the timer
-        setInterval(draw2, 3000);
+        setInterval(draw2, 5000);
     }
 
     function imgLoaded3() {
         // Image loaded event complete.  Start the timer
-        setInterval(draw3, 3000);
+        setInterval(draw3, 5000);
     }
-
-    // draw the compass
-    // function compass(){
-    //     var canvas = document.getElementById('compass1');
-    //     ctx = canvas.getContext('2d');
-    //     ctx.drawImage(img, 0, 0);
-    //     ctx.save();
-    //     setInterval(draw, 30000);
-    //
-    // }
-    // compass();
 
     function draw() {
 
@@ -1086,19 +1081,6 @@
         ctx3.restore();
     }
 
-
-    // function drawNeedle2() {
-    //     let degrees2 = calcAngleDegrees(statwo[0], statwo[1]);
-    //     // clearCanvas2();
-    //
-    //     ctx2.translate(153, 140);
-    //
-    //     // Rotate around this point
-    //     ctx2.rotate(degrees2 * (Math.PI / 180));
-    //
-    //     // Draw the image back and up
-    //     ctx2.drawImage(needle2, -172, -172);
-    // }
     function clearCanvas3() {
         // clear canvas
         ctx3.clearRect(0, 0, 300, 300);
@@ -1348,6 +1330,7 @@
         ctxLabelY.rotate(Math.PI/2);
         ctxLabelY.fillText("depth",labelY.width/2, labelY.height/2);
         ctxLabelY.restore();
+        zArrow1();
     }
 
     function coordinate2(){
@@ -1371,6 +1354,7 @@
 
         // no of horizontal grid lines
         var num_lines_y = Math.floor(canvas_width/grid_size);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         // Draw grid lines along X-axis
         for(var i=0; i<=num_lines_x; i++) {
@@ -1489,6 +1473,7 @@
 
         var labelX = document.getElementById("x-label2");
         var ctxLabelX = labelX.getContext("2d");
+        ctxLabelX.clearRect(0, 0, labelX.width, labelX.height);
         ctxLabelX.font = "10px Arial";
         ctxLabelX.fillText("direction",labelX.width/2 -20, labelX.height/2);
 
@@ -1501,9 +1486,8 @@
         ctxLabelY.fillText("depth",labelY.width/2, labelY.height/2);
         ctxLabelY.restore();
         // ctx.arrow()
-        // zArrow2();
+        zArrow2();
     }
-    // coordinate2();
 
     function coordinate3(){
         var grid_size = 30;
@@ -1526,6 +1510,7 @@
 
         // no of horizontal grid lines
         var num_lines_y = Math.floor(canvas_width/grid_size);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         // Draw grid lines along X-axis
         for(var i=0; i<=num_lines_x; i++) {
@@ -1644,6 +1629,7 @@
 
         var labelX = document.getElementById("x-label3");
         var ctxLabelX = labelX.getContext("2d");
+        ctxLabelX.clearRect(0, 0, labelX.width, labelX.height);
         ctxLabelX.font = "10px Arial";
         ctxLabelX.fillText("direction",labelX.width/2 -20, labelX.height/2);
 
@@ -1656,7 +1642,7 @@
         ctxLabelY.fillText("depth",labelY.width/2, labelY.height/2);
         ctxLabelY.restore();
         // ctx.arrow()
-        // zArrow2();
+        zArrow3();
     }
 
     function zArrow2(){
@@ -1671,7 +1657,7 @@
         var context = canvas.getContext("2d");
 
         context.beginPath();
-        context.arrow(0, 0, 200, 300, [0, 1, -10, 1, -10, 5]);
+        context.arrow(0, 0, x, y, [0, 1, -10, 1, -10, 5]);
         // context.arrow(0, 0, x, y, [0, 1, -10, 1, -10, 5]);
         context.fill();
     }
@@ -1685,6 +1671,22 @@
         var y = scaleY*30;
 
         var canvas = document.getElementById("depth1");
+        var context = canvas.getContext("2d");
+
+        context.beginPath();
+        context.arrow(0, 0, x, y, [0, 1, -10, 1, -10, 5]);
+        context.fill();
+    }
+
+    function zArrow3(){
+        var compX = calcLength(stathe[0],stathe[1]);
+
+        var scaleX = compX/5000;
+        var x= scaleX*30;
+        var scaleY = Math.abs(stathe[2])/5000;
+        var y = scaleY*30;
+
+        var canvas = document.getElementById("depth3");
         var context = canvas.getContext("2d");
 
         context.beginPath();
