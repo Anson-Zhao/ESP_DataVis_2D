@@ -131,12 +131,14 @@
                 <option></option>
                 <option value="station_one">ESP 01, Middletown, NY</option>
                 <option value="station_two">ESP 02, Soquel, CA</option>
-                <option value="station_three">ESP 3, CA N/A</option>
-                <option value="station_four">ESP 4, CA N/A</option>
+                <option value="station_the">ESP 03, CA N/A</option>
+                <option value="station_for">ESP 44, CA N/A</option>
             </select></div><br><br>
             <input type="button" onclick="enabled = false; query();" class="button button2" value="Get Data">
             <br><br>
             <button href='#' onclick='download_csv()'  >Download CSV</button>
+            <br><br>
+            <button id="RawData" >Download Raw CSV</button>
             <br><br>
             <br><br><br>
             <div id="graphx"></div>
@@ -189,16 +191,16 @@
                     // console.log(el.time);
                     // console.log(el.time._nanoISO);
                     // console.log(el._nanoISO);
-                    x_arr[i] = [new Date(el.time), el.mean];
-                    y_arr[i] = [new Date(el.time), el.mean_1];
-                    z_arr[i] = [new Date(el.time), el.mean_2];
-                    var a = '' + el.mean;
-                    var b = '' + el.mean_1;
-                    var c = '' + el.mean_2;
+                    x_arr[i] = [new Date(el.time), el.X];
+                    y_arr[i] = [new Date(el.time), el.Y];
+                    z_arr[i] = [new Date(el.time), el.Z];
+                    var a = '' + el.X;
+                    var b = '' + el.Y;
+                    var c = '' + el.Z;
                     var t = el.time;
                     download += t+','+a+','+b+','+c+'\n';
                 });
-                console.log(download);
+                // console.log(download);
 
                 // console.log(res);
                 Z = new Dygraph(
@@ -242,12 +244,12 @@
             }
         });
     };
-    // data = [
-    //     ['Foo', 'programmer'],
-    //     ['Bar', 'bus driver'],
-    //     ['Moo', 'Reindeer Hunter']
-    // ];
-    function download_csv() {
+    data = [
+        ['Foo', 'programmer'],
+        ['Bar', 'bus driver'],
+        ['Moo', 'Reindeer Hunter']
+    ];
+    function download_csv(exportFilename) {
         // var csv = 'Time,X,Y,Z\n';
         // console.log(download);
         // console.log(timeFrom);
@@ -256,8 +258,12 @@
         //     csv += row.join(',');
         //     csv += "\n";
         // });
+        if(exportFilename==null){
+            exportFilename = timeFrom +'-'+ timeTo + 'AvgESPData';
+        }
+        console.log(download);
 
-        var exportFilename = timeFrom +'-'+ timeTo + 'ESPData';
+
         var csvData = new Blob([download], {type: 'text/csv;charset=utf-8;'});
         //IE11 & Edge
         if (navigator.msSaveBlob) {
@@ -281,7 +287,7 @@
     //     link.setAttribute('href', data);
     //     link.setAttribute('download', filename);
     //     link.click();
-        console.log(csv);
+    //     console.log(csv);
         // var hiddenElement = document.createElement('a');
         // hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
         // hiddenElement.target = '_blank';
@@ -289,6 +295,8 @@
         // hiddenElement.click();
         // downloads (download.join("\n"), "hghghgyui.csv", 'text/csv').
     }
+
+
 
     // var csv = 'Time,X,Y,Z\n';
     // // var rowd = [];
@@ -341,6 +349,74 @@
     //     csv += row.join(',');
     //     csv += "\n";
     // });
+
+    $('#RawData').click(function(e){
+        e.preventDefault();
+        query_download()
+        // Code goes here
+    });
+    function query_download() {
+        timeFrom = document.getElementById("begin").value;
+        timeTo = document.getElementById("end").value;
+        stationIs = document.getElementById("station").value;
+        console.log("running");
+
+        // querystr = "timeFrom:" + timeFrom + "&timeTo:" + timeTo + "&stationIs:" + stationIs;
+        // console.log(querystr);
+
+        if (timeFrom && timeTo) {
+            $.ajax({
+                // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newWind',
+                url: 'http://localhost:3005/newSnow',
+                type: 'GET',
+                dataType: 'json',
+                async: true,
+                data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationIs},
+                timeout: 0,
+                success: function (res) {
+                    console.log("success");
+                    console.log(res);
+
+                    res.forEach(function (el, i) {
+                        // var time = new Date(el.time);
+                        // console.log(el.time);
+                        // console.log(el.time._nanoISO);
+                        // console.log(el._nanoISO);
+                        var a = '' + el.X;
+                        var b = '' + el.Y;
+                        var c = '' + el.Z;
+                        var t = el.time;
+                        download += t + ',' + a + ',' + b + ',' + c + '\n';
+                    });
+                    console.log(download);
+                    var exportFilename = timeFrom +'-'+ timeTo + 'RawESPData';
+                    download_csv(exportFilename);
+        //
+        //
+        //                 exportFilename = timeFrom +'-'+ timeTo + 'RawESPData';
+        //
+        //             var csvD = new Blob([download], {type: 'text/csv;charset=utf-8;'});
+        //             //IE11 & Edge
+        //             if (navigator.msSaveBlob) {
+        //                 navigator.msSaveBlob(csvD, exportFilename);
+        //             } else {
+        //                 //In FF link must be added to DOM to be clicked
+        //                 var links = document.createElement('a');
+        //                 links.href = window.URL.createObjectURL(csvD);
+        //                 links.setAttribute('download', exportFilename);
+        //                 document.body.appendChild(links);
+        //                 links.click();
+        //                 document.body.removeChild(links);
+        //             }
+        //
+        //
+                }
+
+            })
+        } else {
+            confirm("Please select BOTH dates.");
+        }
+    }
 
 </script>
 </body>
