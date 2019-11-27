@@ -138,7 +138,7 @@
             <br><br>
             <button href='#' onclick='download_csv()'  >Download CSV</button>
             <br><br>
-            <button href='#' onclick='enabled = false; query_download()'  >Download Raw CSV</button>
+            <button id="RawData" >Download Raw CSV</button>
             <br><br>
             <br><br><br>
             <div id="graphx"></div>
@@ -244,11 +244,11 @@
             }
         });
     };
-    // data = [
-    //     ['Foo', 'programmer'],
-    //     ['Bar', 'bus driver'],
-    //     ['Moo', 'Reindeer Hunter']
-    // ];
+    data = [
+        ['Foo', 'programmer'],
+        ['Bar', 'bus driver'],
+        ['Moo', 'Reindeer Hunter']
+    ];
     function download_csv(exportFilename) {
         // var csv = 'Time,X,Y,Z\n';
         // console.log(download);
@@ -261,6 +261,7 @@
         if(exportFilename==null){
             exportFilename = timeFrom +'-'+ timeTo + 'AvgESPData';
         }
+        console.log(download);
 
 
         var csvData = new Blob([download], {type: 'text/csv;charset=utf-8;'});
@@ -348,6 +349,12 @@
     //     csv += row.join(',');
     //     csv += "\n";
     // });
+
+    $('#RawData').click(function(e){
+        e.preventDefault();
+        query_download()
+        // Code goes here
+    });
     function query_download() {
         timeFrom = document.getElementById("begin").value;
         timeTo = document.getElementById("end").value;
@@ -365,25 +372,25 @@
                 dataType: 'json',
                 async: true,
                 data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationIs},
+                timeout: 300000,
                 success: function (res) {
                     console.log("success");
                     console.log(res);
-        //             var download = "Time,X,Y,Z\n";
-        //
-        //             res.forEach(function (el, i) {
-        //                 // var time = new Date(el.time);
-        //                 // console.log(el.time);
-        //                 // console.log(el.time._nanoISO);
-        //                 // console.log(el._nanoISO);
-        //                 var a = '' + el.X;
-        //                 var b = '' + el.Y;
-        //                 var c = '' + el.Z;
-        //                 var t = el.time;
-        //                 download += t + ',' + a + ',' + b + ',' + c + '\n';
-        //             });
-        //             console.log(download);
-        //             // var exportFilename = timeFrom +'-'+ timeTo + 'RawESPData';
-        //             // download_csv(exportFilename);
+
+                    res.forEach(function (el, i) {
+                        // var time = new Date(el.time);
+                        // console.log(el.time);
+                        // console.log(el.time._nanoISO);
+                        // console.log(el._nanoISO);
+                        var a = '' + el.X;
+                        var b = '' + el.Y;
+                        var c = '' + el.Z;
+                        var t = el.time;
+                        download += t + ',' + a + ',' + b + ',' + c + '\n';
+                    });
+                    console.log(download);
+                    var exportFilename = timeFrom +'-'+ timeTo + 'RawESPData';
+                    download_csv(exportFilename);
         //
         //
         //                 exportFilename = timeFrom +'-'+ timeTo + 'RawESPData';
@@ -404,6 +411,7 @@
         //
         //
                 }
+
             })
         } else {
             confirm("Please select BOTH dates.");
