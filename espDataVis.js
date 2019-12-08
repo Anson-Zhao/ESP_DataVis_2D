@@ -84,7 +84,7 @@ app.get('/query2', function (req, res) {
 app.get('/query3', function (req, res) {
     influx.query(queryA3).then
     (result => {
-        console.log(result);
+        // console.log(result);
         res.send(result);
     }).catch(err => {
         console.log(err)
@@ -96,7 +96,7 @@ app.get('/newWind', function (req, res) {
     influx.query(queryHa).then
     (result => {
         res.send(result);
-        console.log(result)
+        // console.log(result)
     }).catch(err => {
         res.status(500).send(err.stack)
     });
@@ -107,7 +107,7 @@ app.get('/newSnow', function (req, res) {
     influx.query(queryH).then
     (result => {
         res.send(result);
-        console.log(result)
+        // console.log(result)
     }).catch(err => {
         res.status(500).send(err.stack)
     });

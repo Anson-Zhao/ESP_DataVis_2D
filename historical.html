@@ -131,133 +131,117 @@
                 <option></option>
                 <option value="station_one">ESP 01, Middletown, NY</option>
                 <option value="station_two">ESP 02, Soquel, CA</option>
-                <option value="station_the">ESP 03, CA N/A</option>
-                <option value="station_for">ESP 44, CA N/A</option>
+                <option value="station_the">ESP 03, San Jose North, CA</option>
+                <option value="station_for">ESP 04, San Jose West, CA</option>
             </select></div><br><br>
-            <input type="button" onclick="enabled = false; query();" class="button button2" value="Get Data">
+            <input type="button" onclick="enabled = false; queryAndDisplay();" class="button button2" value="Get Data">
             <br><br>
-            <button href='#' onclick='download_csv()'  >Download CSV</button>
+            <button id = "avgData" >Download Avg Data</button>
             <br><br>
-            <button id="RawData" >Download Raw CSV</button>
+            <button id="RawData" >Download Raw Data</button>
             <br><br>
             <br><br><br>
             <div id="graphx"></div>
             <div id="graphy"></div>
             <div id="graphz"></div>
         </form>
-<!--    </div>-->
 
-<!--    <div class="full"></div>-->
-
-
-
-<!--    <div id="windspeedFull" class="floatingBox"></div>-->
-<!--</div>-->
 <script>
     var timeFrom,timeTo,stationIs,querystr;
     var download = "Time,X,Y,Z\n";
-    function query() {
-        timeFrom = document.getElementById("begin").value;
-        timeTo = document.getElementById("end").value;
-        stationIs = document.getElementById("station").value;
 
-        // querystr = "timeFrom:" + timeFrom + "&timeTo:" + timeTo + "&stationIs:" + stationIs;
-        // console.log(querystr);
+    $('#avgData').click(function(e){
+        e.preventDefault();
+        download_csv()
+    });
 
-        if (timeFrom && timeTo) {
-            queryAndDisplay();
-        } else {
-            confirm("Please select BOTH dates.");
-        }
-    }
+    $('#RawData').click(function(e){
+        e.preventDefault();
+        rawDownload()
+    });
+
     var x_arr = [];
     var y_arr = [];
     var z_arr = [];
 
     var queryAndDisplay = function () {
-        $.ajax({
-            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newWind',
-            url: 'http://localhost:3005/newWind',
-            type: 'GET',
-            dataType: 'json',
-            async: true,
-            data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationIs},
-            success: function (res) {
+        timeFrom = document.getElementById("begin").value;
+        timeTo = document.getElementById("end").value;
+        stationIs = document.getElementById("station").value;
 
+        if (timeFrom && timeTo) {
+            $.ajax({
+                // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newWind',
+                url: 'http://localhost:3005/newWind',
+                type: 'GET',
+                dataType: 'json',
+                async: true,
+                data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationIs},
+                success: function (res) {
+                    res.forEach(function(el,i) {
+                        // var time = new Date(el.time);
+                        // console.log(el.time);
+                        // console.log(el.time._nanoISO);
+                        // console.log(el._nanoISO);
+                        x_arr[i] = [new Date(el.time), el.X];
+                        y_arr[i] = [new Date(el.time), el.Y];
+                        z_arr[i] = [new Date(el.time), el.Z];
+                        var a = '' + el.X;
+                        var b = '' + el.Y;
+                        var c = '' + el.Z;
+                        var t = el.time;
+                        download += t+','+a+','+b+','+c+'\n';
+                    });
+                    // console.log(download);
 
+                    // console.log(res);
+                    Z = new Dygraph(
 
-                res.forEach(function(el,i) {
-                    // var time = new Date(el.time);
-                    // console.log(el.time);
-                    // console.log(el.time._nanoISO);
-                    // console.log(el._nanoISO);
-                    x_arr[i] = [new Date(el.time), el.X];
-                    y_arr[i] = [new Date(el.time), el.Y];
-                    z_arr[i] = [new Date(el.time), el.Z];
-                    var a = '' + el.X;
-                    var b = '' + el.Y;
-                    var c = '' + el.Z;
-                    var t = el.time;
-                    download += t+','+a+','+b+','+c+'\n';
-                });
-                // console.log(download);
+                        // containing div
+                        document.getElementById("graphz"),
 
-                // console.log(res);
-                Z = new Dygraph(
+                        // CSV or path to a CSV file.
+                        z_arr,
+                        {
+                            labels: [ "time", "Z" ],
+                            title: "Z (+Z is positive altitude, -Z is below ground)"
+                        }
 
-                    // containing div
-                    document.getElementById("graphz"),
+                    );
+                    Y = new Dygraph(
 
-                    // CSV or path to a CSV file.
-                    z_arr,
-                    {
-                        labels: [ "time", "Z" ],
-                        title: "Z (+Z is positive altitude, -Z is below ground)"
-                    }
+                        // containing div
+                        document.getElementById("graphy"),
 
-                );
-                Y = new Dygraph(
+                        // CSV or path to a CSV file.
+                        y_arr,
+                        {
+                            labels: [ "time", "Y" ],
+                            title: "Y (+Y is east, -Y is west)"
+                        }
 
-                    // containing div
-                    document.getElementById("graphy"),
+                    );
+                    X = new Dygraph(
 
-                    // CSV or path to a CSV file.
-                    y_arr,
-                    {
-                        labels: [ "time", "Y" ],
-                        title: "Y (+Y is east, -Y is west)"
-                    }
+                        // containing div
+                        document.getElementById("graphx"),
 
-                );
-                X = new Dygraph(
-
-                    // containing div
-                    document.getElementById("graphx"),
-
-                    // CSV or path to a CSV file.
-                    x_arr,
-                    {
-                        labels: [ "time", "X" ],
-                        title: "X (+X is north, -X is south)"
-                    }
-                );
-            }
-        });
+                        // CSV or path to a CSV file.
+                        x_arr,
+                        {
+                            labels: [ "time", "X" ],
+                            title: "X (+X is north, -X is south)"
+                        }
+                    );
+                }
+            });
+        } else {
+            confirm("Please select BOTH dates.");
+        }
     };
-    data = [
-        ['Foo', 'programmer'],
-        ['Bar', 'bus driver'],
-        ['Moo', 'Reindeer Hunter']
-    ];
+
     function download_csv(exportFilename) {
-        // var csv = 'Time,X,Y,Z\n';
-        // console.log(download);
-        // console.log(timeFrom);
-        // console.log(timeTo);
-        // download.forEach(function(row) {
-        //     csv += row.join(',');
-        //     csv += "\n";
-        // });
+
         if(exportFilename==null){
             exportFilename = timeFrom +'-'+ timeTo + 'AvgESPData';
         }
@@ -277,92 +261,13 @@
             link.click();
             document.body.removeChild(link);
         }
-
-    //
-    //     filename = args.filename || 'export.csv';
-    //     if (csv == null) return;
-    //     data = encodeURI(csv);
-    //     csv = 'data:text/csv;charset=utf-8,' + csv;
-    //     link = document.createElement('a');
-    //     link.setAttribute('href', data);
-    //     link.setAttribute('download', filename);
-    //     link.click();
-    //     console.log(csv);
-        // var hiddenElement = document.createElement('a');
-        // hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
-        // hiddenElement.target = '_blank';
-        // hiddenElement.download = 'ESPdata.csv';
-        // hiddenElement.click();
-        // downloads (download.join("\n"), "hghghgyui.csv", 'text/csv').
     }
 
-
-
-    // var csv = 'Time,X,Y,Z\n';
-    // // var rowd = [];
-    // download.forEach(function(row) {
-    //     csv += row.join(',');
-    //     csv += "\n";
-    // });
-
-
-    // function downloads (content, fileName, mimeType)
-    // {
-    //     var a = document.createElement('a');
-    //     mimeType = mimeType || 'application/octet-stream';
-    //     if (navigator.msSaveBlob) { // IE10
-    //         return navigator.msSaveBlob(new Blob([content], { type: mimeType }), fileName);
-    //     } else if ('download' in a) { //html5 A[download]
-    //         a.href = 'data:' + mimeType + ',' + encodeURIComponent(content);
-    //         a.setAttribute('download', fileName);
-    //         document.body.appendChild(a);
-    //         a.click();
-    //         document.body.removeChild(a);
-    //         return true;
-    //     } else { //do iframe dataURL download (old ch+FF):
-    //         var f = document.createElement('iframe');
-    //         document.body.appendChild(f);
-    //         f.src = 'data:' + mimeType + ',' + encodeURIComponent(content);
-    //
-    //         setTimeout(function() {
-    //             document.body.removeChild(f);
-    //         }, 300);
-    //         return true;
-    //     }
-    // }
-    //Use like this
-    // var array = [];
-    // var len = array.length;
-    // var csvContent = "";
-    // for(var i = 0; i < len; i++) {
-    //     csvContent += array[i] + '\n';
-    // }
-    // var csvName = 'records.csv';
-    // function download_csv(){
-    //     downloads(csv, 'hahaha.csv', 'text/csv');
-    // }
-    // var csv = 'Time,X,Y,Z\n';
-    // console.log(download);
-    // console.log(timeFrom);
-    // console.log(timeTo);
-    // download.forEach(function(row) {
-    //     csv += row.join(',');
-    //     csv += "\n";
-    // });
-
-    $('#RawData').click(function(e){
-        e.preventDefault();
-        query_download()
-        // Code goes here
-    });
-    function query_download() {
+    function rawDownload() {
         timeFrom = document.getElementById("begin").value;
         timeTo = document.getElementById("end").value;
         stationIs = document.getElementById("station").value;
         console.log("running");
-
-        // querystr = "timeFrom:" + timeFrom + "&timeTo:" + timeTo + "&stationIs:" + stationIs;
-        // console.log(querystr);
 
         if (timeFrom && timeTo) {
             $.ajax({
@@ -391,25 +296,6 @@
                     console.log(download);
                     var exportFilename = timeFrom +'-'+ timeTo + 'RawESPData';
                     download_csv(exportFilename);
-        //
-        //
-        //                 exportFilename = timeFrom +'-'+ timeTo + 'RawESPData';
-        //
-        //             var csvD = new Blob([download], {type: 'text/csv;charset=utf-8;'});
-        //             //IE11 & Edge
-        //             if (navigator.msSaveBlob) {
-        //                 navigator.msSaveBlob(csvD, exportFilename);
-        //             } else {
-        //                 //In FF link must be added to DOM to be clicked
-        //                 var links = document.createElement('a');
-        //                 links.href = window.URL.createObjectURL(csvD);
-        //                 links.setAttribute('download', exportFilename);
-        //                 document.body.appendChild(links);
-        //                 links.click();
-        //                 document.body.removeChild(links);
-        //             }
-        //
-        //
                 }
 
             })
