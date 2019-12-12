@@ -30,82 +30,18 @@
         }
 
         .charts, .gauges {
-            /*position:relative;*/
             left: 90px;
             width: max-content;
             display: inline-table;
         }
-        #compass1,#needle1{
-            left: 30px;
-            top:350px;
-            float:left;
-        }
 
-        #depth1{
-            left: 540px;
-            top:350px;
-        }
-        #x-label1{
-            position: absolute;
-            left:540px;
-            top:330px;
-        }
-        #y-label1{
-            position: absolute;
-            left:520px;
-            top:350px;
-        }
-
-        #compass2,#needle2{
-            left: 80px;
-            top:1200px;
-            display: inline-block;
-        }
-        #depth2{
-            left:510px;
-            top:1200px;
-        }
-        #x-label2{
-            position: absolute;
-            left:510px;
-            top:1180px;
-        }
-        #y-label2{
-            position: absolute;
-            left:490px;
-            top:1200px;
-        }
-        #y-label3{
-            position: absolute;
-            left:390px;
-            top:2120px;
-        }
-        #x-label3{
-            position: absolute;
-            left:450px;
-            top:2075px;
-        }
-
-        /*#depth2{*/
-        /*    position :absolute;*/
-        /*    left: 550px;*/
-        /*    top:800px;*/
+        /*.compasses{*/
+        /*    !*float: left;*!*/
+        /*    display: inline-block;*/
+        /*    !*left: 90px;*!*/
         /*}*/
-        /*.n0, .n1, .n2 {*/
-        /*    !*width: 300px;*!*/
-        /*    !*height: 300px;*!*/
-        /*    display: inline-table;*/
-        /*}*/
-        #gaugeX, #gaugeX2, #gaugeX3, #gaugeY, #gaugeY2, #gaugeY3, #gaugeZ, #gaugeZ2, #gaugeZ3{
-            /*float: left;*/
-            width: 250px;
-            height: 250px;
-            display: inline-table;
-        }
 
-
-
-/*css of new gauge*/
+/*!*css of new gauge*!*/
         .container {
             /*width: 100%;*/
             margin: 0 auto;
@@ -113,20 +49,16 @@
             left: 90px;
             width: max-content;
             display: inline-table;
+            position:relative;
         }
-        .contain{
-            float: left;
-        }
-
-        .gauge {
-            width: 100%;
-            max-width: 350px;
-            max-height: 350px;
-            min-width: 250px;
-            min-height: 250px;
-            padding: 0;
-            /*border: 1px solid #666;*/
-            /*background: #F8F8F8;*/
+        /*.contain{*/
+        /*    float: left;*/
+        /*}*/
+        #gaugeX, #gaugeX2, #gaugeX3, #gaugeY, #gaugeY2, #gaugeY3, #gaugeZ, #gaugeZ2, #gaugeZ3{
+            /*float: left;*/
+            width: 250px;
+            height: 250px;
+            display: inline-table;
         }
 
         .gauge-data {
@@ -157,6 +89,20 @@
             margin-top: 5px;
             font-size: .9em;
         }
+
+        /*.vertical{*/
+        /*    position:absolute;*/
+        /*    left:335px;*/
+        /*    top:250px;*/
+        /*}*/
+        .vertical{
+            display: flex;
+            flex-direction: column;
+        }
+
+        /*#container1{*/
+        /*    display: block;*/
+        /*}*/
     </style>
     <link rel="stylesheet" href="jsLibrary/dygraph/dygraph.css" />
 
@@ -192,11 +138,11 @@
         <button onclick="myFunction(this)" value="station_two" id="station_two">ESP 02</button>
     </div>
     <div id="but3">
-        <p>San Jose North, CA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>ESP3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
         <button onclick="myFunction(this)" value="station_the" id="station_the">ESP 03</button>
     </div>
     <div id="but4">
-        <p>San Jose West, CA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>Not Avaliable &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
         <button onclick="myFunction(this)" value="station_for" id="station_for">ESP 04</button>
     </div>
 </div>
@@ -204,39 +150,41 @@
 <!--Gauges-->
 <div id="gauge">
     <h2>The gauges represent live X (N-S), Y (E-W), Z (+ - altitude) from the ESP Stations with a 2-minute delay</h2>
-    <h2 class="station_one">ESP 01, Middletown, NY</h2><br><br>
-    <div class="station_one compasses" >
+    <h2 class="station_one">ESP 01, Middletown, NY</h2>
+<!--    <div class="station_one compasses" >-->
         <!--            <h3>ESP 01</h3>-->
-        <canvas  id="compass1" width="400" height="300"></canvas>
-        <canvas  id="needle1" width="400" height="300"></canvas>
-        <canvas  id="depth1" width="270" height="300"></canvas>
-        <canvas id="x-label1" width="270" height="20"></canvas>
+    <div class="station_one compasses container" >
+        <canvas id="compass1" width="300" height="300"></canvas>
+<!--        <canvas class="vertical" id="x-label1" width="270" height="20"></canvas>-->
         <canvas id="y-label1" width="20" height="270"></canvas>
+<!--        <canvas id="x-label1" width="270" height="20"></canvas>-->
     </div>
-    <br><br><br><br><br><br><br><br><br><br><br>
-<!--    <div class="gauges">-->
-<!--        <div id="gx"></div>-->
-<!--        <div id="gy"></div>-->
-<!--        <div id="gz"></div>-->
+    <div class="container vertical">
+        <canvas id="x-label1" width="270" height="20"></canvas>
+        <canvas id="depth1" width="270" height="300"></canvas>
+    </div>
+<!--        <canvas  class="station_one compasses" id="compass1" width="400" height="300"></canvas>-->
+<!--        <canvas class="station_one compasses" id="y-label1" width="20" height="270"></canvas>-->
+<!--        <canvas class="station_one compasses" id="depth1" width="270" height="300"></canvas>-->
+<!--        <canvas id="x-label1" width="270" height="20"></canvas>-->
 <!--    </div>-->
-    <div class="station_one container">
-    <div id="gaugeX" class="contain n0"></div>
-    <div id="gaugeY" class="contain n1"></div>
-    <div id="gaugeZ" class="contain n2"></div>
+
+    <div class="station_one container" id = "container1">
+      <div id="gaugeX" class="contain n0"></div>
+      <div id="gaugeY" class="contain n1"></div>
+      <div id="gaugeZ" class="contain n2"></div>
     </div>
     <br>
+
     <h2 class="station_two">ESP 02, Soquel, CA</h2><br><br>
 
+<!--    <canvas id="x-label2" width="270" height="20"></canvas>-->
     <div class="station_two compasses" >
         <canvas id="compass2" width="300" height="300"></canvas>
-        <canvas id="needle2" width="300" height="300"></canvas>
-    </div>
-    <div class="station_two depth" >
+        <canvas id="y-label2" width="20" height="270"></canvas>
         <canvas id="depth2" width="270" height="300"></canvas>
         <canvas id="x-label2" width="270" height="20"></canvas>
-        <canvas id="y-label2" width="20" height="270"></canvas>
-    </div>
-    <br><br><br><br><br><br><br><br><br>
+<!--    </div><br><br><br><br><br><br><br><br><br>-->
 <!--    <div class="gauges">-->
 <!--        <div id="gx2"></div>-->
 <!--        <div id="gy2"></div>-->
@@ -248,16 +196,15 @@
         <div id="gaugeZ2" class="contain n2"></div>
     </div>
 
-    <h2 class="station_the">ESP 03, San Jose North, CA</h2><br><br>
+    <h2 class="station_the">ESP 03, Middletown, NY</h2><br><br>
     <div class="station_the compasses" >
-        <!--            <h3>ESP 01</h3>-->
         <canvas  id="compass3" width="400" height="300"></canvas>
-        <canvas  id="needle3" width="400" height="300"></canvas>
-        <canvas  id="depth3" width="360" height="300"></canvas>
-        <canvas id="x-label3" width="270" height="20"></canvas>
         <canvas id="y-label3" width="20" height="270"></canvas>
+        <canvas  id="depth3" width="360" height="305"></canvas>
+        <canvas id="x-label3" width="270" height="20"></canvas>
     </div>
-    <br><br><br><br><br><br><br><br><br><br>
+<!--    <br><br><br><br><br><br><br><br><br><br>-->
+
     <!--    <div class="gauges">-->
     <!--        <div id="gx"></div>-->
     <!--        <div id="gy"></div>-->
@@ -1114,8 +1061,8 @@
     function init() {
         // Grab the compass element
         var canvas3 = document.getElementById('compass3');
-        canvas3.style.position = "absolute";
-        document.getElementById('depth3').style.position = 'absolute';
+        // canvas3.style.position = "absolute";
+        // document.getElementById('depth3').style.position = 'absolute';
 
         // Canvas supported?
         if (canvas3.getContext('2d')) {
@@ -1135,8 +1082,8 @@
 
         // Grab the compass element
         var canvas2 = document.getElementById('compass2');
-        canvas2.style.position = "absolute";
-        document.getElementById('depth2').style.position = 'absolute';
+        // canvas2.style.position = "absolute";
+        // document.getElementById('depth2').style.position = 'absolute';
 
         // Canvas supported?
         if (canvas2.getContext('2d')) {
@@ -1156,8 +1103,8 @@
 
         // Grab the compass element
         var canvas = document.getElementById('compass1');
-        canvas.style.position = "absolute";
-        document.getElementById('depth1').style.position = 'absolute';
+        // canvas.style.position = "absolute";
+        // document.getElementById('depth1').style.position = 'absolute';
         // var canvas2 = document.getElementById('compass2');
 
         // Canvas supported?
@@ -1254,13 +1201,13 @@
             ctx.strokeStyle = "#000000";
 
             // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(grid_size*i+0.5, -3);
-            ctx.lineTo(grid_size*i+0.5, 3);
+            ctx.moveTo(grid_size*i+0.5, -4);
+            ctx.lineTo(grid_size*i+0.5, 4);
             ctx.stroke();
 
             // Text value at that point
             ctx.font = '9px Arial';
-            ctx.textAlign = 'start';
+            ctx.textAlign = 'hello';
             ctx.fillText(x_axis_starting_point.number*i + x_axis_starting_point.suffix, grid_size*i-2, 15);
         }
 
