@@ -136,6 +136,8 @@
             </select></div><br><br>
             <input type="button" onclick="enabled = false; query();" class="button button2" value="Get Data">
             <br><br>
+        </form>
+        <div>
             <button href='#' onclick='download_csv()'  >Download CSV</button>
             <br><br>
             <button id="RawData" >Download Raw CSV</button>
@@ -144,8 +146,8 @@
             <div id="graphx"></div>
             <div id="graphy"></div>
             <div id="graphz"></div>
-        </form>
-<!--    </div>-->
+        </div>
+    <!--    </div>-->
 
 <!--    <div class="full"></div>-->
 
@@ -183,6 +185,7 @@
             async: true,
             data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationIs},
             success: function (res) {
+                console.log("get responce");
 
 
 
@@ -212,7 +215,19 @@
                     z_arr,
                     {
                         labels: [ "time", "Z" ],
-                        title: "Z (+Z is positive altitude, -Z is below ground)"
+                        title: "Z (+Z is positive altitude, -Z is below ground)",
+                        rollPeriod: 1,
+                        showRoller: true,
+                        legend: 'always',
+                        showRangeSelector: true,
+                        rangeSelectorHeight: 30,
+                        // rollPeriod: 14,
+                        // showRoller: true,
+                        // customBars: true,
+                        // showRangeSelector: true
+                        // rangeSelectorHeight: 30,
+                        // rangeSelectorPlotStrokeColor: 'yellow',
+                        // rangeSelectorPlotFillColor: 'lightyellow'
                     }
 
                 );
@@ -225,7 +240,19 @@
                     y_arr,
                     {
                         labels: [ "time", "Y" ],
-                        title: "Y (+Y is east, -Y is west)"
+                        title: "Y (+Y is east, -Y is west)",
+                        rollPeriod: 1,
+                        showRoller: true,
+                        legend: 'always',
+                        showRangeSelector: true,
+                        rangeSelectorHeight: 30,
+                        // rollPeriod: 14,
+                        // showRoller: true,
+                        // customBars: true,
+                        // showRangeSelector: true
+                        // rangeSelectorHeight: 30,
+                        // rangeSelectorPlotStrokeColor: 'yellow',
+                        // rangeSelectorPlotFillColor: 'lightyellow'
                     }
 
                 );
@@ -237,8 +264,18 @@
                     // CSV or path to a CSV file.
                     x_arr,
                     {
+
+                        // customBars: true,
+                        title: "X (+X is north, -X is south)",
+                        // ylabel: 'Temperature (F)',
                         labels: [ "time", "X" ],
-                        title: "X (+X is north, -X is south)"
+                        rollPeriod: 1,
+                        showRoller: true,
+                        legend: 'always',
+                        showRangeSelector: true,
+                        rangeSelectorHeight: 30,
+                        // rangeSelectorPlotStrokeColor: 'yellow',
+                        // rangeSelectorPlotFillColor: 'lightyellow'
                     }
                 );
             }

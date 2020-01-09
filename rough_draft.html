@@ -206,15 +206,28 @@
 
 <script>
     //I want array with string inside
-    var stations = ["station_two"];
+    var stations = [];
     //single station name that we are going to deal with
-    var station = stations[0];
     //5s average gauge data
     var sta;
 
-    // for(var i=0; i<stations.length; i++){
-    //     building(stations[i])
-    // }
+    loadDoc();
+    function loadDoc() {
+        $.ajax({
+            url: "http://localhost:3005/stations",
+            method: "get",
+            data: "sent",
+            success: function(res) {
+                console.log(res);
+                for(var i=0; i<res.length; i++){
+                    building(res[i].StationId);
+                    stations[i]=res[i].StationId;
+                }
+            }
+        });
+    }
+
+
 
     function building(station){
         console.log("begin build struture");
@@ -288,6 +301,8 @@
         var c = "."+station+".charts";
         $(c).append(cdivX).append(cdivY).append(cdivZ);
         console.log("structure done");
+
+        query();
     }
 
     function query() {
@@ -306,18 +321,18 @@
                     var y_arr = [];
                     var z_arr = [];
 
-                    res[i].forEach(function(el,i) {
+                    res[i][1].forEach(function(el,i) {
                             x_arr[i] = [new Date(el.time), el.X];
                             y_arr[i] = [new Date(el.time), el.Y];
                             z_arr[i] = [new Date(el.time), el.Z];
                         }
                     );
 
-                    sta = avg(res[i],5);
+                    sta = avg(res[i][1],5);
                     console.log(sta);
                     Z = new Dygraph(
                         // containing div
-                        document.getElementById(station+"_graphz"),
+                        document.getElementById(res[i][0]+"_graphZ"),
 
                         // CSV or path to a CSV file.
                         z_arr,
@@ -332,7 +347,7 @@
                     );
                     Y = new Dygraph(
                         // containing div
-                        document.getElementById(station+"_graphy"),
+                        document.getElementById(res[i][0]+"_graphY"),
 
                         // CSV or path to a CSV file.
                         y_arr,
@@ -348,7 +363,7 @@
                     X = new Dygraph(
 
                         // containing div
-                        document.getElementById(station+"_graphx"),
+                        document.getElementById(res[i][0]+"_graphX"),
 
                         // CSV or path to a CSV file.
                         x_arr,
@@ -361,9 +376,9 @@
                         }
 
                     );
-                    $('#'+station+'_gaugeX').highcharts(options, buildGraph);
-                    $('#'+station+'_gaugeY').highcharts(options, buildGraph);
-                    $('#'+station+'_gaugeZ').highcharts(options, buildGraph);
+                    $('#'+res[i][0]+'_gaugeX').highcharts(options, buildGraph);
+                    $('#'+res[i][0]+'_gaugeY').highcharts(options, buildGraph);
+                    $('#'+res[i][0]+'_gaugeZ').highcharts(options, buildGraph);
                 }
             }
         });
