@@ -185,14 +185,14 @@
 </script>
 
 <body>
-<button onclick="building('station_two')"></button>
+<!--<button onclick="building('station_two')"></button>-->
 <div id="control_button">
 <h1>control area</h1>
 </div>
 
 <div id="gauge">
     <h1>Gauge</h1>
-    <h2>The gauges represent live X (N-S), Y (E-W), Z (+ - altitude) from the ESP Stations with a 2-minute delay</h2>
+    <h2>The gauges represent live X (N-S), Y (E-W), Z (+ - altitude) from the ESP Stations with a 42-minute delay</h2>
 </div>
 
 <div id="live_chart">
@@ -218,11 +218,18 @@
             method: "get",
             data: "sent",
             success: function(res) {
+                console.log("This is the stations result:");
                 console.log(res);
                 for(var i=0; i<res.length; i++){
+                    console.log("This is the station being called:");
+                    console.log(res[i].StationId);
                     building(res[i].StationId);
                     stations[i]=res[i].StationId;
                 }
+                if(stations.length === res.length){
+                    query()
+                }
+
             }
         });
     }
@@ -301,8 +308,6 @@
         var c = "."+station+".charts";
         $(c).append(cdivX).append(cdivY).append(cdivZ);
         console.log("structure done");
-
-        query();
     }
 
     function query() {
