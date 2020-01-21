@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index1203.html" beforeDir="false" afterPath="$PROJECT_DIR$/index1203.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LayerManager.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WorldWindShim.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rough_draft.html" beforeDir="false" afterPath="$PROJECT_DIR$/rough_draft.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,6 +74,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/index1203.html" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -179,7 +184,9 @@
       <workItem from="1576165019502" duration="5297000" />
       <workItem from="1576254942837" duration="2112000" />
       <workItem from="1576439026404" duration="21667000" />
-      <workItem from="1578858126600" duration="2175000" />
+      <workItem from="1578858126600" duration="12739000" />
+      <workItem from="1579181107347" duration="1072000" />
+      <workItem from="1579191006102" duration="23676000" />
     </task>
     <task id="LOCAL-00001" summary="esp live chart">
       <created>1571239268892</created>
@@ -286,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578586971033</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="modulize">
+      <created>1578942183375</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1578942183375</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,66 +329,120 @@
     <option name="LAST_COMMIT_MESSAGE" value="modulize" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="946" y="368" key="CommitChangelistDialog2" timestamp="1578586970740">
+    <state x="908" y="495" key="#Deployment" timestamp="1579190745223">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1578586970740" />
-    <state width="1358" height="306" key="GridCell.Tab.0.bottom" timestamp="1578932738507">
+    <state x="908" y="495" key="#Deployment/0.23.2560.1417@0.23.2560.1417" timestamp="1579190745223" />
+    <state x="946" y="368" key="CommitChangelistDialog2" timestamp="1578942183207">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state width="1358" height="306" key="GridCell.Tab.0.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1578932738507" />
+    <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1578942183207" />
+    <state x="1169" y="359" width="1200" height="800" key="DiffContextDialog" timestamp="1579298604614">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="1169" y="359" width="1200" height="800" key="DiffContextDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1579298604614" />
+    <state width="1358" height="306" key="GridCell.Tab.0.bottom" timestamp="1579621582598">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1358" height="306" key="GridCell.Tab.0.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1579621582598" />
     <state width="1358" height="306" key="GridCell.Tab.0.bottom/69.23.2491.1417@69.23.2491.1417" timestamp="1576167739600" />
-    <state width="1358" height="306" key="GridCell.Tab.0.center" timestamp="1578932738506">
+    <state width="1358" height="306" key="GridCell.Tab.0.center" timestamp="1579621582596">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state width="1358" height="306" key="GridCell.Tab.0.center/0.23.2560.1417@0.23.2560.1417" timestamp="1578932738506" />
+    <state width="1358" height="306" key="GridCell.Tab.0.center/0.23.2560.1417@0.23.2560.1417" timestamp="1579621582596" />
     <state width="1358" height="306" key="GridCell.Tab.0.center/69.23.2491.1417@69.23.2491.1417" timestamp="1576167739598" />
-    <state width="1358" height="306" key="GridCell.Tab.0.left" timestamp="1578932738506">
+    <state width="1358" height="306" key="GridCell.Tab.0.left" timestamp="1579621582596">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state width="1358" height="306" key="GridCell.Tab.0.left/0.23.2560.1417@0.23.2560.1417" timestamp="1578932738506" />
+    <state width="1358" height="306" key="GridCell.Tab.0.left/0.23.2560.1417@0.23.2560.1417" timestamp="1579621582596" />
     <state width="1358" height="306" key="GridCell.Tab.0.left/69.23.2491.1417@69.23.2491.1417" timestamp="1576167739598" />
-    <state width="1358" height="306" key="GridCell.Tab.0.right" timestamp="1578932738507">
+    <state width="1358" height="306" key="GridCell.Tab.0.right" timestamp="1579621582597">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state width="1358" height="306" key="GridCell.Tab.0.right/0.23.2560.1417@0.23.2560.1417" timestamp="1578932738507" />
+    <state width="1358" height="306" key="GridCell.Tab.0.right/0.23.2560.1417@0.23.2560.1417" timestamp="1579621582597" />
     <state width="1358" height="306" key="GridCell.Tab.0.right/69.23.2491.1417@69.23.2491.1417" timestamp="1576167739599" />
-    <state x="989" y="491" key="Vcs.Push.Dialog.v2" timestamp="1578586977889">
+    <state width="1358" height="334" key="GridCell.Tab.1.bottom" timestamp="1579190818284">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="989" y="491" key="Vcs.Push.Dialog.v2/0.23.2560.1417@0.23.2560.1417" timestamp="1578586977889" />
-    <state x="714" y="331" width="1200" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1576168608313">
-      <screen x="69" y="23" width="2491" height="1417" />
+    <state width="1358" height="334" key="GridCell.Tab.1.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1579190818284" />
+    <state width="1358" height="334" key="GridCell.Tab.1.center" timestamp="1579190818284">
+      <screen x="0" y="23" width="2560" height="1417" />
     </state>
+    <state width="1358" height="334" key="GridCell.Tab.1.center/0.23.2560.1417@0.23.2560.1417" timestamp="1579190818284" />
+    <state width="1358" height="334" key="GridCell.Tab.1.left" timestamp="1579190818283">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1358" height="334" key="GridCell.Tab.1.left/0.23.2560.1417@0.23.2560.1417" timestamp="1579190818283" />
+    <state width="1358" height="334" key="GridCell.Tab.1.right" timestamp="1579190818284">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1358" height="334" key="GridCell.Tab.1.right/0.23.2560.1417@0.23.2560.1417" timestamp="1579190818284" />
+    <state width="1358" height="334" key="GridCell.Tab.2.bottom" timestamp="1579190818285">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1358" height="334" key="GridCell.Tab.2.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1579190818285" />
+    <state width="1358" height="334" key="GridCell.Tab.2.center" timestamp="1579190818284">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1358" height="334" key="GridCell.Tab.2.center/0.23.2560.1417@0.23.2560.1417" timestamp="1579190818284" />
+    <state width="1358" height="334" key="GridCell.Tab.2.left" timestamp="1579190818284">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1358" height="334" key="GridCell.Tab.2.left/0.23.2560.1417@0.23.2560.1417" timestamp="1579190818284" />
+    <state width="1358" height="334" key="GridCell.Tab.2.right" timestamp="1579190818285">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1358" height="334" key="GridCell.Tab.2.right/0.23.2560.1417@0.23.2560.1417" timestamp="1579190818285" />
+    <state x="989" y="491" key="Vcs.Push.Dialog.v2" timestamp="1578942187021">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="989" y="491" key="Vcs.Push.Dialog.v2/0.23.2560.1417@0.23.2560.1417" timestamp="1578942187021" />
+    <state x="688" y="291" width="1234" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1579103728334">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="688" y="291" width="1234" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1579103728334" />
     <state x="714" y="331" width="1200" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog/69.23.2491.1417@69.23.2491.1417" timestamp="1576168608313" />
+    <state x="868" y="409" width="1482" height="1049" key="dock-window-1" timestamp="1579213471200">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="868" y="409" width="1482" height="1049" key="dock-window-1/0.23.2560.1417@0.23.2560.1417" timestamp="1579213471200" />
+    <state x="1435" y="603" width="845" height="528" key="find.popup" timestamp="1579298741926">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="1435" y="603" width="845" height="528" key="find.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1579298741926" />
+    <state x="1037" y="538" key="new project wizard" timestamp="1579101598572">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="1037" y="538" key="new project wizard/0.23.2560.1417@0.23.2560.1417" timestamp="1579101598572" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/rough_draft.html</url>
-          <line>245</line>
+          <line>373</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/rough_draft.html</url>
-          <line>281</line>
+          <line>410</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/rough_draft.html</url>
-          <line>265</line>
+          <line>394</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/rough_draft.html</url>
-          <line>183</line>
+          <line>184</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/index.html</url>
-          <line>740</line>
-          <option name="timeStamp" value="8" />
+          <line>749</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

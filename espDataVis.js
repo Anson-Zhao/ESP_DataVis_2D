@@ -234,11 +234,10 @@ app.get('/querys', async function (req, res) {
 
 app.get ('/stations', function (req, res){
     // console.log(req);
-    con.query("SELECT StationId FROM ESP2.StationData",function (err, result) {
+    con.query("SELECT StationName,City,State,StationId FROM ESP2.StationData",function (err, result) {
         if (err) throw err;
         console.log(result);
         res.send(result);
-        res.end();
     });
 });
 

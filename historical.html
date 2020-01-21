@@ -129,11 +129,9 @@
                 <h4 class="floatingBox">Select Station:</h4>
             <select id="station">
                 <option></option>
-                <option value="station_one">ESP 01, Middletown, NY</option>
-                <option value="station_two">ESP 02, Soquel, CA</option>
-                <option value="station_the">ESP 03, CA N/A</option>
-                <option value="station_for">ESP 44, CA N/A</option>
-            </select></div><br><br>
+            </select>
+            </div>
+            <br><br>
             <input type="button" onclick="enabled = false; query();" class="button button2" value="Get Data">
             <br><br>
         </form>
@@ -156,6 +154,41 @@
 <!--    <div id="windspeedFull" class="floatingBox"></div>-->
 <!--</div>-->
 <script>
+    $(".datePicker").flatpickr(optional_config);
+
+    loadDoc();
+    function loadDoc() {
+        $.ajax({
+            url: "http://localhost:3005/stations",
+            method: "get",
+            data: "sent",
+            success: function(res) {
+                console.log("This is the stations result:");
+                console.log(res);
+                for(var i=0; i<res.length; i++) {
+                    console.log("This is the station being called:");
+                    console.log(res[i].StationId);
+                    building(res[i]);
+                }
+            }
+        });
+    }
+
+    function building(station){
+        console.log("build one option");
+        console.log(station.StationId);
+        //build option
+        var option = document.createElement("option");
+        option.textContent = station.StationName+", "+station.City+", "+station.State;
+        option.value = station.StationId;
+        $('#station').append(option);
+        console.log("option appended")
+    }
+
+
+
+
+
     var timeFrom,timeTo,stationIs,querystr;
     var download = "Time,X,Y,Z\n";
     function query() {

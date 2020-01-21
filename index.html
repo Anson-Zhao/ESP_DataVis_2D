@@ -170,139 +170,13 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://frogcat.github.io/canvas-arrow/canvas-arrow.js"></script>`
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/require.min.js"></script>
 
 </head>
 
-<body onload="init()">
 
-<div id="but0">
-    <!--    <p>Historical Data Charts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>-->
-    <button onclick='window.location.replace("historical.html")'>Historical Data</button>
-</div>
-<br><br>
-
-<!--Stations List-->
-<div>
-    <div id="but1">
-        <p>Middletown, NY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <button onclick="myFunction(this)" value="station_one" id="station_one">ESP 01</button>
-    </div>
-    <div id="but2">
-        <p>Soquel, CA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <button onclick="myFunction(this)" value="station_two" id="station_two">ESP 02</button>
-    </div>
-    <div id="but3">
-        <p>ESP3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <button onclick="myFunction(this)" value="station_the" id="station_the">ESP 03</button>
-    </div>
-    <div id="but4">
-        <p>Not Avaliable &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <button onclick="myFunction(this)" value="station_for" id="station_for">ESP 04</button>
-    </div>
-</div>
-
-<!--Gauges-->
-<div id="gauge">
-    <h2>The gauges represent live X (N-S), Y (E-W), Z (+ - altitude) from the ESP Stations with a 2-minute delay</h2>
-    <h2 class="station_one">ESP 01, Middletown, NY</h2><br><br>
-    <div class="station_one compasses" >
-        <!--            <h3>ESP 01</h3>-->
-        <canvas  id="compass1" width="400" height="300"></canvas>
-        <canvas  id="needle1" width="400" height="300"></canvas>
-        <canvas  id="depth1" width="270" height="300"></canvas>
-        <canvas id="x-label1" width="270" height="20"></canvas>
-        <canvas id="y-label1" width="20" height="270"></canvas>
-    </div>
-    <br><br><br><br><br><br><br><br><br><br><br>
-<!--    <div class="gauges">-->
-<!--        <div id="gx"></div>-->
-<!--        <div id="gy"></div>-->
-<!--        <div id="gz"></div>-->
-<!--    </div>-->
-    <div class="station_one container">
-    <div id="gaugeX" class="contain n0"></div>
-    <div id="gaugeY" class="contain n1"></div>
-    <div id="gaugeZ" class="contain n2"></div>
-    </div>
-    <br>
-    <h2 class="station_two">ESP 02, Soquel, CA</h2><br><br>
-
-    <div class="station_two compasses" >
-        <canvas id="compass2" width="300" height="300"></canvas>
-        <canvas id="needle2" width="300" height="300"></canvas>
-    </div>
-    <div class="station_two depth" >
-        <canvas id="depth2" width="270" height="300"></canvas>
-        <canvas id="x-label2" width="270" height="20"></canvas>
-        <canvas id="y-label2" width="20" height="270"></canvas>
-    </div>
-    <br><br><br><br><br><br><br><br><br>
-<!--    <div class="gauges">-->
-<!--        <div id="gx2"></div>-->
-<!--        <div id="gy2"></div>-->
-<!--        <div id="gz2"></div>-->
-<!--    </div>-->
-    <div class="station_two container">
-        <div id="gaugeX2" class="contain n0"></div>
-        <div id="gaugeY2" class="contain n1"></div>
-        <div id="gaugeZ2" class="contain n2"></div>
-    </div>
-
-    <h2 class="station_the">ESP 03, Middletown, NY</h2><br><br>
-    <div class="station_the compasses" >
-        <!--            <h3>ESP 01</h3>-->
-        <canvas  id="compass3" width="400" height="300"></canvas>
-        <canvas  id="needle3" width="400" height="300"></canvas>
-        <canvas  id="depth3" width="360" height="300"></canvas>
-        <canvas id="x-label3" width="270" height="20"></canvas>
-        <canvas id="y-label3" width="20" height="270"></canvas>
-    </div>
-    <br><br><br><br><br><br><br><br><br><br>
-    <!--    <div class="gauges">-->
-    <!--        <div id="gx"></div>-->
-    <!--        <div id="gy"></div>-->
-    <!--        <div id="gz"></div>-->
-    <!--    </div>-->
-    <div class="station_the container">
-        <div id="gaugeX3" class="contain n0"></div>
-        <div id="gaugeY3" class="contain n1"></div>
-        <div id="gaugeZ3" class="contain n2"></div>
-    </div>
-    <br>
-
-</div>
-
-<div id="livechart">
-    <h1>Live Chart</h1>
-    <h2>The charts represent 2 minutes of live data from the ESP-1 Station, with a 2-minute delay</h2>
-    <h2 class="station_one">ESP 01</h2><br>
-    <div class="station_one charts">
-        <div class="chart" id="graphx"></div>
-        <div class="chart" id="graphy"></div>
-        <div class="chart" id="graphz"></div>
-    </div><br>
-    <h2 class="station_two">ESP 02</h2><br>
-    <div class="station_two charts">
-        <div class="chart" id="graphx2"></div>
-        <div class="chart" id="graphy2"></div>
-        <div class="chart" id="graphz2"></div>
-    </div>
-    <h2 class="station_the">ESP 03</h2><br>
-    <div class="station_the charts">
-        <div class="chart" id="graphx3"></div>
-        <div class="chart" id="graphy3"></div>
-        <div class="chart" id="graphz3"></div>
-    </div>
-</div>
-
-<br><br><br><br><br><br><br><br><br>
-
-
-<button onclick = "query();query2();query3()" id = "fakeBu"></button>
-
-<script type="text/javascript">
-    // Global variable
-
+<script>
+    //setting of the gauge
     var settings = {
         gaugeMinValue: -100000,
         gaugeMaxValue: 100000,
@@ -439,19 +313,6 @@
                 to: -75000,
                 color: '#F9E7AE'
             }
-            // , {
-            //     thickness: 10,
-            //     outerRadius: "112%",
-            //     from: 25000,
-            //     to: 55000,
-            //     color: '#F9E7AE'
-            // }, {
-            //     thickness: 10,
-            //     outerRadius: "112%",
-            //     from: -25000,
-            //     to: -55000,
-            //     color: '#F9E7AE'
-            // }
             ]
         },
 
@@ -480,238 +341,315 @@
 
         credits: false
     };
+</script>
 
-    var img = null,
-        needle = null,
-        ctx = null,
-        degrees = 0;
 
-    var img2 = null,
-        needle2 = null,
-        ctx2 = null,
-        degrees2 = 0;
 
-    var staone = [],
-        statwo = [],
-        stathe = [];
+<body onload="init()">
 
-    $(document).ready(function () {
+<div id="but0">
+    <!--    <p>Historical Data Charts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>-->
+    <button onclick='window.location.replace("historical.html")'>Historical Data</button>
+</div>
+<br><br>
 
-        document.getElementById("fakeBu").click();
+<div id="control_button">
+    <h1>control area</h1>
+</div>
 
-        setInterval(function () {
-            document.getElementById("fakeBu").click();
-            // depth
-        }, 5000);
-        setInterval(coordinate, 5000);
-        setInterval(coordinate2, 5000);
-        setInterval(coordinate3, 5000);
-        // $('#gaugeX').highcharts(options, buildGraph);
-        // $('#gaugeY').highcharts(options, buildGraph);
-        // $('#gaugeZ').highcharts(options, buildGraph);
+<div id="gauge">
+    <h1>Gauge</h1>
+    <h2>The gauges represent live X (N-S), Y (E-W), Z (+ - altitude) from the ESP Stations with a 42-minute delay</h2>
+</div>
 
-    });
+<div id="live_chart">
+    <h1>Live Chart</h1>
+    <h2>The charts represent 2 minutes of live data from the ESP-1 Station, with a 2-minute delay</h2>
+</div>
 
-    // var gx,gy,gz;
-    // gx = new JustGage({
-    //     id: "gx",
-    //     title: "X1",
-    //     customSectors: [{ color : "#66ccff", lo : 0, hi : 20 }, { color: "#ff0000", lo: 20, hi: 100 }],
-    //     max:400000,
-    //     min:0,
-    //     label: "x average value",
-    //     levelColorsGradient: true
-    //
-    // });
-    // // gx.refresh(0);
-    // gy = new JustGage({
-    //     id: "gy",
-    //     title: "Y1",
-    //     customSectors: [{ color : "#66ccff", lo : 0, hi : 20 }, { color: "#ff0000", lo: 20, hi: 100 }],
-    //     max:400000,
-    //     min:0,
-    //     label: "y average value",
-    //     levelColorsGradient: false
-    //
-    // });
-    // // gy.refresh(0);
-    // gz = new JustGage({
-    //     id: "gz",
-    //     title: "Z1",
-    //     customSectors: [{ color : "#66ccff", lo : 0, hi : 20 }, { color: "#ff0000", lo: 20, hi: 100 }],
-    //     max:400000,
-    //     min:0,
-    //     label: "z average value",
-    //     levelColorsGradient: false
-    //
-    // });
-    // // gz.refresh(0);
-    //
-    // var gx2,gy2,gz2;
-    // gx2 = new JustGage({
-    //     id: "gx2",
-    //     title: "X2",
-    //     customSectors: [{ color : "#66ccff", lo : 0, hi : 20 }, { color: "#ff0000", lo: 20, hi: 100 }],
-    //     max:400000,
-    //     min:0,
-    //     label: "x average value",
-    //     levelColorsGradient: true
-    //
-    // });
-    // // gx2.refresh(0);
-    // gy2 = new JustGage({
-    //     id: "gy2",
-    //     title: "Y2",
-    //     customSectors: [{ color : "#66ccff", lo : 0, hi : 20 }, { color: "#ff0000", lo: 20, hi: 100 }],
-    //     max:400000,
-    //     min:0,
-    //     label: "y average value",
-    //     levelColorsGradient: false
-    //
-    // });
-    // // gy2.refresh(0);
-    // gz2 = new JustGage({
-    //     id: "gz2",
-    //     title: "Z2",
-    //     customSectors: [{ color : "#66ccff", lo : 0, hi : 20 }, { color: "#ff0000", lo: 20, hi: 100 }],
-    //     max:400000,
-    //     min:0,
-    //     label: "z average value",
-    //     levelColorsGradient: false
-    //
-    // });
-    // gz2.refresh(0);
+<button onclick = "query();" id="fakeBu"></button>
 
-    //
-    // function init() {
-    //     // Grab the compass element
-    //     var canvas2 = document.getElementById('compass2');
-    //
-    //     // Canvas supported?
-    //     if (canvas2.getContext('2d')) {
-    //         ctx2 = canvas2.getContext('2d');
-    //
-    //         // Load the needle image
-    //         needle2 = new Image();
-    //         needle2.src = 'jsLibrary/compass/needle.png';
-    //
-    //         // Load the compass image
-    //         img2 = new Image();
-    //         img2.src = 'jsLibrary/compass/compass.png';
-    //         img2.onload = imgLoaded2;
-    //     } else {
-    //         alert("Canvas not supported!");
-    //     }
-    //
-    //     // Grab the compass element
-    //     var canvas = document.getElementById('compass1');
-    //     // var canvas2 = document.getElementById('compass2');
-    //
-    //     // Canvas supported?
-    //     if (canvas.getContext('2d')) {
-    //         ctx = canvas.getContext('2d');
-    //
-    //         // Load the needle image
-    //         needle = new Image();
-    //         needle.src = 'jsLibrary/compass/needle.png';
-    //
-    //         // Load the compass image
-    //         img = new Image();
-    //         img.src = 'jsLibrary/compass/compass.png';
-    //         img.onload = imgLoaded;
-    //     } else {
-    //         alert("Canvas not supported!");
-    //     }
-    //
-    // }
+<script type="text/javascript">
+    //I want array with string inside
+    var stations = [];
+    //single station name that we are going to deal with
+    //5s average gauge data
+    var sta;
 
-    function myFunction(objButton) {
+    loadDoc();
+    function loadDoc() {
+        $.ajax({
+            url: "http://localhost:3005/stations",
+            method: "get",
+            // data: "sent",
+            success: function(res) {
+                console.log("This is the stations result:");
+                console.log(res);
+                for(var i=0; i<res.length; i++){
+                    console.log("This is the station being called:");
+                    console.log(res[i].StationId);
+                    building(res[i]);
+                    stations[i]=res[i].StationId;
+                }
+                if(stations.length === res.length){
+                    query()
+                }
+
+            }
+        });
+    }
+
+
+
+    function building(station){
+        //葛一扬！！！！看这！！！！！！！！
+        //葛一扬！！！！看这！！！！！！！！
+        //葛一扬！！！！看这！！！！！！！！
+        //***station here is an object now, it include name, state, city, and id.
+        // The name of them are StationName,City,State,StationId
+        // So if you need call id now, you should call station.stationId.
+        // I changed the previous codes of you for you already, but you need to remember it for new codes.
+        //葛一扬！！！！看这！！！！！！！！
+        //葛一扬！！！！看这！！！！！！！！
+        //葛一扬！！！！看这！！！！！！！！
+
+        console.log("begin build structure");
+        //Notification: space means two classes, '_' means one class.
+
+        //add the button Div
+        var butDiv = document.createElement("div");
+        butDiv.id = station.StationId+"_butDiv";
+        butDiv.setAttribute("style", "display: inline-block; margin-right: 40px;");
+        var br = document.createElement("br");
+        $('#control_button').append(butDiv);
+
+        //add button's title
+        var butTitle = document.createElement("p");
+        butTitle.id = station.StationId+"_butTitle";
+        butTitle.textContent = station.City+", "+station.State;
+
+        //add the control button
+        var button = document.createElement("button");
+        button.id = station.StationId;
+        button.value = station.StationId;
+        button.textContent = station.StationName;
+        button.setAttribute("style", "background-color: gray;");
+        button.setAttribute("onclick", "check(this)");
+        // button.onclick = check(this);
+        $('#'+station.StationId+"_butDiv").append(button).append(butTitle);
+
+        //add gauge title
+        var Gtitle = document.createElement("h2");
+        Gtitle.className = station.StationId;
+        Gtitle.textContent = station.StationName+", "+station.City+", "+station.State;
+            // $('#gauge').append(Gtitle);
+
+        //create canvas for compass
+        var canvasCompass = document.createElement("canvas");
+        canvasCompass.id= station.StationId + "_canvas";
+        canvasCompass.setAttribute("style","width:300px; height:300px;");
+
+        //create compass div
+        var compassDiv = document.createElement("div");
+        compassDiv.id = station.StationId +'_C';
+        compassDiv.className = station.StationId;
+        compassDiv.setAttribute("style","display:inline-block;");
+        compassDiv.append(canvasCompass);
+
+        //create canvas for y-label of the coordinate
+        var yLabelC = document.createElement("canvas");
+        yLabelC.id = "y-label_" + station.StationId;
+        yLabelC.setAttribute("style","width : 20px; height : 270px; display: inline-block;");
+
+        //create canvas for x-label of the coordinate
+        var xLabelC = document.createElement("canvas");
+        xLabelC.id = "x-label_" + station.StationId;
+        xLabelC.setAttribute("style","width : 270px; height : 20px; display:table-cell; vertical-align: middle;");
+
+        //create canvas for the coordinate
+        var depthC = document.createElement("canvas");
+        depthC.id = "depth_" + station.StationId;
+        depthC.setAttribute("style","width : 300px; height : 300px; display:table-cell; vertical-align: middle;");
+
+        //create a div for x-label and coordinate
+        var verticalDiv = document.createElement("div");
+        verticalDiv.id = "vertical_"+station.StationId;
+        verticalDiv.setAttribute("style","display: inline-block;");
+        verticalDiv.append(xLabelC);
+        verticalDiv.append(depthC);
+
+        //create div for the vector (arrow)
+        var vectorDiv = document.createElement("div");
+        vectorDiv.id = station.StationId+"_D";
+        vectorDiv.className = station.StationId;
+        vectorDiv.setAttribute("style","display: inline-block;");
+        vectorDiv.append(yLabelC);
+        vectorDiv.append(verticalDiv);
+
+        // var depDirDiv = document.createElement('div');
+        // depDirDiv.className = station;
+        // depDirDiv.append(compassDiv);
+        // depDirDiv.append(vectorDiv);
+
+        //add gauge Div
+        var gaugeDiv = document.createElement("div");
+        gaugeDiv.className = station.StationId+" container";
+        gaugeDiv.setAttribute("style", "margin: 0 auto; font-size: 16px; left: 90px; width: max-content; display: inline-table;");
+        $('#gauge').append(Gtitle).append(compassDiv).append(vectorDiv).append(gaugeDiv);
+
+        //add xyz divs into gauge Div
+        var gdivX = document.createElement("div");
+        var gdivY = document.createElement("div");
+        var gdivZ = document.createElement("div");
+        gdivX.className = "contain n0";
+        gdivY.className = "contain n1";
+        gdivZ.className = "contain n2";
+        gdivX.id = station.StationId+"_gaugeX";
+        gdivY.id = station.StationId+"_gaugeY";
+        gdivZ.id = station.StationId+"_gaugeZ";
+        gdivX.setAttribute("style", "float: left; width: 250px; height: 250px; display: inline-table;");
+        gdivY.setAttribute("style", "float: left; width: 250px; height: 250px; display: inline-table;");
+        gdivZ.setAttribute("style", "float: left; width: 250px; height: 250px; display: inline-table;");
+        var b = "."+station.StationId+".container";
+        $(b).append(gdivX).append(gdivY).append(gdivZ);
+
+        //add live chart title
+        var cTitle = document.createElement("h2");
+        cTitle.className = station.StationId;
+        cTitle.textContent = station.StationName;
+
+        //add live chart Div
+        var chartDiv = document.createElement("div");
+        chartDiv.className = station.StationId+" charts";
+        chartDiv.setAttribute("style", "left: 90px; width: max-content; display: inline-table;");
+        $('#live_chart').append(cTitle).append(chartDiv);
+
+        //add xyz divs into live chart Div
+        var cdivX = document.createElement("div");
+        var cdivY = document.createElement("div");
+        var cdivZ = document.createElement("div");
+        cdivX.className = "chart n0";
+        cdivY.className = "chart n1";
+        cdivZ.className = "chart n2";
+        cdivX.id = station.StationId+"_graphX";
+        cdivY.id = station.StationId+"_graphY";
+        cdivZ.id = station.StationId+"_graphZ";
+        cdivX.setAttribute("style", "float: left;");
+        cdivY.setAttribute("style", "float: left;");
+        cdivZ.setAttribute("style", "float: left;");
+        var c = "."+station.StationId+".charts";
+        $(c).append(cdivX).append(cdivY).append(cdivZ);
+        console.log("structure done");
+    }
+
+    function query() {
+        console.log("ask for query");
+        console.log(stations);
+        $.ajax({
+            url: "http://localhost:3005/querys",
+            method: "get",
+            data: {stations: stations},
+            //Says success isn't used but it is
+            success: function(res){
+                console.log("query result");
+                console.log(res);
+                for(var i=0; i<res.length; i++){
+                    var x_arr = [];
+                    var y_arr = [];
+                    var z_arr = [];
+
+                    res[i][1].forEach(function(el,i) {
+                            x_arr[i] = [new Date(el.time), el.X];
+                            y_arr[i] = [new Date(el.time), el.Y];
+                            z_arr[i] = [new Date(el.time), el.Z];
+                        }
+                    );
+
+                    sta = avg(res[i][1],5);
+                    console.log(sta);
+                    Z = new Dygraph(
+                        // containing div
+                        document.getElementById(res[i][0]+"_graphZ"),
+
+                        // CSV or path to a CSV file.
+                        z_arr,
+                        {
+                            labels: [ "Data", "Z" ],
+                            animatedZooms: true,
+                            legend: 'always',
+                            showRoller: true,
+                            title: "+Z is positive altitude, -Z is below ground (unit: nT)",
+                        }
+
+                    );
+                    Y = new Dygraph(
+                        // containing div
+                        document.getElementById(res[i][0]+"_graphY"),
+
+                        // CSV or path to a CSV file.
+                        y_arr,
+                        {
+                            labels: [ "Data", "Y" ],
+                            animatedZooms: true,
+                            legend: 'always',
+                            showRoller: true,
+                            title: "+Y is east, -Y is west (unit: nT)"
+                        }
+
+                    );
+                    X = new Dygraph(
+
+                        // containing div
+                        document.getElementById(res[i][0]+"_graphX"),
+
+                        // CSV or path to a CSV file.
+                        x_arr,
+                        {
+                            labels: [ "Data", "X" ],
+                            animatedZooms: true,
+                            legend: 'always',
+                            showRoller: true,
+                            title: "+X is north, -X is south (unit: nT)"
+                        }
+
+                    );
+                    $('#'+res[i][0]+'_gaugeX').highcharts(options, buildGraph);
+                    $('#'+res[i][0]+'_gaugeY').highcharts(options, buildGraph);
+                    $('#'+res[i][0]+'_gaugeZ').highcharts(options, buildGraph);
+                    console.log(res[i][0]);
+
+                    init(res[i][0])
+                }
+            }
+        });
+    }
+
+    function buildGraph(chart) {
+        var a = $(this)[0].renderTo.className.slice(-1);
+        if (!chart.renderer.forExport) {
+            var gaugePoint = chart.series[0].points[0];
+            var newVal = parseInt(sta[a]);
+            gaugePoint.update(newVal);
+        }
+    }
+
+    function check(objButton) {
+        console.log("this is what I get from button");
+        console.log(objButton);
         var x = document.getElementsByClassName(objButton.value);
         // console.log(objButton.value);
         var y = '.'+objButton.value;
         var z = '#'+objButton.value;
+        console.log("this is y::::::::::::::");
         console.log(y);
+        console.log("this is z::::::::::::::");
+        console.log(z);
         if (x[0].style.display === "none") {
             $(y).show();
             $(z).css('backgroundColor', 'gray');
         } else {
             $(y).hide();
             $(z).css('backgroundColor', 'white');
-        }
-    }
-
-    function buildGraph2(chart) {
-        console.log($(this));
-        var a = $(this)[0].renderTo.className.slice(-1);
-        console.log(a);
-        // console.log(!chart.renderer.forExport);
-        if (!chart.renderer.forExport) {
-            // console.log(options);
-            // console.log(chart);
-            // console.log(chart.series[0].points[0].y);
-
-            var gaugePoint = chart.series[0].points[0];
-            // piePoint = chart.series[1];
-            console.log(statwo);
-            var newVal = parseInt(statwo[a]);
-            console.log(newVal);
-
-            // Update number gauge value
-            gaugePoint.update(newVal);
-        }
-    }
-
-    function buildGraph3(chart) {
-        var a = $(this)[0].renderTo.className.slice(-1);
-        console.log(a);
-        // console.log(!chart.renderer.forExport);
-        if (!chart.renderer.forExport) {
-            // console.log(options);
-            // console.log(chart);
-            // console.log(chart.series[0].points[0].y);
-
-            var gaugePoint = chart.series[0].points[0];
-            // piePoint = chart.series[1];
-            var newVal = parseInt(stathe[a]);
-            // console.log(newVal);
-
-            // Update number gauge value
-            gaugePoint.update(newVal);
-        }
-    }
-
-    function buildGraph(chart) {
-        var a = $(this)[0].renderTo.className.slice(-1);
-        // console.log(chart);
-        // console.log(!chart.renderer.forExport);
-        if (!chart.renderer.forExport) {
-
-            // console.log(options);
-            // console.log(chart);
-            // console.log(chart.series[0].points[0].y);
-
-            var gaugePoint = chart.series[0].points[0];
-            // piePoint = chart.series[1];
-            var newVal = parseInt(staone[a]);
-            // console.log(newVal);
-            // newVal;
-            //     ,
-            //     inc = Math.round((Math.random()) * 200000);
-            //
-            // newVal = gaugePoint.y + inc;
-            // if (newVal < settings.gaugeMinValue || newVal > settings.gaugeMaxValue) {
-            //     newVal = gaugePoint.y;
-            // }
-
-            // Update number gauge value
-            gaugePoint.update(newVal);
-
-            // console.log(piePoint);
-            // Update pie with current value
-            // piePoint.points[0].update(newVal);
-            // console.log(piePoint);
-            // piePoint.points[1].update(settings.gaugeMaxValue - newVal);
-
         }
     }
 
@@ -730,281 +668,29 @@
         return [xa, ya, za];
     }
 
-    function query() {
-        $.ajax({
-            // url: "https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query",
-            url: "http://localhost:3005/query",
-            method: "get",
-            //Says success isn't used but it is
-            success: function(res){
-                console.log("one");
-                console.log(res);
-                var x_arr = [];
-                var y_arr = [];
-                var z_arr = [];
-
-                res.forEach(function(el,i) {
-                        x_arr[i] = [new Date(el.time), el.X];
-                        y_arr[i] = [new Date(el.time), el.Y];
-                        z_arr[i] = [new Date(el.time), el.Z];
-                    }
-                );
-
-                staone = avg(res,5);
-                console.log(staone);
-                Z = new Dygraph(
-
-                    // containing div
-                    document.getElementById("graphz"),
-
-                    // CSV or path to a CSV file.
-                    z_arr,
-                    {
-                        labels: [ "Data", "Z" ],
-                        animatedZooms: true,
-                        legend: 'always',
-                        showRoller: true,
-                        title: "+Z is positive altitude, -Z is below ground (unit: nT)",
-                    }
-
-                );
-                Y = new Dygraph(
-
-                    // containing div
-                    document.getElementById("graphy"),
-
-                    // CSV or path to a CSV file.
-                    y_arr,
-                    {
-                        labels: [ "Data", "Y" ],
-                        animatedZooms: true,
-                        legend: 'always',
-                        showRoller: true,
-                        title: "+Y is east, -Y is west (unit: nT)"
-                    }
-
-                );
-                X = new Dygraph(
-
-                    // containing div
-                    document.getElementById("graphx"),
-
-                    // CSV or path to a CSV file.
-                    x_arr,
-                    {
-                        labels: [ "Data", "X" ],
-                        animatedZooms: true,
-                        legend: 'always',
-                        showRoller: true,
-                        title: "+X is north, -X is south (unit: nT)"
-                    }
-
-                );
-                // console.log(staone);
-                // gx.refresh(Math.abs(staone[0]));
-                // gy.refresh(Math.abs(staone[1]));
-                // gz.refresh(Math.abs(staone[2]));
-
-                // console.log(options);
-                $('#gaugeX').highcharts(options, buildGraph);
-                $('#gaugeY').highcharts(options, buildGraph);
-                $('#gaugeZ').highcharts(options, buildGraph);
-                // document.getElementById("ngx").setAttribute('data-value', staone[0]);
-
-            }
-        });
-    }
-
-    function query2() {
-        $.ajax({
-            // url: "https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query2",
-            url: "http://localhost:3005/query2",
-            method: "get",
-            //Says success isn't used but it is
-            success: function(res){
-                console.log("two");
-                console.log(res);
-                var x_arr = [];
-                var y_arr = [];
-                var z_arr = [];
-
-                res.forEach(function(el,i) {
-                        // var time = new Date(el.time);
-                        // console.log(time);
-                        x_arr[i] = [new Date(el.time), el.X];
-                        y_arr[i] = [new Date(el.time), el.Y];
-                        z_arr[i] = [new Date(el.time), el.Z];
-                        // console.log(x_arr[i])
-                    }
-                );
-
-                statwo = avg(res,5);
-                Z = new Dygraph(
-
-                    // containing div
-                    document.getElementById("graphz2"),
-
-                    // CSV or path to a CSV file.
-                    z_arr,
-                    {
-                        labels: [ "Data", "Z" ],
-                        animatedZooms: true,
-                        legend: 'always',
-                        showRoller: true,
-                        title: "+Z is positive altitude, -Z is below ground (unit: nT)"
-                    }
-
-                );
-                Y = new Dygraph(
-
-                    // containing div
-                    document.getElementById("graphy2"),
-
-                    // CSV or path to a CSV file.
-                    y_arr,
-                    {
-                        labels: [ "Data", "Y" ],
-                        animatedZooms: true,
-                        legend: 'always',
-                        showRoller: true,
-                        title: "+Y is east, -Y is west (unit: nT)"
-                    }
-
-                );
-                X = new Dygraph(
-
-                    // containing div
-                    document.getElementById("graphx2"),
-
-                    // CSV or path to a CSV file.
-                    x_arr,
-                    {
-                        labels: [ "Data", "X" ],
-                        animatedZooms: true,
-                        legend: 'always',
-                        showRoller: true,
-                        title: "+X is north, -X is south (unit: nT)"
-                    }
-                );
-                // console.log(statwo);
-                // gx2.refresh(Math.abs(statwo[0]));
-                // gy2.refresh(Math.abs(statwo[1]));
-                // gz2.refresh(Math.abs(statwo[2]));
-                $('#gaugeX2').highcharts(options, buildGraph2);
-                $('#gaugeY2').highcharts(options, buildGraph2);
-                $('#gaugeZ2').highcharts(options, buildGraph2);
-
-            }
-        });
-    }
-
-    function query3() {
-        $.ajax({
-            // url: "https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query2",
-            url: "http://localhost:3005/query3",
-            method: "get",
-            //Says success isn't used but it is
-            success: function(res){
-                console.log("three");
-                console.log(res);
-                var x_arr = [];
-                var y_arr = [];
-                var z_arr = [];
-
-                res.forEach(function(el,i) {
-                        // var time = new Date(el.time);
-                        // console.log(time);
-                        x_arr[i] = [new Date(el.time), el.X];
-                        y_arr[i] = [new Date(el.time), el.Y];
-                        z_arr[i] = [new Date(el.time), el.Z];
-                        // console.log(x_arr[i])
-                    }
-                );
-
-                stathe = avg(res,5);
-                Z = new Dygraph(
-
-                    // containing div
-                    document.getElementById("graphz3"),
-
-                    // CSV or path to a CSV file.
-                    z_arr,
-                    {
-                        labels: [ "Data", "Z" ],
-                        animatedZooms: true,
-                        legend: 'always',
-                        showRoller: true,
-                        title: "+Z is positive altitude, -Z is below ground (unit: nT)"
-                    }
-
-                );
-                Y = new Dygraph(
-
-                    // containing div
-                    document.getElementById("graphy3"),
-
-                    // CSV or path to a CSV file.
-                    y_arr,
-                    {
-                        labels: [ "Data", "Y" ],
-                        animatedZooms: true,
-                        legend: 'always',
-                        showRoller: true,
-                        title: "+Y is east, -Y is west (unit: nT)"
-                    }
-
-                );
-                X = new Dygraph(
-
-                    // containing div
-                    document.getElementById("graphx3"),
-
-                    // CSV or path to a CSV file.
-                    x_arr,
-                    {
-                        labels: [ "Data", "X" ],
-                        animatedZooms: true,
-                        legend: 'always',
-                        showRoller: true,
-                        title: "+X is north, -X is south (unit: nT)"
-                    }
-                );
-                // console.log(stathe);
-                // gx2.refresh(Math.abs(statwo[0]));
-                // gy2.refresh(Math.abs(statwo[1]));
-                // gz2.refresh(Math.abs(statwo[2]));
-                $('#gaugeX3').highcharts(options, buildGraph3);
-                $('#gaugeY3').highcharts(options, buildGraph3);
-                $('#gaugeZ3').highcharts(options, buildGraph3);
-
-            }
-        });
-    }
-
-    function imgLoaded() {
+    function imgLoaded(campassid,depthid,ylabel,xlabel,sta,img,needle) {
         // Image loaded event complete.  Start the timer
         console.log('loaded');
-        setInterval(draw, 5000);
+        setInterval(interval(campassid,depthid,ylabel,xlabel,sta,img,needle), 5000);
     }
 
-    function imgLoaded2() {
-        // Image loaded event complete.  Start the timer
-        setInterval(draw2, 5000);
+    function interval(campassid,depthid,ylabel,xlabel,sta,img,needle){
+        draw(campassid,sta,img,needle);
+        coordinate(depthid,ylabel,xlabel);
+        zArrow1(depthid,sta)
     }
 
-    function imgLoaded3() {
-        // Image loaded event complete.  Start the timer
-        setInterval(draw3, 5000);
-    }
+    //draw compass with the needle
+    function draw(compassid,sta,img,needle) {
+        var canvas = document.getElementById(compassid);
+        var ctx = canvas.getContext('2d');
 
-    function draw() {
+        console.log(sta);
 
-        console.log(staone);
+        console.log('Station 1 heading:'+calcAngleDegrees(sta[0], sta[1]));
 
-        console.log('Station 1 heading:'+calcAngleDegrees(staone[0], staone[1]));
-
-        let degrees = calcAngleDegrees(staone[0], staone[1]);
-        clearCanvas();
+        let degrees = calcAngleDegrees(sta[0], sta[1]);
+        ctx.clearRect(0, 0, 300, 300);
 
         // Draw the compass onto the canvas
         ctx.drawImage(img, 0, 0);
@@ -1026,82 +712,6 @@
 
     }
 
-    function draw2() {
-
-        console.log(statwo);
-
-        console.log('Station 2 heading2:'+calcAngleDegrees(statwo[0], statwo[1]));
-        //
-        let degrees2 = calcAngleDegrees(statwo[0], statwo[1]);
-        clearCanvas2();
-
-        // Draw the compass onto the canvas
-        ctx2.drawImage(img2, 0, 0);
-
-        // Save the current drawing state
-        ctx2.save();
-
-        // Now move across and down half the
-        ctx2.translate(153, 140);
-
-        // Rotate around this point
-        ctx2.rotate(degrees2 * (Math.PI / 180));
-
-        // Draw the image back and up
-        ctx2.drawImage(needle2, -172, -172);
-        // setInterval(drawNeedle2, 3000);
-
-        // // Restore the previous drawing state
-        ctx2.restore();
-    }
-
-    function draw3() {
-
-        console.log(stathe);
-
-        console.log('Station 3 heading3:'+calcAngleDegrees(stathe[0], stathe[1]));
-        //
-        let degrees3 = calcAngleDegrees(stathe[0], stathe[1]);
-        clearCanvas3();
-
-        // Draw the compass onto the canvas
-        ctx3.drawImage(img3, 0, 0);
-
-        // Save the current drawing state
-        ctx3.save();
-
-        // Now move across and down half the
-        ctx3.translate(153, 140);
-
-        // Rotate around this point
-        ctx3.rotate(degrees3 * (Math.PI / 180));
-
-        // Draw the image back and up
-        ctx3.drawImage(needle3, -172, -172);
-        // setInterval(drawNeedle2, 3000);
-
-        // // Restore the previous drawing state
-        ctx3.restore();
-    }
-
-    function clearCanvas3() {
-        // clear canvas
-        ctx3.clearRect(0, 0, 300, 300);
-        // ctx2.clearRect(0, 0, 300, 300);
-    }
-
-    function clearCanvas2() {
-        // clear canvas
-        ctx2.clearRect(0, 0, 300, 300);
-        // ctx2.clearRect(0, 0, 300, 300);
-    }
-
-    function clearCanvas() {
-        // clear canvas
-        ctx.clearRect(0, 0, 300, 300);
-        // ctx2.clearRect(0, 0, 300, 300);
-    }
-
     function calcAngleDegrees(x, y) {
         return Math.atan2(y, x) * 180 / Math.PI;
     }
@@ -1112,85 +722,43 @@
         return Math.sqrt(sum);
     }
 
-    function init() {
+    function init(classname) {
         // Grab the compass element
-        var canvas3 = document.getElementById('compass3');
-        canvas3.style.position = "absolute";
-        document.getElementById('depth3').style.position = 'absolute';
-
-        // Canvas supported?
-        if (canvas3.getContext('2d')) {
-            ctx3 = canvas3.getContext('2d');
-
-            // Load the needle image
-            needle3 = new Image();
-            needle3.src = 'jsLibrary/compass/needle.png';
-
-            // Load the compass image
-            img3 = new Image();
-            img3.src = 'jsLibrary/compass/compass.png';
-            img3.onload = imgLoaded3;
-        } else {
-            alert("Canvas not supported!");
-        }
-
-        // Grab the compass element
-        var canvas2 = document.getElementById('compass2');
-        canvas2.style.position = "absolute";
-        document.getElementById('depth2').style.position = 'absolute';
-
-        // Canvas supported?
-        if (canvas2.getContext('2d')) {
-            ctx2 = canvas2.getContext('2d');
-
-            // Load the needle image
-            needle2 = new Image();
-            needle2.src = 'jsLibrary/compass/needle.png';
-
-            // Load the compass image
-            img2 = new Image();
-            img2.src = 'jsLibrary/compass/compass.png';
-            img2.onload = imgLoaded2;
-        } else {
-            alert("Canvas not supported!");
-        }
-
-        // Grab the compass element
-        var canvas = document.getElementById('compass1');
-        canvas.style.position = "absolute";
-        document.getElementById('depth1').style.position = 'absolute';
-        // var canvas2 = document.getElementById('compass2');
+        console.log(classname);
+        var canvas = document.getElementById(classname +"_canvas");
 
         // Canvas supported?
         if (canvas.getContext('2d')) {
-            ctx = canvas.getContext('2d');
+            // var ctx = canvas.getContext('2d');
 
             // Load the needle image
+            var needle;
             needle = new Image();
             needle.src = 'jsLibrary/compass/needle.png';
 
             // Load the compass image
+            var img;
             img = new Image();
             img.src = 'jsLibrary/compass/compass.png';
-            img.onload = imgLoaded;
+            img.onload = imgLoaded(classname +"_canvas","depth_" +classname,"y-label_" + classname,"x-label_" + classname,sta,img,needle);
         } else {
             alert("Canvas not supported!");
         }
-
     }
 
-    function coordinate(){
+    function coordinate(id,yLabel,xLabel){
         var grid_size = 30;
         var x_axis_distance_grid_lines = 0;
         var y_axis_distance_grid_lines = 0;
         var x_axis_starting_point = { number: 5000, suffix: '' };
         var y_axis_starting_point = { number: 5000, suffix: '' };
 
-        var canvas = document.getElementById("depth1");
+        var canvas = document.getElementById(id);
         var ctx = canvas.getContext("2d");
 
         // canvas width
         var canvas_width = canvas.width;
+        console.log(canvas_width);
 
         // canvas height
         var canvas_height = canvas.height;
@@ -1255,8 +823,8 @@
             ctx.strokeStyle = "#000000";
 
             // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(grid_size*i+0.5, -3);
-            ctx.lineTo(grid_size*i+0.5, 3);
+            ctx.moveTo(grid_size*i+0.5, -4);
+            ctx.lineTo(grid_size*i+0.5, 4);
             ctx.stroke();
 
             // Text value at that point
@@ -1319,13 +887,13 @@
         }
 
 
-        var labelX = document.getElementById("x-label1");
+        var labelX = document.getElementById(xLabel);
         var ctxLabelX = labelX.getContext("2d");
         ctxLabelX.clearRect(0, 0, labelX.width, labelX.height);
         ctxLabelX.font = "10px Arial";
-        ctxLabelX.fillText("direction",labelX.width/2 -20, labelX.height/2);
+        ctxLabelX.fillText("direction",labelX.width/2, labelX.height/2);
 
-        var labelY = document.getElementById("y-label1");
+        var labelY = document.getElementById(yLabel);
         var ctxLabelY = labelY.getContext("2d");
         ctxLabelY.clearRect(0, 0, labelY.width, labelY.height);
         ctxLabelY.save();
@@ -1333,347 +901,17 @@
         ctxLabelY.rotate(Math.PI/2);
         ctxLabelY.fillText("depth",labelY.width/2, labelY.height/2);
         ctxLabelY.restore();
-        zArrow1();
     }
 
-    function coordinate2(){
-        var grid_size = 30;
-        var x_axis_distance_grid_lines = 0;
-        var y_axis_distance_grid_lines = 0;
-        var x_axis_starting_point = { number: 5000, suffix: '' };
-        var y_axis_starting_point = { number: 5000, suffix: '' };
-
-        var canvas = document.getElementById("depth2");
-        var ctx = canvas.getContext("2d");
-
-        // canvas width
-        var canvas_width = canvas.width;
-
-        // canvas height
-        var canvas_height = canvas.height;
-
-        // no of vertical grid lines
-        var num_lines_x = Math.floor(canvas_height/grid_size);
-
-        // no of horizontal grid lines
-        var num_lines_y = Math.floor(canvas_width/grid_size);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Draw grid lines along X-axis
-        for(var i=0; i<=num_lines_x; i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-
-            // If line represents X-axis draw in different color
-            if(i === x_axis_distance_grid_lines)
-                ctx.strokeStyle = "#000000";
-            else
-                ctx.strokeStyle = "#e9e9e9";
-
-            if(i === num_lines_x) {
-                ctx.moveTo(0, grid_size*i);
-                ctx.lineTo(canvas_width, grid_size*i);
-            }
-            else {
-                ctx.moveTo(0, grid_size*i+0.5);
-                ctx.lineTo(canvas_width, grid_size*i+0.5);
-            }
-            ctx.stroke();
-        }
-        // Draw grid lines along Y-axis
-        for(i=0; i<=num_lines_y; i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-
-            // If line represents Y-axis draw in different color
-            if(i == y_axis_distance_grid_lines)
-                ctx.strokeStyle = "#000000";
-            else
-                ctx.strokeStyle = "#e9e9e9";
-
-            if(i == num_lines_y) {
-                ctx.moveTo(grid_size*i, 0);
-                ctx.lineTo(grid_size*i, canvas_height);
-            }
-            else {
-                ctx.moveTo(grid_size*i+0.5, 0);
-                ctx.lineTo(grid_size*i+0.5, canvas_height);
-            }
-            ctx.stroke();
-        }
-
-        ctx.translate(y_axis_distance_grid_lines*grid_size, x_axis_distance_grid_lines*grid_size);
-
-        // Ticks marks along the positive X-axis
-        for(i=1; i<(num_lines_y - y_axis_distance_grid_lines); i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "#000000";
-
-            // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(grid_size*i+0.5, -3);
-            ctx.lineTo(grid_size*i+0.5, 3);
-            ctx.stroke();
-
-            // Text value at that point
-            ctx.font = '9px Arial';
-            ctx.textAlign = 'start';
-            ctx.fillText(x_axis_starting_point.number*i + x_axis_starting_point.suffix, grid_size*i-2, 15);
-        }
-
-        // Ticks marks along the negative X-axis
-        for(i=1; i<y_axis_distance_grid_lines; i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "#000000";
-
-            // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(-grid_size*i+0.5, -3);
-            ctx.lineTo(-grid_size*i+0.5, 3);
-            ctx.stroke();
-
-            // Text value at that point
-            ctx.font = '9px Arial';
-            ctx.textAlign = 'end';
-            ctx.fillText(-x_axis_starting_point.number*i + x_axis_starting_point.suffix, -grid_size*i+3, 15);
-        }
-
-        // Ticks marks along the positive Y-axis
-        // Positive Y-axis of graph is negative Y-axis of the canvas
-        for(i=1; i<(num_lines_x - x_axis_distance_grid_lines); i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "#000000";
-
-            // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(-3, grid_size*i+0.5);
-            ctx.lineTo(3, grid_size*i+0.5);
-            ctx.stroke();
-
-            // Text value at that point
-            ctx.font = '9px Arial';
-            ctx.textAlign = 'start';
-            ctx.fillText(-y_axis_starting_point.number*i + y_axis_starting_point.suffix, 8, grid_size*i+3);
-        }
-
-        // Ticks marks along the negative Y-axis
-        // Negative Y-axis of graph is positive Y-axis of the canvas
-        for(i=1; i<x_axis_distance_grid_lines; i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "#000000";
-
-            // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(-3, -grid_size*i+0.5);
-            ctx.lineTo(3, -grid_size*i+0.5);
-            ctx.stroke();
-
-            // Text value at that point
-            ctx.font = '9px Arial';
-            ctx.textAlign = 'start';
-            ctx.fillText(y_axis_starting_point.number*i + y_axis_starting_point.suffix, 8, -grid_size*i+3);
-        }
-
-        var labelX = document.getElementById("x-label2");
-        var ctxLabelX = labelX.getContext("2d");
-        ctxLabelX.clearRect(0, 0, labelX.width, labelX.height);
-        ctxLabelX.font = "10px Arial";
-        ctxLabelX.fillText("direction",labelX.width/2 -20, labelX.height/2);
-
-        var labelY = document.getElementById("y-label2");
-        var ctxLabelY = labelY.getContext("2d");
-        ctxLabelY.clearRect(0, 0, labelY.width, labelY.height);
-        ctxLabelY.save();
-        ctxLabelY.translate(140, 105);
-        ctxLabelY.rotate(Math.PI/2);
-        ctxLabelY.fillText("depth",labelY.width/2, labelY.height/2);
-        ctxLabelY.restore();
-        // ctx.arrow()
-        zArrow2();
-    }
-
-    function coordinate3(){
-        var grid_size = 30;
-        var x_axis_distance_grid_lines = 0;
-        var y_axis_distance_grid_lines = 0;
-        var x_axis_starting_point = { number: 5000, suffix: '' };
-        var y_axis_starting_point = { number: 5000, suffix: '' };
-
-        var canvas = document.getElementById("depth3");
-        var ctx = canvas.getContext("2d");
-
-        // canvas width
-        var canvas_width = canvas.width;
-
-        // canvas height
-        var canvas_height = canvas.height;
-
-        // no of vertical grid lines
-        var num_lines_x = Math.floor(canvas_height/grid_size);
-
-        // no of horizontal grid lines
-        var num_lines_y = Math.floor(canvas_width/grid_size);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Draw grid lines along X-axis
-        for(var i=0; i<=num_lines_x; i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-
-            // If line represents X-axis draw in different color
-            if(i === x_axis_distance_grid_lines)
-                ctx.strokeStyle = "#000000";
-            else
-                ctx.strokeStyle = "#e9e9e9";
-
-            if(i === num_lines_x) {
-                ctx.moveTo(0, grid_size*i);
-                ctx.lineTo(canvas_width, grid_size*i);
-            }
-            else {
-                ctx.moveTo(0, grid_size*i+0.5);
-                ctx.lineTo(canvas_width, grid_size*i+0.5);
-            }
-            ctx.stroke();
-        }
-        // Draw grid lines along Y-axis
-        for(i=0; i<=num_lines_y; i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-
-            // If line represents Y-axis draw in different color
-            if(i == y_axis_distance_grid_lines)
-                ctx.strokeStyle = "#000000";
-            else
-                ctx.strokeStyle = "#e9e9e9";
-
-            if(i == num_lines_y) {
-                ctx.moveTo(grid_size*i, 0);
-                ctx.lineTo(grid_size*i, canvas_height);
-            }
-            else {
-                ctx.moveTo(grid_size*i+0.5, 0);
-                ctx.lineTo(grid_size*i+0.5, canvas_height);
-            }
-            ctx.stroke();
-        }
-
-        ctx.translate(y_axis_distance_grid_lines*grid_size, x_axis_distance_grid_lines*grid_size);
-
-        // Ticks marks along the positive X-axis
-        for(i=1; i<(num_lines_y - y_axis_distance_grid_lines); i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "#000000";
-
-            // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(grid_size*i+0.5, -3);
-            ctx.lineTo(grid_size*i+0.5, 3);
-            ctx.stroke();
-
-            // Text value at that point
-            ctx.font = '9px Arial';
-            ctx.textAlign = 'start';
-            ctx.fillText(x_axis_starting_point.number*i + x_axis_starting_point.suffix, grid_size*i-2, 15);
-        }
-
-        // Ticks marks along the negative X-axis
-        for(i=1; i<y_axis_distance_grid_lines; i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "#000000";
-
-            // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(-grid_size*i+0.5, -3);
-            ctx.lineTo(-grid_size*i+0.5, 3);
-            ctx.stroke();
-
-            // Text value at that point
-            ctx.font = '9px Arial';
-            ctx.textAlign = 'end';
-            ctx.fillText(-x_axis_starting_point.number*i + x_axis_starting_point.suffix, -grid_size*i+3, 15);
-        }
-
-        // Ticks marks along the positive Y-axis
-        // Positive Y-axis of graph is negative Y-axis of the canvas
-        for(i=1; i<(num_lines_x - x_axis_distance_grid_lines); i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "#000000";
-
-            // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(-3, grid_size*i+0.5);
-            ctx.lineTo(3, grid_size*i+0.5);
-            ctx.stroke();
-
-            // Text value at that point
-            ctx.font = '9px Arial';
-            ctx.textAlign = 'start';
-            ctx.fillText(-y_axis_starting_point.number*i + y_axis_starting_point.suffix, 8, grid_size*i+3);
-        }
-
-        // Ticks marks along the negative Y-axis
-        // Negative Y-axis of graph is positive Y-axis of the canvas
-        for(i=1; i<x_axis_distance_grid_lines; i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "#000000";
-
-            // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(-3, -grid_size*i+0.5);
-            ctx.lineTo(3, -grid_size*i+0.5);
-            ctx.stroke();
-
-            // Text value at that point
-            ctx.font = '9px Arial';
-            ctx.textAlign = 'start';
-            ctx.fillText(y_axis_starting_point.number*i + y_axis_starting_point.suffix, 8, -grid_size*i+3);
-        }
-
-        var labelX = document.getElementById("x-label3");
-        var ctxLabelX = labelX.getContext("2d");
-        ctxLabelX.clearRect(0, 0, labelX.width, labelX.height);
-        ctxLabelX.font = "10px Arial";
-        ctxLabelX.fillText("direction",labelX.width/2 -20, labelX.height/2);
-
-        var labelY = document.getElementById("y-label3");
-        var ctxLabelY = labelY.getContext("2d");
-        ctxLabelY.clearRect(0, 0, labelY.width, labelY.height);
-        ctxLabelY.save();
-        ctxLabelY.translate(140, 105);
-        ctxLabelY.rotate(Math.PI/2);
-        ctxLabelY.fillText("depth",labelY.width/2, labelY.height/2);
-        ctxLabelY.restore();
-        // ctx.arrow()
-        zArrow3();
-    }
-
-    function zArrow2(){
-        var compX = calcLength(statwo[0],statwo[1]);
+    function zArrow1(id,sta){
+        var compX = calcLength(sta[0],sta[1]);
 
         var scaleX = compX/5000;
         var x= scaleX*30;
-        var scaleY = Math.abs(statwo[2])/5000;
+        var scaleY = Math.abs(sta[2])/5000;
         var y = scaleY*30;
 
-        var canvas = document.getElementById("depth2");
-        var context = canvas.getContext("2d");
-
-        context.beginPath();
-        context.arrow(0, 0, x, y, [0, 1, -10, 1, -10, 5]);
-        // context.arrow(0, 0, x, y, [0, 1, -10, 1, -10, 5]);
-        context.fill();
-    }
-
-    function zArrow1(){
-        var compX = calcLength(staone[0],staone[1]);
-
-        var scaleX = compX/5000;
-        var x= scaleX*30;
-        var scaleY = Math.abs(staone[2])/5000;
-        var y = scaleY*30;
-
-        var canvas = document.getElementById("depth1");
+        var canvas = document.getElementById(id);
         var context = canvas.getContext("2d");
 
         context.beginPath();
@@ -1681,25 +919,12 @@
         context.fill();
     }
 
-    function zArrow3(){
-        var compX = calcLength(stathe[0],stathe[1]);
-
-        var scaleX = compX/5000;
-        var x= scaleX*30;
-        var scaleY = Math.abs(stathe[2])/5000;
-        var y = scaleY*30;
-
-        var canvas = document.getElementById("depth3");
-        var context = canvas.getContext("2d");
-
-        context.beginPath();
-        context.arrow(0, 0, x, y, [0, 1, -10, 1, -10, 5]);
-        context.fill();
-    }
-
-
-
-
+    $(document).ready(function () {
+        document.getElementById("fakeBu").click();
+        setInterval(function () {
+            document.getElementById("fakeBu").click();
+        }, 5000);
+    });
 
 </script>
 
