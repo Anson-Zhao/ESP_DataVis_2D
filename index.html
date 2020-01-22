@@ -169,7 +169,7 @@
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://frogcat.github.io/canvas-arrow/canvas-arrow.js"></script>`
+    <script src="https://frogcat.github.io/canvas-arrow/canvas-arrow.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/require.min.js"></script>
 
 </head>
@@ -403,6 +403,7 @@
 
     function building(station){
         //葛一扬！！！！看这！！！！！！！！
+        //:) 我不懂中文
         //葛一扬！！！！看这！！！！！！！！
         //葛一扬！！！！看这！！！！！！！！
         //***station here is an object now, it include name, state, city, and id.
@@ -447,7 +448,7 @@
         //create canvas for compass
         var canvasCompass = document.createElement("canvas");
         canvasCompass.id= station.StationId + "_canvas";
-        canvasCompass.setAttribute("style","width:300px; height:300px;");
+        canvasCompass.setAttribute("style","width:300; height:300;");
 
         //create compass div
         var compassDiv = document.createElement("div");
@@ -459,17 +460,17 @@
         //create canvas for y-label of the coordinate
         var yLabelC = document.createElement("canvas");
         yLabelC.id = "y-label_" + station.StationId;
-        yLabelC.setAttribute("style","width : 20px; height : 270px; display: inline-block;");
+        yLabelC.setAttribute("style","width : 20; height : 270; display: inline-block;");
 
         //create canvas for x-label of the coordinate
         var xLabelC = document.createElement("canvas");
         xLabelC.id = "x-label_" + station.StationId;
-        xLabelC.setAttribute("style","width : 270px; height : 20px; display:table-cell; vertical-align: middle;");
+        xLabelC.setAttribute("style","width : 270; height : 20; display:table-cell; vertical-align: middle;");
 
         //create canvas for the coordinate
         var depthC = document.createElement("canvas");
         depthC.id = "depth_" + station.StationId;
-        depthC.setAttribute("style","width : 300px; height : 300px; display:table-cell; vertical-align: middle;");
+        depthC.setAttribute("style","width:300; height:300; display:table-cell; vertical-align: middle;");
 
         //create a div for x-label and coordinate
         var verticalDiv = document.createElement("div");
@@ -670,27 +671,31 @@
 
     function imgLoaded(campassid,depthid,ylabel,xlabel,sta,img,needle) {
         // Image loaded event complete.  Start the timer
-        console.log('loaded');
-        setInterval(interval(campassid,depthid,ylabel,xlabel,sta,img,needle), 5000);
-    }
-
-    function interval(campassid,depthid,ylabel,xlabel,sta,img,needle){
         draw(campassid,sta,img,needle);
         coordinate(depthid,ylabel,xlabel);
-        zArrow1(depthid,sta)
+        zArrow1(depthid,sta);
+        // console.log('loaded');
+        // setInterval(interval(campassid,depthid,ylabel,xlabel,sta,img,needle), 5000);
     }
+
+    // function interval(campassid,depthid,ylabel,xlabel,sta,img,needle){
+    //     draw(campassid,sta,img,needle);
+    //     coordinate(depthid,ylabel,xlabel);
+    //     zArrow1(depthid,sta)
+    // }
 
     //draw compass with the needle
     function draw(compassid,sta,img,needle) {
         var canvas = document.getElementById(compassid);
         var ctx = canvas.getContext('2d');
 
-        console.log(sta);
+        console.log(canvas.width);
 
         console.log('Station 1 heading:'+calcAngleDegrees(sta[0], sta[1]));
 
         let degrees = calcAngleDegrees(sta[0], sta[1]);
-        ctx.clearRect(0, 0, 300, 300);
+        ctx.clearRect(0, 0, 500, 500);
+
 
         // Draw the compass onto the canvas
         ctx.drawImage(img, 0, 0);
@@ -754,23 +759,28 @@
         var y_axis_starting_point = { number: 5000, suffix: '' };
 
         var canvas = document.getElementById(id);
+        console.log(id);
         var ctx = canvas.getContext("2d");
 
         // canvas width
-        var canvas_width = canvas.width;
+        var canvas_width = 300;
         console.log(canvas_width);
 
         // canvas height
-        var canvas_height = canvas.height;
+        var canvas_height = 300;
+        console.log(canvas);
+        console.log(canvas_height);
 
         // no of vertical grid lines
         var num_lines_x = Math.floor(canvas_height/grid_size);
+        console.log(num_lines_x);
 
         // no of horizontal grid lines
         var num_lines_y = Math.floor(canvas_width/grid_size);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         ctx.save();
+
         // Draw grid lines along X-axis
         for(var i=0; i<=num_lines_x; i++) {
             ctx.beginPath();
@@ -910,12 +920,13 @@
         var x= scaleX*30;
         var scaleY = Math.abs(sta[2])/5000;
         var y = scaleY*30;
+        console.log(y);
 
         var canvas = document.getElementById(id);
         var context = canvas.getContext("2d");
 
         context.beginPath();
-        context.arrow(0, 0, x, y, [0, 1, -10, 1, -10, 5]);
+        context.arrow(0, 0, 100, 200, [0, 1, -10, 1, -10, 5]);
         context.fill();
     }
 
