@@ -10,6 +10,26 @@ const influx = new Influx.InfluxDB({
     port: 8086
 });
 
+var mysql = require('mysql');
+var http = require('http');
+var bodyParser = require("body-parser");
+
+var con = mysql.createConnection({
+    host: "10.11.90.16",
+    user: "AppUser",
+    password: "Special888%",
+    port: "3306",
+    Schema: "ESP2",
+    Table: "StationData"
+});
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
+
+
 function convertToCSV(objArray,m) {
     // console.log(objArray);
     var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
@@ -113,48 +133,112 @@ app.get('/newSnow', function (req, res) {
         res.status(500).send(err.stack)
     });
 });
+var pack=[];
 var i=0;
-app.get('/querys', function (req, res) {
-    console.log("query get");
-    var pack = {};
-    console.log(req.query.stations.length);
-    // console.log(req.query.stations.length);
-    // console.log('SELECT * FROM ' + req.query.stations[0] + 'avg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime);
-    for(i=0; i<req.query.stations.length; i++){
+app.get('/querys', async function (req, res) {
+    console.log(req.query.stations);
+    // var pack = await [[req.query.stations[0],Q(req.query.stations[0])]];
+    for(i = 0; i<req.query.stations.length; i++){
+        // var result;
         var query = 'SELECT * FROM ' + req.query.stations[i] + 'avg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime;
-
         console.log(query);
-        console.log("this is I: ");
         console.log(i);
-
-        influx.query(query).then
-        ((result, request = req) => {
+        await influx.query(query).then
+        (result => {
             // console.log(result);
             // console.log(result);
+            // console.log("this is request lenth");
+            // console.log(request.query.stations.length);
+            //
+            // // console.log(result);
+            // console.log("this is pack");
+            // console.log(request.query.stations[i]);
+            // pack[request.query.stations[i]] = result;
+            // console.log("This is result: ");
+            // console.log(result);
+            pack[i]= [req.query.stations[i],result];
             console.log("this is index");
-            console.log(i-1);
-            console.log("this is req lenth");
-            console.log(request.query.stations.length);
-
-            // console.log(result);
-            console.log("this is pack");
-            console.log(request.query.stations[i-1]);
-            pack[request.query.stations[i-1]] = result;
-            // console.log(pack[i+1]);
+            console.log(i);
+            console.log(pack[i]);
+            if(i===req.query.stations.length){
+                console.log(pack);
+            }
 
             // await
+            // return Promise.resolve(result);
+            // return new Promise((resolve => {resolve = result}))
 
-
-            console.log(pack);
+            // console.log(pack);
             // console.log(pack[req.query.stations[i]][1]["time"])
         }).catch(err => {
             console.log(err)
         });
-        // if(!!pack[req.query.stations[i]]){
-        //     continue
-        // }
 
+
+
+
+        // console.log("This is query i: "+i);
+        // let sendback = await result;
+        // console.log("This is what we get from await: ");
+        // console.log(sendback);
+    //     if(i===req.query.stations.length-1){
+    //         console.log(pack);
+    //     }
     }
+    // console.log(pack);
+
+    // console.log("req length");
+    // var pack = {};
+    // var packs = [];
+    // console.log(req.query.stations.length);
+    // // console.log(req.query.stations.length);
+    // // console.log('SELECT * FROM ' + req.query.stations[0] + 'avg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime);
+    // for(i=0; i<req.query.stations.length; i++){
+    //     packs[i]=i;
+    //     var query = 'SELECT * FROM ' + req.query.stations[i] + 'avg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime;
+    //
+    //     console.log(query);
+    //     console.log("this is I: ");
+    //     console.log(i);
+    //
+    //     influx.query(query).then
+    //     ((result, request = req) => {
+    //         // console.log(result);
+    //         // console.log(result);
+    //         console.log("this is index");
+    //         console.log(i);
+    //         console.log("this is request lenth");
+    //         console.log(request.query.stations.length);
+    //
+    //         // console.log(result);
+    //         console.log("this is pack");
+    //         console.log(request.query.stations[i]);
+    //         pack[request.query.stations[i]] = result;
+    //         // console.log(pack[i+1]);
+    //
+    //         // await
+    //
+    //
+    //         console.log(pack);
+    //         // console.log(pack[req.query.stations[i]][1]["time"])
+    //     }).catch(err => {
+    //         console.log(err)
+    //     });
+    //     // if(!!pack[req.query.stations[i]]){
+    //     //     continue
+    //     // }
+    //
+    // }
     res.json(pack);
 });
+
+app.get ('/stations', function (req, res){
+    // console.log(req);
+    con.query("SELECT StationName,City,State,StationId FROM ESP2.StationData",function (err, result) {
+        if (err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+});
+
 app.listen('3005');

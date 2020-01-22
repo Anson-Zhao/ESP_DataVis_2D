@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="afadfbf9-55d5-41d4-9181-85c2a3e0b4b1" name="Default Changelist" comment="">
+    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,45 +27,33 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="$PROJECT_DIR$" />
-        <option value="$PROJECT_DIR$/.idea" />
-      </set>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Rachel" />
+      </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="InvalidFacetManager">
     <ignored-facets>
       <facet id="ESP_DataVis_2D/invalid/Python" />
     </ignored-facets>
   </component>
-  <component name="JsFlowSettings">
-    <service-enabled>true</service-enabled>
-    <exe-path />
-    <other-services-enabled>true</other-services-enabled>
-    <auto-save>true</auto-save>
-  </component>
-  <component name="ProjectId" id="1QCdHQcsnpDfEkPDatptrnCNtP7" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1SHx6bzrjPXVkXZUEq9ADSzFb2l" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
@@ -73,95 +61,56 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="javascript.nodejs.core.library.configured.version" value="10.15.3" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/jsLibrary/dygraph" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_interpreter_path" value="node" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="SDKs" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/index1203.html" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/jsLibrary/dygraph" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/Temp" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/jsLibrary" />
+      <recent name="$PROJECT_DIR$/jsLibrary/compass" />
       <recent name="$PROJECT_DIR$/archive" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/compass" />
+      <recent name="$PROJECT_DIR$/node_modules" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.espDataVis.js">
-    <configuration name="index.html?_ijt=85ugo3j4kvufhpep6c8ipcgfk1" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/index.html?_ijt=85ugo3j4kvufhpep6c8ipcgfk1" useBuiltInWebServerPort="true">
+    <configuration name="historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="index.html?_ijt=earqo77aqu40qeat027t5mvdte" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/index.html?_ijt=earqo77aqu40qeat027t5mvdte" useBuiltInWebServerPort="true">
+    <configuration name="index116.html?_ijt=4mhebuui7t5p4oes4q86ask3pg" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/index116.html?_ijt=4mhebuui7t5p4oes4q86ask3pg" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="espDataVis.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/espDataVis.js" working-dir="$PROJECT_DIR$">
+    <configuration name="index.html?_ijt=pl3ll9sdummqmmcs4odplgq0dh" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/index.html?_ijt=pl3ll9sdummqmmcs4odplgq0dh" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="ESP_DataVis_2D" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+    <configuration name="index.html?_ijt=r175ml65f3vkfl9oo4qrtlfi9k" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/index.html?_ijt=r175ml65f3vkfl9oo4qrtlfi9k" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="vectorvis" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ESP_DataVis_2D" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/archive/vectorvis.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+    <configuration name="espDataVis.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="espDataVis.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.index.html?_ijt=pl3ll9sdummqmmcs4odplgq0dh" />
+      <item itemvalue="JavaScript Debug.index.html?_ijt=r175ml65f3vkfl9oo4qrtlfi9k" />
+      <item itemvalue="JavaScript Debug.index116.html?_ijt=4mhebuui7t5p4oes4q86ask3pg" />
+      <item itemvalue="JavaScript Debug.historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" />
+      <item itemvalue="Node.js.espDataVis.js" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Node.js.espDataVis.js" />
-        <item itemvalue="JavaScript Debug.index.html?_ijt=85ugo3j4kvufhpep6c8ipcgfk1" />
-        <item itemvalue="JavaScript Debug.index.html?_ijt=earqo77aqu40qeat027t5mvdte" />
+        <item itemvalue="JavaScript Debug.historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" />
+        <item itemvalue="JavaScript Debug.index116.html?_ijt=4mhebuui7t5p4oes4q86ask3pg" />
+        <item itemvalue="JavaScript Debug.index.html?_ijt=r175ml65f3vkfl9oo4qrtlfi9k" />
+        <item itemvalue="JavaScript Debug.index.html?_ijt=pl3ll9sdummqmmcs4odplgq0dh" />
       </list>
     </recent_temporary>
   </component>
@@ -182,117 +131,179 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="afadfbf9-55d5-41d4-9181-85c2a3e0b4b1" name="Default Changelist" comment="" />
-      <created>1567278423317</created>
+      <changelist id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="" />
+      <created>1571234147369</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1567278423317</updated>
-      <workItem from="1567278424588" duration="588000" />
-      <workItem from="1568469446779" duration="8558000" />
-      <workItem from="1568741649913" duration="524000" />
-      <workItem from="1569088638732" duration="847000" />
-      <workItem from="1570026773080" duration="5087000" />
-      <workItem from="1570460962462" duration="735000" />
-      <workItem from="1570559403995" duration="2394000" />
-      <workItem from="1570720430368" duration="2431000" />
-      <workItem from="1571150347160" duration="3854000" />
-      <workItem from="1571312149005" duration="2236000" />
-      <workItem from="1571747010290" duration="287000" />
-      <workItem from="1571747320097" duration="71000" />
-      <workItem from="1571749135729" duration="24278000" />
-      <workItem from="1571937147736" duration="2944000" />
-      <workItem from="1572524361881" duration="47000" />
-      <workItem from="1572524420802" duration="678000" />
-      <workItem from="1574437042007" duration="1714000" />
-      <workItem from="1574878833222" duration="3505000" />
-      <workItem from="1575414153087" duration="57000" />
-      <workItem from="1575414221435" duration="227000" />
-      <workItem from="1575754277237" duration="1886000" />
-      <workItem from="1576436634670" duration="173000" />
-      <workItem from="1578663764877" duration="3830000" />
-      <workItem from="1578857632961" duration="146000" />
-      <workItem from="1578857801131" duration="393000" />
-      <workItem from="1579617379902" duration="202000" />
-      <workItem from="1579703083332" duration="441000" />
+      <updated>1571234147369</updated>
+      <workItem from="1571234148654" duration="124000" />
+      <workItem from="1571234314880" duration="245000" />
+      <workItem from="1571235256206" duration="5088000" />
+      <workItem from="1571324084881" duration="43000" />
+      <workItem from="1571325672138" duration="5859000" />
+      <workItem from="1571668904853" duration="2199000" />
+      <workItem from="1571755350712" duration="3197000" />
+      <workItem from="1571764170366" duration="617000" />
+      <workItem from="1571839636464" duration="38000" />
+      <workItem from="1571839838426" duration="25194000" />
+      <workItem from="1572472636379" duration="110000" />
+      <workItem from="1572531821634" duration="2000" />
+      <workItem from="1572531925764" duration="3287000" />
+      <workItem from="1572535675195" duration="744000" />
+      <workItem from="1572882630058" duration="4641000" />
+      <workItem from="1572973554709" duration="178000" />
+      <workItem from="1572973736522" duration="6821000" />
+      <workItem from="1573141987248" duration="4227000" />
+      <workItem from="1573230863327" duration="2135000" />
+      <workItem from="1573480384528" duration="14786000" />
+      <workItem from="1573835418956" duration="4407000" />
+      <workItem from="1574094619584" duration="2151000" />
+      <workItem from="1574178168257" duration="8000" />
+      <workItem from="1574178572871" duration="267000" />
+      <workItem from="1574180988765" duration="1176000" />
+      <workItem from="1574182263967" duration="1191000" />
+      <workItem from="1574261874153" duration="3670000" />
+      <workItem from="1574352453173" duration="3376000" />
+      <workItem from="1574438412823" duration="2842000" />
+      <workItem from="1574696744634" duration="228000" />
+      <workItem from="1574697157659" duration="1628000" />
+      <workItem from="1574698833639" duration="5727000" />
+      <workItem from="1574783510912" duration="4750000" />
+      <workItem from="1574796611670" duration="28538000" />
+      <workItem from="1575562610039" duration="5589000" />
+      <workItem from="1575677255697" duration="609000" />
+      <workItem from="1575906263792" duration="4850000" />
+      <workItem from="1575992475971" duration="13003000" />
+      <workItem from="1576162945706" duration="47000" />
+      <workItem from="1576162998847" duration="232000" />
+      <workItem from="1576165019502" duration="5297000" />
+      <workItem from="1576254942837" duration="2112000" />
+      <workItem from="1576439026404" duration="21667000" />
+      <workItem from="1578858126600" duration="12739000" />
+      <workItem from="1579181107347" duration="1072000" />
+      <workItem from="1579191006102" duration="31430000" />
+      <workItem from="1579703091368" duration="369000" />
     </task>
-    <task id="LOCAL-00001" summary="V1.1">
-      <created>1571151146762</created>
+    <task id="LOCAL-00001" summary="esp live chart">
+      <created>1571239268892</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1571151146763</updated>
+      <updated>1571239268892</updated>
     </task>
-    <task id="LOCAL-00002" summary="V1.1">
-      <created>1571153701724</created>
+    <task id="LOCAL-00002" summary="esp live chart">
+      <created>1571323742899</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1571153701724</updated>
+      <updated>1571323742899</updated>
     </task>
-    <task id="LOCAL-00003" summary="V1.1">
-      <created>1571412165339</created>
+    <task id="LOCAL-00003" summary="esp live chart">
+      <created>1571325811700</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1571412165339</updated>
+      <updated>1571325811700</updated>
     </task>
-    <task id="LOCAL-00004" summary="V1.2">
-      <created>1571766527335</created>
+    <task id="LOCAL-00004" summary="historical data">
+      <created>1571337258238</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1571766527336</updated>
+      <updated>1571337258238</updated>
     </task>
-    <task id="LOCAL-00005" summary="V1.2 with compass">
-      <created>1571776254025</created>
+    <task id="LOCAL-00005" summary="CSS">
+      <created>1571764072733</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1571776254025</updated>
+      <updated>1571764072733</updated>
     </task>
-    <task id="LOCAL-00006" summary="V1.2 with compass">
-      <created>1571776653685</created>
+    <task id="LOCAL-00006" summary="CSS">
+      <created>1571928015971</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1571776653685</updated>
+      <updated>1571928015971</updated>
     </task>
-    <task id="LOCAL-00007" summary="V1.2 css">
-      <created>1571926074269</created>
+    <task id="LOCAL-00007" summary="new Gauges">
+      <created>1572459756942</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1571926074269</updated>
+      <updated>1572459756942</updated>
     </task>
-    <task id="LOCAL-00008" summary="V1.2 css">
-      <created>1571927780553</created>
+    <task id="LOCAL-00008" summary="new Gauges">
+      <created>1572973782459</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1571927780553</updated>
+      <updated>1572973782459</updated>
     </task>
-    <task id="LOCAL-00009" summary="V1.2 css">
-      <created>1574437151609</created>
+    <task id="LOCAL-00009" summary="new Gauges">
+      <created>1572973806688</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1574437151609</updated>
+      <updated>1572973806688</updated>
     </task>
-    <task id="LOCAL-00010" summary="V1.2 css">
-      <created>1574878875821</created>
+    <task id="LOCAL-00010" summary="new Gauges">
+      <created>1574178831563</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1574878875821</updated>
+      <updated>1574178831563</updated>
     </task>
-    <task id="LOCAL-00011" summary="V1.3">
-      <created>1575825424978</created>
+    <task id="LOCAL-00011" summary="new Gauges">
+      <created>1574867231238</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1575825424978</updated>
+      <updated>1574867231240</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="new Gauges">
+      <created>1574871487293</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1574871487293</updated>
+    </task>
+    <task id="LOCAL-00013" summary="new Gauges">
+      <created>1574874471797</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1574874471797</updated>
+    </task>
+    <task id="LOCAL-00014" summary="modulize">
+      <created>1576081645218</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1576081645218</updated>
+    </task>
+    <task id="LOCAL-00015" summary="modulize">
+      <created>1578586971033</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1578586971033</updated>
+    </task>
+    <task id="LOCAL-00016" summary="modulize">
+      <created>1578942183375</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1578942183375</updated>
+    </task>
+    <task id="LOCAL-00017" summary="modulize">
+      <created>1579625399349</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1579625399349</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,44 +324,128 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="V1.1" />
-    <MESSAGE value="V1.2" />
-    <MESSAGE value="V1.2 with compass" />
-    <MESSAGE value="V1.2 css" />
-    <MESSAGE value="V1.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1.3" />
+    <MESSAGE value="esp live chart" />
+    <MESSAGE value="historical data" />
+    <MESSAGE value="CSS" />
+    <MESSAGE value="new Gauges" />
+    <MESSAGE value="modulize" />
+    <option name="LAST_COMMIT_MESSAGE" value="modulize" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="968" y="407" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1579703031871">
-      <screen x="0" y="23" width="2560" height="1308" />
+    <state x="908" y="495" key="#Deployment" timestamp="1579190745223">
+      <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="968" y="407" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1579703031871" />
-    <state x="968" y="409" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1316@0.23.2560.1316" timestamp="1575414200377" />
-    <state x="931" y="213" key="CommitChangelistDialog2" timestamp="1579703531245">
-      <screen x="0" y="23" width="2560" height="1308" />
+    <state x="908" y="495" key="#Deployment/0.23.2560.1417@0.23.2560.1417" timestamp="1579190745223" />
+    <state x="1408" y="530" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1579703013915">
+      <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="931" y="213" key="CommitChangelistDialog2/0.23.2560.1308@0.23.2560.1308" timestamp="1579703531245" />
-    <state x="931" y="213" key="CommitChangelistDialog2/0.23.2560.1309@0.23.2560.1309" timestamp="1575825424817" />
-    <state x="680" y="277" width="1471" height="800" key="DirDiffDialog" timestamp="1575825413887">
-      <screen x="0" y="23" width="2560" height="1309" />
+    <state x="1408" y="530" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1579703013915" />
+    <state x="946" y="368" key="CommitChangelistDialog2" timestamp="1579625398985">
+      <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="680" y="277" width="1471" height="800" key="DirDiffDialog/0.23.2560.1309@0.23.2560.1309" timestamp="1575825413887" />
-    <state x="756" y="252" key="SettingsEditor" timestamp="1578675338060">
-      <screen x="0" y="23" width="2560" height="1308" />
+    <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1579625398985" />
+    <state x="1169" y="359" width="1200" height="800" key="DiffContextDialog" timestamp="1579647207376">
+      <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="756" y="252" key="SettingsEditor/0.23.2560.1308@0.23.2560.1308" timestamp="1578675338060" />
-    <state x="915" y="354" key="Vcs.Push.Dialog.v2" timestamp="1575825427068">
-      <screen x="0" y="23" width="2560" height="1309" />
+    <state x="1169" y="359" width="1200" height="800" key="DiffContextDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1579647207376" />
+    <state width="1358" height="306" key="GridCell.Tab.0.bottom" timestamp="1579621582598">
+      <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="915" y="354" key="Vcs.Push.Dialog.v2/0.23.2560.1309@0.23.2560.1309" timestamp="1575825427068" />
-    <state x="1180" y="583" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576169037567">
-      <screen x="0" y="23" width="2560" height="1308" />
+    <state width="1358" height="306" key="GridCell.Tab.0.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1579621582598" />
+    <state width="1358" height="306" key="GridCell.Tab.0.bottom/69.23.2491.1417@69.23.2491.1417" timestamp="1576167739600" />
+    <state width="1358" height="306" key="GridCell.Tab.0.center" timestamp="1579621582596">
+      <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="1180" y="583" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.2560.1308@0.23.2560.1308" timestamp="1576169037567" />
-    <state x="1047" y="433" key="git4idea.merge.GitPullDialog" timestamp="1579703515970">
-      <screen x="0" y="23" width="2560" height="1308" />
+    <state width="1358" height="306" key="GridCell.Tab.0.center/0.23.2560.1417@0.23.2560.1417" timestamp="1579621582596" />
+    <state width="1358" height="306" key="GridCell.Tab.0.center/69.23.2491.1417@69.23.2491.1417" timestamp="1576167739598" />
+    <state width="1358" height="306" key="GridCell.Tab.0.left" timestamp="1579621582596">
+      <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="1047" y="433" key="git4idea.merge.GitPullDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1579703515970" />
+    <state width="1358" height="306" key="GridCell.Tab.0.left/0.23.2560.1417@0.23.2560.1417" timestamp="1579621582596" />
+    <state width="1358" height="306" key="GridCell.Tab.0.left/69.23.2491.1417@69.23.2491.1417" timestamp="1576167739598" />
+    <state width="1358" height="306" key="GridCell.Tab.0.right" timestamp="1579621582597">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1358" height="306" key="GridCell.Tab.0.right/0.23.2560.1417@0.23.2560.1417" timestamp="1579621582597" />
+    <state width="1358" height="306" key="GridCell.Tab.0.right/69.23.2491.1417@69.23.2491.1417" timestamp="1576167739599" />
+    <state width="1358" height="334" key="GridCell.Tab.1.bottom" timestamp="1579190818284">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1358" height="334" key="GridCell.Tab.1.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1579190818284" />
+    <state width="1358" height="334" key="GridCell.Tab.1.center" timestamp="1579190818284">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1358" height="334" key="GridCell.Tab.1.center/0.23.2560.1417@0.23.2560.1417" timestamp="1579190818284" />
+    <state width="1358" height="334" key="GridCell.Tab.1.left" timestamp="1579190818283">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1358" height="334" key="GridCell.Tab.1.left/0.23.2560.1417@0.23.2560.1417" timestamp="1579190818283" />
+    <state width="1358" height="334" key="GridCell.Tab.1.right" timestamp="1579190818284">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1358" height="334" key="GridCell.Tab.1.right/0.23.2560.1417@0.23.2560.1417" timestamp="1579190818284" />
+    <state width="1358" height="334" key="GridCell.Tab.2.bottom" timestamp="1579190818285">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1358" height="334" key="GridCell.Tab.2.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1579190818285" />
+    <state width="1358" height="334" key="GridCell.Tab.2.center" timestamp="1579190818284">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1358" height="334" key="GridCell.Tab.2.center/0.23.2560.1417@0.23.2560.1417" timestamp="1579190818284" />
+    <state width="1358" height="334" key="GridCell.Tab.2.left" timestamp="1579190818284">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1358" height="334" key="GridCell.Tab.2.left/0.23.2560.1417@0.23.2560.1417" timestamp="1579190818284" />
+    <state width="1358" height="334" key="GridCell.Tab.2.right" timestamp="1579190818285">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state width="1358" height="334" key="GridCell.Tab.2.right/0.23.2560.1417@0.23.2560.1417" timestamp="1579190818285" />
+    <state x="989" y="491" key="Vcs.Push.Dialog.v2" timestamp="1579625403310">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="989" y="491" key="Vcs.Push.Dialog.v2/0.23.2560.1417@0.23.2560.1417" timestamp="1579625403310" />
+    <state x="688" y="291" width="1234" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1579103728334">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="688" y="291" width="1234" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1579103728334" />
+    <state x="714" y="331" width="1200" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog/69.23.2491.1417@69.23.2491.1417" timestamp="1576168608313" />
+    <state x="868" y="409" width="1482" height="1049" key="dock-window-1" timestamp="1579213471200">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="868" y="409" width="1482" height="1049" key="dock-window-1/0.23.2560.1417@0.23.2560.1417" timestamp="1579213471200" />
+    <state x="1435" y="603" width="845" height="528" key="find.popup" timestamp="1579298741926">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="1435" y="603" width="845" height="528" key="find.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1579298741926" />
+    <state x="1037" y="538" key="new project wizard" timestamp="1579101598572">
+      <screen x="0" y="23" width="2560" height="1417" />
+    </state>
+    <state x="1037" y="538" key="new project wizard/0.23.2560.1417@0.23.2560.1417" timestamp="1579101598572" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/rough_draft.html</url>
+          <line>373</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/rough_draft.html</url>
+          <line>410</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/rough_draft.html</url>
+          <line>394</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/rough_draft.html</url>
+          <line>184</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

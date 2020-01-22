@@ -35,18 +35,18 @@
             display: inline-table;
         }
 
-        /*.compasses{*/
-        /*    !*float: left;*!*/
-        /*    display: inline-block;*/
-        /*    !*left: 90px;*!*/
-        /*}*/
+        .compasses{
+            /*float: left;*/
+            /*display: inline-block;*/
+            /*left: 90px;*/
+        }
 
 /*!*css of new gauge*!*/
         .container {
             /*width: 100%;*/
             margin: 0 auto;
             font-size: 16px;
-            left: 90px;
+            left: 10px;
             width: max-content;
             display: inline-table;
             position:relative;
@@ -90,19 +90,39 @@
             font-size: .9em;
         }
 
-        /*.vertical{*/
-        /*    position:absolute;*/
-        /*    left:335px;*/
-        /*    top:250px;*/
-        /*}*/
-        .vertical{
-            display: flex;
-            flex-direction: column;
+        #C1,#D1{
+            display: inline-block;
+        }
+        #y-label1, #vertical{
+            display: inline-block;
+        }
+        #depth1, #x-label1{
+            display:table-cell;
+            vertical-align: middle;
         }
 
-        /*#container1{*/
-        /*    display: block;*/
-        /*}*/
+        #C2,#D2{
+            display: inline-block;
+        }
+        #y-label2, #vertical2{
+            display: inline-block;
+        }
+        #depth2, #x-label2{
+            display:table-cell;
+            vertical-align: middle;
+        }
+
+        #C3,#D3{
+            display: inline-block;
+        }
+        #y-label3, #vertical3{
+            display: inline-block;
+        }
+        #depth3, #x-label3{
+            display:table-cell;
+            vertical-align: middle;
+        }
+
     </style>
     <link rel="stylesheet" href="jsLibrary/dygraph/dygraph.css" />
 
@@ -150,24 +170,22 @@
 <!--Gauges-->
 <div id="gauge">
     <h2>The gauges represent live X (N-S), Y (E-W), Z (+ - altitude) from the ESP Stations with a 2-minute delay</h2>
+    <div id = "header">
+
+    </div>
     <h2 class="station_one">ESP 01, Middletown, NY</h2>
-<!--    <div class="station_one compasses" >-->
-        <!--            <h3>ESP 01</h3>-->
-    <div class="station_one compasses container" >
+
+    <div class="station_one" id="C1" >
         <canvas id="compass1" width="300" height="300"></canvas>
-<!--        <canvas class="vertical" id="x-label1" width="270" height="20"></canvas>-->
+    </div>
+
+    <div class="station_one" id="D1">
         <canvas id="y-label1" width="20" height="270"></canvas>
-<!--        <canvas id="x-label1" width="270" height="20"></canvas>-->
+        <div id="vertical">
+            <canvas id="x-label1" width="270" height="20"></canvas>
+            <canvas id="depth1" width="270" height="300"></canvas>
+        </div>
     </div>
-    <div class="container vertical">
-        <canvas id="x-label1" width="270" height="20"></canvas>
-        <canvas id="depth1" width="270" height="300"></canvas>
-    </div>
-<!--        <canvas  class="station_one compasses" id="compass1" width="400" height="300"></canvas>-->
-<!--        <canvas class="station_one compasses" id="y-label1" width="20" height="270"></canvas>-->
-<!--        <canvas class="station_one compasses" id="depth1" width="270" height="300"></canvas>-->
-<!--        <canvas id="x-label1" width="270" height="20"></canvas>-->
-<!--    </div>-->
 
     <div class="station_one container" id = "container1">
       <div id="gaugeX" class="contain n0"></div>
@@ -178,18 +196,18 @@
 
     <h2 class="station_two">ESP 02, Soquel, CA</h2><br><br>
 
-<!--    <canvas id="x-label2" width="270" height="20"></canvas>-->
-    <div class="station_two compasses" >
-        <canvas id="compass2" width="300" height="300"></canvas>
+    <div class="station_two" id="C2" >
+        <canvas  class="station_two" id="compass2" width="300" height="300"></canvas>
+    </div>
+    <div id="D2" class="station_two">
         <canvas id="y-label2" width="20" height="270"></canvas>
-        <canvas id="depth2" width="270" height="300"></canvas>
-        <canvas id="x-label2" width="270" height="20"></canvas>
-<!--    </div><br><br><br><br><br><br><br><br><br>-->
-<!--    <div class="gauges">-->
-<!--        <div id="gx2"></div>-->
-<!--        <div id="gy2"></div>-->
-<!--        <div id="gz2"></div>-->
-<!--    </div>-->
+        <div id="vertical2">
+            <canvas id="x-label2" width="270" height="20"></canvas>
+            <canvas id="depth2" width="270" height="300"></canvas>
+        </div>
+    </div>
+
+
     <div class="station_two container">
         <div id="gaugeX2" class="contain n0"></div>
         <div id="gaugeY2" class="contain n1"></div>
@@ -197,19 +215,18 @@
     </div>
 
     <h2 class="station_the">ESP 03, Middletown, NY</h2><br><br>
-    <div class="station_the compasses" >
-        <canvas  id="compass3" width="400" height="300"></canvas>
-        <canvas id="y-label3" width="20" height="270"></canvas>
-        <canvas  id="depth3" width="360" height="305"></canvas>
-        <canvas id="x-label3" width="270" height="20"></canvas>
-    </div>
-<!--    <br><br><br><br><br><br><br><br><br><br>-->
 
-    <!--    <div class="gauges">-->
-    <!--        <div id="gx"></div>-->
-    <!--        <div id="gy"></div>-->
-    <!--        <div id="gz"></div>-->
-    <!--    </div>-->
+    <div class="station_the" id="C3" >
+        <canvas id="compass3" width="300" height="300"></canvas>
+    </div>
+    <div class="station_the" id="D3">
+        <canvas id="y-label3" width="20" height="270"></canvas>
+        <div id="vertical3">
+            <canvas id="x-label3" width="270" height="20"></canvas>
+            <canvas id="depth3" width="270" height="300"></canvas>
+        </div>
+    </div>
+
     <div class="station_the container">
         <div id="gaugeX3" class="contain n0"></div>
         <div id="gaugeY3" class="contain n1"></div>
@@ -450,127 +467,29 @@
             document.getElementById("fakeBu").click();
             // depth
         }, 5000);
-        setInterval(coordinate, 5000);
-        setInterval(coordinate2, 5000);
-        setInterval(coordinate3, 5000);
-        // $('#gaugeX').highcharts(options, buildGraph);
-        // $('#gaugeY').highcharts(options, buildGraph);
-        // $('#gaugeZ').highcharts(options, buildGraph);
+        // setInterval(interval, 5000);
 
     });
 
-    // var gx,gy,gz;
-    // gx = new JustGage({
-    //     id: "gx",
-    //     title: "X1",
-    //     customSectors: [{ color : "#66ccff", lo : 0, hi : 20 }, { color: "#ff0000", lo: 20, hi: 100 }],
-    //     max:400000,
-    //     min:0,
-    //     label: "x average value",
-    //     levelColorsGradient: true
-    //
-    // });
-    // // gx.refresh(0);
-    // gy = new JustGage({
-    //     id: "gy",
-    //     title: "Y1",
-    //     customSectors: [{ color : "#66ccff", lo : 0, hi : 20 }, { color: "#ff0000", lo: 20, hi: 100 }],
-    //     max:400000,
-    //     min:0,
-    //     label: "y average value",
-    //     levelColorsGradient: false
-    //
-    // });
-    // // gy.refresh(0);
-    // gz = new JustGage({
-    //     id: "gz",
-    //     title: "Z1",
-    //     customSectors: [{ color : "#66ccff", lo : 0, hi : 20 }, { color: "#ff0000", lo: 20, hi: 100 }],
-    //     max:400000,
-    //     min:0,
-    //     label: "z average value",
-    //     levelColorsGradient: false
-    //
-    // });
-    // // gz.refresh(0);
-    //
-    // var gx2,gy2,gz2;
-    // gx2 = new JustGage({
-    //     id: "gx2",
-    //     title: "X2",
-    //     customSectors: [{ color : "#66ccff", lo : 0, hi : 20 }, { color: "#ff0000", lo: 20, hi: 100 }],
-    //     max:400000,
-    //     min:0,
-    //     label: "x average value",
-    //     levelColorsGradient: true
-    //
-    // });
-    // // gx2.refresh(0);
-    // gy2 = new JustGage({
-    //     id: "gy2",
-    //     title: "Y2",
-    //     customSectors: [{ color : "#66ccff", lo : 0, hi : 20 }, { color: "#ff0000", lo: 20, hi: 100 }],
-    //     max:400000,
-    //     min:0,
-    //     label: "y average value",
-    //     levelColorsGradient: false
-    //
-    // });
-    // // gy2.refresh(0);
-    // gz2 = new JustGage({
-    //     id: "gz2",
-    //     title: "Z2",
-    //     customSectors: [{ color : "#66ccff", lo : 0, hi : 20 }, { color: "#ff0000", lo: 20, hi: 100 }],
-    //     max:400000,
-    //     min:0,
-    //     label: "z average value",
-    //     levelColorsGradient: false
-    //
-    // });
-    // gz2.refresh(0);
+    function interval() {
+        coordinate("depth1","y-label1","x-label1");
+        coordinate("depth2","y-label2","x-label2");
+        coordinate("depth3","y-label3","x-label3");
+        zArrow1("depth1",staone);
+        zArrow1("depth2",statwo);
+        zArrow1("depth3",stathe);
+        draw(ctx,staone);
+        draw(ctx2,statwo);
+        draw(ctx3,stathe);
+    }
 
-    //
-    // function init() {
-    //     // Grab the compass element
-    //     var canvas2 = document.getElementById('compass2');
-    //
-    //     // Canvas supported?
-    //     if (canvas2.getContext('2d')) {
-    //         ctx2 = canvas2.getContext('2d');
-    //
-    //         // Load the needle image
-    //         needle2 = new Image();
-    //         needle2.src = 'jsLibrary/compass/needle.png';
-    //
-    //         // Load the compass image
-    //         img2 = new Image();
-    //         img2.src = 'jsLibrary/compass/compass.png';
-    //         img2.onload = imgLoaded2;
-    //     } else {
-    //         alert("Canvas not supported!");
-    //     }
-    //
-    //     // Grab the compass element
-    //     var canvas = document.getElementById('compass1');
-    //     // var canvas2 = document.getElementById('compass2');
-    //
-    //     // Canvas supported?
-    //     if (canvas.getContext('2d')) {
-    //         ctx = canvas.getContext('2d');
-    //
-    //         // Load the needle image
-    //         needle = new Image();
-    //         needle.src = 'jsLibrary/compass/needle.png';
-    //
-    //         // Load the compass image
-    //         img = new Image();
-    //         img.src = 'jsLibrary/compass/compass.png';
-    //         img.onload = imgLoaded;
-    //     } else {
-    //         alert("Canvas not supported!");
-    //     }
-    //
-    // }
+    function createHeader (textNode){
+        let h2 = document.createElement("h2");
+        let text = document.createTextNode(textNode);
+        h2.appendChild(text);
+
+        document.getElementById("header").appendChild(h2)
+    }
 
     function myFunction(objButton) {
         var x = document.getElementsByClassName(objButton.value);
@@ -927,30 +846,24 @@
         });
     }
 
+
     function imgLoaded() {
         // Image loaded event complete.  Start the timer
         console.log('loaded');
-        setInterval(draw, 5000);
+        setInterval(interval, 5000);
     }
 
-    function imgLoaded2() {
-        // Image loaded event complete.  Start the timer
-        setInterval(draw2, 5000);
-    }
+    //draw compass with the needle
+    function draw(ctx,sta) {
+        //
+        // createHeader();
 
-    function imgLoaded3() {
-        // Image loaded event complete.  Start the timer
-        setInterval(draw3, 5000);
-    }
+        console.log(sta);
 
-    function draw() {
+        console.log('Station 1 heading:'+calcAngleDegrees(sta[0], sta[1]));
 
-        console.log(staone);
-
-        console.log('Station 1 heading:'+calcAngleDegrees(staone[0], staone[1]));
-
-        let degrees = calcAngleDegrees(staone[0], staone[1]);
-        clearCanvas();
+        let degrees = calcAngleDegrees(sta[0], sta[1]);
+        ctx.clearRect(0, 0, 300, 300);
 
         // Draw the compass onto the canvas
         ctx.drawImage(img, 0, 0);
@@ -972,82 +885,6 @@
 
     }
 
-    function draw2() {
-
-        console.log(statwo);
-
-        console.log('Station 2 heading2:'+calcAngleDegrees(statwo[0], statwo[1]));
-        //
-        let degrees2 = calcAngleDegrees(statwo[0], statwo[1]);
-        clearCanvas2();
-
-        // Draw the compass onto the canvas
-        ctx2.drawImage(img2, 0, 0);
-
-        // Save the current drawing state
-        ctx2.save();
-
-        // Now move across and down half the
-        ctx2.translate(153, 140);
-
-        // Rotate around this point
-        ctx2.rotate(degrees2 * (Math.PI / 180));
-
-        // Draw the image back and up
-        ctx2.drawImage(needle2, -172, -172);
-        // setInterval(drawNeedle2, 3000);
-
-        // // Restore the previous drawing state
-        ctx2.restore();
-    }
-
-    function draw3() {
-
-        console.log(stathe);
-
-        console.log('Station 3 heading3:'+calcAngleDegrees(stathe[0], stathe[1]));
-        //
-        let degrees3 = calcAngleDegrees(stathe[0], stathe[1]);
-        clearCanvas3();
-
-        // Draw the compass onto the canvas
-        ctx3.drawImage(img3, 0, 0);
-
-        // Save the current drawing state
-        ctx3.save();
-
-        // Now move across and down half the
-        ctx3.translate(153, 140);
-
-        // Rotate around this point
-        ctx3.rotate(degrees3 * (Math.PI / 180));
-
-        // Draw the image back and up
-        ctx3.drawImage(needle3, -172, -172);
-        // setInterval(drawNeedle2, 3000);
-
-        // // Restore the previous drawing state
-        ctx3.restore();
-    }
-
-    function clearCanvas3() {
-        // clear canvas
-        ctx3.clearRect(0, 0, 300, 300);
-        // ctx2.clearRect(0, 0, 300, 300);
-    }
-
-    function clearCanvas2() {
-        // clear canvas
-        ctx2.clearRect(0, 0, 300, 300);
-        // ctx2.clearRect(0, 0, 300, 300);
-    }
-
-    function clearCanvas() {
-        // clear canvas
-        ctx.clearRect(0, 0, 300, 300);
-        // ctx2.clearRect(0, 0, 300, 300);
-    }
-
     function calcAngleDegrees(x, y) {
         return Math.atan2(y, x) * 180 / Math.PI;
     }
@@ -1061,8 +898,6 @@
     function init() {
         // Grab the compass element
         var canvas3 = document.getElementById('compass3');
-        // canvas3.style.position = "absolute";
-        // document.getElementById('depth3').style.position = 'absolute';
 
         // Canvas supported?
         if (canvas3.getContext('2d')) {
@@ -1075,15 +910,13 @@
             // Load the compass image
             img3 = new Image();
             img3.src = 'jsLibrary/compass/compass.png';
-            img3.onload = imgLoaded3;
+            img3.onload = imgLoaded;
         } else {
             alert("Canvas not supported!");
         }
 
         // Grab the compass element
         var canvas2 = document.getElementById('compass2');
-        // canvas2.style.position = "absolute";
-        // document.getElementById('depth2').style.position = 'absolute';
 
         // Canvas supported?
         if (canvas2.getContext('2d')) {
@@ -1096,16 +929,13 @@
             // Load the compass image
             img2 = new Image();
             img2.src = 'jsLibrary/compass/compass.png';
-            img2.onload = imgLoaded2;
+            img2.onload = imgLoaded;
         } else {
             alert("Canvas not supported!");
         }
 
         // Grab the compass element
         var canvas = document.getElementById('compass1');
-        // canvas.style.position = "absolute";
-        // document.getElementById('depth1').style.position = 'absolute';
-        // var canvas2 = document.getElementById('compass2');
 
         // Canvas supported?
         if (canvas.getContext('2d')) {
@@ -1125,14 +955,14 @@
 
     }
 
-    function coordinate(){
+    function coordinate(id,yLabel,xLabel){
         var grid_size = 30;
         var x_axis_distance_grid_lines = 0;
         var y_axis_distance_grid_lines = 0;
         var x_axis_starting_point = { number: 5000, suffix: '' };
         var y_axis_starting_point = { number: 5000, suffix: '' };
 
-        var canvas = document.getElementById("depth1");
+        var canvas = document.getElementById(id);
         var ctx = canvas.getContext("2d");
 
         // canvas width
@@ -1207,162 +1037,6 @@
 
             // Text value at that point
             ctx.font = '9px Arial';
-            ctx.textAlign = 'hello';
-            ctx.fillText(x_axis_starting_point.number*i + x_axis_starting_point.suffix, grid_size*i-2, 15);
-        }
-
-        // Ticks marks along the negative X-axis
-        for(i=1; i<y_axis_distance_grid_lines; i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "#000000";
-
-            // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(-grid_size*i+0.5, -3);
-            ctx.lineTo(-grid_size*i+0.5, 3);
-            ctx.stroke();
-
-            // Text value at that point
-            ctx.font = '9px Arial';
-            ctx.textAlign = 'end';
-            ctx.fillText(-x_axis_starting_point.number*i + x_axis_starting_point.suffix, -grid_size*i+3, 15);
-        }
-
-        // Ticks marks along the positive Y-axis
-        // Positive Y-axis of graph is negative Y-axis of the canvas
-        for(i=1; i<(num_lines_x - x_axis_distance_grid_lines); i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "#000000";
-
-            // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(-3, grid_size*i+0.5);
-            ctx.lineTo(3, grid_size*i+0.5);
-            ctx.stroke();
-
-            // Text value at that point
-            ctx.font = '9px Arial';
-            ctx.textAlign = 'start';
-            ctx.fillText(-y_axis_starting_point.number*i + y_axis_starting_point.suffix, 8, grid_size*i+3);
-        }
-
-        // Ticks marks along the negative Y-axis
-        // Negative Y-axis of graph is positive Y-axis of the canvas
-        for(i=1; i<x_axis_distance_grid_lines; i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "#000000";
-
-            // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(-3, -grid_size*i+0.5);
-            ctx.lineTo(3, -grid_size*i+0.5);
-            ctx.stroke();
-
-            // Text value at that point
-            ctx.font = '9px Arial';
-            ctx.textAlign = 'start';
-            ctx.fillText(y_axis_starting_point.number*i + y_axis_starting_point.suffix, 8, -grid_size*i+3);
-        }
-
-
-        var labelX = document.getElementById("x-label1");
-        var ctxLabelX = labelX.getContext("2d");
-        ctxLabelX.clearRect(0, 0, labelX.width, labelX.height);
-        ctxLabelX.font = "10px Arial";
-        ctxLabelX.fillText("direction",labelX.width/2 -20, labelX.height/2);
-
-        var labelY = document.getElementById("y-label1");
-        var ctxLabelY = labelY.getContext("2d");
-        ctxLabelY.clearRect(0, 0, labelY.width, labelY.height);
-        ctxLabelY.save();
-        ctxLabelY.translate(140, 105);
-        ctxLabelY.rotate(Math.PI/2);
-        ctxLabelY.fillText("depth",labelY.width/2, labelY.height/2);
-        ctxLabelY.restore();
-        zArrow1();
-    }
-
-    function coordinate2(){
-        var grid_size = 30;
-        var x_axis_distance_grid_lines = 0;
-        var y_axis_distance_grid_lines = 0;
-        var x_axis_starting_point = { number: 5000, suffix: '' };
-        var y_axis_starting_point = { number: 5000, suffix: '' };
-
-        var canvas = document.getElementById("depth2");
-        var ctx = canvas.getContext("2d");
-
-        // canvas width
-        var canvas_width = canvas.width;
-
-        // canvas height
-        var canvas_height = canvas.height;
-
-        // no of vertical grid lines
-        var num_lines_x = Math.floor(canvas_height/grid_size);
-
-        // no of horizontal grid lines
-        var num_lines_y = Math.floor(canvas_width/grid_size);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Draw grid lines along X-axis
-        for(var i=0; i<=num_lines_x; i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-
-            // If line represents X-axis draw in different color
-            if(i === x_axis_distance_grid_lines)
-                ctx.strokeStyle = "#000000";
-            else
-                ctx.strokeStyle = "#e9e9e9";
-
-            if(i === num_lines_x) {
-                ctx.moveTo(0, grid_size*i);
-                ctx.lineTo(canvas_width, grid_size*i);
-            }
-            else {
-                ctx.moveTo(0, grid_size*i+0.5);
-                ctx.lineTo(canvas_width, grid_size*i+0.5);
-            }
-            ctx.stroke();
-        }
-        // Draw grid lines along Y-axis
-        for(i=0; i<=num_lines_y; i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-
-            // If line represents Y-axis draw in different color
-            if(i == y_axis_distance_grid_lines)
-                ctx.strokeStyle = "#000000";
-            else
-                ctx.strokeStyle = "#e9e9e9";
-
-            if(i == num_lines_y) {
-                ctx.moveTo(grid_size*i, 0);
-                ctx.lineTo(grid_size*i, canvas_height);
-            }
-            else {
-                ctx.moveTo(grid_size*i+0.5, 0);
-                ctx.lineTo(grid_size*i+0.5, canvas_height);
-            }
-            ctx.stroke();
-        }
-
-        ctx.translate(y_axis_distance_grid_lines*grid_size, x_axis_distance_grid_lines*grid_size);
-
-        // Ticks marks along the positive X-axis
-        for(i=1; i<(num_lines_y - y_axis_distance_grid_lines); i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "#000000";
-
-            // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(grid_size*i+0.5, -3);
-            ctx.lineTo(grid_size*i+0.5, 3);
-            ctx.stroke();
-
-            // Text value at that point
-            ctx.font = '9px Arial';
             ctx.textAlign = 'start';
             ctx.fillText(x_axis_starting_point.number*i + x_axis_starting_point.suffix, grid_size*i-2, 15);
         }
@@ -1420,13 +1094,14 @@
             ctx.fillText(y_axis_starting_point.number*i + y_axis_starting_point.suffix, 8, -grid_size*i+3);
         }
 
-        var labelX = document.getElementById("x-label2");
+
+        var labelX = document.getElementById(xLabel);
         var ctxLabelX = labelX.getContext("2d");
         ctxLabelX.clearRect(0, 0, labelX.width, labelX.height);
         ctxLabelX.font = "10px Arial";
         ctxLabelX.fillText("direction",labelX.width/2 -20, labelX.height/2);
 
-        var labelY = document.getElementById("y-label2");
+        var labelY = document.getElementById(yLabel);
         var ctxLabelY = labelY.getContext("2d");
         ctxLabelY.clearRect(0, 0, labelY.width, labelY.height);
         ctxLabelY.save();
@@ -1434,218 +1109,23 @@
         ctxLabelY.rotate(Math.PI/2);
         ctxLabelY.fillText("depth",labelY.width/2, labelY.height/2);
         ctxLabelY.restore();
-        // ctx.arrow()
-        zArrow2();
     }
 
-    function coordinate3(){
-        var grid_size = 30;
-        var x_axis_distance_grid_lines = 0;
-        var y_axis_distance_grid_lines = 0;
-        var x_axis_starting_point = { number: 5000, suffix: '' };
-        var y_axis_starting_point = { number: 5000, suffix: '' };
-
-        var canvas = document.getElementById("depth3");
-        var ctx = canvas.getContext("2d");
-
-        // canvas width
-        var canvas_width = canvas.width;
-
-        // canvas height
-        var canvas_height = canvas.height;
-
-        // no of vertical grid lines
-        var num_lines_x = Math.floor(canvas_height/grid_size);
-
-        // no of horizontal grid lines
-        var num_lines_y = Math.floor(canvas_width/grid_size);
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Draw grid lines along X-axis
-        for(var i=0; i<=num_lines_x; i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-
-            // If line represents X-axis draw in different color
-            if(i === x_axis_distance_grid_lines)
-                ctx.strokeStyle = "#000000";
-            else
-                ctx.strokeStyle = "#e9e9e9";
-
-            if(i === num_lines_x) {
-                ctx.moveTo(0, grid_size*i);
-                ctx.lineTo(canvas_width, grid_size*i);
-            }
-            else {
-                ctx.moveTo(0, grid_size*i+0.5);
-                ctx.lineTo(canvas_width, grid_size*i+0.5);
-            }
-            ctx.stroke();
-        }
-        // Draw grid lines along Y-axis
-        for(i=0; i<=num_lines_y; i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-
-            // If line represents Y-axis draw in different color
-            if(i == y_axis_distance_grid_lines)
-                ctx.strokeStyle = "#000000";
-            else
-                ctx.strokeStyle = "#e9e9e9";
-
-            if(i == num_lines_y) {
-                ctx.moveTo(grid_size*i, 0);
-                ctx.lineTo(grid_size*i, canvas_height);
-            }
-            else {
-                ctx.moveTo(grid_size*i+0.5, 0);
-                ctx.lineTo(grid_size*i+0.5, canvas_height);
-            }
-            ctx.stroke();
-        }
-
-        ctx.translate(y_axis_distance_grid_lines*grid_size, x_axis_distance_grid_lines*grid_size);
-
-        // Ticks marks along the positive X-axis
-        for(i=1; i<(num_lines_y - y_axis_distance_grid_lines); i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "#000000";
-
-            // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(grid_size*i+0.5, -3);
-            ctx.lineTo(grid_size*i+0.5, 3);
-            ctx.stroke();
-
-            // Text value at that point
-            ctx.font = '9px Arial';
-            ctx.textAlign = 'start';
-            ctx.fillText(x_axis_starting_point.number*i + x_axis_starting_point.suffix, grid_size*i-2, 15);
-        }
-
-        // Ticks marks along the negative X-axis
-        for(i=1; i<y_axis_distance_grid_lines; i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "#000000";
-
-            // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(-grid_size*i+0.5, -3);
-            ctx.lineTo(-grid_size*i+0.5, 3);
-            ctx.stroke();
-
-            // Text value at that point
-            ctx.font = '9px Arial';
-            ctx.textAlign = 'end';
-            ctx.fillText(-x_axis_starting_point.number*i + x_axis_starting_point.suffix, -grid_size*i+3, 15);
-        }
-
-        // Ticks marks along the positive Y-axis
-        // Positive Y-axis of graph is negative Y-axis of the canvas
-        for(i=1; i<(num_lines_x - x_axis_distance_grid_lines); i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "#000000";
-
-            // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(-3, grid_size*i+0.5);
-            ctx.lineTo(3, grid_size*i+0.5);
-            ctx.stroke();
-
-            // Text value at that point
-            ctx.font = '9px Arial';
-            ctx.textAlign = 'start';
-            ctx.fillText(-y_axis_starting_point.number*i + y_axis_starting_point.suffix, 8, grid_size*i+3);
-        }
-
-        // Ticks marks along the negative Y-axis
-        // Negative Y-axis of graph is positive Y-axis of the canvas
-        for(i=1; i<x_axis_distance_grid_lines; i++) {
-            ctx.beginPath();
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = "#000000";
-
-            // Draw a tick mark 6px long (-3 to 3)
-            ctx.moveTo(-3, -grid_size*i+0.5);
-            ctx.lineTo(3, -grid_size*i+0.5);
-            ctx.stroke();
-
-            // Text value at that point
-            ctx.font = '9px Arial';
-            ctx.textAlign = 'start';
-            ctx.fillText(y_axis_starting_point.number*i + y_axis_starting_point.suffix, 8, -grid_size*i+3);
-        }
-
-        var labelX = document.getElementById("x-label3");
-        var ctxLabelX = labelX.getContext("2d");
-        ctxLabelX.clearRect(0, 0, labelX.width, labelX.height);
-        ctxLabelX.font = "10px Arial";
-        ctxLabelX.fillText("direction",labelX.width/2 -20, labelX.height/2);
-
-        var labelY = document.getElementById("y-label3");
-        var ctxLabelY = labelY.getContext("2d");
-        ctxLabelY.clearRect(0, 0, labelY.width, labelY.height);
-        ctxLabelY.save();
-        ctxLabelY.translate(140, 105);
-        ctxLabelY.rotate(Math.PI/2);
-        ctxLabelY.fillText("depth",labelY.width/2, labelY.height/2);
-        ctxLabelY.restore();
-        // ctx.arrow()
-        zArrow3();
-    }
-
-    function zArrow2(){
-        var compX = calcLength(statwo[0],statwo[1]);
+    function zArrow1(id,sta){
+        var compX = calcLength(sta[0],sta[1]);
 
         var scaleX = compX/5000;
         var x= scaleX*30;
-        var scaleY = Math.abs(statwo[2])/5000;
+        var scaleY = Math.abs(sta[2])/5000;
         var y = scaleY*30;
 
-        var canvas = document.getElementById("depth2");
-        var context = canvas.getContext("2d");
-
-        context.beginPath();
-        context.arrow(0, 0, x, y, [0, 1, -10, 1, -10, 5]);
-        // context.arrow(0, 0, x, y, [0, 1, -10, 1, -10, 5]);
-        context.fill();
-    }
-
-    function zArrow1(){
-        var compX = calcLength(staone[0],staone[1]);
-
-        var scaleX = compX/5000;
-        var x= scaleX*30;
-        var scaleY = Math.abs(staone[2])/5000;
-        var y = scaleY*30;
-
-        var canvas = document.getElementById("depth1");
+        var canvas = document.getElementById(id);
         var context = canvas.getContext("2d");
 
         context.beginPath();
         context.arrow(0, 0, x, y, [0, 1, -10, 1, -10, 5]);
         context.fill();
     }
-
-    function zArrow3(){
-        var compX = calcLength(stathe[0],stathe[1]);
-
-        var scaleX = compX/5000;
-        var x= scaleX*30;
-        var scaleY = Math.abs(stathe[2])/5000;
-        var y = scaleY*30;
-
-        var canvas = document.getElementById("depth3");
-        var context = canvas.getContext("2d");
-
-        context.beginPath();
-        context.arrow(0, 0, x, y, [0, 1, -10, 1, -10, 5]);
-        context.fill();
-    }
-
-
-
-
 
 </script>
 
