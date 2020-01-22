@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="afadfbf9-55d5-41d4-9181-85c2a3e0b4b1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +88,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -208,7 +207,13 @@
       <workItem from="1574878833222" duration="3505000" />
       <workItem from="1575414153087" duration="57000" />
       <workItem from="1575414221435" duration="227000" />
-      <workItem from="1575754277237" duration="1034000" />
+      <workItem from="1575754277237" duration="1886000" />
+      <workItem from="1576436634670" duration="173000" />
+      <workItem from="1578663764877" duration="3830000" />
+      <workItem from="1578857632961" duration="146000" />
+      <workItem from="1578857801131" duration="393000" />
+      <workItem from="1579617379902" duration="202000" />
+      <workItem from="1579703083332" duration="441000" />
     </task>
     <task id="LOCAL-00001" summary="V1.1">
       <created>1571151146762</created>
@@ -280,7 +285,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574878875821</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="V1.3">
+      <created>1575825424978</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1575825424978</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,16 +318,38 @@
     <MESSAGE value="V1.2" />
     <MESSAGE value="V1.2 with compass" />
     <MESSAGE value="V1.2 css" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1.2 css" />
+    <MESSAGE value="V1.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="V1.3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="968" y="409" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575414200377">
-      <screen x="0" y="23" width="2560" height="1316" />
+    <state x="968" y="407" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1579703031871">
+      <screen x="0" y="23" width="2560" height="1308" />
     </state>
+    <state x="968" y="407" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1579703031871" />
     <state x="968" y="409" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1316@0.23.2560.1316" timestamp="1575414200377" />
+    <state x="931" y="213" key="CommitChangelistDialog2" timestamp="1575825424817">
+      <screen x="0" y="23" width="2560" height="1309" />
+    </state>
+    <state x="931" y="213" key="CommitChangelistDialog2/0.23.2560.1309@0.23.2560.1309" timestamp="1575825424817" />
     <state x="680" y="277" width="1471" height="800" key="DirDiffDialog" timestamp="1575825413887">
       <screen x="0" y="23" width="2560" height="1309" />
     </state>
     <state x="680" y="277" width="1471" height="800" key="DirDiffDialog/0.23.2560.1309@0.23.2560.1309" timestamp="1575825413887" />
+    <state x="756" y="252" key="SettingsEditor" timestamp="1578675338060">
+      <screen x="0" y="23" width="2560" height="1308" />
+    </state>
+    <state x="756" y="252" key="SettingsEditor/0.23.2560.1308@0.23.2560.1308" timestamp="1578675338060" />
+    <state x="915" y="354" key="Vcs.Push.Dialog.v2" timestamp="1575825427068">
+      <screen x="0" y="23" width="2560" height="1309" />
+    </state>
+    <state x="915" y="354" key="Vcs.Push.Dialog.v2/0.23.2560.1309@0.23.2560.1309" timestamp="1575825427068" />
+    <state x="1180" y="583" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576169037567">
+      <screen x="0" y="23" width="2560" height="1308" />
+    </state>
+    <state x="1180" y="583" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.2560.1308@0.23.2560.1308" timestamp="1576169037567" />
+    <state x="1047" y="433" key="git4idea.merge.GitPullDialog" timestamp="1579703515970">
+      <screen x="0" y="23" width="2560" height="1308" />
+    </state>
+    <state x="1047" y="433" key="git4idea.merge.GitPullDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1579703515970" />
   </component>
 </project>
