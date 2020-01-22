@@ -1,164 +1,7 @@
 <html>
 <head>
-    <style>
-        /*#gx, #gy, #gz, #gx2, #gy2, #gz2 {*/
-        /*    width:190px; height:200px;*/
-        /*    display: inline-block;*/
-        /*    margin: 1em;*/
-        /*}*/
-
-        /*#gz,#gz2{*/
-        /*    margin-left: 100px;*/
-        /*}*/
-        /*#graphx, #graphx2, #graphy, #graphy2, #graphz, #graphz2, #vector, #vector2{*/
-        /*    display: inline-block;*/
-        /*}*/
-        #but1, #but2, #but3, #but4, #direction{
-            display: inline-block;
-        }
-
-        h2 {
-            display: block;
-        }
-
-        #station_one, #station_two, #station_the{
-            background-color: gray;
-        }
-
-        .chart {
-            float: left;
-        }
-
-        .charts, .gauges {
-            /*position:relative;*/
-            left: 90px;
-            width: max-content;
-            display: inline-table;
-        }
-        #compass1,#needle1{
-            left: 30px;
-            top:350px;
-            float:left;
-        }
-
-        #depth1{
-            left: 540px;
-            top:350px;
-        }
-        #x-label1{
-            position: absolute;
-            left:540px;
-            top:330px;
-        }
-        #y-label1{
-            position: absolute;
-            left:520px;
-            top:350px;
-        }
-
-        #compass2,#needle2{
-            left: 80px;
-            top:1200px;
-            display: inline-block;
-        }
-        #depth2{
-            left:510px;
-            top:1200px;
-        }
-        #x-label2{
-            position: absolute;
-            left:510px;
-            top:1180px;
-        }
-        #y-label2{
-            position: absolute;
-            left:490px;
-            top:1200px;
-        }
-        #y-label3{
-            position: absolute;
-            left:390px;
-            top:2120px;
-        }
-        #x-label3{
-            position: absolute;
-            left:450px;
-            top:2075px;
-        }
-
-        /*#depth2{*/
-        /*    position :absolute;*/
-        /*    left: 550px;*/
-        /*    top:800px;*/
-        /*}*/
-        /*.n0, .n1, .n2 {*/
-        /*    !*width: 300px;*!*/
-        /*    !*height: 300px;*!*/
-        /*    display: inline-table;*/
-        /*}*/
-        #gaugeX, #gaugeX2, #gaugeX3, #gaugeY, #gaugeY2, #gaugeY3, #gaugeZ, #gaugeZ2, #gaugeZ3{
-            /*float: left;*/
-            width: 250px;
-            height: 250px;
-            display: inline-table;
-        }
-
-
-
-/*css of new gauge*/
-        .container {
-            /*width: 100%;*/
-            margin: 0 auto;
-            font-size: 16px;
-            left: 90px;
-            width: max-content;
-            display: inline-table;
-        }
-        .contain{
-            float: left;
-        }
-
-        .gauge {
-            width: 100%;
-            max-width: 350px;
-            max-height: 350px;
-            min-width: 250px;
-            min-height: 250px;
-            padding: 0;
-            /*border: 1px solid #666;*/
-            /*background: #F8F8F8;*/
-        }
-
-        .gauge-data {
-            text-align: center;
-            color: #666;
-            display: block;
-            /*padding: 30px;*/
-        }
-
-        .gauge-data > * {
-            display: block;
-        }
-
-        .gauge-value {
-            font-size: 3em;
-            position: relative;
-            padding-top: 20px;
-
-        }
-
-        .gauge-text {
-            font-size: 1.0em;
-            font-weigt: normal;
-            margin-top: 10px;
-        }
-
-        .gauge-unit {
-            margin-top: 5px;
-            font-size: .9em;
-        }
-    </style>
     <link rel="stylesheet" href="jsLibrary/dygraph/dygraph.css" />
+    <link rel="stylesheet" href="main.css" />
 
     <script src='jsLibrary/jquery-3-4-1.min.js'></script>
     <script type="text/javascript" src="jsLibrary/dygraph/dygraph.js"></script>
@@ -171,11 +14,34 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://frogcat.github.io/canvas-arrow/canvas-arrow.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/require.min.js"></script>
-
 </head>
 
+<!--<body onload="init()">-->
+<body>
 
-<script>
+<div id="but0">
+    <!--    <p>Historical Data Charts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>-->
+    <button onclick='window.location.replace("historical.html")'>Historical Data</button>
+</div>
+<br><br>
+
+<div id="control_button">
+    <h1>control area</h1>
+</div>
+
+<div id="gauge">
+    <h1>Gauge</h1>
+    <h2>The gauges represent live X (N-S), Y (E-W), Z (+ - altitude) from the ESP Stations with a 42-minute delay</h2>
+</div>
+
+<div id="live_chart">
+    <h1>Live Chart</h1>
+    <h2>The charts represent 2 minutes of live data from the ESP-1 Station, with a 2-minute delay</h2>
+</div>
+
+<button onclick = "query();" id="fakeBu"></button>
+
+<script type="text/javascript">
     //setting of the gauge
     var settings = {
         gaugeMinValue: -100000,
@@ -185,7 +51,6 @@
         gaugeEndAngle: 90,
         gaugeUpdateInterval: 5000 // ms
     };
-
     var options = {
         tooltip: {
             enabled: false
@@ -341,35 +206,7 @@
 
         credits: false
     };
-</script>
 
-
-
-<body onload="init()">
-
-<div id="but0">
-    <!--    <p>Historical Data Charts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>-->
-    <button onclick='window.location.replace("historical.html")'>Historical Data</button>
-</div>
-<br><br>
-
-<div id="control_button">
-    <h1>control area</h1>
-</div>
-
-<div id="gauge">
-    <h1>Gauge</h1>
-    <h2>The gauges represent live X (N-S), Y (E-W), Z (+ - altitude) from the ESP Stations with a 42-minute delay</h2>
-</div>
-
-<div id="live_chart">
-    <h1>Live Chart</h1>
-    <h2>The charts represent 2 minutes of live data from the ESP-1 Station, with a 2-minute delay</h2>
-</div>
-
-<button onclick = "query();" id="fakeBu"></button>
-
-<script type="text/javascript">
     //I want array with string inside
     var stations = [];
     //single station name that we are going to deal with
