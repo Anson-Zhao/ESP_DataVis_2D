@@ -99,6 +99,7 @@
 <script src="https://cdn.datatables.net/1.10.17/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <link rel="stylesheet" href="jsLibrary/dygraph/dygraph.css" />
@@ -145,6 +146,8 @@
             <div id="graphy"></div>
             <div id="graphz"></div>
         </div>
+
+<button onclick='check()'  >time</button>
     <!--    </div>-->
 
 <!--    <div class="full"></div>-->
@@ -154,7 +157,11 @@
 <!--    <div id="windspeedFull" class="floatingBox"></div>-->
 <!--</div>-->
 <script>
-    $(".datePicker").flatpickr(optional_config);
+    $(".datePicker").flatpickr({
+        enableTime: true,
+        altFormat: "Y-m-d H:i",
+        dateFormat: "Z"
+    });
 
     loadDoc();
     function loadDoc() {
@@ -185,6 +192,14 @@
         console.log("option appended")
     }
 
+function check() {
+    timeFrom = document.getElementById("begin").value;
+    timeTo = document.getElementById("end").value;
+    stationIs = document.getElementById("station").value;
+    console.log(timeFrom);
+    console.log(timeTo);
+}
+
 
 
 
@@ -195,6 +210,8 @@
         timeFrom = document.getElementById("begin").value;
         timeTo = document.getElementById("end").value;
         stationIs = document.getElementById("station").value;
+        console.log(timeFrom);
+        console.log(timeTo);
 
         // querystr = "timeFrom:" + timeFrom + "&timeTo:" + timeTo + "&stationIs:" + stationIs;
         // console.log(querystr);
