@@ -136,7 +136,7 @@
             <br><br>
         </form>
         <div>
-            <button href='#' onclick='download_csv()'  >Download CSV</button>
+            <button href='#' onclick='download_csv()' id="AvgData" style="background-color: gray">Download CSV</button>
             <br><br>
             <button id="RawData" >Download Raw CSV</button>
             <br><br>
@@ -154,7 +154,9 @@
 <!--    <div id="windspeedFull" class="floatingBox"></div>-->
 <!--</div>-->
 <script>
-    $(".datePicker").flatpickr(optional_config);
+    $(".datePicker").flatpickr(
+        {enableTime: true,
+        dateFormat: "Z"});
 
     loadDoc();
     function loadDoc() {
@@ -311,6 +313,7 @@
                         // rangeSelectorPlotFillColor: 'lightyellow'
                     }
                 );
+                $("#AvgData").css("backgroundColor","white")
             }
         });
     };
