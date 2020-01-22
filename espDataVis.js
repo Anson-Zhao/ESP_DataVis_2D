@@ -66,51 +66,7 @@ function avg(res,len){
 
 var pastTime = "4m";
 var nowTime = "2m";
-var queryA = 'SELECT * FROM station_oneavg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime;
-var queryA2 = 'SELECT * FROM station_twoavg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime;
-var queryA3 = 'SELECT * FROM station_theavg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime;
-// console.log(queryA);
-// var backup = 'SELECT MEAN("X"), MEAN("Y"), MEAN("Z") FROM station_twoavg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime + ' GROUP BY time(1s)';
-// var queryX = "SELECT MEAN(\"X\") FROM ar WHERE time>'2019-07-23T20:25:00Z' AND time<'2019-07-23T20:29:00Z' GROUP BY time(1s)";
-// var queryY = "SELECT MEAN(\"Y\") FROM ar WHERE time>'2019-07-23T20:25:00Z' AND time<'2019-07-23T20:29:00Z' GROUP BY time(1s)";
-// var queryZ = "SELECT MEAN(\"Z\") FROM ar WHERE time>'2019-07-23T20:25:00Z' AND time<'2019-07-23T20:29:00Z' GROUP BY time(1s)";
-// var x_csv,y_csv,z_csv,gx,gy,gz;
-// var life = [];
-// var ex='SELECT MEAN("X"), MEAN("Y"), MEAN("Z") FROM ' + req.query.stationIs + ' WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'" + ' GROUP BY time(1s)';
-// var ex2='SELECT "X", "Y", "Z" FROM ' + req.query.stationIs + ' WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'" + ' GROUP BY time(1s)';
 
-app.get('/query', function (req, res) {
-
-    influx.query(queryA).then
-    (result=> {
-        // console.log(result);
-
-        res.send(result);
-
-    }).catch(err => {
-        console.log(err)
-    });
-
-});
-app.get('/query2', function (req, res) {
-    influx.query(queryA2).then
-    (result => {
-        // console.log(result);
-        res.send(result);
-    }).catch(err => {
-        console.log(err)
-    });
-});
-
-app.get('/query3', function (req, res) {
-    influx.query(queryA3).then
-    (result => {
-        // console.log(result);
-        res.send(result);
-    }).catch(err => {
-        console.log(err)
-    });
-});
 app.get('/newWind', function (req, res) {
     var queryHa = 'SELECT * FROM ' + req.query.stationIs + 'avg WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'";
 // console.log(queryHa);
@@ -122,6 +78,7 @@ app.get('/newWind', function (req, res) {
         res.status(500).send(err.stack)
     });
 });
+
 app.get('/newSnow', function (req, res) {
     var queryH = 'SELECT * FROM ' + req.query.stationIs + ' WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'";
 // console.log(queryH);
@@ -133,110 +90,31 @@ app.get('/newSnow', function (req, res) {
         res.status(500).send(err.stack)
     });
 });
+
 var pack=[];
 var i=0;
 app.get('/querys', async function (req, res) {
-    console.log(req.query.stations);
+    // console.log(req.query.stations);
     // var pack = await [[req.query.stations[0],Q(req.query.stations[0])]];
     for(i = 0; i<req.query.stations.length; i++){
         // var result;
         var query = 'SELECT * FROM ' + req.query.stations[i] + 'avg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime;
-        console.log(query);
-        console.log(i);
         await influx.query(query).then
         (result => {
-            // console.log(result);
-            // console.log(result);
-            // console.log("this is request lenth");
-            // console.log(request.query.stations.length);
-            //
-            // // console.log(result);
-            // console.log("this is pack");
-            // console.log(request.query.stations[i]);
-            // pack[request.query.stations[i]] = result;
-            // console.log("This is result: ");
-            // console.log(result);
             pack[i]= [req.query.stations[i],result];
-            console.log("this is index");
-            console.log(i);
-            console.log(pack[i]);
-            if(i===req.query.stations.length){
-                console.log(pack);
-            }
-
-            // await
-            // return Promise.resolve(result);
-            // return new Promise((resolve => {resolve = result}))
-
-            // console.log(pack);
-            // console.log(pack[req.query.stations[i]][1]["time"])
         }).catch(err => {
             console.log(err)
         });
 
-
-
-
-        // console.log("This is query i: "+i);
-        // let sendback = await result;
-        // console.log("This is what we get from await: ");
-        // console.log(sendback);
-    //     if(i===req.query.stations.length-1){
-    //         console.log(pack);
-    //     }
     }
-    // console.log(pack);
-
-    // console.log("req length");
-    // var pack = {};
-    // var packs = [];
-    // console.log(req.query.stations.length);
-    // // console.log(req.query.stations.length);
-    // // console.log('SELECT * FROM ' + req.query.stations[0] + 'avg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime);
-    // for(i=0; i<req.query.stations.length; i++){
-    //     packs[i]=i;
-    //     var query = 'SELECT * FROM ' + req.query.stations[i] + 'avg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime;
-    //
-    //     console.log(query);
-    //     console.log("this is I: ");
-    //     console.log(i);
-    //
-    //     influx.query(query).then
-    //     ((result, request = req) => {
-    //         // console.log(result);
-    //         // console.log(result);
-    //         console.log("this is index");
-    //         console.log(i);
-    //         console.log("this is request lenth");
-    //         console.log(request.query.stations.length);
-    //
-    //         // console.log(result);
-    //         console.log("this is pack");
-    //         console.log(request.query.stations[i]);
-    //         pack[request.query.stations[i]] = result;
-    //         // console.log(pack[i+1]);
-    //
-    //         // await
-    //
-    //
-    //         console.log(pack);
-    //         // console.log(pack[req.query.stations[i]][1]["time"])
-    //     }).catch(err => {
-    //         console.log(err)
-    //     });
-    //     // if(!!pack[req.query.stations[i]]){
-    //     //     continue
-    //     // }
-    //
-    // }
-    res.json(pack);
+    res.send(pack);
 });
 
 app.get ('/stations', function (req, res){
     // console.log(req);
     con.query("SELECT StationName,City,State,StationId FROM ESP2.StationData Where Status = 'Active'",function (err, result) {
         if (err) throw err;
-        console.log(result);
+        // console.log(result);
         res.send(result);
     });
 });

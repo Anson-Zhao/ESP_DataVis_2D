@@ -39,8 +39,6 @@
     <h2>The charts represent 2 minutes of live data from the ESP-1 Station, with a 2-minute delay</h2>
 </div>
 
-<button onclick = "query();" id="fakeBu"></button>
-
 <script type="text/javascript">
     //setting of the gauge
     var settings = {
@@ -210,48 +208,37 @@
     //I want array with string inside
     var stations = [];
     //single station name that we are going to deal with
+
     //5s average gauge data
     var sta;
 
-    loadDoc();
-    function loadDoc() {
+    $(document).ready(function () {
         $.ajax({
             url: "http://localhost:3005/stations",
             method: "get",
-            // data: "sent",
             success: function(res) {
-                console.log("This is the stations result:");
-                console.log(res);
+                // console.log("This is the stations result:");
+                // console.log(res);
                 for(var i=0; i<res.length; i++){
-                    console.log("This is the station being called:");
-                    console.log(res[i].StationId);
+                    // console.log("This is the station being called:");
+                    // console.log(res[i].StationId);
                     building(res[i]);
                     stations[i]=res[i].StationId;
+                    if (i === res.length - 1) {
+                        query();
+                        setInterval(function(){query()}, 5000);
+                    }
                 }
-                if(stations.length === res.length){
-                    query()
-                }
-
             }
         });
-    }
-
-
+    });
 
     function building(station){
-        //葛一扬！！！！看这！！！！！！！！
-        //:) 我不懂中文
-        //葛一扬！！！！看这！！！！！！！！
-        //葛一扬！！！！看这！！！！！！！！
         //***station here is an object now, it include name, state, city, and id.
         // The name of them are StationName,City,State,StationId
         // So if you need call id now, you should call station.stationId.
         // I changed the previous codes of you for you already, but you need to remember it for new codes.
-        //葛一扬！！！！看这！！！！！！！！
-        //葛一扬！！！！看这！！！！！！！！
-        //葛一扬！！！！看这！！！！！！！！
 
-        console.log("begin build structure");
         //Notification: space means two classes, '_' means one class.
 
         //add the button Div
@@ -324,10 +311,10 @@
         vectorDiv.append(yLabelC);
         vectorDiv.append(verticalDiv);
 
-        // var depDirDiv = document.createElement('div');
-        // depDirDiv.className = station;
-        // depDirDiv.append(compassDiv);
-        // depDirDiv.append(vectorDiv);
+        var depDirDiv = document.createElement('div');
+        depDirDiv.className = station;
+        depDirDiv.append(compassDiv);
+        depDirDiv.append(vectorDiv);
 
         //add gauge Div
         var gaugeDiv = document.createElement("div");
@@ -381,8 +368,6 @@
     }
 
     function query() {
-        console.log("ask for query");
-        console.log(stations);
         $.ajax({
             url: "http://localhost:3005/querys",
             method: "get",
@@ -767,12 +752,7 @@
         context.fill();
     }
 
-    $(document).ready(function () {
-        document.getElementById("fakeBu").click();
-        setInterval(function () {
-            document.getElementById("fakeBu").click();
-        }, 5000);
-    });
+
 
 </script>
 
