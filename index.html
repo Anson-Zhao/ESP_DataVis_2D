@@ -16,8 +16,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/require.min.js"></script>
 </head>
 
-<!--<body onload="init()">-->
-<body>
+<body onload="init()">
+<!--<body>-->
 
 <div id="but0">
     <!--    <p>Historical Data Charts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>-->
@@ -211,6 +211,8 @@
 
     //5s average gauge data
     var sta;
+    var img;
+    var needle;
 
     $(document).ready(function () {
         $.ajax({
@@ -304,17 +306,21 @@
         var yLabelC = document.createElement("canvas");
         yLabelC.id = "y-label_" + station.StationId;
         yLabelC.setAttribute("style","width : 20; height : 270; display: inline-block;");
+        yLabelC.setAttribute("width",20);
+        yLabelC.setAttribute("height",270);
 
         //create canvas for x-label of the coordinate
         var xLabelC = document.createElement("canvas");
         xLabelC.id = "x-label_" + station.StationId;
-        xLabelC.setAttribute("style","width : 270; height : 20; display:table-cell; vertical-align: middle;");
+        xLabelC.setAttribute("style","display:table-cell; vertical-align: middle;");
+        xLabelC.setAttribute("width",270);
+        xLabelC.setAttribute("height",20);
 
         //create canvas for the coordinate
         var depthC = document.createElement("canvas");
         depthC.id = "depth_" + station.StationId;
         depthC.setAttribute("style", "display:table-cell; vertical-align: middle;");
-        depthC.setAttribute("width", 300);
+        depthC.setAttribute("width", 270);
         depthC.setAttribute("height", 300);
 
         //create a div for x-label and coordinate
@@ -510,12 +516,6 @@
         // setInterval(interval(campassid,depthid,ylabel,xlabel,sta,img,needle), 5000);
     }
 
-    // function interval(campassid,depthid,ylabel,xlabel,sta,img,needle){
-    //     draw(campassid,sta,img,needle);
-    //     coordinate(depthid,ylabel,xlabel);
-    //     zArrow1(depthid,sta)
-    // }
-
     //draw compass with the needle
     function draw(compassid,sta,img,needle) {
         var canvas = document.getElementById(compassid);
@@ -560,15 +560,11 @@
 
         // Canvas supported?
         if (canvas.getContext('2d')) {
-            // var ctx = canvas.getContext('2d');
-
             // Load the needle image
-            var needle;
             needle = new Image();
             needle.src = 'jsLibrary/compass/needle.png';
 
             // Load the compass image
-            var img;
             img = new Image();
             img.src = 'jsLibrary/compass/compass.png';
             img.onload = imgLoaded(classname +"_canvas","depth_" +classname,"y-label_" + classname,"x-label_" + classname,sta,img,needle);
@@ -583,22 +579,17 @@
         var y_axis_distance_grid_lines = 0;
         var x_axis_starting_point = { number: 5000, suffix: '' };
         var y_axis_starting_point = { number: 5000, suffix: '' };
-
         var canvas = document.getElementById(id);
-
         var ctx = canvas.getContext("2d");
-
         // canvas width
         var canvas_width = canvas.width;
-
         // canvas height
         var canvas_height = canvas.height;
-
         // no of vertical grid lines
         var num_lines_x = Math.floor(canvas_height/grid_size);
-
         // no of horizontal grid lines
         var num_lines_y = Math.floor(canvas_width/grid_size);
+
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         ctx.save();
@@ -723,7 +714,7 @@
         var ctxLabelX = labelX.getContext("2d");
         ctxLabelX.clearRect(0, 0, labelX.width, labelX.height);
         ctxLabelX.font = "10px Arial";
-        ctxLabelX.fillText("direction",labelX.width/2, labelX.height/2);
+        ctxLabelX.fillText("direction",labelX.width/2-20, labelX.height/2);
 
         var labelY = document.getElementById(yLabel);
         var ctxLabelY = labelY.getContext("2d");
@@ -731,7 +722,7 @@
         ctxLabelY.save();
         ctxLabelY.translate(140, 105);
         ctxLabelY.rotate(Math.PI/2);
-        ctxLabelY.fillText("depth",labelY.width/2, labelY.height/2);
+        ctxLabelY.fillText("depth",labelY.width/2-10, labelY.height/2);
         ctxLabelY.restore();
     }
 
@@ -747,7 +738,7 @@
         var context = canvas.getContext("2d");
 
         context.beginPath();
-        context.arrow(0, 0, 100, 200, [0, 1, -10, 1, -10, 5]);
+        context.arrow(0, 0, x, y, [0, 1, -10, 1, -10, 5]);
         context.fill();
     }
 

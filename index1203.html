@@ -96,6 +96,10 @@
         #y-label1, #vertical{
             display: inline-block;
         }
+        /*#container1,#vi{*/
+        /*    display:table-cell;*/
+        /*    vertical-align: middle;*/
+        /*}*/
         #depth1, #x-label1{
             display:table-cell;
             vertical-align: middle;
@@ -175,17 +179,20 @@
     </div>
     <h2 class="station_one">ESP 01, Middletown, NY</h2>
 
-    <div class="station_one" id="C1" >
-        <canvas id="compass1" width="300" height="300"></canvas>
-    </div>
+    <div id = "vi">
+        <div class="station_one" id="C1" >
+            <canvas id="compass1" width="300" height="300"></canvas>
+        </div>
 
-    <div class="station_one" id="D1">
-        <canvas id="y-label1" width="20" height="270"></canvas>
-        <div id="vertical">
-            <canvas id="x-label1" width="270" height="20"></canvas>
-            <canvas id="depth1" width="270" height="300"></canvas>
+        <div class="station_one" id="D1">
+            <canvas id="y-label1" width="20" height="270"></canvas>
+            <div id="vertical">
+                <canvas id="x-label1" width="270" height="20"></canvas>
+                <canvas id="depth1" width="270" height="300"></canvas>
+            </div>
         </div>
     </div>
+
 
     <div class="station_one container" id = "container1">
       <div id="gaugeX" class="contain n0"></div>
