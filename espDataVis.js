@@ -78,13 +78,50 @@ app.get('/newWind', function (req, res) {
         res.status(500).send(err.stack)
     });
 });
+var csvData;
+function download_csv(exportFilename) {
+    if (exportFilename == null) {
+        exportFilename = timeFrom + '-' + timeTo + 'AvgESPData';
+    }
+    console.log(download);
+
+
+    csvData = new Blob([download], {type: 'text/csv;charset=utf-8;'});
+    //IE11 & Edge
+    // if (navigator.msSaveBlob) {
+    //     navigator.msSaveBlob(csvData, exportFilename);
+    // } else {
+    //     //In FF link must be added to DOM to be clicked
+    //     var link = document.createElement('a');
+    //     link.href = window.URL.createObjectURL(csvData);
+    //     link.setAttribute('download', exportFilename);
+    //     document.body.appendChild(link);
+    //     link.click();
+    //     document.body.removeChild(link);
+    // }
+}
 
 app.get('/newSnow', function (req, res) {
     var queryH = 'SELECT * FROM ' + req.query.stationIs + ' WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'";
-// console.log(queryH);
+    console.log(queryH);
     influx.query(queryH).then
     (result => {
-        res.send(result);
+        console.log("run raw data request");
+        result.forEach(function (el, i) {
+            // var time = new Date(el.time);
+            // console.log(el.time);
+            // console.log(el.time._nanoISO);
+            // console.log(el._nanoISO);
+            var a = '' + el.X;
+            var b = '' + el.Y;
+            var c = '' + el.Z;
+            var t = el.time;
+            download += t + ',' + a + ',' + b + ',' + c + '\n';
+        });
+        var exportFilename = timeFrom +'-'+ timeTo + 'RawESPData';
+        download_csv(exportFilename);
+        console.log(csvData);
+        res.send(csvData);
         // console.log(result)
     }).catch(err => {
         res.status(500).send(err.stack)
