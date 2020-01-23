@@ -252,8 +252,8 @@
         $('#control_button').append(butDiv);
 
         //add button's title
-        let butTitle = $('<p>');
-        butTitle
+        // let butTitle = $('<p>');
+        // butTitle
 
         var butTitle = document.createElement("p");
         butTitle.id = station.StationId+"_butTitle";
@@ -276,9 +276,19 @@
             // $('#gauge').append(Gtitle);
 
         //create canvas for compass
-        var canvasCompass = document.createElement("canvas");
-        canvasCompass.id= station.StationId + "_canvas";
-        canvasCompass.setAttribute("style","width:300; height:300;");
+        // var canvasCompass = document.createElement("canvas");
+        let canvasCompass = $('<canvas></canvas>');
+        canvasCompass.attr({
+            'id': station.StationId + "_canvas",
+            'width': "300",
+            'height': "300"
+        });
+        // canvasCompass.css("width",300);
+        // canvasCompass.css("height",300);
+        // canvasCompass.width(300);
+        // canvasCompass.height(300);
+        // canvasCompass.id= station.StationId + "_canvas";
+        // canvasCompass.setAttribute("style","width:300; height:300;");
 
         //create compass div
         var compassDiv = document.createElement("div");
@@ -298,8 +308,14 @@
         xLabelC.setAttribute("style","width : 270; height : 20; display:table-cell; vertical-align: middle;");
 
         //create canvas for the coordinate
-        var depthC = document.createElement("canvas");
-        depthC.id = "depth_" + station.StationId;
+        var depthC =  $('<canvas></canvas>');
+        depthC.attr({
+            'id': "depth_" + station.StationId,
+            "display": "table-cell",
+            "vertical-align":"middle"
+        });
+        depthC.width(300).height(300);
+
         depthC.setAttribute("style","width:300; height:300; display:table-cell; vertical-align: middle;");
 
         //create a div for x-label and coordinate
