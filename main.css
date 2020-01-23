@@ -18,9 +18,9 @@ h2 {
     display: block;
 }
 
-#station_one, #station_two, #station_the{
-    background-color: gray;
-}
+/*#station_one, #station_two, #station_the{*/
+/*    background-color: gray;*/
+/*}*/
 
 .chart {
     float: left;
