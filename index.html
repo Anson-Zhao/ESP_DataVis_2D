@@ -217,12 +217,10 @@
             url: "http://localhost:3005/stations",
             method: "get",
             success: function(res) {
-                // console.log("This is the stations result:");
-                // console.log(res);
                 for(var i=0; i<res.length; i++){
-                    // console.log("This is the station being called:");
-                    // console.log(res[i].StationId);
+
                     building(res[i]);
+
                     stations[i]=res[i].StationId;
                     if (i === res.length - 1) {
                         query();
@@ -252,43 +250,48 @@
         $('#control_button').append(butDiv);
 
         //add button's title
-        // let butTitle = $('<p>');
-        // butTitle
+        let butTitle = $('<p>');
+        butTitle.attr('id', station.StationId + "_butTitle");
+        butTitle.html(station.City + ", " + station.State);
 
-        var butTitle = document.createElement("p");
-        butTitle.id = station.StationId+"_butTitle";
-        butTitle.textContent = station.City+", "+station.State;
+        // var butTitle = document.createElement("p");
+        // butTitle.id = station.StationId+"_butTitle";
+        // butTitle.textContent = station.City+", "+station.State;
 
         //add the control button
-        var button = document.createElement("button");
-        button.id = station.StationId;
-        button.value = station.StationId;
-        button.textContent = station.StationName;
-        button.setAttribute("style", "background-color: gray;");
-        button.setAttribute("onclick", "check(this)");
-        // button.onclick = check(this);
+        let button = $('<button>');
+        button.attr({
+            'id': station.StationId,
+            'value': station.StationId,
+            'style': 'background-color: gray',
+            'onclick': 'check(this)'
+        });
+        button.html(station.StationName);
+
+        // var button = document.createElement("button");
+        // button.id = station.StationId;
+        // button.value = station.StationId;
+        // button.textContent = station.StationName;
+        // button.setAttribute("style", "background-color: gray;");
+        // button.setAttribute("onclick", "check(this)");
+        // // button.onclick = check(this);
         $('#'+station.StationId+"_butDiv").append(button).append(butTitle);
 
         //add gauge title
-        var Gtitle = document.createElement("h2");
-        Gtitle.className = station.StationId;
-        Gtitle.textContent = station.StationName+", "+station.City+", "+station.State;
-            // $('#gauge').append(Gtitle);
+        let gTitle = $('<h2>');
+        gTitle.attr('class', station.StationId);
+        gTitle.text(station.StationName + ", " + station.City + ", " + station.State);
+
+        // var gTitle = document.createElement("h2");
+        // gTitle.className = station.StationId;
+        // gTitle.textContent = station.StationName+", "+station.City+", "+station.State;
+        //     // $('#gauge').append(gTitle);
 
         //create canvas for compass
-        // var canvasCompass = document.createElement("canvas");
-        let canvasCompass = $('<canvas></canvas>');
-        canvasCompass.attr({
-            'id': station.StationId + "_canvas",
-            'width': "300",
-            'height': "300"
-        });
-        // canvasCompass.css("width",300);
-        // canvasCompass.css("height",300);
-        // canvasCompass.width(300);
-        // canvasCompass.height(300);
-        // canvasCompass.id= station.StationId + "_canvas";
-        // canvasCompass.setAttribute("style","width:300; height:300;");
+        var canvasCompass = document.createElement("canvas");
+        canvasCompass.id= station.StationId + "_canvas";
+        canvasCompass.setAttribute("width", 300);
+        canvasCompass.setAttribute("height", 300);
 
         //create compass div
         var compassDiv = document.createElement("div");
@@ -308,15 +311,11 @@
         xLabelC.setAttribute("style","width : 270; height : 20; display:table-cell; vertical-align: middle;");
 
         //create canvas for the coordinate
-        var depthC =  $('<canvas></canvas>');
-        depthC.attr({
-            'id': "depth_" + station.StationId,
-            "display": "table-cell",
-            "vertical-align":"middle"
-        });
-        depthC.width(300).height(300);
-
-        depthC.setAttribute("style","width:300; height:300; display:table-cell; vertical-align: middle;");
+        var depthC = document.createElement("canvas");
+        depthC.id = "depth_" + station.StationId;
+        depthC.setAttribute("style", "display:table-cell; vertical-align: middle;");
+        depthC.setAttribute("width", 300);
+        depthC.setAttribute("height", 300);
 
         //create a div for x-label and coordinate
         var verticalDiv = document.createElement("div");
@@ -342,7 +341,7 @@
         var gaugeDiv = document.createElement("div");
         gaugeDiv.className = station.StationId+" container";
         gaugeDiv.setAttribute("style", "margin: 0 auto; font-size: 16px; left: 90px; width: max-content; display: inline-table;");
-        $('#gauge').append(Gtitle).append(compassDiv).append(vectorDiv).append(gaugeDiv);
+        $('#gauge').append(gTitle).append(compassDiv).append(vectorDiv).append(gaugeDiv);
 
         //add xyz divs into gauge Div
         var gdivX = document.createElement("div");
@@ -386,7 +385,6 @@
         cdivZ.setAttribute("style", "float: left;");
         var c = "."+station.StationId+".charts";
         $(c).append(cdivX).append(cdivY).append(cdivZ);
-        console.log("structure done");
     }
 
     function query() {
@@ -409,7 +407,7 @@
                     );
 
                     sta = avg(res[i][1],5);
-                    console.log(sta);
+                    // console.log(sta);
                     Z = new Dygraph(
                         // containing div
                         document.getElementById(res[i][0]+"_graphZ"),
@@ -523,13 +521,8 @@
         var canvas = document.getElementById(compassid);
         var ctx = canvas.getContext('2d');
 
-        console.log(canvas.width);
-
-        console.log('Station 1 heading:'+calcAngleDegrees(sta[0], sta[1]));
-
         let degrees = calcAngleDegrees(sta[0], sta[1]);
         ctx.clearRect(0, 0, 500, 500);
-
 
         // Draw the compass onto the canvas
         ctx.drawImage(img, 0, 0);
@@ -557,7 +550,7 @@
 
     function calcLength(x, y) {
         var sum = Math.pow(x,2) + Math.pow(y,2) ;
-        console.log(sum);
+        // console.log(sum);
         return Math.sqrt(sum);
     }
 
@@ -592,21 +585,17 @@
         var y_axis_starting_point = { number: 5000, suffix: '' };
 
         var canvas = document.getElementById(id);
-        console.log(id);
+
         var ctx = canvas.getContext("2d");
 
         // canvas width
-        var canvas_width = 300;
-        console.log(canvas_width);
+        var canvas_width = canvas.width;
 
         // canvas height
-        var canvas_height = 300;
-        console.log(canvas);
-        console.log(canvas_height);
+        var canvas_height = canvas.height;
 
         // no of vertical grid lines
         var num_lines_x = Math.floor(canvas_height/grid_size);
-        console.log(num_lines_x);
 
         // no of horizontal grid lines
         var num_lines_y = Math.floor(canvas_width/grid_size);
@@ -753,7 +742,6 @@
         var x= scaleX*30;
         var scaleY = Math.abs(sta[2])/5000;
         var y = scaleY*30;
-        console.log(y);
 
         var canvas = document.getElementById(id);
         var context = canvas.getContext("2d");
