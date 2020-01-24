@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ESP_DataVis_2D.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ESP_DataVis_2D.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/builder.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/builder.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/builder.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/builder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/pool.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/pool.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/Changes.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/Changes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/Connection.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/Connection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/ConnectionConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/ConnectionConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/errors.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/errors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/ssl_profiles.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/ssl_profiles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/constants/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/EmptyPacket.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/EmptyPacket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/ResultSetHeaderPacket.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/ResultSetHeaderPacket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/packets/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/Query.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/lib/protocol/sequences/Query.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mysql/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -384,7 +364,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579803100292</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="V1.41">
+      <created>1579803563890</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1579803563890</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,11 +414,11 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1408" y="530" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1579703013915" />
-    <state x="946" y="368" key="CommitChangelistDialog2" timestamp="1579803100191">
+    <state x="946" y="368" key="CommitChangelistDialog2" timestamp="1579803563750">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="946" y="341" key="CommitChangelistDialog2/0.23.2560.1308@0.23.2560.1308" timestamp="1579786091176" />
-    <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1579803100191" />
+    <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1579803563750" />
     <state x="1169" y="359" width="1200" height="800" key="DiffContextDialog" timestamp="1579647207376">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
@@ -500,11 +487,11 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1327" y="450" key="SettingsEditor/0.23.2560.1417@0.23.2560.1417" timestamp="1579803541646" />
-    <state x="989" y="491" key="Vcs.Push.Dialog.v2" timestamp="1579803102162">
+    <state x="989" y="491" key="Vcs.Push.Dialog.v2" timestamp="1579803565889">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="989" y="455" key="Vcs.Push.Dialog.v2/0.23.2560.1308@0.23.2560.1308" timestamp="1579786092839" />
-    <state x="989" y="491" key="Vcs.Push.Dialog.v2/0.23.2560.1417@0.23.2560.1417" timestamp="1579803102162" />
+    <state x="989" y="491" key="Vcs.Push.Dialog.v2/0.23.2560.1417@0.23.2560.1417" timestamp="1579803565889" />
     <state x="688" y="291" width="1234" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1579103728334">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
