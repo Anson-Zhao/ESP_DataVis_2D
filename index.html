@@ -221,7 +221,7 @@
             success: function(res) {
                 for(var i=0; i<res.length; i++){
 
-                    console.log(res[i]);
+                    // console.log(res[i]);
 
                     building(res[i]);
 
@@ -451,7 +451,7 @@
                     $('#'+res[i][0]+'_gaugeY').highcharts(options, buildGraph);
                     $('#'+res[i][0]+'_gaugeZ').highcharts(options, buildGraph);
 
-                    console.log(res[i][0]);
+                    // console.log(res[i][0]);
 
                     init(res[i][0])
                 }
