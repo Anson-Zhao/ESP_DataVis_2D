@@ -216,6 +216,7 @@
 
     $(document).ready(function () {
         $.ajax({
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stations',
             url: "http://localhost:3005/stations",
             method: "get",
             success: function(res) {
@@ -382,6 +383,7 @@
 
     function query() {
         $.ajax({
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/querys',
             url: "http://localhost:3005/querys",
             method: "get",
             data: {stations: stations},

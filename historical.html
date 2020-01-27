@@ -172,6 +172,7 @@
 
         // Building dynamic options
         $.ajax({
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stations',
             url: "http://localhost:3005/stations",
             method: "get",
             data: "sent",
@@ -365,7 +366,7 @@
 
         if (timeFrom && timeTo) {
             $.ajax({
-                // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newWind',
+                // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newSnow',
                 url: 'http://localhost:3005/newSnow',
                 type: 'GET',
                 dataType: 'json',
