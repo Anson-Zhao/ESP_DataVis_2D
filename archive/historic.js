@@ -148,7 +148,7 @@ app.get('/newWind', function (req, res) {
     //     });
 });
 // app.get('/render', function (req, res) {
-//             res.render('/historical.html');
+//             res.render('/historical_Live.html');
 //         });
 
 
