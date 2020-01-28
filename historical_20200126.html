@@ -94,7 +94,7 @@
 <body>
 <script type="text/javascript" src="jsLibrary/dygraph/dygraph.js"></script>
 <script src='jsLibrary/jquery-3-4-1.min.js'></script>
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.17/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
@@ -103,7 +103,7 @@
 
 <link rel="stylesheet" href="jsLibrary/dygraph/dygraph.css" />
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
-<!--<link rel="stylesheet" href="//unpkg.com/flatpickr/dist/flatpickr.min.css">-->
+<link rel="stylesheet" href="//unpkg.com/flatpickr/dist/flatpickr.min.css">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.17/css/jquery.dataTables.min.css">
@@ -134,16 +134,12 @@
             <br><br>
             <input type="button" onclick="enabled = false; query();" class="button button2" value="Show Data Charts">
             <br><br>
-
         </form>
         <div>
+            <button href='#' onclick='download_csv()' id="AvgData" style="background-color: gray">Download CSV</button>
             <br><br>
-            <p>Please click "Show Data Charts" button above before download Avg Data.</p>
-            <button id="AvgData" disabled >Download CSV</button>
+            <button id="RawData" onclick="download_alert()">Download Raw CSV</button>
             <br><br>
-            <button id="RawData" >Download Raw CSV</button>
-            <!--            <button id="RawData"">Download Raw CSV</button>-->
-
             <br><br><br>
             <div id="graphx"></div>
             <div id="graphy"></div>
@@ -151,28 +147,20 @@
         </div>
     <!--    </div>-->
 
+<!--    <div class="full"></div>-->
+
+
+
 <!--    <div id="windspeedFull" class="floatingBox"></div>-->
 <!--</div>-->
-
 <script>
-    $(document).ready(function () {
-        $(".datePicker").flatpickr(
-            {enableTime: true,
-                dateFormat: "Z"});
+    $(".datePicker").flatpickr(
+        {enableTime: true,
+        dateFormat: "Z"});
 
-        $('#AvgData').click(function(e){
-            e.preventDefault();
-            download_csv()
-        });
-
-        $('#RawData').click(function(e){
-            e.preventDefault();
-            rawDownload_alert()
-        });
-
-        // Building dynamic options
+    loadDoc();
+    function loadDoc() {
         $.ajax({
-            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stations',
             url: "http://localhost:3005/stations",
             method: "get",
             data: "sent",
@@ -186,13 +174,10 @@
                 }
             }
         });
-    });
+    }
 
-    function rawDownload_alert() {
-        alert("Downloading a big amount of raw data requires long time. " +
-            "Please wait and don't refresh the page. Now click OK to begin the downloading process.");
-
-        rawDataDownload();
+    function download_alert() {
+        alert("Downloading a big amount of raw data requires a long time about 3 minutes. Please wait and don't refresh the page. Now click OK to begin the downloading process.")
     }
 
     function building(station){
@@ -208,7 +193,6 @@
 
     var timeFrom,timeTo,stationIs,querystr;
     var download = "Time,X,Y,Z\n";
-
     function query() {
         timeFrom = document.getElementById("begin").value;
         timeTo = document.getElementById("end").value;
@@ -223,7 +207,6 @@
             confirm("Please select BOTH dates.");
         }
     }
-
     var x_arr = [];
     var y_arr = [];
     var z_arr = [];
@@ -237,7 +220,10 @@
             async: true,
             data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationIs},
             success: function (res) {
-                // console.log("get responce");
+                console.log("get responce");
+
+
+
                 res.forEach(function(el,i) {
                     // var time = new Date(el.time);
                     // console.log(el.time);
@@ -327,18 +313,30 @@
                         // rangeSelectorPlotFillColor: 'lightyellow'
                     }
                 );
-
-                $("#AvgData").attr("disabled", false);
+                $("#AvgData").css("backgroundColor","white")
             }
         });
     };
-    
+    data = [
+        ['Foo', 'programmer'],
+        ['Bar', 'bus driver'],
+        ['Moo', 'Reindeer Hunter']
+    ];
     function download_csv(exportFilename) {
-
+        // var csv = 'Time,X,Y,Z\n';
+        // console.log(download);
+        // console.log(timeFrom);
+        // console.log(timeTo);
+        // download.forEach(function(row) {
+        //     csv += row.join(',');
+        //     csv += "\n";
+        // });
         if(exportFilename==null){
-            exportFilename = timeFrom.slice(0,-5) +'-'+ timeTo.slice(0,-5) + 'AvgESPData';
+            exportFilename = timeFrom +'-'+ timeTo + 'AvgESPData';
         }
-        
+        console.log(download);
+
+
         var csvData = new Blob([download], {type: 'text/csv;charset=utf-8;'});
         //IE11 & Edge
         if (navigator.msSaveBlob) {
@@ -352,21 +350,96 @@
             link.click();
             document.body.removeChild(link);
         }
+
+    //
+    //     filename = args.filename || 'export.csv';
+    //     if (csv == null) return;
+    //     data = encodeURI(csv);
+    //     csv = 'data:text/csv;charset=utf-8,' + csv;
+    //     link = document.createElement('a');
+    //     link.setAttribute('href', data);
+    //     link.setAttribute('download', filename);
+    //     link.click();
+    //     console.log(csv);
+        // var hiddenElement = document.createElement('a');
+        // hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+        // hiddenElement.target = '_blank';
+        // hiddenElement.download = 'ESPdata.csv';
+        // hiddenElement.click();
+        // downloads (download.join("\n"), "hghghgyui.csv", 'text/csv').
     }
 
 
-    function rawDataDownload() {
+
+    // var csv = 'Time,X,Y,Z\n';
+    // // var rowd = [];
+    // download.forEach(function(row) {
+    //     csv += row.join(',');
+    //     csv += "\n";
+    // });
+
+
+    // function downloads (content, fileName, mimeType)
+    // {
+    //     var a = document.createElement('a');
+    //     mimeType = mimeType || 'application/octet-stream';
+    //     if (navigator.msSaveBlob) { // IE10
+    //         return navigator.msSaveBlob(new Blob([content], { type: mimeType }), fileName);
+    //     } else if ('download' in a) { //html5 A[download]
+    //         a.href = 'data:' + mimeType + ',' + encodeURIComponent(content);
+    //         a.setAttribute('download', fileName);
+    //         document.body.appendChild(a);
+    //         a.click();
+    //         document.body.removeChild(a);
+    //         return true;
+    //     } else { //do iframe dataURL download (old ch+FF):
+    //         var f = document.createElement('iframe');
+    //         document.body.appendChild(f);
+    //         f.src = 'data:' + mimeType + ',' + encodeURIComponent(content);
+    //
+    //         setTimeout(function() {
+    //             document.body.removeChild(f);
+    //         }, 300);
+    //         return true;
+    //     }
+    // }
+    //Use like this
+    // var array = [];
+    // var len = array.length;
+    // var csvContent = "";
+    // for(var i = 0; i < len; i++) {
+    //     csvContent += array[i] + '\n';
+    // }
+    // var csvName = 'records.csv';
+    // function download_csv(){
+    //     downloads(csv, 'hahaha.csv', 'text/csv');
+    // }
+    // var csv = 'Time,X,Y,Z\n';
+    // console.log(download);
+    // console.log(timeFrom);
+    // console.log(timeTo);
+    // download.forEach(function(row) {
+    //     csv += row.join(',');
+    //     csv += "\n";
+    // });
+
+    $('#RawData').click(function(e){
+        e.preventDefault();
+        query_download()
+        // Code goes here
+    });
+    function query_download() {
         timeFrom = document.getElementById("begin").value;
         timeTo = document.getElementById("end").value;
         stationIs = document.getElementById("station").value;
-        // console.log("running");
+        console.log("running");
 
         // querystr = "timeFrom:" + timeFrom + "&timeTo:" + timeTo + "&stationIs:" + stationIs;
         // console.log(querystr);
 
         if (timeFrom && timeTo) {
             $.ajax({
-                // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newSnow',
+                // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newWind',
                 url: 'http://localhost:3005/newSnow',
                 type: 'GET',
                 dataType: 'json',
@@ -374,21 +447,56 @@
                 data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationIs},
                 timeout: 0,
                 success: function (res) {
-                    // console.log("success");
-                    // console.log(res);
+                    console.log("success");
+                    console.log(res);
 
-                    res.forEach(function (el, i) {
-                        var a = '' + el.X;
-                        var b = '' + el.Y;
-                        var c = '' + el.Z;
-                        var t = el.time;
-                        download += t + ',' + a + ',' + b + ',' + c + '\n';
-                        if (i === res.length - 1) {
-                            var exportFilename = timeFrom.slice(0,-5) +'-'+ timeTo.slice(0,-5) + 'RawESPData';
-                            download_csv(exportFilename);
-                        }
-                    });
+                    // res.forEach(function (el, i) {
+                    //     // var time = new Date(el.time);
+                    //     // console.log(el.time);
+                    //     // console.log(el.time._nanoISO);
+                    //     // console.log(el._nanoISO);
+                    //     var a = '' + el.X;
+                    //     var b = '' + el.Y;
+                    //     var c = '' + el.Z;
+                    //     var t = el.time;
+                    //     download += t + ',' + a + ',' + b + ',' + c + '\n';
+                    // });
+                    // console.log(download);
+                    // var exportFilename = timeFrom +'-'+ timeTo + 'RawESPData';
+                    // download_csv(exportFilename);
+
+                    if (navigator.msSaveBlob) {
+                        navigator.msSaveBlob(res, exportFilename);
+                    } else {
+                        //In FF link must be added to DOM to be clicked
+                        var link = document.createElement('a');
+                        link.href = window.URL.createObjectURL(res);
+                        link.setAttribute('download', exportFilename);
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    }
+        //
+        //
+        //                 exportFilename = timeFrom +'-'+ timeTo + 'RawESPData';
+        //
+        //             var csvD = new Blob([download], {type: 'text/csv;charset=utf-8;'});
+        //             //IE11 & Edge
+        //             if (navigator.msSaveBlob) {
+        //                 navigator.msSaveBlob(csvD, exportFilename);
+        //             } else {
+        //                 //In FF link must be added to DOM to be clicked
+        //                 var links = document.createElement('a');
+        //                 links.href = window.URL.createObjectURL(csvD);
+        //                 links.setAttribute('download', exportFilename);
+        //                 document.body.appendChild(links);
+        //                 links.click();
+        //                 document.body.removeChild(links);
+        //             }
+        //
+        //
                 }
+
             })
         } else {
             confirm("Please select BOTH dates.");

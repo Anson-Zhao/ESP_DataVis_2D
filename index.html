@@ -216,10 +216,13 @@
 
     $(document).ready(function () {
         $.ajax({
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stations',
             url: "http://localhost:3005/stations",
             method: "get",
             success: function(res) {
                 for(var i=0; i<res.length; i++){
+
+                    // console.log(res[i]);
 
                     building(res[i]);
 
@@ -257,10 +260,6 @@
         butTitle.attr('id', station.StationId + "_butTitle");
         butTitle.html(station.City + ", " + station.State);
 
-        // var butTitle = document.createElement("p");
-        // butTitle.id = station.StationId+"_butTitle";
-        // butTitle.textContent = station.City+", "+station.State;
-
         //add the control button
         let button = $('<button>');
         button.attr({
@@ -271,13 +270,6 @@
         });
         button.html(station.StationName);
 
-        // var button = document.createElement("button");
-        // button.id = station.StationId;
-        // button.value = station.StationId;
-        // button.textContent = station.StationName;
-        // button.setAttribute("style", "background-color: gray;");
-        // button.setAttribute("onclick", "check(this)");
-        // // button.onclick = check(this);
         $('#'+station.StationId+"_butDiv").append(button).append(butTitle);
 
         //add gauge title
@@ -285,10 +277,6 @@
         gTitle.attr('class', station.StationId);
         gTitle.text(station.StationName + ", " + station.City + ", " + station.State);
 
-        // var gTitle = document.createElement("h2");
-        // gTitle.className = station.StationId;
-        // gTitle.textContent = station.StationName+", "+station.City+", "+station.State;
-        //     // $('#gauge').append(gTitle);
 
         //create canvas for compass
         var canvasCompass = document.createElement("canvas");
@@ -396,6 +384,7 @@
 
     function query() {
         $.ajax({
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/querys',
             url: "http://localhost:3005/querys",
             method: "get",
             data: {stations: stations},
@@ -464,6 +453,8 @@
                     $('#'+res[i][0]+'_gaugeX').highcharts(options, buildGraph);
                     $('#'+res[i][0]+'_gaugeY').highcharts(options, buildGraph);
                     $('#'+res[i][0]+'_gaugeZ').highcharts(options, buildGraph);
+
+                    // console.log(res[i][0]);
 
                     init(res[i][0])
                 }
@@ -748,8 +739,6 @@
         context.arrow(0, 0, x, y, [0, 1, -10, 1, -10, 5]);
         context.fill();
     }
-
-
 
 </script>
 
