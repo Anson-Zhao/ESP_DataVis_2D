@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +191,7 @@
       <workItem from="1579181107347" duration="1072000" />
       <workItem from="1579191006102" duration="31430000" />
       <workItem from="1579703091368" duration="369000" />
-      <workItem from="1579807860924" duration="9677000" />
+      <workItem from="1579807860924" duration="10429000" />
     </task>
     <task id="LOCAL-00001" summary="esp live chart">
       <created>1571239268892</created>
@@ -406,7 +403,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580085955007</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="V1.42">
+      <created>1580087076694</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1580087076695</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -451,10 +455,10 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1408" y="530" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1579703013915" />
-    <state x="946" y="341" key="CommitChangelistDialog2" timestamp="1580085954895">
+    <state x="946" y="341" key="CommitChangelistDialog2" timestamp="1580087076604">
       <screen x="0" y="23" width="2560" height="1308" />
     </state>
-    <state x="946" y="341" key="CommitChangelistDialog2/0.23.2560.1308@0.23.2560.1308" timestamp="1580085954895" />
+    <state x="946" y="341" key="CommitChangelistDialog2/0.23.2560.1308@0.23.2560.1308" timestamp="1580087076604" />
     <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1579803100191" />
     <state x="58" y="42" width="1928" height="932" key="DiffContextDialog" timestamp="1580084297264">
       <screen x="0" y="23" width="2560" height="1308" />
@@ -529,10 +533,10 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1327" y="450" key="SettingsEditor/0.23.2560.1417@0.23.2560.1417" timestamp="1579803541646" />
-    <state x="989" y="455" key="Vcs.Push.Dialog.v2" timestamp="1580085956338">
+    <state x="989" y="455" key="Vcs.Push.Dialog.v2" timestamp="1580087077781">
       <screen x="0" y="23" width="2560" height="1308" />
     </state>
-    <state x="989" y="455" key="Vcs.Push.Dialog.v2/0.23.2560.1308@0.23.2560.1308" timestamp="1580085956338" />
+    <state x="989" y="455" key="Vcs.Push.Dialog.v2/0.23.2560.1308@0.23.2560.1308" timestamp="1580087077781" />
     <state x="989" y="491" key="Vcs.Push.Dialog.v2/0.23.2560.1417@0.23.2560.1417" timestamp="1579803102162" />
     <state x="688" y="270" width="1234" height="739" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1580080435904">
       <screen x="0" y="23" width="2560" height="1308" />
