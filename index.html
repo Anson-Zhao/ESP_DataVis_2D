@@ -227,6 +227,7 @@
                     if (i === res.length - 1) {
                         query();
                         setInterval(function(){query()}, 5000);
+                        // init(res[i].StationId)
                     }
                 }
             }
@@ -508,12 +509,18 @@
     }
 
     function imgLoaded(campassid,depthid,ylabel,xlabel,sta,img,needle) {
-        // Image loaded event complete.  Start the timer
         draw(campassid,sta,img,needle);
         coordinate(depthid,ylabel,xlabel);
         zArrow1(depthid,sta);
+        // Image loaded event complete.  Start the timer
         // console.log('loaded');
         // setInterval(interval(campassid,depthid,ylabel,xlabel,sta,img,needle), 5000);
+    }
+
+    function interval(campassid,depthid,ylabel,xlabel,sta,img,needle) {
+        draw(campassid,sta,img,needle);
+        coordinate(depthid,ylabel,xlabel);
+        zArrow1(depthid,sta);
     }
 
     //draw compass with the needle
