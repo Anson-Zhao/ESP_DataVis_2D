@@ -142,6 +142,7 @@
             <button id="AvgData" disabled >Download CSV</button>
             <br><br>
             <button id="RawData" >Download Raw CSV</button>
+            <div id="123"></div>
             <!--            <button id="RawData"">Download Raw CSV</button>-->
 
             <br><br><br>
@@ -355,39 +356,62 @@
     }
 
 
+
     function rawDataDownload() {
         timeFrom = document.getElementById("begin").value;
         timeTo = document.getElementById("end").value;
         stationIs = document.getElementById("station").value;
-        // console.log("running");
+        console.log("running");
 
-        // querystr = "timeFrom:" + timeFrom + "&timeTo:" + timeTo + "&stationIs:" + stationIs;
-        // console.log(querystr);
+        querystr = "timeFrom:" + timeFrom + "&timeTo:" + timeTo + "&stationIs:" + stationIs;
+        console.log(querystr);
 
         if (timeFrom && timeTo) {
             $.ajax({
                 // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newSnow',
                 url: 'http://localhost:3005/newSnow',
                 type: 'GET',
-                dataType: 'json',
+                // dataType: 'json',
                 async: true,
                 data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationIs},
                 timeout: 0,
                 success: function (res) {
-                    // console.log("success");
-                    // console.log(res);
+                    console.log("success");
+                    console.log(res);
+                    var Filename = timeFrom.slice(0,-5) +'-'+ timeTo.slice(0,-5) + 'RawESPData.csv';
+                    var exportFilename = 'http://localhost:63343/ESP_DataVis_2D/'+res;
+                    console.log(exportFilename);
 
-                    res.forEach(function (el, i) {
-                        var a = '' + el.X;
-                        var b = '' + el.Y;
-                        var c = '' + el.Z;
-                        var t = el.time;
-                        download += t + ',' + a + ',' + b + ',' + c + '\n';
-                        if (i === res.length - 1) {
-                            var exportFilename = timeFrom.slice(0,-5) +'-'+ timeTo.slice(0,-5) + 'RawESPData';
-                            download_csv(exportFilename);
-                        }
-                    });
+                    // window.open(exportFilename);
+
+                    // var link = document.createElement('a');
+                    // link.textContent = 'cdfvgbhnjmkl';
+                    // link.href = exportFilename;
+                    // link.id = 'link';
+                    // link.setAttribute('download', Filename);
+                    // $('#123').append(link);
+                    // document.body.appendChild(link);
+                    // document.getElementById('link').click();
+                    // document.body.removeChild(link);
+
+                    var link = document.createElement('iframe');
+                    link.setAttribute('style','display:none');
+                    link.src = exportFilename;
+                    link.id = 'link';
+                    document.body.appendChild(link);
+
+
+                    // res.forEach(function (el, i) {
+                    //     var a = '' + el.X;
+                    //     var b = '' + el.Y;
+                    //     var c = '' + el.Z;
+                    //     var t = el.time;
+                    //     download += t + ',' + a + ',' + b + ',' + c + '\n';
+                    //     if (i === res.length - 1) {
+                    //         var exportFilename = timeFrom.slice(0,-5) +'-'+ timeTo.slice(0,-5) + 'RawESPData';
+                    //         download_csv(exportFilename);
+                    //     }
+                    // });
                 }
             })
         } else {

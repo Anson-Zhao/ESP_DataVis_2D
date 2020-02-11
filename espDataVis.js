@@ -2,6 +2,11 @@ const Influx = require('influx');
 const express = require('express');
 const app = express();
 var jsonexport = require('jsonexport');
+var path = require('path');
+const csv = require('csv-parser');
+var fs = require('fs');
+
+
 const influx = new Influx.InfluxDB({
     host: 'aworldbridgelabs.com',
     database: 'RayESP',
@@ -78,54 +83,83 @@ app.get('/newWind', function (req, res) {
         res.status(500).send(err.stack)
     });
 });
-// var csvData;
-// function download_csv(exportFilename) {
-//     if (exportFilename == null) {
-//         exportFilename = timeFrom + '-' + timeTo + 'AvgESPData';
-//     }
-//     // console.log(download);
-//
-//
-//     // csvData = new Blob([download], {type: 'text/csv;charset=utf-8;'});
-//     //IE11 & Edge
-//     // if (navigator.msSaveBlob) {
-//     //     navigator.msSaveBlob(csvData, exportFilename);
-//     // } else {
-//     //     //In FF link must be added to DOM to be clicked
-//     //     var link = document.createElement('a');
-//     //     link.href = window.URL.createObjectURL(csvData);
-//     //     link.setAttribute('download', exportFilename);
-//     //     document.body.appendChild(link);
-//     //     link.click();
-//     //     document.body.removeChild(link);
-//     // }
-// }
+var csvData;
+function download_csv(exportFilename) {
+    if (exportFilename == null) {
+        exportFilename = timeFrom + '-' + timeTo + 'AvgESPData';
+    }
+    console.log(download);
 
-app.get('/newSnow', function (req, res) {
+
+    csvData = new Blob([download], {type: 'text/csv;charset=utf-8;'});
+    // IE11 & Edge
+    if (navigator.msSaveBlob) {
+        navigator.msSaveBlob(csvData, exportFilename);
+    } else {
+        //In FF link must be added to DOM to be clicked
+        var link = document.createElement('a');
+        link.href = window.URL.createObjectURL(csvData);
+        link.setAttribute('download', exportFilename);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+}
+
+app.get('/newSnow', async function (req, res) {
     var queryH = 'SELECT * FROM ' + req.query.stationIs + ' WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'";
-    // console.log(queryH);
-    influx.query(queryH).then
+    console.log(queryH);
+    await influx.query(queryH).then
     (result => {
-        // console.log("run raw data request");
-        // result.forEach(function (el, i) {
-        //     // var time = new Date(el.time);
-        //     // console.log(el.time);
-        //     // console.log(el.time._nanoISO);
-        //     // console.log(el._nanoISO);
-        //     var a = '' + el.X;
-        //     var b = '' + el.Y;
-        //     var c = '' + el.Z;
-        //     var t = el.time;
-        //     download += t + ',' + a + ',' + b + ',' + c + '\n';
-        // });
-        // var exportFilename = timeFrom +'-'+ timeTo + 'RawESPData';
-        // download_csv(exportFilename);
-        // console.log(csvData);
-        res.send(result);
+        console.log("run raw data request");
+        // console.log(timeFrom+timeTo);
+
+
+
+        result.forEach(function (el, i) {
+            // var time = new Date(el.time);
+            // console.log(el.time);
+            // console.log(el.time._nanoISO);
+            // console.log(el._nanoISO);
+            var a = '' + el.X;
+            var b = '' + el.Y;
+            var c = '' + el.Z;
+            var t = el.time;
+            // download += t + ',' + a + ',' + b + ',' + c + '\n';
+            download.push({time: t, x: a, y: b, z: c});
+        });
+
+
+
         // console.log(result)
-    }).catch(err => {
-        res.status(500).send(err.stack)
+    }) .catch(err => {
+        // res.status(500).send(err.stack)
     });
+    var download=[];
+    var exportFilename = req.query.timeFrom.slice(0,-11) +'-'+ req.query.timeTo.slice(0,-11) + 'RawESPData.csv';
+    // download_csv(exportFilename);
+    console.log(exportFilename);
+    console.log("finish editing result");
+    var link = 'rawData/'+exportFilename;
+    const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+    const csvWriter = createCsvWriter({
+        path: 'rawData/'+exportFilename,
+        header: [
+            {id: 'time', title: 'Time'},
+            {id: 'x', title: 'X'},
+            {id: 'y', title: 'Y'},
+            {id: 'z', title: 'Z'},
+        ]
+    });
+    console.log("data done");
+    await csvWriter
+        .writeRecords(download)
+        .then(()=> console.log('The CSV file was written successfully'));
+    console.log('The CSV file was written successfully~~~~~~~~~?');
+    console.log('link is sent?');
+    res.send(link);
+    console.log(link);
+    console.log('link is sent');
 });
 
 var pack=[];
@@ -151,9 +185,9 @@ app.get('/querys', async function (req, res) {
 
 app.get ('/stations', function (req, res){
     // console.log(req);
-    con.query("SELECT StationName,City,State,StationId FROM ESP2.StationData Where Status = 'Active'",function (err, result) {
+    con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.StationData Where Status = 'Active'",function (err, result) {
         if (err) throw err;
-        // console.log(result);
+        console.log(result);
         res.send(result);
     });
 });
