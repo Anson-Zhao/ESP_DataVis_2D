@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/require.min.js"></script>
 </head>
 
-<body onload="init()">
+<!--<body onload="init()">-->
 <!--<body>-->
 
 <div id="but0">
@@ -214,6 +214,26 @@
     var img;
     var needle;
 
+    /*
+ * Copyright 2003-2006, 2009, 2017, United States Government, as represented by the Administrator of the
+ * National Aeronautics and Space Administration. All rights reserved.
+ *
+ * The NASAWorldWind/WebWorldWind platform is licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+    /**
+     * Illustrates how to display and pick SurfaceImages.
+     */
+
     $(document).ready(function () {
         $.ajax({
             // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stations',
@@ -227,9 +247,10 @@
                     building(res[i]);
 
                     stations[i]=res[i].StationId;
-                    if (i === res.length - 1) {
+                    if (stations.length === res.length) {
                         query();
                         setInterval(function(){query()}, 5000);
+                        // init(res[i].StationId)
                     }
                 }
             }
@@ -245,37 +266,35 @@
         //Notification: space means two classes, '_' means one class.
 
         //add the button Div
-        let butDiv = $('<div></div>');
-        butDiv.attr({
-            'id': station.StationId+"_butDiv",
-            'display': 'inline-block',
-            'margin-right': '40px'
-        });
-        butDiv.append('<br>');
+        var butDiv = document.createElement("div");
+        butDiv.id = station.StationId+"_butDiv";
+        butDiv.setAttribute("style", "display: inline-block; margin-right: 40px;");
+        var br = document.createElement("br");
         $('#control_button').append(butDiv);
 
         //add button's title
-        let butTitle = $('<p>');
-        butTitle.attr('id', station.StationId + "_butTitle");
-        butTitle.html(station.City + ", " + station.State);
+        var butTitle = document.createElement("p");
+        butTitle.id = station.StationId+"_butTitle";
+        butTitle.textContent = station.City+", "+station.State;
 
         //add the control button
-        let button = $('<button>');
-        button.attr({
-            'id': station.StationId,
-            'value': station.StationId,
-            'style': 'background-color: gray',
-            'onclick': 'check(this)'
-        });
-        button.html(station.StationName);
-
+        var button = document.createElement("button");
+        button.id = station.StationId;
+        button.value = station.StationId;
+        button.textContent = station.StationName;
+        button.setAttribute("style", "background-color: gray;");
+        button.setAttribute("onclick", "check(this)");
+        // button.onclick = check(this);
         $('#'+station.StationId+"_butDiv").append(button).append(butTitle);
 
         //add gauge title
-        let gTitle = $('<h2>');
-        gTitle.attr('class', station.StationId);
-        gTitle.text(station.StationName + ", " + station.City + ", " + station.State);
+        var Gtitle = document.createElement("h2");
+        Gtitle.className = station.StationId;
+        Gtitle.textContent = station.StationName+", "+station.City+", "+station.State;
+            // $('#gauge').append(Gtitle);
 
+        // create a canvas for the globe
+        var globeCanvas = document.createElement("canvas");
 
         //create canvas for compass
         var canvasCompass = document.createElement("canvas");
@@ -335,7 +354,7 @@
         var gaugeDiv = document.createElement("div");
         gaugeDiv.className = station.StationId+" container";
         gaugeDiv.setAttribute("style", "margin: 0 auto; font-size: 16px; left: 90px; width: max-content; display: inline-table;");
-        $('#gauge').append(gTitle).append(compassDiv).append(vectorDiv).append(gaugeDiv);
+        $('#gauge').append(Gtitle).append(compassDiv).append(vectorDiv).append(gaugeDiv);
 
         //add xyz divs into gauge Div
         var gdivX = document.createElement("div");
@@ -499,13 +518,19 @@
     }
 
     function imgLoaded(campassid,depthid,ylabel,xlabel,sta,img,needle) {
-        // Image loaded event complete.  Start the timer
         draw(campassid,sta,img,needle);
         coordinate(depthid,ylabel,xlabel);
         zArrow1(depthid,sta);
+        // Image loaded event complete.  Start the timer
         // console.log('loaded');
         // setInterval(interval(campassid,depthid,ylabel,xlabel,sta,img,needle), 5000);
     }
+
+    // function interval(campassid,depthid,ylabel,xlabel,sta,img,needle) {
+    //     draw(campassid,sta,img,needle);
+    //     coordinate(depthid,ylabel,xlabel);
+    //     zArrow1(depthid,sta);
+    // }
 
     //draw compass with the needle
     function draw(compassid,sta,img,needle) {
