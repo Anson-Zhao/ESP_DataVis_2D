@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,6 +199,7 @@
       <workItem from="1581004565192" duration="1815000" />
       <workItem from="1581008127663" duration="969000" />
       <workItem from="1581433737916" duration="12000" />
+      <workItem from="1581446228535" duration="628000" />
     </task>
     <task id="LOCAL-00001" summary="esp live chart">
       <created>1571239268892</created>
@@ -425,7 +425,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580222631043</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="V1.42">
+      <created>1581446273389</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1581446273390</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -471,10 +478,11 @@
     </state>
     <state x="1408" y="491" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1580307235483" />
     <state x="1408" y="530" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1579703013915" />
-    <state x="946" y="341" key="CommitChangelistDialog2" timestamp="1580222630819">
-      <screen x="0" y="23" width="2560" height="1308" />
+    <state x="946" y="342" key="CommitChangelistDialog2" timestamp="1581446268632">
+      <screen x="0" y="23" width="2560" height="1312" />
     </state>
     <state x="946" y="341" key="CommitChangelistDialog2/0.23.2560.1308@0.23.2560.1308" timestamp="1580222630819" />
+    <state x="946" y="342" key="CommitChangelistDialog2/0.23.2560.1312@0.23.2560.1312" timestamp="1581446268632" />
     <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1579803100191" />
     <state x="58" y="42" width="1928" height="932" key="DiffContextDialog" timestamp="1580084297264">
       <screen x="0" y="23" width="2560" height="1308" />
@@ -628,10 +636,11 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1435" y="603" width="845" height="528" key="find.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1579298741926" />
-    <state x="1538" y="435" key="git4idea.merge.GitPullDialog" timestamp="1579895598919">
-      <screen x="0" y="23" width="2560" height="1308" />
+    <state x="1538" y="436" key="git4idea.merge.GitPullDialog" timestamp="1581446975926">
+      <screen x="0" y="23" width="2560" height="1312" />
     </state>
     <state x="1538" y="435" key="git4idea.merge.GitPullDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1579895598919" />
+    <state x="1538" y="436" key="git4idea.merge.GitPullDialog/0.23.2560.1312@0.23.2560.1312" timestamp="1581446975926" />
     <state x="1037" y="538" key="new project wizard" timestamp="1579101598572">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
