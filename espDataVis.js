@@ -150,7 +150,8 @@ app.get('/querys', async function (req, res) {
 });
 
 app.get ('/stations', function (req, res){
-    // console.log(req);
+
+    console.log(req);
     con.query("SELECT StationName,City,State,StationId FROM ESP2.StationData Where Status = 'Active'",function (err, result) {
         if (err) throw err;
         // console.log(result);
