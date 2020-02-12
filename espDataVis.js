@@ -109,6 +109,7 @@ function download_csv(exportFilename) {
 app.get('/newSnow', async function (req, res) {
     var queryH = 'SELECT * FROM ' + req.query.stationIs + ' WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'";
     console.log(queryH);
+    var download=[];
     await influx.query(queryH).then
     (result => {
         console.log("run raw data request");
@@ -135,15 +136,15 @@ app.get('/newSnow', async function (req, res) {
     }) .catch(err => {
         // res.status(500).send(err.stack)
     });
-    var download=[];
-    var exportFilename = req.query.timeFrom.slice(0,-11) +'-'+ req.query.timeTo.slice(0,-11) + 'RawESPData.csv';
+
+    var exportFilename = req.query.stationName + "_" + req.query.timeFrom.slice(5,-11) +'-'+ req.query.timeTo.slice(5,-11) + 'Raw.csv';
     // download_csv(exportFilename);
     console.log(exportFilename);
     console.log("finish editing result");
     var link = 'rawData/'+exportFilename;
     const createCsvWriter = require('csv-writer').createObjectCsvWriter;
     const csvWriter = createCsvWriter({
-        path: 'rawData/'+exportFilename,
+        path: link,
         header: [
             {id: 'time', title: 'Time'},
             {id: 'x', title: 'X'},
@@ -154,12 +155,14 @@ app.get('/newSnow', async function (req, res) {
     console.log("data done");
     await csvWriter
         .writeRecords(download)
-        .then(()=> console.log('The CSV file was written successfully'));
-    console.log('The CSV file was written successfully~~~~~~~~~?');
-    console.log('link is sent?');
-    res.send(link);
-    console.log(link);
-    console.log('link is sent');
+        .then(()=> {
+            console.log('The CSV file was written successfully');
+            console.log('link is sent?');
+            console.log(link);
+            res.send(link);
+            console.log('link is sent');
+            console.log('The CSV file was written successfully~~~~~~~~~?');
+        });
 });
 
 var pack=[];

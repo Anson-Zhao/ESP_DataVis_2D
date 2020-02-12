@@ -221,11 +221,13 @@
             //I want array with string inside
             var stations = [];
             //single station name that we are going to deal with
+            var stationsData = [];
 
             //5s average gauge data
             var sta;
             var img;
-            var needle;
+            var needle = new Image();
+            needle.src = 'jsLibrary/compass/needle.png';
 
             var wwd = new WorldWind.WorldWindow("canvasOne");
             var surfaceImageLayer = new WorldWind.RenderableLayer();
@@ -257,15 +259,15 @@
                     method: "get",
                     success: function(res) {
                         for(var i=0; i<res.length; i++){
-
+                            stationsData[i]=res[i];
                             // console.log(res[i]);
 
+                            stations[i]=res[i].StationId;
                             building(res[i]);
 
-                            stations[i]=res[i].StationId;
                             if (stations.length === res.length) {
-                                query();
-                                setInterval(function(){query()}, 5000);
+                                createSurfaceImage(stationsData,query());
+                                setInterval(function(){createSurfaceImage(stationsData,query())}, 5000);
                                 console.log(res);
                             }
                         }
@@ -308,13 +310,6 @@
                 Gtitle.className = station.StationId;
                 Gtitle.textContent = station.StationName+", "+station.City+", "+station.State;
                 // $('#gauge').append(Gtitle);
-
-                // // create a canvas for the globe
-                // var globeCanvas = document.createElement("canvas");
-                // globeCanvas.className = station.StationId;
-                // globeCanvas.id = station.StationId + "_globe";
-                // globeCanvas.setAttribute("width",400);
-                // globeCanvas.setAttribute("height",400);
 
                 //create canvas for compass
                 var canvasCompass = document.createElement("canvas");
@@ -419,18 +414,16 @@
                 cdivZ.setAttribute("style", "float: left;");
                 var c = "."+station.StationId+".charts";
                 $(c).append(cdivX).append(cdivY).append(cdivZ);
-
-                init(station)
             }
 
-            function query() {
+            function query(stationData) {
                 $.ajax({
                     // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/querys',
                     url: "http://localhost:3005/querys",
                     method: "get",
                     data: {stations: stations},
                     //Says success isn't used but it is
-                    success: function(res){
+                    success: function(res){console.log(stationData);
                         for(var i=0; i<res.length; i++){
                             var x_arr = [];
                             var y_arr = [];
@@ -499,9 +492,9 @@
                             $('#'+res[i][0]+'_gaugeY').highcharts(options, buildGraph);
                             $('#'+res[i][0]+'_gaugeZ').highcharts(options, buildGraph);
 
-                            // console.log(res[i][0]);
+                            console.log(stationData);
 
-                            // init(res[i][0])
+                            needle.onload = createSurfaceImage(stationData)
                         }
                     }
                 });
@@ -548,39 +541,41 @@
                 return Math.atan2(y, x) * 180 / Math.PI;
             }
 
-            function init(stationData) {
-                // Grab the compass element
-                // var needleCanvas = document.createElement("canvas");
-                // var arrowId = stationData.StationName +"_canvas";
-                // needleCanvas.id= arrowId;
-                // needleCanvas.width = 1000;
-                // needleCanvas.height = 1000;
-
-                needle = new Image();
-                needle.src = 'jsLibrary/compass/needle.png';
-                needle.onload = createSurfaceImage(stationData)
-                // Canvas supported?
-                // if (canvas.getContext('2d')) {
-                //     // Load the needle image
-                //
-                //
-                //     // Load the compass image
-                //     img = new Image();
-                //     img.src = 'jsLibrary/compass/compass.png';
-                //     img.onload = imgLoaded(classname +"_canvas","depth_" +classname,"y-label_" + classname,"x-label_" + classname,sta,img,needle);
-                // } else {
-                //     alert("Canvas not supported!");
-                // }
-            }
+            // function init(stationData) {
+            //     // Grab the compass element
+            //     // var needleCanvas = document.createElement("canvas");
+            //     // var arrowId = stationData.StationName +"_canvas";
+            //     // needleCanvas.id= arrowId;
+            //     // needleCanvas.width = 1000;
+            //     // needleCanvas.height = 1000;
+            //
+            //     needle = new Image();
+            //     needle.src = 'jsLibrary/compass/needle.png';
+            //     needle.onload = createSurfaceImage(stationData)
+            //     // Canvas supported?
+            //     // if (canvas.getContext('2d')) {
+            //     //     // Load the needle image
+            //     //
+            //     //
+            //     //     // Load the compass image
+            //     //     img = new Image();
+            //     //     img.src = 'jsLibrary/compass/compass.png';
+            //     //     img.onload = imgLoaded(classname +"_canvas","depth_" +classname,"y-label_" + classname,"x-label_" + classname,sta,img,needle);
+            //     // } else {
+            //     //     alert("Canvas not supported!");
+            //     // }
+            // }
 
             function createSurfaceImage(stationData) {
+                console.log(stationData);
+                for (var i =0; i<stationData.length; i++){}
                 var needleCanvas = document.createElement("canvas");
                 needleCanvas.id= stationData.StationId + "_needle";
                 needleCanvas.width = 1000;
                 needleCanvas.height = 1000;
                 var ctx2d = needleCanvas.getContext("2d");
 
-                if(wwd.layers.length > 4){
+                if(wwd.layers.length > layers.length){
                     for (var i = 0; i< wwd.layers.length; i++){
                         if(wwd.layers[i].displayName === "Surface Images"){
                             wwd.layers[i].renderables.length = 0;
@@ -602,7 +597,7 @@
                 ctx2d.drawImage(needle, 172, 172);
                 ctx2d.restore();
 
-                var surfaceImage4 = new WorldWind.SurfaceImage(new WorldWind.Sector(20, 30, -120, -100),
+                var surfaceImage4 = new WorldWind.SurfaceImage(new WorldWind.Sector(stationData.Latitude-100, stationData.Latitude+100, stationData.Longitude-100,stationData.Longitude-100),
                     new WorldWind.ImageSource(needleCanvas));
 
                 // Add the surface images to a layer and the layer to the WorldWindow's layer list.
@@ -613,225 +608,8 @@
                 layerManager.synchronizeLayerList();
                 console.log('hello')
             }
+
         });
-
-    // function imgLoaded(campassid,depthid,ylabel,xlabel,sta,img,needle) {
-    //     // draw(campassid,sta,img,needle);
-    //     // coordinate(depthid,ylabel,xlabel);
-    //     // zArrow1(depthid,sta);
-    //     // Image loaded event complete.  Start the timer
-    //     // console.log('loaded');
-    //     // setInterval(interval(campassid,depthid,ylabel,xlabel,sta,img,needle), 5000);
-    // }
-
-    // function interval(campassid,depthid,ylabel,xlabel,sta,img,needle) {
-    //     draw(campassid,sta,img,needle);
-    //     coordinate(depthid,ylabel,xlabel);
-    //     zArrow1(depthid,sta);
-    // }
-
-    //draw compass with the needle
-    // function draw(compassid,sta,img,needle) {
-    //     var canvas = document.getElementById(compassid);
-    //     var ctx = canvas.getContext('2d');
-    //
-    //     let degrees = calcAngleDegrees(sta[0], sta[1]);
-    //     ctx.clearRect(0, 0, 500, 500);
-    //
-    //     // Draw the compass onto the canvas
-    //     ctx.drawImage(img, 0, 0);
-    //
-    //     // Save the current drawing state
-    //     ctx.save();
-    //
-    //     // Now move across and down half the
-    //     ctx.translate(153, 140);
-    //
-    //     // Rotate around this point
-    //     ctx.rotate(degrees * (Math.PI / 180));
-    //
-    //     // Draw the image back and up
-    //     ctx.drawImage(needle, -172, -172);
-    //
-    //     // Restore the previous drawing state
-    //     ctx.restore();
-    //
-    // }
-
-    // function calcLength(x, y) {
-    //     var sum = Math.pow(x,2) + Math.pow(y,2) ;
-    //     // console.log(sum);
-    //     return Math.sqrt(sum);
-    // }
-
-    // function coordinate(id,yLabel,xLabel){
-    //     var grid_size = 30;
-    //     var x_axis_distance_grid_lines = 0;
-    //     var y_axis_distance_grid_lines = 0;
-    //     var x_axis_starting_point = { number: 5000, suffix: '' };
-    //     var y_axis_starting_point = { number: 5000, suffix: '' };
-    //     var canvas = document.getElementById(id);
-    //     var ctx = canvas.getContext("2d");
-    //     // canvas width
-    //     var canvas_width = canvas.width;
-    //     // canvas height
-    //     var canvas_height = canvas.height;
-    //     // no of vertical grid lines
-    //     var num_lines_x = Math.floor(canvas_height/grid_size);
-    //     // no of horizontal grid lines
-    //     var num_lines_y = Math.floor(canvas_width/grid_size);
-    //
-    //     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    //
-    //     ctx.save();
-    //
-    //     // Draw grid lines along X-axis
-    //     for(var i=0; i<=num_lines_x; i++) {
-    //         ctx.beginPath();
-    //         ctx.lineWidth = 1;
-    //
-    //         // If line represents X-axis draw in different color
-    //         if(i === x_axis_distance_grid_lines)
-    //             ctx.strokeStyle = "#000000";
-    //         else
-    //             ctx.strokeStyle = "#e9e9e9";
-    //
-    //         if(i === num_lines_x) {
-    //             ctx.moveTo(0, grid_size*i);
-    //             ctx.lineTo(canvas_width, grid_size*i);
-    //         }
-    //         else {
-    //             ctx.moveTo(0, grid_size*i+0.5);
-    //             ctx.lineTo(canvas_width, grid_size*i+0.5);
-    //         }
-    //         ctx.stroke();
-    //     }
-    //     // Draw grid lines along Y-axis
-    //     for(i=0; i<=num_lines_y; i++) {
-    //         ctx.beginPath();
-    //         ctx.lineWidth = 1;
-    //
-    //         // If line represents Y-axis draw in different color
-    //         if(i == y_axis_distance_grid_lines)
-    //             ctx.strokeStyle = "#000000";
-    //         else
-    //             ctx.strokeStyle = "#e9e9e9";
-    //
-    //         if(i == num_lines_y) {
-    //             ctx.moveTo(grid_size*i, 0);
-    //             ctx.lineTo(grid_size*i, canvas_height);
-    //         }
-    //         else {
-    //             ctx.moveTo(grid_size*i+0.5, 0);
-    //             ctx.lineTo(grid_size*i+0.5, canvas_height);
-    //         }
-    //         ctx.stroke();
-    //     }
-    //
-    //
-    //     ctx.translate(y_axis_distance_grid_lines*grid_size, x_axis_distance_grid_lines*grid_size);
-    //     // Ticks marks along the positive X-axis
-    //     for(i=1; i<(num_lines_y - y_axis_distance_grid_lines); i++) {
-    //         ctx.beginPath();
-    //         ctx.lineWidth = 1;
-    //         ctx.strokeStyle = "#000000";
-    //
-    //         // Draw a tick mark 6px long (-3 to 3)
-    //         ctx.moveTo(grid_size*i+0.5, -4);
-    //         ctx.lineTo(grid_size*i+0.5, 4);
-    //         ctx.stroke();
-    //
-    //         // Text value at that point
-    //         ctx.font = '9px Arial';
-    //         ctx.textAlign = 'start';
-    //         ctx.fillText(x_axis_starting_point.number*i + x_axis_starting_point.suffix, grid_size*i-2, 15);
-    //     }
-    //
-    //     // Ticks marks along the negative X-axis
-    //     for(i=1; i<y_axis_distance_grid_lines; i++) {
-    //         ctx.beginPath();
-    //         ctx.lineWidth = 1;
-    //         ctx.strokeStyle = "#000000";
-    //
-    //         // Draw a tick mark 6px long (-3 to 3)
-    //         ctx.moveTo(-grid_size*i+0.5, -3);
-    //         ctx.lineTo(-grid_size*i+0.5, 3);
-    //         ctx.stroke();
-    //
-    //         // Text value at that point
-    //         ctx.font = '9px Arial';
-    //         ctx.textAlign = 'end';
-    //         ctx.fillText(-x_axis_starting_point.number*i + x_axis_starting_point.suffix, -grid_size*i+3, 15);
-    //     }
-    //
-    //     // Ticks marks along the positive Y-axis
-    //     // Positive Y-axis of graph is negative Y-axis of the canvas
-    //     for(i=1; i<(num_lines_x - x_axis_distance_grid_lines); i++) {
-    //         ctx.beginPath();
-    //         ctx.lineWidth = 1;
-    //         ctx.strokeStyle = "#000000";
-    //
-    //         // Draw a tick mark 6px long (-3 to 3)
-    //         ctx.moveTo(-3, grid_size*i+0.5);
-    //         ctx.lineTo(3, grid_size*i+0.5);
-    //         ctx.stroke();
-    //
-    //         // Text value at that point
-    //         ctx.font = '9px Arial';
-    //         ctx.textAlign = 'start';
-    //         ctx.fillText(-y_axis_starting_point.number*i + y_axis_starting_point.suffix, 8, grid_size*i+3);
-    //     }
-    //
-    //     // Ticks marks along the negative Y-axis
-    //     // Negative Y-axis of graph is positive Y-axis of the canvas
-    //     for(i=1; i<x_axis_distance_grid_lines; i++) {
-    //         ctx.beginPath();
-    //         ctx.lineWidth = 1;
-    //         ctx.strokeStyle = "#000000";
-    //
-    //         // Draw a tick mark 6px long (-3 to 3)
-    //         ctx.moveTo(-3, -grid_size*i+0.5);
-    //         ctx.lineTo(3, -grid_size*i+0.5);
-    //         ctx.stroke();
-    //
-    //         // Text value at that point
-    //         ctx.font = '9px Arial';
-    //         ctx.textAlign = 'start';
-    //         ctx.fillText(y_axis_starting_point.number*i + y_axis_starting_point.suffix, 8, -grid_size*i+3);
-    //     }
-    //
-    //
-    //     var labelX = document.getElementById(xLabel);
-    //     var ctxLabelX = labelX.getContext("2d");
-    //     ctxLabelX.clearRect(0, 0, labelX.width, labelX.height);
-    //     ctxLabelX.font = "10px Arial";
-    //     ctxLabelX.fillText("direction",labelX.width/2-20, labelX.height/2);
-    //
-    //     var labelY = document.getElementById(yLabel);
-    //     var ctxLabelY = labelY.getContext("2d");
-    //     ctxLabelY.clearRect(0, 0, labelY.width, labelY.height);
-    //     ctxLabelY.save();
-    //     ctxLabelY.translate(140, 105);
-    //     ctxLabelY.rotate(Math.PI/2);
-    //     ctxLabelY.fillText("depth",labelY.width/2-10, labelY.height/2);
-    //     ctxLabelY.restore();
-    // }
-
-    // function zArrow1(id,sta){
-    //     var compX = calcLength(sta[0],sta[1]);
-    //
-    //     var scaleX = compX/5000;
-    //     var x= scaleX*30;
-    //     var scaleY = Math.abs(sta[2])/5000;
-    //     var y = scaleY*30;
-    //
-    //     var canvas = document.getElementById(id);
-    //     var context = canvas.getContext("2d");
-    //
-    //     context.beginPath();
-    //     context.arrow(0, 0, x, y, [0, 1, -10, 1, -10, 5]);
-    //     context.fill();
-    // }
 
 
 

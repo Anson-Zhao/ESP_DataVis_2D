@@ -156,6 +156,10 @@
 <!--</div>-->
 
 <script>
+    //stations we have
+    var stations = [];
+    //station we selected
+    var station;
     $(document).ready(function () {
         $(".datePicker").flatpickr(
             {enableTime: true,
@@ -180,6 +184,7 @@
             success: function(res) {
                 // console.log("This is the stations result:");
                 // console.log(res);
+                stations = res;
                 for(var i=0; i<res.length; i++) {
                     // console.log("This is the station being called:");
                     // console.log(res[i].StationId);
@@ -202,9 +207,10 @@
         //build option
         var option = document.createElement("option");
         option.textContent = station.StationName+", "+station.City+", "+station.State;
-        option.value = station.StationId;
+        option.value = JSON.stringify({'stationName':station.StationName,'stationId':station.StationId});
         $('#station').append(option);
-        // console.log("option appended")
+        console.log(option);
+        console.log("option appended")
     }
 
     var timeFrom,timeTo,stationIs,querystr;
@@ -213,11 +219,12 @@
     function query() {
         timeFrom = document.getElementById("begin").value;
         timeTo = document.getElementById("end").value;
-        stationIs = document.getElementById("station").value;
+        stationIs = JSON.parse(document.getElementById("station").value).stationId;
+
 
         // querystr = "timeFrom:" + timeFrom + "&timeTo:" + timeTo + "&stationIs:" + stationIs;
         // console.log(querystr);
-
+        station = document.getElementById("station");
         if (timeFrom && timeTo) {
             queryAndDisplay();
         } else {
@@ -360,12 +367,13 @@
     function rawDataDownload() {
         timeFrom = document.getElementById("begin").value;
         timeTo = document.getElementById("end").value;
-        stationIs = document.getElementById("station").value;
+        stationIs = JSON.parse(document.getElementById("station").value).stationId;
+        stationName = JSON.parse(document.getElementById("station").value).stationName;
         console.log("running");
 
         querystr = "timeFrom:" + timeFrom + "&timeTo:" + timeTo + "&stationIs:" + stationIs;
         console.log(querystr);
-
+        station= document.getElementById("station");
         if (timeFrom && timeTo) {
             $.ajax({
                 // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newSnow',
@@ -373,13 +381,13 @@
                 type: 'GET',
                 // dataType: 'json',
                 async: true,
-                data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationIs},
+                data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationIs, stationName: stationName},
                 timeout: 0,
                 success: function (res) {
                     console.log("success");
                     console.log(res);
                     var Filename = timeFrom.slice(0,-5) +'-'+ timeTo.slice(0,-5) + 'RawESPData.csv';
-                    var exportFilename = 'http://localhost:63343/ESP_DataVis_2D/'+res;
+                    var exportFilename = 'http://localhost:63342/ESP_DataVis_2D/'+res;
                     console.log(exportFilename);
 
                     // window.open(exportFilename);
@@ -399,6 +407,7 @@
                     link.src = exportFilename;
                     link.id = 'link';
                     document.body.appendChild(link);
+                    console.log("append successfully")
 
 
                     // res.forEach(function (el, i) {
