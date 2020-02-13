@@ -266,8 +266,9 @@
                             building(res[i]);
 
                             if (stations.length === res.length) {
-                                createSurfaceImage(stationsData,query());
-                                setInterval(function(){createSurfaceImage(stationsData,query())}, 5000);
+                                query();
+                                // createSurfaceImage(stationsData,query());
+                                setInterval(function(){query()}, 5000);
                                 console.log(res);
                             }
                         }
@@ -416,14 +417,14 @@
                 $(c).append(cdivX).append(cdivY).append(cdivZ);
             }
 
-            function query(stationData) {
+            function query() {
                 $.ajax({
                     // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/querys',
                     url: "http://localhost:3005/querys",
                     method: "get",
                     data: {stations: stations},
                     //Says success isn't used but it is
-                    success: function(res){console.log(stationData);
+                    success: function(res){
                         for(var i=0; i<res.length; i++){
                             var x_arr = [];
                             var y_arr = [];
@@ -437,8 +438,9 @@
                             );
 
                             sta = avg(res[i][1],5);
-                            console.log("hello");
+                            // var
                             console.log(sta);
+
                             let Z;
                             Z = new Dygraph(
                                 // containing div
@@ -492,9 +494,7 @@
                             $('#'+res[i][0]+'_gaugeY').highcharts(options, buildGraph);
                             $('#'+res[i][0]+'_gaugeZ').highcharts(options, buildGraph);
 
-                            console.log(stationData);
-
-                            needle.onload = createSurfaceImage(stationData)
+                            createSurfaceImage(stationsData,sta)
                         }
                     }
                 });
@@ -566,47 +566,48 @@
             //     // }
             // }
 
-            function createSurfaceImage(stationData) {
-                console.log(stationData);
-                for (var i =0; i<stationData.length; i++){}
-                var needleCanvas = document.createElement("canvas");
-                needleCanvas.id= stationData.StationId + "_needle";
-                needleCanvas.width = 1000;
-                needleCanvas.height = 1000;
-                var ctx2d = needleCanvas.getContext("2d");
-
+            function createSurfaceImage(stationData,sta) {
+                console.log(sta);
                 if(wwd.layers.length > layers.length){
-                    for (var i = 0; i< wwd.layers.length; i++){
-                        if(wwd.layers[i].displayName === "Surface Images"){
-                            wwd.layers[i].renderables.length = 0;
-                            wwd.layers.splice(i,1);
+                    console.log("delete");
+                    for (var a = 0; a< wwd.layers.length; a++){
+                        if(wwd.layers[a].displayName === "Surface Images"){
+                            wwd.layers[a].renderables.length = 0;
+                            wwd.layers.splice(a,1);
                         }
                     }
                 }
 
-                var degrees = calcAngleDegrees(sta[0], sta[1]);
+                for (var i =0; i<stationData.length; i++){
+                    var needleCanvas = document.createElement("canvas");
+                    needleCanvas.id= stationData[i].StationId + "_needle";
+                    needleCanvas.width = 1000;
+                    needleCanvas.height = 1000;
+                    var ctx2d = needleCanvas.getContext("2d");
 
-                ctx2d.clearRect(0, 0, needleCanvas.width, needleCanvas.width);
-                ctx2d.save();
-                // setInterval(interval,5000);
-                ctx2d.translate(153, 140);
+                    var degrees = calcAngleDegrees(sta[0], sta[1]);
 
-                // Rotate around this point
-                ctx2d.rotate(degrees * (Math.PI / 180));
-                console.log(degrees);
-                ctx2d.drawImage(needle, 172, 172);
-                ctx2d.restore();
+                    ctx2d.clearRect(0, 0, needleCanvas.width, needleCanvas.width);
+                    ctx2d.save();
+                    // setInterval(interval,5000);
+                    ctx2d.translate(153, 140);
 
-                var surfaceImage4 = new WorldWind.SurfaceImage(new WorldWind.Sector(stationData.Latitude-100, stationData.Latitude+100, stationData.Longitude-100,stationData.Longitude-100),
-                    new WorldWind.ImageSource(needleCanvas));
+                    // Rotate around this point
+                    ctx2d.rotate(degrees * (Math.PI / 180));
+                    console.log(degrees);
+                    ctx2d.drawImage(needle, 172, 172);
+                    ctx2d.restore();
 
-                // Add the surface images to a layer and the layer to the WorldWindow's layer list.
-                surfaceImageLayer.displayName = "Surface Images";
-                surfaceImageLayer.addRenderable(surfaceImage4);
+                    var surfaceImage = new WorldWind.SurfaceImage(new WorldWind.Sector(stationData[i].Latitude-1, stationData[i].Latitude+1, stationData[i].Longitude-1,stationData[i].Longitude+1),
+                        new WorldWind.ImageSource(needleCanvas));
+
+                    // Add the surface images to a layer and the layer to the WorldWindow's layer list.
+                    surfaceImageLayer.displayName = "Surface Images";
+                    surfaceImageLayer.addRenderable(surfaceImage);
+                }
                 wwd.addLayer(surfaceImageLayer);
                 console.log(wwd.layers);
                 layerManager.synchronizeLayerList();
-                console.log('hello')
             }
 
         });
