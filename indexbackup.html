@@ -438,7 +438,7 @@
                             }
                         );
 
-                        sta = avg(res,5);
+                        sta = Avg(res,5);
 
                         let Z = new Dygraph(
                             // containing div
@@ -518,19 +518,52 @@
                 }
             }
 
-            function avg(res,len){
+            function Avg(res, len) {
                 var xa, ya, za;
-                var arr = res.slice(Math.max(res.length - len, 1));
+                var arr = res.slice(Math.max(res.length - len, 0));
                 xa = ya = za = 0;
-                for(var i = 0; i<arr.length; i++){
+                for (var i = 0; i < arr.length; i++) {
                     xa += arr[i].X;
                     ya += arr[i].Y;
-                    za += arr[i].Z
+                    za += arr[i].Z;
+                    if (i == arr.length - 1) {
+                        if (res.length < len) {
+                            xa = xa / res.length;
+                            ya = ya / res.length;
+                            za = za / res.length;
+                            return [xa, ya, za];
+                        } else {
+                            xa = xa / len;
+                            ya = ya / len;
+                            za = za / len;
+                            return [xa, ya, za];
+                        }
+                    }
                 }
-                xa = xa/len;
-                ya = ya/len;
-                za = za/len;
-                return [xa, ya, za];
+            }
+
+            function deltaAvg(res, len) {
+                if (res.length < len * 2) {
+                    return console.log("Data length is insufficient");
+                } else {
+                    let xa, ya, za;
+                    xa = ya = za = 0;
+                    let sliceDelta = Math.max(res.length - len * 2, 0);
+                    let arrDelta = res.slice(sliceDelta);
+                    for (var i = 0; i < arrDelta.length / 2; i++) {
+
+                        xa += arrDelta[i].X - arrDelta[i + len].X;
+                        ya += arrDelta[i].Y - arrDelta[i + len].Y;
+                        za += arrDelta[i].Z - arrDelta[i + len].Z;
+
+                        if (i == arrDelta.length / 2 - 1) {
+                            xa = xa / len;
+                            ya = ya / len;
+                            za = za / len;
+                            return [xa, ya, za];
+                        }
+                    }
+                }
             }
 
             function calcAngleDegrees(x, y) {
