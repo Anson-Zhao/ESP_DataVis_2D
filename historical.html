@@ -142,7 +142,9 @@
             <button id="AvgData" disabled >Download CSV</button>
             <br><br>
             <button id="RawData" >Download Raw CSV</button>
-            <div id="123"></div>
+            <div id="downloading" display="inline-block" display="none">
+                <img src="888.gif" alt="download in progress" width=150 height=150>
+            </div>
             <!--            <button id="RawData"">Download Raw CSV</button>-->
 
             <br><br><br>
@@ -383,6 +385,11 @@
                 async: true,
                 data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationIs, stationName: stationName},
                 timeout: 0,
+                beforeSend: function(){
+                    // display a progress animation
+                    $('#downloading').show()
+
+                },
                 success: function (res) {
                     console.log("success");
                     console.log(res);
@@ -401,6 +408,7 @@
                     // document.body.appendChild(link);
                     // document.getElementById('link').click();
                     // document.body.removeChild(link);
+                    $('#downloading').hide();
 
                     var link = document.createElement('iframe');
                     link.setAttribute('style','display:none');
