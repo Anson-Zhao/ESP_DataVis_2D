@@ -165,6 +165,18 @@ app.get('/newSnow', async function (req, res) {
         });
 });
 
+app.get('/query', function (req, res) {
+    // console.log(req.query.stationID);
+    var query = 'SELECT * FROM ' + req.query.stationID + 'avg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime;
+    // console.log(query);
+    influx.query(query).then
+    (result => {
+        res.send(result);
+    }).catch(err => {
+        console.log(err)
+    })
+});
+
 var pack=[];
 var i=0;
 app.get('/querys', async function (req, res) {
@@ -190,7 +202,7 @@ app.get ('/stations', function (req, res){
     // console.log(req);
     con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.StationData Where Status = 'Active'",function (err, result) {
         if (err) throw err;
-        console.log(result);
+        // console.log(result);
         res.send(result);
     });
 });
