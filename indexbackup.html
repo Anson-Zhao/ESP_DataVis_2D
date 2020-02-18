@@ -264,6 +264,7 @@
 
                             // stations[i]=res[i].StationId;
                             // building(res[i]);
+                            // needle.onload
                             query(res[i]);
 
                             // if (stations.length === res.length) {
@@ -491,8 +492,9 @@
 
                         console.log(staInfo);
 
+                        console.log(deltaAvg(res, 5));
 
-                        // createPL(stationsInfo,sta)
+                        createPL(staInfo,deltaAvg(res,5))
                     }
                 });
             }
@@ -596,12 +598,13 @@
             //     // }
             // }
 
-            function createPL(stationData,sta) {
-                console.log(sta);
-                if(wwd.layers.length > layers.length){
+            function createPL(stationData,staAvg) {
+
+                console.log(staAvg);
+                if(wwd.layers.length > layers.length +4){
                     console.log("delete");
-                    for (var a = 0; a< wwd.layers.length; a++){
-                        if(wwd.layers[a].displayName === "Surface Images"){
+                    for (var a = 0; a < wwd.layers.length; a++){
+                        if(wwd.layers[a].displayName === "Placemarks"+stationData.StationId){
                             wwd.layers[a].renderables.length = 0;
                             wwd.layers.splice(a,1);
                         }
@@ -609,12 +612,19 @@
                 }
 
                 var needleCanvas = document.createElement("canvas");
-                needleCanvas.id= stationData[i].StationId + "_needle";
-                needleCanvas.width = 1000;
-                needleCanvas.height = 1000;
+                needleCanvas.id= stationData.StationId + "_needle";
+                needleCanvas.width = 300;
+                needleCanvas.height = 300;
                 var ctx2d = needleCanvas.getContext("2d");
 
-                var degrees = calcAngleDegrees(sta[0], sta[1]);
+                var placemark,
+                    placemarkAttributes = new WorldWind.PlacemarkAttributes(null),
+                    highlightAttributes,
+                    placemarkLayer = new WorldWind.RenderableLayer("Placemarks" + stationData.StationName),
+                    latitude = stationData.Latitude,
+                    longitude = stationData.Longitude;
+
+                var degrees = calcAngleDegrees(staAvg[0], staAvg[1]);
 
                 ctx2d.clearRect(0, 0, needleCanvas.width, needleCanvas.width);
                 ctx2d.save();
@@ -624,23 +634,45 @@
                 // Rotate around this point
                 ctx2d.rotate(degrees * (Math.PI / 180));
                 console.log(degrees);
-                ctx2d.drawImage(needle, 172, 172);
+                ctx2d.drawImage(needle, -172, -172);
                 ctx2d.restore();
 
+                //set attributes
+                placemarkAttributes.imageScale = 0.5;
+                // placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
+                //     WorldWind.OFFSET_FRACTION, 0.5);
+                placemarkAttributes.imageColor = WorldWind.Color.WHITE;
+                placemarkAttributes.labelAttributes.color = WorldWind.Color.YELLOW;
+                placemarkAttributes.leaderLineAttributes.outlineColor = WorldWind.Color.RED;
+                placemark = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, 1e2), true, null);
+                placemark.label = stationData.StationName + "\n"
+                    + "Lat " + latitude + "\n"
+                    + "Lon " + longitude;
 
+                placemarkAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
+                placemarkAttributes.imageSource = new WorldWind.ImageSource(needleCanvas);
+                placemark.attributes = placemarkAttributes;
 
-                var surfaceImage = new WorldWind.SurfaceImage(new WorldWind.Sector(stationData[i].Latitude-1, stationData[i].Latitude+1, stationData[i].Longitude-1,stationData[i].Longitude+1),
-                    new WorldWind.ImageSource(needleCanvas));
+                highlightAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
+                highlightAttributes.imageScale = 1.2;
+                placemark.highlightAttributes = highlightAttributes;
 
-                // Add the surface images to a layer and the layer to the WorldWindow's layer list.
-                surfaceImageLayer.displayName = "Surface Images";
-                surfaceImageLayer.addRenderable(surfaceImage);
+                console.log(placemark);
 
-                wwd.addLayer(surfaceImageLayer);
+                placemarkLayer.addRenderable(placemark);
+                wwd.addLayer(placemarkLayer);
                 console.log(wwd.layers);
                 layerManager.synchronizeLayerList();
-            }
 
+                // var surfaceImage = new WorldWind.SurfaceImage(new WorldWind.Sector(stationData.Latitude-1, stationData[].Latitude+1, stationData[i].Longitude-1,stationData[i].Longitude+1),
+                //     new WorldWind.ImageSource(needleCanvas));
+                // Add the surface images to a layer and the layer to the WorldWindow's layer list.
+                // surfaceImageLayer.displayName = "Surface Images";
+                // surfaceImageLayer.addRenderable(surfaceImage);
+                // wwd.addLayer(surfaceImageLayer);
+                // console.log(wwd.layers);
+                // layerManager.synchronizeLayerList();
+            }
         });
 
 
