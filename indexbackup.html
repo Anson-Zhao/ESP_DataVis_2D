@@ -36,10 +36,10 @@
     </canvas>
 </div>
 
-<div id="gauge">
-    <h1>Gauge</h1>
-    <h2>The gauges represent live X (N-S), Y (E-W), Z (+ - altitude) from the ESP Stations with a 42-minute delay</h2>
-</div>
+<!--<div id="gauge">-->
+<!--    <h1>Gauge</h1>-->
+<!--    <h2>The gauges represent live X (N-S), Y (E-W), Z (+ - altitude) from the ESP Stations with a 42-minute delay</h2>-->
+<!--</div>-->
 
 <div id="live_chart">
     <h1>Live Chart</h1>
@@ -369,11 +369,11 @@
                 depDirDiv.append(vectorDiv);
 
                 //add gauge Div
-                var gaugeDiv = document.createElement("div");
-                gaugeDiv.className = station.StationId+" container";
-                gaugeDiv.setAttribute("style", "margin: 0 auto; font-size: 16px; left: 90px; width: max-content; display: inline-table;");
-                // $('#gauge').append(Gtitle).append(compassDiv).append(vectorDiv).append(gaugeDiv);
-                $('#gauge').append(Gtitle).append(gaugeDiv);
+                // var gaugeDiv = document.createElement("div");
+                // gaugeDiv.className = station.StationId+" container";
+                // gaugeDiv.setAttribute("style", "margin: 0 auto; font-size: 16px; left: 90px; width: max-content; display: inline-table;");
+                // // $('#gauge').append(Gtitle).append(compassDiv).append(vectorDiv).append(gaugeDiv);
+                // $('#gauge').append(Gtitle).append(gaugeDiv);
 
                 //add xyz divs into gauge Div
                 var gdivX = document.createElement("div");
