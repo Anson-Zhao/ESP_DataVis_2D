@@ -224,7 +224,7 @@
             var stationsInfo = [];
 
             //5s average gauge data
-            var sta;
+            // var sta;
             var img;
             var needle = new Image();
             needle.src = 'jsLibrary/compass/needle.png';
@@ -428,73 +428,77 @@
                     method: "get",
                     data: {stationID: staInfo.StationId},
                     success: async function(res){
-                        var x_arr = [];
-                        var y_arr = [];
-                        var z_arr = [];
 
-                        await res.forEach(function(el,i) {
-                                x_arr[i] = [new Date(el.time), el.X];
-                                y_arr[i] = [new Date(el.time), el.Y];
-                                z_arr[i] = [new Date(el.time), el.Z];
-                            }
-                        );
+                        if(!!res){
+                            var x_arr = [];
+                            var y_arr = [];
+                            var z_arr = [];
 
-                        sta = Avg(res,5);
+                            await res.forEach(function(el,i) {
+                                    x_arr[i] = [new Date(el.time), el.X];
+                                    y_arr[i] = [new Date(el.time), el.Y];
+                                    z_arr[i] = [new Date(el.time), el.Z];
+                                }
+                            );
 
-                        let Z = new Dygraph(
-                            // containing div
-                            document.getElementById(staInfo.StationId + "_graphZ"),
+                            // sta = Avg(res,5);
 
-                            // CSV or path to a CSV file.
-                            z_arr,
-                            {
-                                labels: [ "Data", "Z" ],
-                                animatedZooms: true,
-                                legend: 'always',
-                                showRoller: true,
-                                title: "+Z is positive altitude, -Z is below ground (unit: nT)",
-                            }
+                            let Z = new Dygraph(
+                                // containing div
+                                document.getElementById(staInfo.StationId + "_graphZ"),
 
-                        );
-                        let Y = new Dygraph(
-                            // containing div
-                            document.getElementById(staInfo.StationId + "_graphY"),
+                                // CSV or path to a CSV file.
+                                z_arr,
+                                {
+                                    labels: [ "Data", "Z" ],
+                                    animatedZooms: true,
+                                    legend: 'always',
+                                    showRoller: true,
+                                    title: "+Z is positive altitude, -Z is below ground (unit: nT)",
+                                }
 
-                            // CSV or path to a CSV file.
-                            y_arr,
-                            {
-                                labels: [ "Data", "Y" ],
-                                animatedZooms: true,
-                                legend: 'always',
-                                showRoller: true,
-                                title: "+Y is east, -Y is west (unit: nT)"
-                            }
+                            );
+                            let Y = new Dygraph(
+                                // containing div
+                                document.getElementById(staInfo.StationId + "_graphY"),
 
-                        );
+                                // CSV or path to a CSV file.
+                                y_arr,
+                                {
+                                    labels: [ "Data", "Y" ],
+                                    animatedZooms: true,
+                                    legend: 'always',
+                                    showRoller: true,
+                                    title: "+Y is east, -Y is west (unit: nT)"
+                                }
 
-                        let X = new Dygraph(
-                            // containing div
-                            document.getElementById(staInfo.StationId + "_graphX"),
+                            );
 
-                            // CSV or path to a CSV file.
-                            x_arr,
-                            {
-                                labels: ["Data", "X"],
-                                animatedZooms: true,
-                                legend: 'always',
-                                showRoller: true,
-                                title: "+X is north, -X is south (unit: nT)"
-                            }
-                        );
-                        // $('#' + staInfo.StationId + '_gaugeX').highcharts(options, buildGraph);
-                        // $('#' + staInfo.StationId + '_gaugeY').highcharts(options, buildGraph);
-                        // $('#' + staInfo.StationId + '_gaugeZ').highcharts(options, buildGraph);
+                            let X = new Dygraph(
+                                // containing div
+                                document.getElementById(staInfo.StationId + "_graphX"),
 
-                        console.log(staInfo);
+                                // CSV or path to a CSV file.
+                                x_arr,
+                                {
+                                    labels: ["Data", "X"],
+                                    animatedZooms: true,
+                                    legend: 'always',
+                                    showRoller: true,
+                                    title: "+X is north, -X is south (unit: nT)"
+                                }
+                            );
+                            // $('#' + staInfo.StationId + '_gaugeX').highcharts(options, buildGraph);
+                            // $('#' + staInfo.StationId + '_gaugeY').highcharts(options, buildGraph);
+                            // $('#' + staInfo.StationId + '_gaugeZ').highcharts(options, buildGraph);
 
-                        console.log(deltaAvg(res, 5));
+                            console.log(staInfo);
 
-                        createPL(staInfo,deltaAvg(res,5))
+                            console.log(deltaAvg(res, 5));
+
+                            createPL(staInfo,Avg(res,5))
+                        }
+
                     }
                 });
             }
@@ -639,10 +643,13 @@
 
                 //set attributes
                 placemarkAttributes.imageScale = 0.5;
-                // placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
-                //     WorldWind.OFFSET_FRACTION, 0.5);
+                placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
+                    WorldWind.OFFSET_FRACTION, 0.5);
                 placemarkAttributes.imageColor = WorldWind.Color.WHITE;
                 placemarkAttributes.labelAttributes.color = WorldWind.Color.YELLOW;
+                placemarkAttributes.labelAttributes.offset = new WorldWind.Offset(
+                    WorldWind.OFFSET_FRACTION, 0.5,
+                    WorldWind.OFFSET_FRACTION, 1.0);
                 placemarkAttributes.leaderLineAttributes.outlineColor = WorldWind.Color.RED;
                 placemark = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, 1e2), true, null);
                 placemark.label = stationData.StationName + "\n"
@@ -650,6 +657,8 @@
                     + "Lon " + longitude;
 
                 placemarkAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
+                // placemarkAttributes.imageSource =WorldWind.configuration.baseUrl + "images/pushpins/"
+
                 placemarkAttributes.imageSource = new WorldWind.ImageSource(needleCanvas);
                 placemark.attributes = placemarkAttributes;
 

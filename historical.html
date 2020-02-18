@@ -139,11 +139,13 @@
         <div>
             <br><br>
             <p>Please click "Show Data Charts" button above before download Avg Data.</p>
+            <br>
             <button id="AvgData" disabled >Download CSV</button>
-            <br><br>
-            <button id="RawData" >Download Raw CSV</button>
-            <div id="downloading" display="inline-block" display="none">
-                <img src="888.gif" alt="download in progress" width=150 height=150>
+            <br><br><br>
+            <div display="inline-block">
+                <button id="RawData"  display="inline-block">Download Raw CSV</button>
+                <img id="downloading" src="888.gif" alt="download in progress" width=400 height=150>
+<!--                style = "display:none"-->
             </div>
             <!--            <button id="RawData"">Download Raw CSV</button>-->
 
@@ -394,13 +396,13 @@
                     console.log("success");
                     console.log(res);
                     var Filename = timeFrom.slice(0,-5) +'-'+ timeTo.slice(0,-5) + 'RawESPData.csv';
-                    var exportFilename = 'http://localhost:63342/ESP_DataVis_2D/'+res;
+                    var exportFilename = 'http://localhost:63343/ESP_DataVis_2D/'+res;
                     console.log(exportFilename);
 
                     // window.open(exportFilename);
 
                     // var link = document.createElement('a');
-                    // link.textContent = 'cdfvgbhnjmkl';
+                    // // link.textContent = 'cdfvgbhnjmkl';
                     // link.href = exportFilename;
                     // link.id = 'link';
                     // link.setAttribute('download', Filename);
@@ -415,7 +417,8 @@
                     link.src = exportFilename;
                     link.id = 'link';
                     document.body.appendChild(link);
-                    console.log("append successfully")
+                    console.log("append successfully");
+                    // document.body.removeChild(link);
 
 
                     // res.forEach(function (el, i) {
