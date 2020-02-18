@@ -264,6 +264,7 @@
 
                             // stations[i]=res[i].StationId;
                             // building(res[i]);
+                            // needle.onload
                             query(res[i]);
 
                             // if (stations.length === res.length) {
@@ -491,7 +492,9 @@
 
                         console.log(staInfo);
 
-                        createPL(staInfo,avg(res,5))
+                        console.log(deltaAvg(res, 5));
+
+                        createPL(staInfo,deltaAvg(res,5))
                     }
                 });
             }
@@ -598,10 +601,10 @@
             function createPL(stationData,staAvg) {
 
                 console.log(staAvg);
-                if(wwd.layers.length > layers.length){
+                if(wwd.layers.length > layers.length +4){
                     console.log("delete");
-                    for (var a = 0; a< wwd.layers.length; a++){
-                        if(wwd.layers[a].displayName === "Surface Images"){
+                    for (var a = 0; a < wwd.layers.length; a++){
+                        if(wwd.layers[a].displayName === "Placemarks"+stationData.StationId){
                             wwd.layers[a].renderables.length = 0;
                             wwd.layers.splice(a,1);
                         }
@@ -610,8 +613,8 @@
 
                 var needleCanvas = document.createElement("canvas");
                 needleCanvas.id= stationData.StationId + "_needle";
-                needleCanvas.width = 1000;
-                needleCanvas.height = 1000;
+                needleCanvas.width = 300;
+                needleCanvas.height = 300;
                 var ctx2d = needleCanvas.getContext("2d");
 
                 var placemark,
@@ -631,11 +634,13 @@
                 // Rotate around this point
                 ctx2d.rotate(degrees * (Math.PI / 180));
                 console.log(degrees);
-                ctx2d.drawImage(needle, 172, 172);
+                ctx2d.drawImage(needle, -172, -172);
                 ctx2d.restore();
 
                 //set attributes
-                placemarkAttributes.imageScale = 1;
+                placemarkAttributes.imageScale = 0.5;
+                // placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
+                //     WorldWind.OFFSET_FRACTION, 0.5);
                 placemarkAttributes.imageColor = WorldWind.Color.WHITE;
                 placemarkAttributes.labelAttributes.color = WorldWind.Color.YELLOW;
                 placemarkAttributes.leaderLineAttributes.outlineColor = WorldWind.Color.RED;
@@ -645,7 +650,7 @@
                     + "Lon " + longitude;
 
                 placemarkAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
-                placemarkAttributes.imageSource = needleCanvas;
+                placemarkAttributes.imageSource = new WorldWind.ImageSource(needleCanvas);
                 placemark.attributes = placemarkAttributes;
 
                 highlightAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
