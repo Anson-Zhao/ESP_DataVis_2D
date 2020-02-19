@@ -520,11 +520,11 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1408" y="530" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1581443946038" />
-    <state x="946" y="368" key="CommitChangelistDialog2" timestamp="1582045696883">
+    <state x="946" y="368" key="CommitChangelistDialog2" timestamp="1582124790207">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="946" y="341" key="CommitChangelistDialog2/0.23.2560.1308@0.23.2560.1308" timestamp="1581611258463" />
-    <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1582045696883" />
+    <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1582124790207" />
     <state x="850" y="351" width="1200" height="800" key="DiffContextDialog" timestamp="1581008237778">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
@@ -617,10 +617,11 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1435" y="603" width="845" height="528" key="find.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1579298741926" />
-    <state x="1538" y="435" key="git4idea.merge.GitPullDialog" timestamp="1579895598919">
-      <screen x="0" y="23" width="2560" height="1308" />
+    <state x="1538" y="469" key="git4idea.merge.GitPullDialog" timestamp="1582124809641">
+      <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1538" y="435" key="git4idea.merge.GitPullDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1579895598919" />
+    <state x="1538" y="469" key="git4idea.merge.GitPullDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1582124809641" />
     <state x="1037" y="538" key="new project wizard" timestamp="1579101598572">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
