@@ -165,10 +165,10 @@ app.get('/newSnow', async function (req, res) {
         });
 });
 
-app.get('/query', function (req, res) {
+app.get('/query', function (req, res){
     // console.log(req.query.stationID);
     var query = 'SELECT * FROM ' + req.query.stationID + 'avg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime;
-    // console.log(query);
+    console.log(query);
     influx.query(query).then
     (result => {
         res.send(result);
