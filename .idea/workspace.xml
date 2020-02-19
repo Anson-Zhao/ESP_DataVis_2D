@@ -1,12 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/dataAnimation.html" afterDir="false" />
+    <list default="true" id="980271a8-b18a-48d2-a8d7-3b7728014b7c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Live/espDataVis.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/BMNG_world.topo.bathy.200405.3.2048x1024.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/TectonicPlates.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/crosshair.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/dnb_land_ocean_ice_2012.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/notched-compass.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/powered-by-bing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/castshadow-black.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/castshadow-blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/castshadow-brown.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/castshadow-gray.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/castshadow-green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/castshadow-orange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/castshadow-purple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/castshadow-red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/castshadow-teal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/castshadow-white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/plain-black.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/plain-blue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/plain-brown.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/plain-gray.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/plain-green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/plain-orange.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/plain-purple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/plain-red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/plain-teal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/plain-white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/plain-yellow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/push-pin-red.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/push-pin-yellow-32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/pushpins/push-pin-yellow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/stars.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/sunTexture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/view/view-elevation-down-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/view/view-elevation-up-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/view/view-fov-narrow-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/view/view-fov-wide-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/view/view-heading-left-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/view/view-heading-right-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/view/view-look-64x64.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/view/view-pan-64x64.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/view/view-pitch-down-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/view/view-pitch-up-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/view/view-zoom-in-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/view/view-zoom-out-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/white-dot.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/888.gif" beforeDir="false" afterPath="$PROJECT_DIR$/888.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3456245.gif" beforeDir="false" afterPath="$PROJECT_DIR$/images/3456245.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/888.gif" beforeDir="false" afterPath="$PROJECT_DIR$/images/888.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WorldWindShim.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/download_progress.gif" beforeDir="false" afterPath="$PROJECT_DIR$/images/download_progress.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/historical_0204.html" beforeDir="false" afterPath="$PROJECT_DIR$/archive/historical_0204.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/historical_20200126.html" beforeDir="false" afterPath="$PROJECT_DIR$/archive/historical_20200126.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/indexbackup.html" beforeDir="false" afterPath="$PROJECT_DIR$/indexbackup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsLibrary/compass/compass.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/compass.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsLibrary/compass/needle.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/needle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WorldWind.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/WorldWind.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,10 +86,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="package" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -82,19 +138,20 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/indexbackup.html" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/jsLibrary" />
-      <recent name="$PROJECT_DIR$/Live" />
-      <recent name="$PROJECT_DIR$/archive" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/node_modules" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images" />
+      <recent name="$PROJECT_DIR$/img" />
+      <recent name="$PROJECT_DIR$/archive" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.espDataVis.js">
@@ -209,7 +266,8 @@
       <workItem from="1581366531404" duration="8921000" />
       <workItem from="1581444207458" duration="110000" />
       <workItem from="1581447010726" duration="15119000" />
-      <workItem from="1581623172939" duration="12076000" />
+      <workItem from="1581623172939" duration="9185000" />
+      <workItem from="1582051519209" duration="8899000" />
     </task>
     <task id="LOCAL-00001" summary="esp live chart">
       <created>1571239268892</created>
@@ -464,13 +522,27 @@
       <updated>1582045443048</updated>
     </task>
     <task id="LOCAL-00037" summary="V1.43">
-      <created>1582045697082</created>
+      <created>1582045876575</created>
       <option name="number" value="00037" />
       <option name="presentableId" value="LOCAL-00037" />
       <option name="project" value="LOCAL" />
-      <updated>1582045697082</updated>
+      <updated>1582045876575</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="V1.43">
+      <created>1582046134800</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1582046134800</updated>
+    </task>
+    <task id="LOCAL-00039" summary="V1.43">
+      <created>1582062560334</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1582062560334</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -503,11 +575,11 @@
     <option name="LAST_COMMIT_MESSAGE" value="V1.43" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="908" y="495" key="#Deployment" timestamp="1580915635261">
+    <state x="908" y="495" key="#Deployment" timestamp="1582127879662">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state x="908" y="459" key="#Deployment/0.23.2560.1308@0.23.2560.1308" timestamp="1580077246547" />
-    <state x="908" y="495" key="#Deployment/0.23.2560.1417@0.23.2560.1417" timestamp="1580915635261" />
+    <state x="908" y="459" key="#Deployment/0.23.2560.1308@0.23.2560.1308" timestamp="1582062672996" />
+    <state x="908" y="495" key="#Deployment/0.23.2560.1417@0.23.2560.1417" timestamp="1582127879662" />
     <state x="883" y="360" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581354788130">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
@@ -520,43 +592,43 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1408" y="530" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1581443946038" />
-    <state x="946" y="368" key="CommitChangelistDialog2" timestamp="1582124790207">
-      <screen x="0" y="23" width="2560" height="1417" />
-    </state>
-    <state x="946" y="341" key="CommitChangelistDialog2/0.23.2560.1308@0.23.2560.1308" timestamp="1581611258463" />
-    <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1582124790207" />
-    <state x="850" y="351" width="1200" height="800" key="DiffContextDialog" timestamp="1581008237778">
-      <screen x="0" y="23" width="2560" height="1417" />
-    </state>
-    <state x="58" y="42" width="1928" height="932" key="DiffContextDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1580084297264" />
-    <state x="850" y="351" width="1200" height="800" key="DiffContextDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1581008237778" />
-    <state x="813" y="184" width="1525" height="923" key="DirDiffDialog" timestamp="1580086904086">
+    <state x="946" y="341" key="CommitChangelistDialog2" timestamp="1582062559998">
       <screen x="0" y="23" width="2560" height="1308" />
     </state>
-    <state x="813" y="184" width="1525" height="923" key="DirDiffDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1580086904086" />
-    <state width="1380" height="292" key="GridCell.Tab.0.bottom" timestamp="1582124024504">
+    <state x="946" y="341" key="CommitChangelistDialog2/0.23.2560.1308@0.23.2560.1308" timestamp="1582062559998" />
+    <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1582045442475" />
+    <state x="58" y="42" width="1928" height="932" key="DiffContextDialog" timestamp="1582120381212">
+      <screen x="0" y="23" width="2560" height="1308" />
+    </state>
+    <state x="58" y="42" width="1928" height="932" key="DiffContextDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1582120381212" />
+    <state x="850" y="351" width="1200" height="800" key="DiffContextDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1581008237778" />
+    <state x="813" y="184" width="1525" height="923" key="DirDiffDialog" timestamp="1582119933970">
+      <screen x="0" y="23" width="2560" height="1308" />
+    </state>
+    <state x="813" y="184" width="1525" height="923" key="DirDiffDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1582119933970" />
+    <state width="1380" height="292" key="GridCell.Tab.0.bottom" timestamp="1582127468691">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state width="1975" height="298" key="GridCell.Tab.0.bottom/0.23.2560.1308@0.23.2560.1308" timestamp="1581607745634" />
-    <state width="1380" height="292" key="GridCell.Tab.0.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1582124024504" />
+    <state width="1975" height="298" key="GridCell.Tab.0.bottom/0.23.2560.1308@0.23.2560.1308" timestamp="1582119273468" />
+    <state width="1380" height="292" key="GridCell.Tab.0.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1582127468691" />
     <state width="1358" height="306" key="GridCell.Tab.0.bottom/69.23.2491.1417@69.23.2491.1417" timestamp="1576167739600" />
-    <state width="1380" height="292" key="GridCell.Tab.0.center" timestamp="1582124024503">
+    <state width="1380" height="292" key="GridCell.Tab.0.center" timestamp="1582127468690">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state width="1975" height="298" key="GridCell.Tab.0.center/0.23.2560.1308@0.23.2560.1308" timestamp="1581607745633" />
-    <state width="1380" height="292" key="GridCell.Tab.0.center/0.23.2560.1417@0.23.2560.1417" timestamp="1582124024503" />
+    <state width="1975" height="298" key="GridCell.Tab.0.center/0.23.2560.1308@0.23.2560.1308" timestamp="1582119273467" />
+    <state width="1380" height="292" key="GridCell.Tab.0.center/0.23.2560.1417@0.23.2560.1417" timestamp="1582127468690" />
     <state width="1358" height="306" key="GridCell.Tab.0.center/69.23.2491.1417@69.23.2491.1417" timestamp="1576167739598" />
-    <state width="1380" height="292" key="GridCell.Tab.0.left" timestamp="1582124024502">
+    <state width="1380" height="292" key="GridCell.Tab.0.left" timestamp="1582127468690">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state width="1975" height="298" key="GridCell.Tab.0.left/0.23.2560.1308@0.23.2560.1308" timestamp="1581607745633" />
-    <state width="1380" height="292" key="GridCell.Tab.0.left/0.23.2560.1417@0.23.2560.1417" timestamp="1582124024502" />
+    <state width="1975" height="298" key="GridCell.Tab.0.left/0.23.2560.1308@0.23.2560.1308" timestamp="1582119273467" />
+    <state width="1380" height="292" key="GridCell.Tab.0.left/0.23.2560.1417@0.23.2560.1417" timestamp="1582127468690" />
     <state width="1358" height="306" key="GridCell.Tab.0.left/69.23.2491.1417@69.23.2491.1417" timestamp="1576167739598" />
-    <state width="1380" height="292" key="GridCell.Tab.0.right" timestamp="1582124024503">
+    <state width="1380" height="292" key="GridCell.Tab.0.right" timestamp="1582127468691">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
-    <state width="1975" height="298" key="GridCell.Tab.0.right/0.23.2560.1308@0.23.2560.1308" timestamp="1581607745634" />
-    <state width="1380" height="292" key="GridCell.Tab.0.right/0.23.2560.1417@0.23.2560.1417" timestamp="1582124024503" />
+    <state width="1975" height="298" key="GridCell.Tab.0.right/0.23.2560.1308@0.23.2560.1308" timestamp="1582119273468" />
+    <state width="1380" height="292" key="GridCell.Tab.0.right/0.23.2560.1417@0.23.2560.1417" timestamp="1582127468691" />
     <state width="1358" height="306" key="GridCell.Tab.0.right/69.23.2491.1417@69.23.2491.1417" timestamp="1576167739599" />
     <state width="1358" height="334" key="GridCell.Tab.1.bottom" timestamp="1579190818284">
       <screen x="0" y="23" width="2560" height="1417" />
@@ -594,15 +666,16 @@
       <screen x="0" y="23" width="2560" height="1308" />
     </state>
     <state x="1554" y="335" key="MultipleFileMergeDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1579895604705" />
-    <state x="617" y="475" key="SettingsEditor" timestamp="1581005084240">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="617" y="434" key="SettingsEditor" timestamp="1582064062083">
+      <screen x="0" y="23" width="2560" height="1308" />
     </state>
+    <state x="617" y="434" key="SettingsEditor/0.23.2560.1308@0.23.2560.1308" timestamp="1582064062083" />
     <state x="617" y="475" key="SettingsEditor/0.23.2560.1417@0.23.2560.1417" timestamp="1581005084240" />
-    <state x="989" y="491" key="Vcs.Push.Dialog.v2" timestamp="1582045699752">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="989" y="455" key="Vcs.Push.Dialog.v2" timestamp="1582062562420">
+      <screen x="0" y="23" width="2560" height="1308" />
     </state>
-    <state x="989" y="455" key="Vcs.Push.Dialog.v2/0.23.2560.1308@0.23.2560.1308" timestamp="1581611261881" />
-    <state x="989" y="491" key="Vcs.Push.Dialog.v2/0.23.2560.1417@0.23.2560.1417" timestamp="1582045699752" />
+    <state x="989" y="455" key="Vcs.Push.Dialog.v2/0.23.2560.1308@0.23.2560.1308" timestamp="1582062562420" />
+    <state x="989" y="491" key="Vcs.Push.Dialog.v2/0.23.2560.1417@0.23.2560.1417" timestamp="1582045446481" />
     <state x="688" y="291" width="1234" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1582042957889">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
@@ -613,15 +686,15 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="868" y="409" width="1482" height="1049" key="dock-window-1/0.23.2560.1417@0.23.2560.1417" timestamp="1579213471200" />
-    <state x="1435" y="603" width="845" height="528" key="find.popup" timestamp="1579298741926">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="1125" y="447" width="845" height="574" key="find.popup" timestamp="1582058286781">
+      <screen x="0" y="23" width="2560" height="1308" />
     </state>
+    <state x="1125" y="447" width="845" height="574" key="find.popup/0.23.2560.1308@0.23.2560.1308" timestamp="1582058286781" />
     <state x="1435" y="603" width="845" height="528" key="find.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1579298741926" />
-    <state x="1538" y="469" key="git4idea.merge.GitPullDialog" timestamp="1582124809641">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="1538" y="435" key="git4idea.merge.GitPullDialog" timestamp="1582045742886">
+      <screen x="0" y="23" width="2560" height="1308" />
     </state>
-    <state x="1538" y="435" key="git4idea.merge.GitPullDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1579895598919" />
-    <state x="1538" y="469" key="git4idea.merge.GitPullDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1582124809641" />
+    <state x="1538" y="435" key="git4idea.merge.GitPullDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1582045742886" />
     <state x="1037" y="538" key="new project wizard" timestamp="1579101598572">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
@@ -649,6 +722,12 @@
           <url>file://$PROJECT_DIR$/archive/rough_draft.html</url>
           <line>185</line>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/index.html</url>
+          <line>311</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

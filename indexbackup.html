@@ -26,7 +26,7 @@
 <br><br>
 
 <div id="control_button">
-    <h1>control area</h1>
+    <h1>ESP Stations</h1>
 </div>
 
 <div class="col-sm-9" id="globe">
@@ -48,7 +48,7 @@
 
 <script type="text/javascript">
 
-    requirejs(['./WorldWindShim',
+    requirejs(['./src/WorldWind',
             './LayerManager'],
         function (WorldWind,
                   LayerManager) {
@@ -218,16 +218,18 @@
                 credits: false
             };
 
-            //I want array with string inside
-            var stations = [];
-            //single station name that we are going to deal with
-            var stationsInfo = [];
-
-            //5s average gauge data
+            // //I want array with string inside
+            // var stations = [];
+            // //single station name that we are going to deal with
+            // var stationsInfo = [];
+            //
+            // //5s average gauge data
             // var sta;
-            var img;
+            // var img;
+
+            let ini = true;
             var needle = new Image();
-            needle.src = 'jsLibrary/compass/needle.png';
+            needle.src = 'images/needle.png';
 
             var wwd = new WorldWind.WorldWindow("canvasOne");
             var surfaceImageLayer = new WorldWind.RenderableLayer();
@@ -243,7 +245,7 @@
                 {layer: new WorldWind.AtmosphereLayer(), enabled: true},
                 // WorldWindow UI layers.
                 // {layer: new WorldWind.CompassLayer(), enabled: true},
-                // {layer: new WorldWind.CoordinatesDisplayLayer(wwd), enabled: true},
+                {layer: new WorldWind.CoordinatesDisplayLayer(wwd), enabled: true},
                 // {layer: new WorldWind.ViewControlsLayer(wwd), enabled: true}
             ];
 
@@ -252,31 +254,33 @@
                 wwd.addLayer(layers[l].layer);
             }
 
-            $(document).ready(function () {
+            $(document).ready(async function () {
+
+                await staQuery();
+
+                wwd.goTo(new WorldWind.Position(37.175229, -121.823628, 130000));
+
+                setInterval(function () {
+                    staQuery()}, 5000);
+
+            });
+
+            function staQuery() {
                 $.ajax({
                     // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stations',
                     url: "http://localhost:3005/stations",
                     method: "get",
+                    async: false,
                     success: function(res) {
-                        for(var i=0; i<res.length; i++){
-                            // stationsInfo[i]=res[i];
-                            // console.log(res[i]);
+                        res.forEach(function(el,i) {
 
-                            // stations[i]=res[i].StationId;
-                            // building(res[i]);
-                            // needle.onload
-                            query(res[i]);
+                            query(el);
 
-                            // if (stations.length === res.length) {
-                            //     query();
-                            //     // createPL(stationsInfo,query());
-                            //     setInterval(function(){query()}, 5000);
-                            //     console.log(res);
-                            // }
-                        }
+                            if (i == res.length - 1) { ini = false }
+                        });
                     }
                 });
-            });
+            }
 
             function building(station){
                 //***station here is an object now, it include name, state, city, and id.
@@ -305,7 +309,7 @@
                 button.textContent = station.StationName;
                 button.setAttribute("style", "background-color: gray;");
                 button.setAttribute("onclick", "check(this)");
-                // button.onclick = check(this);
+                // button.onclick = check(button);
                 $('#'+station.StationId+"_butDiv").append(button).append(butTitle);
 
                 //add gauge title
@@ -421,7 +425,10 @@
 
             async function query(staInfo) {
 
-                await building(staInfo);
+                if (ini) {
+                    await building(staInfo);
+                }
+
                 $.ajax({
                     // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query',
                     url: "http://localhost:3005/query",
@@ -492,9 +499,9 @@
                             // $('#' + staInfo.StationId + '_gaugeY').highcharts(options, buildGraph);
                             // $('#' + staInfo.StationId + '_gaugeZ').highcharts(options, buildGraph);
 
-                            console.log(staInfo);
+                            // console.log(staInfo);
 
-                            console.log(deltaAvg(res, 5));
+                            // console.log(deltaAvg(res, 5));
 
                             createPL(staInfo,Avg(res,5))
                         }
@@ -577,36 +584,11 @@
                 return Math.atan2(y, x) * 180 / Math.PI;
             }
 
-            // function init(stationData) {
-            //     // Grab the compass element
-            //     // var needleCanvas = document.createElement("canvas");
-            //     // var arrowId = stationData.StationName +"_canvas";
-            //     // needleCanvas.id= arrowId;
-            //     // needleCanvas.width = 1000;
-            //     // needleCanvas.height = 1000;
-            //
-            //     needle = new Image();
-            //     needle.src = 'jsLibrary/compass/needle.png';
-            //     needle.onload = createPL(stationData)
-            //     // Canvas supported?
-            //     // if (canvas.getContext('2d')) {
-            //     //     // Load the needle image
-            //     //
-            //     //
-            //     //     // Load the compass image
-            //     //     img = new Image();
-            //     //     img.src = 'jsLibrary/compass/compass.png';
-            //     //     img.onload = imgLoaded(classname +"_canvas","depth_" +classname,"y-label_" + classname,"x-label_" + classname,sta,img,needle);
-            //     // } else {
-            //     //     alert("Canvas not supported!");
-            //     // }
-            // }
-
             function createPL(stationData,staAvg) {
 
-                console.log(staAvg);
+                // console.log(staAvg);
                 if(wwd.layers.length > layers.length +4){
-                    console.log("delete");
+                    // console.log("delete");
                     for (var a = 0; a < wwd.layers.length; a++){
                         if(wwd.layers[a].displayName === "Placemarks"+stationData.StationId){
                             wwd.layers[a].renderables.length = 0;
@@ -637,7 +619,7 @@
 
                 // Rotate around this point
                 ctx2d.rotate(degrees * (Math.PI / 180));
-                console.log(degrees);
+                // console.log(degrees);
                 ctx2d.drawImage(needle, -172, -172);
                 ctx2d.restore();
 
@@ -653,8 +635,8 @@
                 placemarkAttributes.leaderLineAttributes.outlineColor = WorldWind.Color.RED;
                 placemark = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, 1e2), true, null);
                 placemark.label = stationData.StationName + "\n"
-                    + "Lat " + latitude + "\n"
-                    + "Lon " + longitude;
+                    // + "Lat " + latitude + "\n"
+                    // + "Lon " + longitude;
 
                 placemarkAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
                 // placemarkAttributes.imageSource =WorldWind.configuration.baseUrl + "images/pushpins/"
@@ -666,11 +648,11 @@
                 highlightAttributes.imageScale = 1.2;
                 placemark.highlightAttributes = highlightAttributes;
 
-                console.log(placemark);
+                // console.log(placemark);
 
                 placemarkLayer.addRenderable(placemark);
                 wwd.addLayer(placemarkLayer);
-                console.log(wwd.layers);
+                // console.log(wwd.layers);
                 layerManager.synchronizeLayerList();
 
                 // var surfaceImage = new WorldWind.SurfaceImage(new WorldWind.Sector(stationData.Latitude-1, stationData[].Latitude+1, stationData[i].Longitude-1,stationData[i].Longitude+1),

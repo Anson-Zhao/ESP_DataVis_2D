@@ -1102,7 +1102,8 @@ define([ // PLEASE KEEP ALL THIS IN ALPHABETICAL ORDER BY MODULE NAME (not direc
          */
         WorldWind.configuration = {
             gpuCacheSize: 250e6,
-            baseUrl: (WWUtil.worldwindlibLocation()) || (WWUtil.currentUrlSansFilePart() + '/../'),
+            // baseUrl: (WWUtil.worldwindlibLocation()) || (WWUtil.currentUrlSansFilePart() + '/../'),
+            baseUrl: (WWUtil.worldwindlibLocation() + '/../') || (WWUtil.currentUrlSansFilePart() + '/'),
             layerRetrievalQueueSize: 16,
             coverageRetrievalQueueSize: 16,
             bingLogoPlacement: new Offset(WorldWind.OFFSET_INSET_PIXELS, 7, WorldWind.OFFSET_PIXELS, 7),
