@@ -258,7 +258,7 @@
 
                 await staQuery();
 
-                wwd.goTo(new WorldWind.Position(37.402684, -121.922422, 130000));
+                wwd.goTo(new WorldWind.Position(37.175229, -121.823628, 130000));
 
                 setInterval(function () {
                     staQuery()}, 5000);
@@ -588,7 +588,7 @@
 
                 // console.log(staAvg);
                 if(wwd.layers.length > layers.length +4){
-                    console.log("delete");
+                    // console.log("delete");
                     for (var a = 0; a < wwd.layers.length; a++){
                         if(wwd.layers[a].displayName === "Placemarks"+stationData.StationId){
                             wwd.layers[a].renderables.length = 0;
@@ -619,7 +619,7 @@
 
                 // Rotate around this point
                 ctx2d.rotate(degrees * (Math.PI / 180));
-                console.log(degrees);
+                // console.log(degrees);
                 ctx2d.drawImage(needle, -172, -172);
                 ctx2d.restore();
 
@@ -635,8 +635,8 @@
                 placemarkAttributes.leaderLineAttributes.outlineColor = WorldWind.Color.RED;
                 placemark = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, 1e2), true, null);
                 placemark.label = stationData.StationName + "\n"
-                    + "Lat " + latitude + "\n"
-                    + "Lon " + longitude;
+                    // + "Lat " + latitude + "\n"
+                    // + "Lon " + longitude;
 
                 placemarkAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
                 // placemarkAttributes.imageSource =WorldWind.configuration.baseUrl + "images/pushpins/"
@@ -652,7 +652,7 @@
 
                 placemarkLayer.addRenderable(placemark);
                 wwd.addLayer(placemarkLayer);
-                console.log(wwd.layers);
+                // console.log(wwd.layers);
                 layerManager.synchronizeLayerList();
 
                 // var surfaceImage = new WorldWind.SurfaceImage(new WorldWind.Sector(stationData.Latitude-1, stationData[].Latitude+1, stationData[i].Longitude-1,stationData[i].Longitude+1),
