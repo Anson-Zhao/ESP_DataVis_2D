@@ -232,7 +232,6 @@
             needle.src = 'images/needle.png';
 
             var wwd = new WorldWind.WorldWindow("canvasOne");
-            var surfaceImageLayer = new WorldWind.RenderableLayer();
             var layerManager = new LayerManager(wwd);
 
             // Create and add layers to the WorldWindow.
@@ -310,7 +309,7 @@
                 button.setAttribute("style", "background-color: gray;");
                 button.setAttribute("onclick", "check(this)");
                 button.onclick = function () {
-                    check(this);
+                    check(this,station.stationName);
                 };
                 $('#'+station.StationId+"_butDiv").append(button).append(butTitle);
 
@@ -521,12 +520,19 @@
                 }
             }
 
-            function check(objButton) {
+            function check(objButton,stationName) {
                 console.log(objButton);
                 var x = document.getElementsByClassName(objButton.value);
                 var y = '.'+objButton.value;
                 var z = '#'+objButton.value;
+
                 if (x[0].style.display === "none") {
+                    console.log(wwd.layers);
+                    for (var a = 0; a < wwd.layers.length; a++){
+                        if(wwd.layers[a].displayName === "Placemarks"+stationName){
+                            console.log(wwd.layers[a].enabled)
+                        }
+                    }
                     $(y).show();
                     $(z).css('backgroundColor', 'gray');
                 } else {
@@ -588,12 +594,10 @@
             }
 
             function createPL(stationData,staAvg) {
-
-                // console.log(staAvg);
+                console.log(wwd.layers);
                 if(wwd.layers.length > layers.length +4){
-                    // console.log("delete");
                     for (var a = 0; a < wwd.layers.length; a++){
-                        if(wwd.layers[a].displayName === "Placemarks"+stationData.StationId){
+                        if(wwd.layers[a].displayName === "Placemarks"+stationData.StationName){
                             wwd.layers[a].renderables.length = 0;
                             wwd.layers.splice(a,1);
                         }
