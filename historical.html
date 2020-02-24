@@ -133,6 +133,7 @@
             </div>
             <br><br>
             <input type="button" onclick="enabled = false; query();" class="button button2" value="Show Data Charts">
+            <img id="requesting" src="images/888.gif" alt="download in progress" width=130 height=130 style="display:none">
             <br><br>
 
         </form>
@@ -144,7 +145,7 @@
             <br><br><br>
             <div display="inline-block">
                 <button id="RawData"  display="inline-block">Download Raw CSV</button>
-                <img id="downloading" src="images/888.gif" alt="download in progress" width=400 height=200 style = "display:none">
+                <img id="downloading" src="images/888.gif" alt="download in progress" width=130 height=130 style = "display:none">
 <!--               -->
             </div>
             <!--            <button id="RawData"">Download Raw CSV</button>-->
@@ -248,9 +249,15 @@
             dataType: 'json',
             async: true,
             data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationIs},
-            success: function (res) {
+            beforeSend: function(){
+                // display a progress animation
+                $('#requesting').show()
+
+            },
+            success: async function (res) {
                 // console.log("get responce");
-                res.forEach(function(el,i) {
+                console.log("1");
+                await res.forEach(function(el,i) {
                     // var time = new Date(el.time);
                     // console.log(el.time);
                     // console.log(el.time._nanoISO);
@@ -264,6 +271,7 @@
                     var t = el.time;
                     download += t+','+a+','+b+','+c+'\n';
                 });
+                console.log("2");
                 // console.log(download);
 
                 // console.log(res);
@@ -339,6 +347,7 @@
                         // rangeSelectorPlotFillColor: 'lightyellow'
                     }
                 );
+                $('#requesting').hide();
 
                 $("#AvgData").attr("disabled", false);
             }

@@ -243,9 +243,9 @@
                 // Add atmosphere layer on top of all base layers.
                 {layer: new WorldWind.AtmosphereLayer(), enabled: true},
                 // WorldWindow UI layers.
-                // {layer: new WorldWind.CompassLayer(), enabled: true},
+                {layer: new WorldWind.CompassLayer(), enabled: true},
                 {layer: new WorldWind.CoordinatesDisplayLayer(wwd), enabled: true},
-                // {layer: new WorldWind.ViewControlsLayer(wwd), enabled: true}
+                {layer: new WorldWind.ViewControlsLayer(wwd), enabled: true}
             ];
 
             for (var l = 0; l < layers.length; l++) {
@@ -260,6 +260,8 @@
                 wwd.goTo(new WorldWind.Position(37.175229, -121.823628, 130000));
 
                 setInterval(function () {
+                    // console.log(wwd.layers[6].wwd.drawContext.eyePosition.altitude);
+                    console.log(wwd.worldWindowController);
                     staQuery()}, 5000);
 
             });
@@ -594,15 +596,20 @@
             }
 
             function createPL(stationData,staAvg) {
-                console.log(wwd.layers);
-                if(wwd.layers.length > layers.length +4){
+
+                if(wwd.layers.length > layers.length +3){
                     for (var a = 0; a < wwd.layers.length; a++){
                         if(wwd.layers[a].displayName === "Placemarks"+stationData.StationName){
                             wwd.layers[a].renderables.length = 0;
                             wwd.layers.splice(a,1);
+                            console.log(wwd.layers)
                         }
                     }
                 }
+
+                // if(wwd.layers[6].wwd.drawContext.eyePosition.altitude > 1000000){
+                //     console.log("arrow")
+                // }
 
                 var needleCanvas = document.createElement("canvas");
                 needleCanvas.id= stationData.StationId + "_needle";
