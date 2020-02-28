@@ -48,10 +48,10 @@
 
 <script type="text/javascript">
 
-    requirejs(['./src/WorldWind',
-            './LayerManager'],
-        function (WorldWind,
-                  LayerManager) {
+    requirejs(['./src/WorldWind'
+            // ,'./LayerManager'
+        ],
+        function (WorldWind) {
             "use strict";
             //setting of the gauge
             var settings = {
@@ -226,14 +226,12 @@
             // //5s average gauge data
             // var sta;
             // var img;
-
             let ini = true;
             var needle = new Image();
             needle.src = 'images/needle.png';
-
             var wwd = new WorldWind.WorldWindow("canvasOne");
-            var layerManager = new LayerManager(wwd);
-
+            // var layerManager = new LayerManager(wwd);
+            var stationsData=[];
             // Create and add layers to the WorldWindow.
             var layers = [
                 // Imagery layers.
@@ -253,6 +251,23 @@
                 wwd.addLayer(layers[l].layer);
             }
 
+            //create canvas for placemarks
+            var canvas = document.createElement("canvas"),
+                ctx2d = canvas.getContext("2d"),
+                size = 64, c = size / 2  - 0.5, innerRadius = 5, outerRadius = 20;
+
+            canvas.width = size;
+            canvas.height = size;
+
+            var gradient = ctx2d.createRadialGradient(c, c, innerRadius, c, c, outerRadius);
+            gradient.addColorStop(0, 'rgb(204, 255, 255)');
+            gradient.addColorStop(0.5, 'rgb(102, 153, 255)');
+            gradient.addColorStop(1, 'rgb(102, 0, 255)');
+
+            ctx2d.fillStyle = gradient;
+            ctx2d.arc(c, c, outerRadius, 0, 2 * Math.PI, false);
+            ctx2d.fill();
+
             $(document).ready(async function () {
 
                 await staQuery();
@@ -260,8 +275,7 @@
                 wwd.goTo(new WorldWind.Position(37.175229, -121.823628, 130000));
 
                 setInterval(function () {
-                    // console.log(wwd.layers[6].wwd.drawContext.eyePosition.altitude);
-                    console.log(wwd.worldWindowController);
+                    // console.log(wwd.worldWindowController.wwd.eventListeners);
                     staQuery()}, 5000);
 
             });
@@ -275,10 +289,16 @@
                     success: function(res) {
                         res.forEach(function(el,i) {
 
+                            // stationData.length = 0;
+                            stationsData.push(el);
+                            if(stationsData.length > 4){
+                                stationsData.length = 4
+                            }
                             query(el);
 
                             if (i == res.length - 1) { ini = false }
                         });
+                        console.log(stationsData);
                     }
                 });
             }
@@ -523,21 +543,20 @@
             }
 
             function check(objButton,stationName) {
-                console.log(objButton);
+                console.log(objButton.value);
                 var x = document.getElementsByClassName(objButton.value);
                 var y = '.'+objButton.value;
                 var z = '#'+objButton.value;
 
                 if (x[0].style.display === "none") {
-                    console.log(wwd.layers);
-                    for (var a = 0; a < wwd.layers.length; a++){
-                        if(wwd.layers[a].displayName === "Placemarks"+stationName){
-                            console.log(wwd.layers[a].enabled)
-                        }
-                    }
+                    var index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
+                    wwd.layers[index].enabled = true;
+                    console.log(index);
                     $(y).show();
                     $(z).css('backgroundColor', 'gray');
                 } else {
+                    var index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
+                    wwd.layers[index].enabled = false;
                     $(y).hide();
                     $(z).css('backgroundColor', 'white');
                 }
@@ -595,91 +614,159 @@
                 return Math.atan2(y, x) * 180 / Math.PI;
             }
 
+            console.log(wwd.layers);
+
             function createPL(stationData,staAvg) {
 
-                if(wwd.layers.length > layers.length +3){
-                    for (var a = 0; a < wwd.layers.length; a++){
-                        if(wwd.layers[a].displayName === "Placemarks"+stationData.StationName){
-                            wwd.layers[a].renderables.length = 0;
-                            wwd.layers.splice(a,1);
-                            console.log(wwd.layers)
+                if(!!staAvg){
+
+                    if(wwd.layers.length > layers.length + 3){
+                        console.log("splice");
+                        for (var a = 0; a < wwd.layers.length; a++){
+                            if(wwd.layers[a].displayName === "Placemarks"+stationData.StationId){
+                                wwd.layers[a].renderables.length = 0;
+                                wwd.layers.splice(a,1);
+                            }
+                            if(wwd.layers[a].displayName === "customPlacemarks" + stationData.StationId){
+                                wwd.layers[a].renderables.length = 0;
+                                wwd.layers.splice(a,1);
+                            }
                         }
                     }
-                }
 
-                // if(wwd.layers[6].wwd.drawContext.eyePosition.altitude > 1000000){
-                //     console.log("arrow")
-                // }
+                    var needleCanvas = document.createElement("canvas");
+                    needleCanvas.id= stationData.StationId + "_needle";
+                    needleCanvas.width = 300;
+                    needleCanvas.height = 300;
+                    var ctx2d = needleCanvas.getContext("2d");
 
-                var needleCanvas = document.createElement("canvas");
-                needleCanvas.id= stationData.StationId + "_needle";
-                needleCanvas.width = 300;
-                needleCanvas.height = 300;
-                var ctx2d = needleCanvas.getContext("2d");
+                    var placemark,
+                        placemarkN,
+                        placemarkAttributes = new WorldWind.PlacemarkAttributes(null),
+                        placemarkAttributesN = new WorldWind.PlacemarkAttributes(null),
+                        highlightAttributes,
+                        placemarkLayer = new WorldWind.RenderableLayer("Placemarks" + stationData.StationId),
+                        placemarkLayerN = new WorldWind.RenderableLayer("customPlacemarks" + stationData.StationId),
+                        latitude = stationData.Latitude,
+                        longitude = stationData.Longitude,
+                        highlightAttributesN;
 
-                var placemark,
-                    placemarkAttributes = new WorldWind.PlacemarkAttributes(null),
-                    highlightAttributes,
-                    placemarkLayer = new WorldWind.RenderableLayer("Placemarks" + stationData.StationName),
-                    latitude = stationData.Latitude,
-                    longitude = stationData.Longitude;
+                    //set attribute for one placemark
+                    placemarkAttributes.imageScale = 0.3;
+                    placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
+                        WorldWind.OFFSET_FRACTION, 0.5);
+                    placemarkAttributes.imageColor = WorldWind.Color.WHITE;
+                    placemarkAttributes.labelAttributes.scale = 0;
 
-                var degrees = calcAngleDegrees(staAvg[0], staAvg[1]);
+                    //set attribute for another placemark
+                    placemarkAttributesN.imageScale = 0.3;
+                    placemarkAttributesN.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
+                        WorldWind.OFFSET_FRACTION, 0.5);
+                    placemarkAttributesN.imageColor = WorldWind.Color.WHITE;
+                    placemarkAttributesN.labelAttributes.scale = 0;
 
-                ctx2d.clearRect(0, 0, needleCanvas.width, needleCanvas.width);
-                ctx2d.save();
-                // setInterval(interval,5000);
-                ctx2d.translate(153, 140);
+                    var degrees = calcAngleDegrees(staAvg[0], staAvg[1]);
 
-                // Rotate around this point
-                ctx2d.rotate(degrees * (Math.PI / 180));
-                // console.log(degrees);
-                ctx2d.drawImage(needle, -172, -172);
-                ctx2d.restore();
+                    ctx2d.clearRect(0, 0, needleCanvas.width, needleCanvas.width);
+                    ctx2d.save();
+                    // setInterval(interval,5000);
+                    ctx2d.translate(153, 140);
 
-                //set attributes
-                placemarkAttributes.imageScale = 0.5;
-                placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
-                    WorldWind.OFFSET_FRACTION, 0.5);
-                placemarkAttributes.imageColor = WorldWind.Color.WHITE;
-                placemarkAttributes.labelAttributes.color = WorldWind.Color.YELLOW;
-                placemarkAttributes.labelAttributes.offset = new WorldWind.Offset(
-                    WorldWind.OFFSET_FRACTION, 0.5,
-                    WorldWind.OFFSET_FRACTION, 1.0);
-                placemarkAttributes.leaderLineAttributes.outlineColor = WorldWind.Color.RED;
-                placemark = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, 1e2), true, null);
-                placemark.label = stationData.StationName + "\n";
+                    // Rotate around this point
+                    ctx2d.rotate(degrees * (Math.PI / 180));
+                    // console.log(degrees);
+                    ctx2d.drawImage(needle, -172, -172);
+                    ctx2d.restore();
+
+                    //set attributes
+                    placemarkAttributes.imageScale = 0.5;
+                    placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
+                        WorldWind.OFFSET_FRACTION, 0.5);
+                    placemarkAttributes.imageColor = WorldWind.Color.WHITE;
+                    placemarkAttributes.labelAttributes.color = WorldWind.Color.YELLOW;
+                    placemarkAttributes.labelAttributes.offset = new WorldWind.Offset(
+                        WorldWind.OFFSET_FRACTION, 0.5,
+                        WorldWind.OFFSET_FRACTION, 1.0);
+                    placemarkAttributes.leaderLineAttributes.outlineColor = WorldWind.Color.RED;
+                    placemark = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, 1e2), true, null);
+                    placemark.label = stationData.StationName + "\n";
                     // + "Lat " + latitude + "\n"
                     // + "Lon " + longitude;
 
-                placemarkAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
-                // placemarkAttributes.imageSource =WorldWind.configuration.baseUrl + "images/pushpins/"
+                    placemarkAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
+                    // placemarkAttributes.imageSource =WorldWind.configuration.baseUrl + "images/pushpins/"
 
-                placemarkAttributes.imageSource = new WorldWind.ImageSource(needleCanvas);
-                placemark.attributes = placemarkAttributes;
+                    placemarkAttributes.imageSource = new WorldWind.ImageSource(needleCanvas);
+                    placemark.attributes = placemarkAttributes;
 
-                highlightAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
-                highlightAttributes.imageScale = 1.2;
-                placemark.highlightAttributes = highlightAttributes;
+                    highlightAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
+                    highlightAttributes.imageScale = 1.2;
+                    placemark.highlightAttributes = highlightAttributes;
 
-                // console.log(placemark);
+                    placemarkN = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, 1e2), false, null);
+                    placemarkN.altitudeMode = WorldWind.RELATIVE_TO_GROUND;
+                    // placemarkN.enabled = false;
+                    // console.log(placemarkN);
 
-                placemarkLayer.addRenderable(placemark);
-                wwd.addLayer(placemarkLayer);
-                // console.log(wwd.layers);
-                layerManager.synchronizeLayerList();
+                    // Create the placemark attributes for the placemark.
+                    placemarkAttributesN = new WorldWind.PlacemarkAttributes(placemarkAttributesN);
 
-                // var surfaceImage = new WorldWind.SurfaceImage(new WorldWind.Sector(stationData.Latitude-1, stationData[].Latitude+1, stationData[i].Longitude-1,stationData[i].Longitude+1),
-                //     new WorldWind.ImageSource(needleCanvas));
-                // Add the surface images to a layer and the layer to the WorldWindow's layer list.
-                // surfaceImageLayer.displayName = "Surface Images";
-                // surfaceImageLayer.addRenderable(surfaceImage);
-                // wwd.addLayer(surfaceImageLayer);
-                // console.log(wwd.layers);
-                // layerManager.synchronizeLayerList();
+                    // Wrap the canvas created above in an ImageSource object to specify it as the placemark image source.
+                    placemarkAttributesN.imageSource = new WorldWind.ImageSource(canvas);
+                    placemarkN.attributes = placemarkAttributesN;
+                    placemarkLayerN.enabled = false;
+
+                    console.log(placemarkLayerN);
+
+                    placemarkLayerN.addRenderable(placemarkN);
+                    placemarkLayer.addRenderable(placemark);
+                    wwd.addLayer(placemarkLayer);
+                    wwd.addLayer(placemarkLayerN);
+                    // console.log(wwd.layers);
+                    // layerManager.synchronizeLayerList();
+                    autoS();
+                }
+
             }
-        });
 
+            function autoS() {
+                // console.log(wwd.layers[6].wwd.drawContext.eyePosition.altitude);
+                wwd.redraw();
+                if(wwd.drawContext.eyePosition.altitude > 200000){
+                    console.log("switch to placemark");
+
+                    for(var i= 0; i < stationsData.length; i++){
+                        var index = wwd.layers.findIndex(element => element.displayName === "Placemarks" + stationsData[i].StationId);
+                        var indexN = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" + stationsData[i].StationId);
+                        if(index >-1){
+                            wwd.layers[index].enabled = false;
+                        }
+                        if(indexN >-1){
+                            wwd.layers[indexN].enabled = true;
+                        }
+                    }
+
+                } else{
+                    console.log("switch to arrows");
+
+                    for(var a= 0; a < stationsData.length; a++){
+                        var Index = wwd.layers.findIndex(element => element.displayName === "Placemarks" + stationsData[a].StationId);
+                        var IndexN = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" + stationsData[a].StationId);
+                        if(Index >-1 ){
+                            wwd.layers[Index].enabled = true;
+                        }
+                        if(IndexN >-1 ){
+                            wwd.layers[IndexN].enabled = false;
+                            console.log(wwd.layers[IndexN])
+                        }
+                    }
+
+                }
+            }
+
+            wwd.addEventListener("wheel",autoS);
+
+        });
 
 
 </script>
