@@ -423,6 +423,16 @@
                 $(c).append(cdivX).append(cdivY).append(cdivZ);
             }
 
+            var counterX = {
+                counter1: 0,
+                counter2: 0
+            };
+            let cool = counterX.counter1;
+            let counterX1;
+            let counterX2;
+            let counterY;
+            let counterZ;
+
             async function query(staInfo) {
 
                 if (ini) {
@@ -435,18 +445,21 @@
                     method: "get",
                     data: {stationID: staInfo.StationId},
                     success: async function(res){
-
+                        console.log(staInfo);
                         if(!!res){
                             var x_arr = [];
                             var y_arr = [];
                             var z_arr = [];
 
                             await res.forEach(function(el,i) {
+                                console.log(i);
                                     x_arr[i] = [new Date(el.time), el.X];
                                     y_arr[i] = [new Date(el.time), el.Y];
                                     z_arr[i] = [new Date(el.time), el.Z];
                                 }
                             );
+
+
 
                             // sta = Avg(res,5);
 
@@ -502,6 +515,87 @@
                             // console.log(staInfo);
 
                             // console.log(deltaAvg(res, 5));
+
+                            var warning = {
+                                x_warning: false,
+                                y_warning: false,
+                                z_warning: false
+                            };
+
+                            let x_k, x_bro = 0;
+                            var dx_arr = [];
+                            let defcon1 = false;
+                            let defcon2 = false;
+                            let changeDir = false;
+
+                            for (let i = 1; i < x_arr.length - 1; i++){
+                                x_k = x_arr[i][1]-((x_arr[i - 1][1] + x_arr[i + 1][1])/2);
+                                dx_arr[i-1] = x_k;
+                                x_bro += x_k;
+                                if (i == x_arr.length - 2){
+                                    let dx_avg = x_bro/dx_arr.length;
+                                    for (let j = 0; j < dx_arr.length; j++){
+                                        if(dx_arr[j] > (200 * dx_avg)){
+                                            cool++;
+                                            if (cool >= 20){
+                                                if (changeDir == true){
+                                                    cool = counterX.counter2;
+                                                }
+                                                console.log("HEY MAN SOMETHING UP!");
+                                                defcon2 = true;
+                                            } else{
+                                                counterX1 = 0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            let y_k, y_bro = 0;
+                            var dy_arr = [];
+                            for (let j = 1; j < y_arr.length - 1; j++){
+                                y_k = y_arr[j][1]-((y_arr[j - 1][1] + y_arr[j + 1][1])/2);
+                                dy_arr[j] = y_k;
+                                y_bro += y_k;
+                                if (j == y_arr.length - 2){
+                                    let dy_avg = y_bro/y_arr.length;
+                                    for (let l = 0; l < dy_arr.length; l++){
+                                        if(dy_arr[l] > (200 * dy_avg)){
+                                            counterY++;
+                                            if (counterY > 20){
+                                                console.log("HEY MAN SOMETHING UP!");
+                                                warning.y_warning = true;
+                                            }
+                                            else{
+                                                counterY = 0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            let z_k, z_bro = 0;
+                            var dz_arr = [];
+                            for (let m = 1; m < z_arr.length - 1; m++){
+                                z_k = z_arr[m][1]-((z_arr[m - 1][1] + z_arr[m + 1][1])/2);
+                                dz_arr[m] = z_k;
+                                z_bro += z_k;
+                                if (m == z_arr.length - 2){
+                                    let dz_avg = z_bro/z_arr.length;
+                                    for (let n = 0; n < dz_arr.length; n++){
+                                        if(dz_arr[n] > (200 * dz_avg)){
+                                            counterZ++;
+                                            if (counterZ > 20){
+                                                console.log("HEY MAN SOMETHING UP!");
+                                                warning.z_warning = true;
+                                            }
+                                            else{
+                                                counterZ = 0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
 
                             createPL(staInfo,Avg(res,5))
                         }
