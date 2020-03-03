@@ -245,6 +245,9 @@
                 {layer: new WorldWind.CoordinatesDisplayLayer(wwd), enabled: true},
                 {layer: new WorldWind.ViewControlsLayer(wwd), enabled: true}
             ];
+            var showPlacemark;
+            var buttonArray = [];
+
 
             for (var l = 0; l < layers.length; l++) {
                 layers[l].layer.enabled = layers[l].enabled;
@@ -331,7 +334,7 @@
                 button.setAttribute("style", "background-color: gray;");
                 button.setAttribute("onclick", "check(this)");
                 button.onclick = function () {
-                    check(this,station.stationName);
+                    check(this);
                 };
                 $('#'+station.StationId+"_butDiv").append(button).append(butTitle);
 
@@ -542,24 +545,60 @@
                 }
             }
 
-            function check(objButton,stationName) {
-                console.log(objButton.value);
+            function check(objButton) {
                 var x = document.getElementsByClassName(objButton.value);
+                console.log(x[0]);
                 var y = '.'+objButton.value;
                 var z = '#'+objButton.value;
 
-                if (x[0].style.display === "none") {
-                    var index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
-                    wwd.layers[index].enabled = true;
-                    console.log(index);
-                    $(y).show();
-                    $(z).css('backgroundColor', 'gray');
-                } else {
-                    var index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
-                    wwd.layers[index].enabled = false;
-                    $(y).hide();
-                    $(z).css('backgroundColor', 'white');
+                if(wwd.drawContext.eyePosition.altitude < 200000){
+
+                    if (x[0].style.display === "none") {
+                        //show the placemarks
+                        var index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
+                        wwd.layers[index].enabled = true;
+                        showPlacemark = true;
+                        // console.log(index);
+                        $(y).show();
+                        $(z).css('backgroundColor', 'gray');
+                    } else {
+                        //hide the placemarks
+                        var index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
+                        wwd.layers[index].enabled = false;
+                        showPlacemark = false;
+                        $(y).hide();
+                        $(z).css('backgroundColor', 'white');
+                    }
+
+                }else{
+                    if (x[0].style.display === "none") {
+
+                        //show the placemarks
+                        var index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
+                        wwd.layers[index].enabled = true;
+                        showPlacemark = true;
+                        console.log(index);
+                        $(y).show();
+                        $(z).css('backgroundColor', 'gray');
+
+                    } else {
+                        //hide the placemarks
+                        var index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
+                        wwd.layers[index].enabled = false;
+                        showPlacemark = false;
+                        $(y).hide();
+                        $(z).css('backgroundColor', 'white');
+
+                    }
                 }
+                var object = {"buttonValue": objButton.value, "buttonStatus":showPlacemark};
+                var buttonIndex = buttonArray.findIndex(element => element.buttonValue === objButton.value);
+                if(buttonIndex === -1) {
+                    buttonArray.push(object);
+                }else{
+                    buttonArray[buttonIndex] = object
+                }
+                console.log(buttonArray);
             }
 
             function Avg(res, len) {
@@ -716,7 +755,113 @@
                     placemarkN.attributes = placemarkAttributesN;
                     placemarkLayerN.enabled = false;
 
-                    console.log(placemarkLayerN);
+                    // console.log(placemarkLayerN);
+
+                    placemarkLayerN.addRenderable(placemarkN);
+                    placemarkLayer.addRenderable(placemark);
+                    wwd.addLayer(placemarkLayer);
+                    wwd.addLayer(placemarkLayerN);
+                    // console.log(wwd.layers);
+                    // layerManager.synchronizeLayerList();
+                    autoS();
+                }else {
+                    if(wwd.layers.length > layers.length + 3){
+                        console.log("splice");
+                        for (var a = 0; a < wwd.layers.length; a++){
+                            if(wwd.layers[a].displayName === "Placemarks"+stationData.StationId){
+                                wwd.layers[a].renderables.length = 0;
+                                wwd.layers.splice(a,1);
+                            }
+                            if(wwd.layers[a].displayName === "customPlacemarks" + stationData.StationId){
+                                wwd.layers[a].renderables.length = 0;
+                                wwd.layers.splice(a,1);
+                            }
+                        }
+                    }
+
+                    var needleCanvas = document.createElement("canvas");
+                    needleCanvas.id= stationData.StationId + "_needle";
+                    needleCanvas.width = 300;
+                    needleCanvas.height = 300;
+                    var ctx2d = needleCanvas.getContext("2d");
+
+                    var placemark,
+                        placemarkN,
+                        placemarkAttributes = new WorldWind.PlacemarkAttributes(null),
+                        placemarkAttributesN = new WorldWind.PlacemarkAttributes(null),
+                        highlightAttributes,
+                        placemarkLayer = new WorldWind.RenderableLayer("Placemarks" + stationData.StationId),
+                        placemarkLayerN = new WorldWind.RenderableLayer("customPlacemarks" + stationData.StationId),
+                        latitude = stationData.Latitude,
+                        longitude = stationData.Longitude,
+                        highlightAttributesN;
+
+                    //set attribute for one placemark
+                    placemarkAttributes.imageScale = 0.3;
+                    placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
+                        WorldWind.OFFSET_FRACTION, 0.5);
+                    placemarkAttributes.imageColor = WorldWind.Color.WHITE;
+                    placemarkAttributes.labelAttributes.scale = 0;
+
+                    //set attribute for another placemark
+                    placemarkAttributesN.imageScale = 0.3;
+                    placemarkAttributesN.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
+                        WorldWind.OFFSET_FRACTION, 0.5);
+                    placemarkAttributesN.imageColor = WorldWind.Color.WHITE;
+                    placemarkAttributesN.labelAttributes.scale = 0;
+
+                    var degrees = 0;
+
+                    ctx2d.clearRect(0, 0, needleCanvas.width, needleCanvas.width);
+                    ctx2d.save();
+                    // setInterval(interval,5000);
+                    ctx2d.translate(153, 140);
+
+                    // Rotate around this point
+                    ctx2d.rotate(degrees * (Math.PI / 180));
+                    // console.log(degrees);
+                    ctx2d.drawImage(needle, -172, -172);
+                    ctx2d.restore();
+
+                    //set attributes
+                    placemarkAttributes.imageScale = 0.5;
+                    placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
+                        WorldWind.OFFSET_FRACTION, 0.5);
+                    placemarkAttributes.imageColor = WorldWind.Color.WHITE;
+                    placemarkAttributes.labelAttributes.color = WorldWind.Color.YELLOW;
+                    placemarkAttributes.labelAttributes.offset = new WorldWind.Offset(
+                        WorldWind.OFFSET_FRACTION, 0.5,
+                        WorldWind.OFFSET_FRACTION, 1.0);
+                    placemarkAttributes.leaderLineAttributes.outlineColor = WorldWind.Color.RED;
+                    placemark = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, 1e2), true, null);
+                    placemark.label = stationData.StationName + "\n";
+                    // + "Lat " + latitude + "\n"
+                    // + "Lon " + longitude;
+
+                    placemarkAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
+                    // placemarkAttributes.imageSource =WorldWind.configuration.baseUrl + "images/pushpins/"
+
+                    placemarkAttributes.imageSource = new WorldWind.ImageSource(needleCanvas);
+                    placemark.attributes = placemarkAttributes;
+
+                    highlightAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
+                    highlightAttributes.imageScale = 1.2;
+                    placemark.highlightAttributes = highlightAttributes;
+
+                    placemarkN = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, 1e2), false, null);
+                    placemarkN.altitudeMode = WorldWind.RELATIVE_TO_GROUND;
+                    // placemarkN.enabled = false;
+                    // console.log(placemarkN);
+
+                    // Create the placemark attributes for the placemark.
+                    placemarkAttributesN = new WorldWind.PlacemarkAttributes(placemarkAttributesN);
+
+                    // Wrap the canvas created above in an ImageSource object to specify it as the placemark image source.
+                    placemarkAttributesN.imageSource = new WorldWind.ImageSource(canvas);
+                    placemarkN.attributes = placemarkAttributesN;
+                    placemarkLayerN.enabled = false;
+
+                    // console.log(placemarkLayerN);
 
                     placemarkLayerN.addRenderable(placemarkN);
                     placemarkLayer.addRenderable(placemark);
@@ -731,18 +876,24 @@
 
             function autoS() {
                 // console.log(wwd.layers[6].wwd.drawContext.eyePosition.altitude);
-                wwd.redraw();
+                // wwd.redraw();
                 if(wwd.drawContext.eyePosition.altitude > 200000){
                     console.log("switch to placemark");
 
                     for(var i= 0; i < stationsData.length; i++){
                         var index = wwd.layers.findIndex(element => element.displayName === "Placemarks" + stationsData[i].StationId);
                         var indexN = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" + stationsData[i].StationId);
-                        if(index >-1){
+                        var buttonIndex = buttonArray.findIndex(element => element.buttonValue === stationsData[i].StationId);
+
+                        if(index > -1 ){
                             wwd.layers[index].enabled = false;
                         }
                         if(indexN >-1){
-                            wwd.layers[indexN].enabled = true;
+                            if(buttonIndex > -1){
+                                wwd.layers[indexN].enabled = buttonArray[buttonIndex].buttonStatus
+                            }else{
+                                wwd.layers[indexN].enabled = true;
+                            }
                         }
                     }
 
@@ -752,12 +903,16 @@
                     for(var a= 0; a < stationsData.length; a++){
                         var Index = wwd.layers.findIndex(element => element.displayName === "Placemarks" + stationsData[a].StationId);
                         var IndexN = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" + stationsData[a].StationId);
+                        var buttonIndex = buttonArray.findIndex(element => element.buttonValue === stationsData[a].StationId);
                         if(Index >-1 ){
-                            wwd.layers[Index].enabled = true;
+                            if(buttonIndex > -1){
+                                wwd.layers[Index].enabled = buttonArray[buttonIndex].buttonStatus
+                            }else{
+                                wwd.layers[Index].enabled = true;
+                            }
                         }
                         if(IndexN >-1 ){
                             wwd.layers[IndexN].enabled = false;
-                            console.log(wwd.layers[IndexN])
                         }
                     }
 
