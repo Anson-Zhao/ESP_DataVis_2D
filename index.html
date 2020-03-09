@@ -256,12 +256,13 @@
 
             $(document).ready(async function () {
 
-                await staQuery();
+                // await staQuery();
+                await query({StationId: "station_two"});
 
                 wwd.goTo(new WorldWind.Position(37.175229, -121.823628, 130000));
 
-                setInterval(function () {
-                    staQuery()}, 5000);
+                // setInterval(function () {
+                //     staQuery()}, 5000);
 
             });
 
@@ -427,11 +428,15 @@
                 counter1: 0,
                 counter2: 0
             };
-            let cool = counterX.counter1;
-            let counterX1;
-            let counterX2;
+            //let cool = counterX.counter1;
+            let dirCounter = 0;
+            let direction;
+            let counterXup;
+            let counterXdown = 0;
             let counterY;
             let counterZ;
+            let defcon1 = false;
+            let defcon2 = false;
 
             async function query(staInfo) {
 
@@ -445,7 +450,8 @@
                     method: "get",
                     data: {stationID: staInfo.StationId},
                     success: async function(res){
-                        console.log(staInfo);
+                        // console.log(staInfo);
+                        console.log(res);
                         if(!!res){
                             var x_arr = [];
                             var y_arr = [];
@@ -524,32 +530,148 @@
 
                             let x_k, x_bro = 0;
                             var dx_arr = [];
-                            let defcon1 = false;
-                            let defcon2 = false;
+
                             let changeDir = false;
 
+                            //determine sample direction
+                            //determine turn around point
+                            //determine continuous jump oppositely
+
                             for (let i = 1; i < x_arr.length - 1; i++){
-                                x_k = x_arr[i][1]-((x_arr[i - 1][1] + x_arr[i + 1][1])/2);
+
+                                x_k = x_arr[i][1]-((x_arr[i - 1][1] + x_arr[i + 1][1])/2);  // single distance
                                 dx_arr[i-1] = x_k;
                                 x_bro += x_k;
-                                if (i == x_arr.length - 2){
+                                if (i === x_arr.length - 2){
                                     let dx_avg = x_bro/dx_arr.length;
+                                    //direction = Math.sign(dx_arr[0]);
                                     for (let j = 0; j < dx_arr.length; j++){
                                         if(dx_arr[j] > (200 * dx_avg)){
-                                            cool++;
-                                            if (cool >= 20){
-                                                if (changeDir == true){
-                                                    cool = counterX.counter2;
+                                            console.log("time is" + x_arr[j + 1][0]);
+                                            //find direction
+                                            direction = Math.sign(x_arr[j + 1][1] - x_arr[j][1]);
+                                            let prevDirection = Math.sign(x_arr[j][1] - x_arr[j - 1][1]);
+                                            //console.log(x_arr[j + 1][1]);
+                                            //check if direction is going up
+                                            console.log("curent direction is: " + direction);
+                                            console.log("prevdirection = " + prevDirection);
+                                            if (direction === 1){
+                                                //check if the previous value was a down value
+                                                if (Math.sign(x_arr[j][1] - x_arr[j - 1][1]) === -1 && defcon1 === false){
+
+                                                    // set the current counter to 0
+                                                    counterXup = 0;
+                                                    console.log("counter up = " + counterXup);
+                                                    console.log("counter down = " + counterXdown);
+                                                    // counterXdown++;
+                                                    if (counterXup >= 15){
+                                                        defcon1 = true;
+                                                        console.log("defcon1 is true bud");
+                                                    } else {
+                                                        defcon1 = false;
+                                                    }
+                                                    // check if the previous down counter hadn't reached 20
+                                                    if(counterXdown < 15 && defcon2 === false){
+                                                        console.log("checking");
+                                                        //set it to zero to be reused at another time
+                                                        counterXdown = 0;
+                                                    } else {
+                                                        console.log("this is here for show")
+                                                    }
+                                                } else {
+                                                    //increment the counter
+                                                    counterXup++;
+                                                    console.log("counterXUp = " + counterXup);
+                                                    console.log(counterXup);
+                                                    if (counterXup >= 15){
+                                                        defcon1 = true;
+                                                        console.log("defcon1 is true but on the line 588");
+                                                    } //else if (defcon1 === true){
+                                                    //     defcon1 = false;
+                                                    //     console.log("defcon2 is now false from line 591")
+                                                    // }
+
                                                 }
-                                                console.log("HEY MAN SOMETHING UP!");
-                                                defcon2 = true;
-                                            } else{
-                                                counterX1 = 0;
+                                                if(defcon1 == true && defcon2 == true){
+                                                    console.log("broski");
+                                                }
+                                                //check if the current counter has reached or surpassed 20
+                                                // while (counterXup >= 20) {
+                                                //     defcon1 = true;
+                                                //     console.log("defcon1 is true");
+                                                // }
                                             }
+                                            //check if direction is going down
+                                            if (direction === -1){
+                                                //check if the previous value was an up value
+                                                if (Math.sign(x_arr[j][1] - x_arr[j - 1][1]) === 1 && defcon2 === false){
+
+                                                    // set the current counter to 0
+                                                    counterXdown = 0;
+                                                    console.log("counter up = " + counterXup + "down counter part");
+                                                    console.log("counter down = " + counterXdown + "down counter part");
+                                                    // counterXdown++;
+                                                    if (counterXdown >= 15){
+                                                        defcon2 = true;
+                                                        console.log("defcon2 is true bud");
+                                                    } else {
+                                                        defcon2 = false;
+                                                    }
+                                                    // check if the previous down counter hadn't reached 20
+                                                    if(counterXup < 15 && defcon1 === false){
+                                                        console.log("checking");
+                                                        //set it to zero to be reused at another time
+                                                        counterXup = 0;
+                                                    } else {
+                                                        console.log("this is here for show")
+                                                    }
+                                                } else {
+                                                    //increment the counter
+                                                    counterXdown++;
+                                                    console.log("counterXdown = " + counterXdown);
+                                                    if (counterXdown >= 15){
+                                                        defcon2 = true;
+                                                        console.log("defcon2 is true but on the line 634");
+                                                    } //else if (defcon1 === true){
+                                                    //     defcon1 = false;
+                                                    //     console.log("defcon2 is now false from line 591")
+                                                    // }
+
+                                                }
+                                                if(defcon1 == true && defcon2 == true){
+                                                    console.log("broski");
+                                                }
+                                            }
+
+                                            console.log(defcon1);
+                                            console.log(defcon2);
+
+                                            if (defcon1 && defcon2) {
+
+                                            }
+                                            // if (Math.sign(dx_arr[j]) === 1){
+                                            //     if (counterX2 < 20){
+                                            //         counterX2 = 0;
+                                            //     }
+                                            //     counterX1++;
+                                            // }else if(Math.sign(dx_arr[j]) === -1){
+                                            //     if (counterX1 < 20){
+                                            //         counterX1 = 0;
+                                            //     }
+                                            //     counterX2++;
+                                            // }
+                                            // if (counterX1 >= 20 || counterX2 >= 20){
+                                            //     console.log("HEY MAN SOMETHING UP!");
+                                            //     defcon2 = true;
+                                            // }
+                                            // if (counterX1 >= 20 && counterX2 >= 20){
+                                            //     defcon1 = true;
+                                            // }
                                         }
                                     }
                                 }
                             }
+
 
                             let y_k, y_bro = 0;
                             var dy_arr = [];
@@ -597,7 +719,7 @@
                                 }
                             }
 
-                            createPL(staInfo,Avg(res,5))
+                            // createPL(staInfo,Avg(res,5))
                         }
 
                     }

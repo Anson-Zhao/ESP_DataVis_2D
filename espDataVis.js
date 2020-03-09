@@ -9,6 +9,7 @@ const app = express();
 app.listen('3005');
 
 const influx = new Influx.InfluxDB({
+    precision: 'rfc3339',
     host: 'aworldbridgelabs.com',
     database: 'RayESP',
     username: "rayf",
@@ -156,8 +157,18 @@ app.get('/newSnow', async function (req, res) {
         });
 });
 
+
 app.get('/query', function (req, res) {
-    let query = 'SELECT * FROM ' + req.query.stationID + 'avg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime;
+
+    let timeFromX = "2020-03-08T23:00:00.000Z";
+    let timeToX = "2020-03-09T08:05:00.000Z";
+    // let stationID = 'station_two';
+    let query = 'SELECT * FROM ' + req.query.stationID + "avg WHERE time >= '" + timeFromX + "'" + " AND time<= '" + timeToX + "'";
+    // let query = "SELECT * FROM 'station_two'" + " avg WHERE time >= '" + timeFromX + "'" + " AND time<= '" + timeToX + "'";
+    // let query = 'SELECT * FROM ' + stationID + "avg WHERE time >= '" + timeFromX + "'" + " AND time<= '" + timeToX + "'";
+
+    // let query = 'SELECT * FROM ' + req.query.stationID + 'avg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime;
+    console.log(query);
     influx.query(query).then
     (result => {
         res.send(result);
