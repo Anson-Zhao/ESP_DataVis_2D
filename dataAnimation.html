@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Animation</title>
+    <script src='jsLibrary/jquery-3-4-1.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.17/require.min.js"></script>
+</head>
+<body>
+    <canvas id="canvasOne" width="1000" height="1000"
+        style="width: 50%; height: auto; background-color: white;">
+    Your browser does not support HTML5 Canvas.
+    </canvas>
+<!--    <input type="button" class="button button2" value="Data Animation">-->
+    <script type="text/javascript">
+        requirejs(['./WorldWindShim',
+                './LayerManager'],
+            function (WorldWind,
+                      LayerManager) {
+                "use strict";
+                var wwd = new WorldWind.WorldWindow("canvasOne");
+                var layerManager = new LayerManager(wwd);
+                var layers = [
+                    // Imagery layers.
+                    {layer: new WorldWind.BMNGLayer(), enabled: true},
+                    {layer: new WorldWind.BMNGLandsatLayer(), enabled: false},
+                    {layer: new WorldWind.BingAerialWithLabelsLayer(null), enabled: true},
+                    // Add atmosphere layer on top of all base layers.
+                    {layer: new WorldWind.AtmosphereLayer(), enabled: true},
+                    // WorldWindow UI layers.
+                    // {layer: new WorldWind.CompassLayer(), enabled: true},
+                    // {layer: new WorldWind.CoordinatesDisplayLayer(wwd), enabled: true},
+                    // {layer: new WorldWind.ViewControlsLayer(wwd), enabled: true}
+                ];
+                for (var l = 0; l < layers.length; l++) {
+                    layers[l].layer.enabled = layers[l].enabled;
+                    wwd.addLayer(layers[l].layer);
+                }
+        });
+    </script>
+</body>
+</html>
