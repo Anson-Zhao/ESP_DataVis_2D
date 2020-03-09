@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -213,7 +209,7 @@
       <workItem from="1582915624096" duration="14197000" />
       <workItem from="1583331085577" duration="7454000" />
       <workItem from="1583434118069" duration="1134000" />
-      <workItem from="1583520487339" duration="10377000" />
+      <workItem from="1583520487339" duration="10615000" />
     </task>
     <task id="LOCAL-00001" summary="esp live chart">
       <created>1571239268892</created>
@@ -509,7 +505,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583160334900</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Anomaly Algorithm V1">
+      <created>1583760297129</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1583760297129</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,7 +542,8 @@
     <MESSAGE value="V1.41" />
     <MESSAGE value="V1.42" />
     <MESSAGE value="V1.43" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1.43" />
+    <MESSAGE value="Anomaly Algorithm V1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Anomaly Algorithm V1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="908" y="472" key="#Deployment" timestamp="1582830817035">
@@ -561,11 +565,11 @@
     </state>
     <state x="1408" y="505" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1348@0.23.2560.1348" timestamp="1582830742412" />
     <state x="1408" y="530" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1581443946038" />
-    <state x="946" y="351" key="CommitChangelistDialog2" timestamp="1583160334547">
+    <state x="946" y="351" key="CommitChangelistDialog2" timestamp="1583760296773">
       <screen x="0" y="23" width="2560" height="1348" />
     </state>
     <state x="946" y="341" key="CommitChangelistDialog2/0.23.2560.1308@0.23.2560.1308" timestamp="1582120385353" />
-    <state x="946" y="351" key="CommitChangelistDialog2/0.23.2560.1348@0.23.2560.1348" timestamp="1583160334547" />
+    <state x="946" y="351" key="CommitChangelistDialog2/0.23.2560.1348@0.23.2560.1348" timestamp="1583760296773" />
     <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1582045442475" />
     <state x="58" y="42" width="1928" height="932" key="DiffContextDialog" timestamp="1582120381212">
       <screen x="0" y="23" width="2560" height="1308" />
@@ -646,11 +650,11 @@
     <state x="617" y="434" key="SettingsEditor/0.23.2560.1308@0.23.2560.1308" timestamp="1582064062083" />
     <state x="617" y="447" key="SettingsEditor/0.23.2560.1348@0.23.2560.1348" timestamp="1582916116735" />
     <state x="617" y="475" key="SettingsEditor/0.23.2560.1417@0.23.2560.1417" timestamp="1581005084240" />
-    <state x="989" y="468" key="Vcs.Push.Dialog.v2" timestamp="1583160347250">
+    <state x="989" y="468" key="Vcs.Push.Dialog.v2" timestamp="1583760312280">
       <screen x="0" y="23" width="2560" height="1348" />
     </state>
     <state x="989" y="455" key="Vcs.Push.Dialog.v2/0.23.2560.1308@0.23.2560.1308" timestamp="1582120387548" />
-    <state x="989" y="468" key="Vcs.Push.Dialog.v2/0.23.2560.1348@0.23.2560.1348" timestamp="1583160347250" />
+    <state x="989" y="468" key="Vcs.Push.Dialog.v2/0.23.2560.1348@0.23.2560.1348" timestamp="1583760312280" />
     <state x="989" y="491" key="Vcs.Push.Dialog.v2/0.23.2560.1417@0.23.2560.1417" timestamp="1582045446481" />
     <state x="688" y="278" width="1234" height="762" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1582908401780">
       <screen x="0" y="23" width="2560" height="1348" />
@@ -668,10 +672,11 @@
     </state>
     <state x="1125" y="447" width="845" height="574" key="find.popup/0.23.2560.1308@0.23.2560.1308" timestamp="1582127467563" />
     <state x="1435" y="603" width="845" height="528" key="find.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1579298741926" />
-    <state x="1538" y="435" key="git4idea.merge.GitPullDialog" timestamp="1582045742886">
-      <screen x="0" y="23" width="2560" height="1308" />
+    <state x="1538" y="448" key="git4idea.merge.GitPullDialog" timestamp="1583760342458">
+      <screen x="0" y="23" width="2560" height="1348" />
     </state>
     <state x="1538" y="435" key="git4idea.merge.GitPullDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1582045742886" />
+    <state x="1538" y="448" key="git4idea.merge.GitPullDialog/0.23.2560.1348@0.23.2560.1348" timestamp="1583760342458" />
     <state x="1037" y="538" key="new project wizard" timestamp="1579101598572">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
