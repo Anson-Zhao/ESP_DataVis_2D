@@ -364,7 +364,6 @@
 
             function check(objButton) {
                 var x = document.getElementsByClassName(objButton.value);
-                console.log(x[0]);
                 var y = '.'+objButton.value;
                 var z = '#'+objButton.value;
 
@@ -394,7 +393,7 @@
                         var index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
                         wwd.layers[index].enabled = true;
                         showPlacemark = true;
-                        console.log(index);
+                        // console.log(index);
                         $(y).show();
                         $(z).css('backgroundColor', 'gray');
 
@@ -415,7 +414,7 @@
                 }else{
                     buttonArray[buttonIndex] = object
                 }
-                console.log(buttonArray);
+                // console.log(buttonArray);
             }
 
             function Avg(res, len) {

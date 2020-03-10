@@ -256,7 +256,7 @@
             },
             success: async function (res) {
                 // console.log("get responce");
-                console.log("1");
+                // console.log("1");
                 await res.forEach(function(el,i) {
                     // var time = new Date(el.time);
                     // console.log(el.time);
@@ -271,7 +271,7 @@
                     var t = el.time;
                     download += t+','+a+','+b+','+c+'\n';
                 });
-                console.log("2");
+                // console.log("2");
                 // console.log(download);
 
                 // console.log(res);
@@ -374,8 +374,6 @@
             document.body.removeChild(link);
         }
     }
-
-
 
     function rawDataDownload() {
         timeFrom = document.getElementById("begin").value;
