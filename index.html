@@ -48,193 +48,18 @@
 
 <script type="text/javascript">
 
-    requirejs(['./src/WorldWind',
-            './LayerManager'],
-        function (WorldWind,
-                  LayerManager) {
+    requirejs(['./src/WorldWind'
+            // ,'./LayerManager'
+        ],
+        function (WorldWind) {
             "use strict";
-            //setting of the gauge
-            var settings = {
-                gaugeMinValue: -100000,
-                gaugeMaxValue: 100000,
-                gaugeStartValue: 0,
-                gaugeStartAngle: -90,
-                gaugeEndAngle: 90,
-                gaugeUpdateInterval: 5000 // ms
-            };
-            var options = {
-                tooltip: {
-                    enabled: false
-                },
-                chart: {
-                    type: 'gauge',
-                    backgroundColor: 'rgba(255, 255, 255, 0)',
-                    plotBackgroundColor: null,
-                    plotBackgroundImage: null,
-                    plotBorderWidth: 0,
-                    plotShadow: false,
-                    spacing: [5, 30, 5, 30],
-                    style: {
-                        fontSize: '1em'
-                    }
-                },
-
-                title: false,
-
-                pane: {
-                    startAngle: settings.gaugeStartAngle,
-                    endAngle: settings.gaugeEndAngle,
-                    background: {
-                        backgroundColor: 'rgba(255, 255, 255, 0)',
-                        borderWidth: 0,
-                        innerRadius: '60%',
-                        outerRadius: '100%',
-                        shape: 'arc'
-                    }
-                },
-
-                plotOptions: {
-                    gauge: {
-                        // dial: {
-                        //  radius: 0
-                        //  },
-                        //  pivot: {
-                        //  radius: 0
-                        //  },
-                        dataLabels: {
-                            borderWidth: 0,
-                            padding: 0,
-                            fontSize: 3,
-                            verticalAlign: 'middle',
-                            // style: false,
-                            formatter: function () {
-                                var output = '<div class="gauge-data">';
-                                output += '<span class="gauge-value">' + this.y + '</span>';
-                                output += '</div>';
-
-                                return output;
-                            },
-                            useHTML: true
-                        }
-                    },
-                    pie: {
-                        dataLabels: {
-                            enabled: true,
-                            distance: -10,
-                            style: false
-                        },
-                        startAngle: settings.gaugeStartAngle,
-                        endAngle: settings.gaugeEndAngle,
-                        center: ['50%', '50%'],
-                        states: {
-                            hover: {
-                                enabled: false
-                            }
-                        }
-                    }
-                },
-
-                // the value axis
-                yAxis: {
-                    offset: 0,
-                    min: settings.gaugeMinValue,
-                    max: settings.gaugeMaxValue,
-
-                    title: false,
-
-                    minorTickWidth: 0,
-                    //the interval of the short line
-                    tickPixelInterval: 30,
-                    tickWidth: 2,
-                    tickPosition: 'outside',
-                    //the length of the short line
-                    tickLength: 15,
-                    tickColor: '#666666',
-                    lineColor: '#666666',
-                    labels: {
-                        //distance between the line and number
-                        distance: 25,
-                        rotation: "0",
-                        step: 2,
-                    },
-
-                    plotBands: [{
-                        thickness: 15,
-                        outerRadius: "120%",
-                        from: -100000,
-                        to: -75000,
-                        color: '#FB8585' // red
-                    }, {
-                        thickness: 15,
-                        outerRadius: "120%",
-                        from: 100000,
-                        to: 75000,
-                        color: '#FB8585' // red
-                    }, {
-                        thickness: 15,
-                        outerRadius: "120%",
-                        from: -50000,
-                        to: 50000,
-                        color: '#83DAD9'
-                    }, {
-                        thickness: 15,
-                        outerRadius: "120%",
-                        from: 50000,
-                        to: 75000,
-                        color: '#F9E7AE'
-                    }, {
-                        thickness: 15,
-                        outerRadius: "120%",
-                        from: -50000,
-                        to: -75000,
-                        color: '#F9E7AE'
-                    }
-                    ]
-                },
-
-                series: [{
-                    type: 'gauge',
-                    data: [settings.gaugeStartValue],
-                }, {
-                    type : 'pie',
-                    innerSize : '96%',
-                    data : [{
-                        y : settings.gaugeStartValue,
-                        name : "",
-                        color : "#0bbeba"
-                    }, {
-                        y : settings.gaugeMaxValue - settings.gaugeStartValue,
-                        name : '',
-                        color : "#666666"
-                    }]
-                }],
-
-                navigation: {
-                    buttonOptions: {
-                        enabled: false
-                    }
-                },
-
-                credits: false
-            };
-
-            // //I want array with string inside
-            // var stations = [];
-            // //single station name that we are going to deal with
-            // var stationsInfo = [];
-            //
-            // //5s average gauge data
-            // var sta;
-            // var img;
 
             let ini = true;
             var needle = new Image();
             needle.src = 'images/needle.png';
-
             var wwd = new WorldWind.WorldWindow("canvasOne");
-            var surfaceImageLayer = new WorldWind.RenderableLayer();
-            var layerManager = new LayerManager(wwd);
-
+            // var layerManager = new LayerManager(wwd);
+            var stationsData=[];
             // Create and add layers to the WorldWindow.
             var layers = [
                 // Imagery layers.
@@ -244,15 +69,34 @@
                 // Add atmosphere layer on top of all base layers.
                 {layer: new WorldWind.AtmosphereLayer(), enabled: true},
                 // WorldWindow UI layers.
-                // {layer: new WorldWind.CompassLayer(), enabled: true},
+                {layer: new WorldWind.CompassLayer(), enabled: true},
                 {layer: new WorldWind.CoordinatesDisplayLayer(wwd), enabled: true},
-                // {layer: new WorldWind.ViewControlsLayer(wwd), enabled: true}
+                {layer: new WorldWind.ViewControlsLayer(wwd), enabled: true}
             ];
+            var showPlacemark;
+            var buttonArray = [];
 
             for (var l = 0; l < layers.length; l++) {
                 layers[l].layer.enabled = layers[l].enabled;
                 wwd.addLayer(layers[l].layer);
             }
+
+            //create canvas for placemarks
+            var canvas = document.createElement("canvas"),
+                ctx2d = canvas.getContext("2d"),
+                size = 64, c = size / 2  - 0.5, innerRadius = 5, outerRadius = 20;
+
+            canvas.width = size;
+            canvas.height = size;
+
+            var gradient = ctx2d.createRadialGradient(c, c, innerRadius, c, c, outerRadius);
+            gradient.addColorStop(0, 'rgb(204, 255, 255)');
+            gradient.addColorStop(0.5, 'rgb(102, 153, 255)');
+            gradient.addColorStop(1, 'rgb(102, 0, 255)');
+
+            ctx2d.fillStyle = gradient;
+            ctx2d.arc(c, c, outerRadius, 0, 2 * Math.PI, false);
+            ctx2d.fill();
 
             $(document).ready(async function () {
 
@@ -261,6 +105,7 @@
                 wwd.goTo(new WorldWind.Position(37.175229, -121.823628, 130000));
 
                 setInterval(function () {
+                    // console.log(wwd.worldWindowController.wwd.eventListeners);
                     staQuery()}, 5000);
 
             });
@@ -274,6 +119,11 @@
                     success: function(res) {
                         res.forEach(function(el,i) {
 
+                            // stationData.length = 0;
+                            stationsData.push(el);
+                            if(stationsData.length > 4){
+                                stationsData.length = 4
+                            }
                             query(el);
 
                             if (i == res.length - 1) { ini = false }
@@ -309,7 +159,9 @@
                 button.textContent = station.StationName;
                 button.setAttribute("style", "background-color: gray;");
                 button.setAttribute("onclick", "check(this)");
-                // button.onclick = check(button);
+                button.onclick = function () {
+                    check(this);
+                };
                 $('#'+station.StationId+"_butDiv").append(button).append(butTitle);
 
                 //add gauge title
@@ -510,26 +362,60 @@
                 });
             }
 
-            function buildGraph(chart) {
-                var a = $(this)[0].renderTo.className.slice(-1);
-                if (!chart.renderer.forExport) {
-                    var gaugePoint = chart.series[0].points[0];
-                    var newVal = parseInt(sta[a]);
-                    gaugePoint.update(newVal);
-                }
-            }
-
             function check(objButton) {
                 var x = document.getElementsByClassName(objButton.value);
+                console.log(x[0]);
                 var y = '.'+objButton.value;
                 var z = '#'+objButton.value;
-                if (x[0].style.display === "none") {
-                    $(y).show();
-                    $(z).css('backgroundColor', 'gray');
-                } else {
-                    $(y).hide();
-                    $(z).css('backgroundColor', 'white');
+
+                if(wwd.drawContext.eyePosition.altitude < 200000){
+
+                    if (x[0].style.display === "none") {
+                        //show the placemarks
+                        var index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
+                        wwd.layers[index].enabled = true;
+                        showPlacemark = true;
+                        // console.log(index);
+                        $(y).show();
+                        $(z).css('backgroundColor', 'gray');
+                    } else {
+                        //hide the placemarks
+                        var index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
+                        wwd.layers[index].enabled = false;
+                        showPlacemark = false;
+                        $(y).hide();
+                        $(z).css('backgroundColor', 'white');
+                    }
+
+                }else{
+                    if (x[0].style.display === "none") {
+
+                        //show the placemarks
+                        var index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
+                        wwd.layers[index].enabled = true;
+                        showPlacemark = true;
+                        console.log(index);
+                        $(y).show();
+                        $(z).css('backgroundColor', 'gray');
+
+                    } else {
+                        //hide the placemarks
+                        var index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
+                        wwd.layers[index].enabled = false;
+                        showPlacemark = false;
+                        $(y).hide();
+                        $(z).css('backgroundColor', 'white');
+
+                    }
                 }
+                var object = {"buttonValue": objButton.value, "buttonStatus":showPlacemark};
+                var buttonIndex = buttonArray.findIndex(element => element.buttonValue === objButton.value);
+                if(buttonIndex === -1) {
+                    buttonArray.push(object);
+                }else{
+                    buttonArray[buttonIndex] = object
+                }
+                console.log(buttonArray);
             }
 
             function Avg(res, len) {
@@ -556,43 +442,47 @@
                 }
             }
 
-            function deltaAvg(res, len) {
-                if (res.length < len * 2) {
-                    return console.log("Data length is insufficient");
-                } else {
-                    let xa, ya, za;
-                    xa = ya = za = 0;
-                    let sliceDelta = Math.max(res.length - len * 2, 0);
-                    let arrDelta = res.slice(sliceDelta);
-                    for (var i = 0; i < arrDelta.length / 2; i++) {
-
-                        xa += arrDelta[i].X - arrDelta[i + len].X;
-                        ya += arrDelta[i].Y - arrDelta[i + len].Y;
-                        za += arrDelta[i].Z - arrDelta[i + len].Z;
-
-                        if (i == arrDelta.length / 2 - 1) {
-                            xa = xa / len;
-                            ya = ya / len;
-                            za = za / len;
-                            return [xa, ya, za];
-                        }
-                    }
-                }
-            }
-
             function calcAngleDegrees(x, y) {
                 return Math.atan2(y, x) * 180 / Math.PI;
             }
 
+            function createPK() {
+
+            }
+
+            var degrees;
             function createPL(stationData,staAvg) {
 
-                // console.log(staAvg);
-                if(wwd.layers.length > layers.length +4){
-                    // console.log("delete");
-                    for (var a = 0; a < wwd.layers.length; a++){
-                        if(wwd.layers[a].displayName === "Placemarks"+stationData.StationId){
-                            wwd.layers[a].renderables.length = 0;
-                            wwd.layers.splice(a,1);
+                if(!!staAvg){
+
+                    degrees = calcAngleDegrees(staAvg[0], staAvg[1]);
+
+                    if(wwd.layers.length > layers.length + 3){
+                        for (var a = 0; a < wwd.layers.length; a++){
+                            if(wwd.layers[a].displayName === "Placemarks"+stationData.StationId){
+                                wwd.layers[a].renderables.length = 0;
+                                wwd.layers.splice(a,1);
+                            }
+                            if(wwd.layers[a].displayName === "customPlacemarks" + stationData.StationId){
+                                wwd.layers[a].renderables.length = 0;
+                                wwd.layers.splice(a,1);
+                            }
+                        }
+                    }
+                }else {
+
+                    degrees = 0;
+
+                    if(wwd.layers.length > layers.length + 3){
+                        for (var a = 0; a < wwd.layers.length; a++){
+                            if(wwd.layers[a].displayName === "Placemarks"+stationData.StationId){
+                                wwd.layers[a].renderables.length = 0;
+                                wwd.layers.splice(a,1);
+                            }
+                            if(wwd.layers[a].displayName === "customPlacemarks" + stationData.StationId){
+                                wwd.layers[a].renderables.length = 0;
+                                wwd.layers.splice(a,1);
+                            }
                         }
                     }
                 }
@@ -604,13 +494,29 @@
                 var ctx2d = needleCanvas.getContext("2d");
 
                 var placemark,
+                    placemarkN,
                     placemarkAttributes = new WorldWind.PlacemarkAttributes(null),
+                    placemarkAttributesN = new WorldWind.PlacemarkAttributes(null),
                     highlightAttributes,
-                    placemarkLayer = new WorldWind.RenderableLayer("Placemarks" + stationData.StationName),
+                    placemarkLayer = new WorldWind.RenderableLayer("Placemarks" + stationData.StationId),
+                    placemarkLayerN = new WorldWind.RenderableLayer("customPlacemarks" + stationData.StationId),
                     latitude = stationData.Latitude,
                     longitude = stationData.Longitude;
 
-                var degrees = calcAngleDegrees(staAvg[0], staAvg[1]);
+                //set attribute for one placemark
+                placemarkAttributes.imageScale = 0.3;
+                placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
+                    WorldWind.OFFSET_FRACTION, 0.5);
+                placemarkAttributes.imageColor = WorldWind.Color.WHITE;
+                placemarkAttributes.labelAttributes.scale = 0;
+
+                //set attribute for another placemark
+                placemarkAttributesN.imageScale = 0.3;
+                placemarkAttributesN.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
+                    WorldWind.OFFSET_FRACTION, 0.5);
+                placemarkAttributesN.imageColor = WorldWind.Color.WHITE;
+                placemarkAttributesN.labelAttributes.scale = 0;
+
 
                 ctx2d.clearRect(0, 0, needleCanvas.width, needleCanvas.width);
                 ctx2d.save();
@@ -634,9 +540,9 @@
                     WorldWind.OFFSET_FRACTION, 1.0);
                 placemarkAttributes.leaderLineAttributes.outlineColor = WorldWind.Color.RED;
                 placemark = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, 1e2), true, null);
-                placemark.label = stationData.StationName + "\n"
-                    // + "Lat " + latitude + "\n"
-                    // + "Lon " + longitude;
+                placemark.label = stationData.StationName + "\n";
+                // + "Lat " + latitude + "\n"
+                // + "Lon " + longitude;
 
                 placemarkAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
                 // placemarkAttributes.imageSource =WorldWind.configuration.baseUrl + "images/pushpins/"
@@ -648,24 +554,73 @@
                 highlightAttributes.imageScale = 1.2;
                 placemark.highlightAttributes = highlightAttributes;
 
-                // console.log(placemark);
+                placemarkN = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, 1e2), false, null);
+                placemarkN.altitudeMode = WorldWind.RELATIVE_TO_GROUND;
+                // placemarkN.enabled = false;
+                // console.log(placemarkN);
 
+                // Create the placemark attributes for the placemark.
+                placemarkAttributesN = new WorldWind.PlacemarkAttributes(placemarkAttributesN);
+
+                // Wrap the canvas created above in an ImageSource object to specify it as the placemark image source.
+                placemarkAttributesN.imageSource = new WorldWind.ImageSource(canvas);
+                placemarkN.attributes = placemarkAttributesN;
+                placemarkLayerN.enabled = false;
+
+                // console.log(placemarkLayerN);
+
+                placemarkLayerN.addRenderable(placemarkN);
                 placemarkLayer.addRenderable(placemark);
                 wwd.addLayer(placemarkLayer);
-                // console.log(wwd.layers);
-                layerManager.synchronizeLayerList();
-
-                // var surfaceImage = new WorldWind.SurfaceImage(new WorldWind.Sector(stationData.Latitude-1, stationData[].Latitude+1, stationData[i].Longitude-1,stationData[i].Longitude+1),
-                //     new WorldWind.ImageSource(needleCanvas));
-                // Add the surface images to a layer and the layer to the WorldWindow's layer list.
-                // surfaceImageLayer.displayName = "Surface Images";
-                // surfaceImageLayer.addRenderable(surfaceImage);
-                // wwd.addLayer(surfaceImageLayer);
+                wwd.addLayer(placemarkLayerN);
                 // console.log(wwd.layers);
                 // layerManager.synchronizeLayerList();
-            }
-        });
+                autoS();
 
+            }
+
+            function autoS() {
+                if(wwd.drawContext.eyePosition.altitude > 200000){
+                    for(var i= 0; i < stationsData.length; i++){
+                        var index = wwd.layers.findIndex(element => element.displayName === "Placemarks" + stationsData[i].StationId);
+                        var indexN = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" + stationsData[i].StationId);
+                        var buttonIndex = buttonArray.findIndex(element => element.buttonValue === stationsData[i].StationId);
+
+                        if(index > -1 ){
+                            wwd.layers[index].enabled = false;
+                        }
+                        if(indexN >-1){
+                            if(buttonIndex > -1){
+                                wwd.layers[indexN].enabled = buttonArray[buttonIndex].buttonStatus
+                            }else{
+                                wwd.layers[indexN].enabled = true;
+                            }
+                        }
+                    }
+
+                } else{
+                    for(var a= 0; a < stationsData.length; a++){
+                        var Index = wwd.layers.findIndex(element => element.displayName === "Placemarks" + stationsData[a].StationId);
+                        var IndexN = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" + stationsData[a].StationId);
+                        var buttonIndex = buttonArray.findIndex(element => element.buttonValue === stationsData[a].StationId);
+                        if(Index >-1 ){
+                            if(buttonIndex > -1){
+                                wwd.layers[Index].enabled = buttonArray[buttonIndex].buttonStatus
+                            }else{
+                                wwd.layers[Index].enabled = true;
+                            }
+                        }
+                        if(IndexN >-1 ){
+                            wwd.layers[IndexN].enabled = false;
+                        }
+                    }
+
+                }
+            }
+
+            wwd.addEventListener("wheel",autoS);
+
+        });
 
 
 </script>
