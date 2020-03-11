@@ -279,7 +279,7 @@
 
                 setInterval(function () {
                     // console.log(wwd.worldWindowController.wwd.eventListeners);
-                    staQuery()}, 5000);
+                    staQuery()}, 1200000);
 
             });
 
@@ -450,6 +450,7 @@
             }
 
             async function query(staInfo) {
+                console.log("begin!!!!!!!!!!!!!");
 
                 if (ini) {
                     await building(staInfo);
@@ -461,6 +462,7 @@
                     method: "get",
                     data: {stationID: staInfo.StationId},
                     success: async function(res){
+                        console.log("finish!!!!!!!!!!!!!!");
 
                         if(!!res){
                             var x_arr = [];
@@ -876,7 +878,7 @@
 
             function autoS() {
                 // console.log(wwd.layers[6].wwd.drawContext.eyePosition.altitude);
-                // wwd.redraw();
+                wwd.redraw();
                 if(wwd.drawContext.eyePosition.altitude > 200000){
                     console.log("switch to placemark");
 

@@ -31,7 +31,7 @@ const con = mysql.createConnection({
 
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
-let pastTime = "4m";
+let pastTime = "2d";
 let nowTime = "2m";
 let pack=[];
 let i=0;
