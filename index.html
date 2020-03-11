@@ -274,7 +274,7 @@
             $(document).ready(async function () {
 
                 // await staQuery();
-                await query({StationId: "station_two"});
+                await query({StationId: "station_the"});
 
                 wwd.goTo(new WorldWind.Position(37.175229, -121.823628, 130000));
 
@@ -455,12 +455,16 @@
             //let cool = counterX.counter1;
             let dirCounter = 0;
             let direction;
-            let counterXup;
+            let counterXup = 0;
             let counterXdown = 0;
             let counterY;
             let counterZ;
             let defcon1 = false;
             let defcon2 = false;
+
+            function alertFunction() {
+                alert("Hello! I am an alert box!");
+            }
 
             async function query(staInfo) {
 
@@ -482,7 +486,7 @@
                             var z_arr = [];
 
                             await res.forEach(function(el,i) {
-                                console.log(i);
+                                // console.log(i);
                                     x_arr[i] = [new Date(el.time), el.X];
                                     y_arr[i] = [new Date(el.time), el.Y];
                                     z_arr[i] = [new Date(el.time), el.Z];
@@ -552,49 +556,74 @@
 
                             let x_k, x_bro = 0;
                             var dx_arr = [];
+                            var cool = [];
 
                             let changeDir = false;
+                            console.log(x_arr);
+
+
+
+                            // transporter.sendMail(mailOptions, function(error, info){
+                            //     if (error) {
+                            //         console.log(error);
+                            //     } else {
+                            //         console.log('Email sent: ' + info.response);
+                            //     }
+                            // });
 
                             //determine sample direction
                             //determine turn around point
                             //determine continuous jump oppositely
 
                             for (let i = 1; i < x_arr.length - 1; i++){
-
-                                x_k = x_arr[i][1]-((x_arr[i - 1][1] + x_arr[i + 1][1])/2);  // single distance
-                                dx_arr[i-1] = x_k;
+                                x_k = Math.abs(x_arr[i][1]-((x_arr[i - 1][1] + x_arr[i + 1][1])/2));  // single distance
+                                // cool[0] = x_k;
+                                // cool[1] = x_arr[i][0];
+                                dx_arr.push([x_k, x_arr[i][0]]);
+                                //console.log("Begin: ");
+                                //console.log(dx_arr);
                                 x_bro += x_k;
                                 if (i === x_arr.length - 2){
                                     let dx_avg = x_bro/dx_arr.length;
+                                    console.log("End: ");
+                                    console.log(dx_arr);
+                                    console.log(dx_avg);
                                     //direction = Math.sign(dx_arr[0]);
                                     for (let j = 0; j < dx_arr.length; j++){
-                                        if(dx_arr[j] > (200 * dx_avg)){
-                                            console.log("time is" + x_arr[j + 1][0]);
+                                        if(dx_arr[j][0] > (3.6 * dx_avg)){
+                                            console.log("time is" + dx_arr[j][1]);
                                             //find direction
-                                            direction = Math.sign(x_arr[j + 1][1] - x_arr[j][1]);
-                                            let prevDirection = Math.sign(x_arr[j][1] - x_arr[j - 1][1]);
+
+                                            let prevDirection = 0;
+                                            if(j <= 1){
+                                                direction = 0;
+                                                prevDirection = 0;
+                                            } else {
+                                                direction = Math.sign(x_arr[j][1] - x_arr[j - 1][1]);
+                                                prevDirection = Math.sign(x_arr[j - 1][1] - x_arr[j - 2][1]);
+                                            }
                                             //console.log(x_arr[j + 1][1]);
                                             //check if direction is going up
-                                            console.log("curent direction is: " + direction);
-                                            console.log("prevdirection = " + prevDirection);
+                                            // console.log("curent direction is: " + direction);
+                                            // console.log("prevdirection = " + prevDirection);
                                             if (direction === 1){
                                                 //check if the previous value was a down value
-                                                if (Math.sign(x_arr[j][1] - x_arr[j - 1][1]) === -1 && defcon1 === false){
-
+                                                if (prevDirection === -1 && defcon1 === false){
+                                                    // console.log("defcon1 status: " + defcon1);
                                                     // set the current counter to 0
                                                     counterXup = 0;
-                                                    console.log("counter up = " + counterXup);
-                                                    console.log("counter down = " + counterXdown);
+                                                    // console.log("counter up = " + counterXup);
+                                                    // console.log("counter down = " + counterXdown);
                                                     // counterXdown++;
                                                     if (counterXup >= 15){
                                                         defcon1 = true;
-                                                        console.log("defcon1 is true bud");
+                                                        console.log("defcon1 is true bud at time: " + dx_arr[j][1]);
                                                     } else {
                                                         defcon1 = false;
                                                     }
                                                     // check if the previous down counter hadn't reached 20
                                                     if(counterXdown < 15 && defcon2 === false){
-                                                        console.log("checking");
+                                                        //console.log("checking");
                                                         //set it to zero to be reused at another time
                                                         counterXdown = 0;
                                                     } else {
@@ -603,11 +632,11 @@
                                                 } else {
                                                     //increment the counter
                                                     counterXup++;
-                                                    console.log("counterXUp = " + counterXup);
-                                                    console.log(counterXup);
+                                                    //console.log("counterXUp = " + counterXup);
+                                                    //console.log(counterXup);
                                                     if (counterXup >= 15){
                                                         defcon1 = true;
-                                                        console.log("defcon1 is true but on the line 588");
+                                                        console.log("defcon1 is true but at time: " + dx_arr[j][1]);
                                                     } //else if (defcon1 === true){
                                                     //     defcon1 = false;
                                                     //     console.log("defcon2 is now false from line 591")
@@ -616,6 +645,15 @@
                                                 }
                                                 if(defcon1 == true && defcon2 == true){
                                                     console.log("broski");
+                                                    alertFunction();
+                                                    defcon1 = false;
+                                                    defcon2 = false;
+                                                    counterXup = 0;
+                                                    counterXdown = 0;
+                                                    $.ajax({
+                                                        // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query',
+                                                        url: "http://localhost:3005/mail",
+                                                        method: "get"});
                                                 }
                                                 //check if the current counter has reached or surpassed 20
                                                 // while (counterXup >= 20) {
@@ -626,7 +664,7 @@
                                             //check if direction is going down
                                             if (direction === -1){
                                                 //check if the previous value was an up value
-                                                if (Math.sign(x_arr[j][1] - x_arr[j - 1][1]) === 1 && defcon2 === false){
+                                                if (prevDirection === 1 && defcon2 === false){
 
                                                     // set the current counter to 0
                                                     counterXdown = 0;
@@ -662,6 +700,12 @@
                                                 }
                                                 if(defcon1 == true && defcon2 == true){
                                                     console.log("broski");
+                                                    alertFunction();
+                                                    defcon1 = false;
+                                                    defcon2 = false;
+                                                    counterXup = 0;
+                                                    counterXdown = 0;
+
                                                 }
                                             }
 

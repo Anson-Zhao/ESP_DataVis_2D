@@ -1,10 +1,26 @@
 const Influx = require('influx');
 const express = require('express');
 const app = express();
+const nodemailer = require('nodemailer');
 // let jsonexport = require('jsonexport');
 // let path = require('path');
 // const csv = require('csv-parser');
 // let fs = require('fs');
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'youremail@gmail.com',
+        pass: 'yourpassword'
+    }
+});
+
+const mailOptions = {
+    from: 'youremail@gmail.com',
+    to: 'myfriend@yahoo.com',
+    subject: 'Sending Email using Node.js',
+    text: 'That was easy!'
+};
 
 app.listen('3005');
 
@@ -175,6 +191,16 @@ app.get('/query', function (req, res) {
     }).catch(err => {
         console.log(err)
     })
+});
+
+app.get('/mail', function (req, res){
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
 });
 
 // app.get('/querys', async function (req, res) {
