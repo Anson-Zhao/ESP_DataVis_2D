@@ -30,7 +30,7 @@ const con = mysql.createConnection({
 
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
-let pastTime = "2d";
+let pastTime = "3d";
 let nowTime = "2m";
 let pack=[];
 let i=0;

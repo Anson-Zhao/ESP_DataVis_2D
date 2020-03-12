@@ -43,7 +43,7 @@
 
 <div id="live_chart">
     <h1>Live Chart</h1>
-    <h2>The charts represent 2 minutes of live data from the ESP-1 Station, with a 2-minute delay</h2>
+    <h2>The charts represent past 3 days data, refreshed every 20 minutes</h2>
 </div>
 
 <script type="text/javascript">
@@ -54,7 +54,7 @@
         function (WorldWind) {
             "use strict";
             //setting of the gauge
-            var settings = {
+            let settings = {
                 gaugeMinValue: -100000,
                 gaugeMaxValue: 100000,
                 gaugeStartValue: 0,
@@ -62,7 +62,7 @@
                 gaugeEndAngle: 90,
                 gaugeUpdateInterval: 5000 // ms
             };
-            var options = {
+            let options = {
                 tooltip: {
                     enabled: false
                 },
@@ -108,7 +108,7 @@
                             verticalAlign: 'middle',
                             // style: false,
                             formatter: function () {
-                                var output = '<div class="gauge-data">';
+                                let output = '<div class="gauge-data">';
                                 output += '<span class="gauge-value">' + this.y + '</span>';
                                 output += '</div>';
 
@@ -219,21 +219,22 @@
             };
 
             // //I want array with string inside
-            // var stations = [];
+            // let stations = [];
             // //single station name that we are going to deal with
-            // var stationsInfo = [];
+            // let stationsInfo = [];
             //
             // //5s average gauge data
-            // var sta;
-            // var img;
+            // let sta;
+            // let img;
             let ini = true;
-            var needle = new Image();
+            let degrees = 0;
+            let needle = new Image();
             needle.src = 'images/needle.png';
-            var wwd = new WorldWind.WorldWindow("canvasOne");
-            // var layerManager = new LayerManager(wwd);
-            var stationsData=[];
+            let wwd = new WorldWind.WorldWindow("canvasOne");
+            // let layerManager = new LayerManager(wwd);
+            let stationsData=[];
             // Create and add layers to the WorldWindow.
-            var layers = [
+            let layers = [
                 // Imagery layers.
                 {layer: new WorldWind.BMNGLayer(), enabled: true},
                 {layer: new WorldWind.BMNGLandsatLayer(), enabled: false},
@@ -245,23 +246,23 @@
                 {layer: new WorldWind.CoordinatesDisplayLayer(wwd), enabled: true},
                 {layer: new WorldWind.ViewControlsLayer(wwd), enabled: true}
             ];
-            var showPlacemark;
-            var buttonArray = [];
+            let showPlacemark;
+            let buttonArray = [];
 
-            for (var l = 0; l < layers.length; l++) {
+            for (let l = 0; l < layers.length; l++) {
                 layers[l].layer.enabled = layers[l].enabled;
                 wwd.addLayer(layers[l].layer);
             }
 
             //create canvas for placemarks
-            var canvas = document.createElement("canvas"),
+            let canvas = document.createElement("canvas"),
                 ctx2d = canvas.getContext("2d"),
                 size = 64, c = size / 2  - 0.5, innerRadius = 5, outerRadius = 20;
 
             canvas.width = size;
             canvas.height = size;
 
-            var gradient = ctx2d.createRadialGradient(c, c, innerRadius, c, c, outerRadius);
+            let gradient = ctx2d.createRadialGradient(c, c, innerRadius, c, c, outerRadius);
             gradient.addColorStop(0, 'rgb(204, 255, 255)');
             gradient.addColorStop(0.5, 'rgb(102, 153, 255)');
             gradient.addColorStop(1, 'rgb(102, 0, 255)');
@@ -313,19 +314,19 @@
                 //Notification: space means two classes, '_' means one class.
 
                 //add the button Div
-                var butDiv = document.createElement("div");
+                let butDiv = document.createElement("div");
                 butDiv.id = station.StationId+"_butDiv";
                 butDiv.setAttribute("style", "display: inline-block; margin-right: 40px;");
-                var br = document.createElement("br");
+                let br = document.createElement("br");
                 $('#control_button').append(butDiv);
 
                 //add button's title
-                var butTitle = document.createElement("p");
+                let butTitle = document.createElement("p");
                 butTitle.id = station.StationId+"_butTitle";
                 butTitle.textContent = station.City+", "+station.State;
 
                 //add the control button
-                var button = document.createElement("button");
+                let button = document.createElement("button");
                 button.id = station.StationId;
                 button.value = station.StationId;
                 button.textContent = station.StationName;
@@ -337,76 +338,76 @@
                 $('#'+station.StationId+"_butDiv").append(button).append(butTitle);
 
                 //add gauge title
-                var Gtitle = document.createElement("h2");
+                let Gtitle = document.createElement("h2");
                 Gtitle.className = station.StationId;
                 Gtitle.textContent = station.StationName+", "+station.City+", "+station.State;
                 // $('#gauge').append(Gtitle);
 
                 //create canvas for compass
-                var canvasCompass = document.createElement("canvas");
+                let canvasCompass = document.createElement("canvas");
                 canvasCompass.id= station.StationId + "_canvas";
                 canvasCompass.setAttribute("width", 300);
                 canvasCompass.setAttribute("height", 300);
 
                 //create compass div
-                var compassDiv = document.createElement("div");
+                let compassDiv = document.createElement("div");
                 compassDiv.id = station.StationId +'_C';
                 compassDiv.className = station.StationId;
                 compassDiv.setAttribute("style","display:inline-block;");
                 compassDiv.append(canvasCompass);
 
                 //create canvas for y-label of the coordinate
-                var yLabelC = document.createElement("canvas");
+                let yLabelC = document.createElement("canvas");
                 yLabelC.id = "y-label_" + station.StationId;
                 yLabelC.setAttribute("style","width : 20; height : 270; display: inline-block;");
                 yLabelC.setAttribute("width",20);
                 yLabelC.setAttribute("height",270);
 
                 //create canvas for x-label of the coordinate
-                var xLabelC = document.createElement("canvas");
+                let xLabelC = document.createElement("canvas");
                 xLabelC.id = "x-label_" + station.StationId;
                 xLabelC.setAttribute("style","display:table-cell; vertical-align: middle;");
                 xLabelC.setAttribute("width",270);
                 xLabelC.setAttribute("height",20);
 
                 //create canvas for the coordinate
-                var depthC = document.createElement("canvas");
+                let depthC = document.createElement("canvas");
                 depthC.id = "depth_" + station.StationId;
                 depthC.setAttribute("style", "display:table-cell; vertical-align: middle;");
                 depthC.setAttribute("width", 270);
                 depthC.setAttribute("height", 300);
 
                 //create a div for x-label and coordinate
-                var verticalDiv = document.createElement("div");
+                let verticalDiv = document.createElement("div");
                 verticalDiv.id = "vertical_"+station.StationId;
                 verticalDiv.setAttribute("style","display: inline-block;");
                 verticalDiv.append(xLabelC);
                 verticalDiv.append(depthC);
 
                 //create div for the vector (arrow)
-                var vectorDiv = document.createElement("div");
+                let vectorDiv = document.createElement("div");
                 vectorDiv.id = station.StationId+"_D";
                 vectorDiv.className = station.StationId;
                 vectorDiv.setAttribute("style","display: inline-block;");
                 vectorDiv.append(yLabelC);
                 vectorDiv.append(verticalDiv);
 
-                var depDirDiv = document.createElement('div');
+                let depDirDiv = document.createElement('div');
                 depDirDiv.className = station;
                 depDirDiv.append(compassDiv);
                 depDirDiv.append(vectorDiv);
 
                 //add gauge Div
-                // var gaugeDiv = document.createElement("div");
+                // let gaugeDiv = document.createElement("div");
                 // gaugeDiv.className = station.StationId+" container";
                 // gaugeDiv.setAttribute("style", "margin: 0 auto; font-size: 16px; left: 90px; width: max-content; display: inline-table;");
                 // // $('#gauge').append(Gtitle).append(compassDiv).append(vectorDiv).append(gaugeDiv);
                 // $('#gauge').append(Gtitle).append(gaugeDiv);
 
                 //add xyz divs into gauge Div
-                var gdivX = document.createElement("div");
-                var gdivY = document.createElement("div");
-                var gdivZ = document.createElement("div");
+                let gdivX = document.createElement("div");
+                let gdivY = document.createElement("div");
+                let gdivZ = document.createElement("div");
                 gdivX.className = "contain n0";
                 gdivY.className = "contain n1";
                 gdivZ.className = "contain n2";
@@ -416,24 +417,24 @@
                 gdivX.setAttribute("style", "float: left; width: 250px; height: 250px; display: inline-table;");
                 gdivY.setAttribute("style", "float: left; width: 250px; height: 250px; display: inline-table;");
                 gdivZ.setAttribute("style", "float: left; width: 250px; height: 250px; display: inline-table;");
-                var b = "."+station.StationId+".container";
+                let b = "."+station.StationId+".container";
                 $(b).append(gdivX).append(gdivY).append(gdivZ);
 
                 //add live chart title
-                var cTitle = document.createElement("h2");
+                let cTitle = document.createElement("h2");
                 cTitle.className = station.StationId;
                 cTitle.textContent = station.StationName;
 
                 //add live chart Div
-                var chartDiv = document.createElement("div");
+                let chartDiv = document.createElement("div");
                 chartDiv.className = station.StationId+" charts";
                 chartDiv.setAttribute("style", "left: 90px; width: max-content; display: inline-table;");
                 $('#live_chart').append(cTitle).append(chartDiv);
 
                 //add xyz divs into live chart Div
-                var cdivX = document.createElement("div");
-                var cdivY = document.createElement("div");
-                var cdivZ = document.createElement("div");
+                let cdivX = document.createElement("div");
+                let cdivY = document.createElement("div");
+                let cdivZ = document.createElement("div");
                 cdivX.className = "chart n0";
                 cdivY.className = "chart n1";
                 cdivZ.className = "chart n2";
@@ -443,7 +444,7 @@
                 cdivX.setAttribute("style", "float: left;");
                 cdivY.setAttribute("style", "float: left;");
                 cdivZ.setAttribute("style", "float: left;");
-                var c = "."+station.StationId+".charts";
+                let c = "."+station.StationId+".charts";
                 $(c).append(cdivX).append(cdivY).append(cdivZ);
             }
 
@@ -461,9 +462,9 @@
                     success: async function(res){
 
                         if(!!res){
-                            var x_arr = [];
-                            var y_arr = [];
-                            var z_arr = [];
+                            let x_arr = [];
+                            let y_arr = [];
+                            let z_arr = [];
 
                             await res.forEach(function(el,i) {
                                     x_arr[i] = [new Date(el.time), el.X];
@@ -535,24 +536,24 @@
             }
 
             function buildGraph(chart) {
-                var a = $(this)[0].renderTo.className.slice(-1);
+                let a = $(this)[0].renderTo.className.slice(-1);
                 if (!chart.renderer.forExport) {
-                    var gaugePoint = chart.series[0].points[0];
-                    var newVal = parseInt(sta[a]);
+                    let gaugePoint = chart.series[0].points[0];
+                    let newVal = parseInt(sta[a]);
                     gaugePoint.update(newVal);
                 }
             }
 
             function check(objButton) {
-                var x = document.getElementsByClassName(objButton.value);
-                var y = '.'+objButton.value;
-                var z = '#'+objButton.value;
+                let x = document.getElementsByClassName(objButton.value);
+                let y = '.'+objButton.value;
+                let z = '#'+objButton.value;
 
                 if(wwd.drawContext.eyePosition.altitude < 200000){
 
                     if (x[0].style.display === "none") {
                         //show the placemarks
-                        var index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
+                        let index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
                         wwd.layers[index].enabled = true;
                         showPlacemark = true;
                         // console.log(index);
@@ -560,7 +561,7 @@
                         $(z).css('backgroundColor', 'gray');
                     } else {
                         //hide the placemarks
-                        var index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
+                        let index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
                         wwd.layers[index].enabled = false;
                         showPlacemark = false;
                         $(y).hide();
@@ -571,7 +572,7 @@
                     if (x[0].style.display === "none") {
 
                         //show the placemarks
-                        var index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
+                        let index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
                         wwd.layers[index].enabled = true;
                         showPlacemark = true;
                         console.log(index);
@@ -580,7 +581,7 @@
 
                     } else {
                         //hide the placemarks
-                        var index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
+                        let index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
                         wwd.layers[index].enabled = false;
                         showPlacemark = false;
                         $(y).hide();
@@ -588,8 +589,8 @@
 
                     }
                 }
-                var object = {"buttonValue": objButton.value, "buttonStatus":showPlacemark};
-                var buttonIndex = buttonArray.findIndex(element => element.buttonValue === objButton.value);
+                let object = {"buttonValue": objButton.value, "buttonStatus":showPlacemark};
+                let buttonIndex = buttonArray.findIndex(element => element.buttonValue === objButton.value);
                 if(buttonIndex === -1) {
                     buttonArray.push(object);
                 }else{
@@ -599,10 +600,10 @@
             }
 
             function Avg(res, len) {
-                var xa, ya, za;
-                var arr = res.slice(Math.max(res.length - len, 0));
+                let xa, ya, za;
+                let arr = res.slice(Math.max(res.length - len, 0));
                 xa = ya = za = 0;
-                for (var i = 0; i < arr.length; i++) {
+                for (let i = 0; i < arr.length; i++) {
                     xa += arr[i].X;
                     ya += arr[i].Y;
                     za += arr[i].Z;
@@ -630,7 +631,7 @@
                     xa = ya = za = 0;
                     let sliceDelta = Math.max(res.length - len * 2, 0);
                     let arrDelta = res.slice(sliceDelta);
-                    for (var i = 0; i < arrDelta.length / 2; i++) {
+                    for (let i = 0; i < arrDelta.length / 2; i++) {
 
                         xa += arrDelta[i].X - arrDelta[i + len].X;
                         ya += arrDelta[i].Y - arrDelta[i + len].Y;
@@ -657,7 +658,7 @@
                     degrees = calcAngleDegrees(staAvg[0], staAvg[1]);
 
                     if(wwd.layers.length > layers.length + 3){
-                        for (var a = 0; a < wwd.layers.length; a++){
+                        for (let a = 0; a < wwd.layers.length; a++){
                             if(wwd.layers[a].displayName === "Placemarks"+stationData.StationId){
                                 wwd.layers[a].renderables.length = 0;
                                 wwd.layers.splice(a,1);
@@ -673,7 +674,7 @@
                     degrees = 0;
 
                     if(wwd.layers.length > layers.length + 3){
-                        for (var a = 0; a < wwd.layers.length; a++){
+                        for (let a = 0; a < wwd.layers.length; a++){
                             if(wwd.layers[a].displayName === "Placemarks"+stationData.StationId){
                                 wwd.layers[a].renderables.length = 0;
                                 wwd.layers.splice(a,1);
@@ -686,13 +687,13 @@
                     }
                 }
 
-                var needleCanvas = document.createElement("canvas");
+                let needleCanvas = document.createElement("canvas");
                 needleCanvas.id= stationData.StationId + "_needle";
                 needleCanvas.width = 300;
                 needleCanvas.height = 300;
-                var ctx2d = needleCanvas.getContext("2d");
+                let ctx2d = needleCanvas.getContext("2d");
 
-                var placemark,
+                let placemark,
                     placemarkN,
                     placemarkAttributes = new WorldWind.PlacemarkAttributes(null),
                     placemarkAttributesN = new WorldWind.PlacemarkAttributes(null),
@@ -780,10 +781,10 @@
 
             function autoS() {
                 if(wwd.drawContext.eyePosition.altitude > 200000){
-                    for(var i= 0; i < stationsData.length; i++){
-                        var index = wwd.layers.findIndex(element => element.displayName === "Placemarks" + stationsData[i].StationId);
-                        var indexN = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" + stationsData[i].StationId);
-                        var buttonIndex = buttonArray.findIndex(element => element.buttonValue === stationsData[i].StationId);
+                    for(let i= 0; i < stationsData.length; i++){
+                        let index = wwd.layers.findIndex(element => element.displayName === "Placemarks" + stationsData[i].StationId);
+                        let indexN = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" + stationsData[i].StationId);
+                        let buttonIndex = buttonArray.findIndex(element => element.buttonValue === stationsData[i].StationId);
 
                         if(index > -1 ){
                             wwd.layers[index].enabled = false;
@@ -798,10 +799,10 @@
                     }
 
                 } else{
-                    for(var a= 0; a < stationsData.length; a++){
-                        var Index = wwd.layers.findIndex(element => element.displayName === "Placemarks" + stationsData[a].StationId);
-                        var IndexN = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" + stationsData[a].StationId);
-                        var buttonIndex = buttonArray.findIndex(element => element.buttonValue === stationsData[a].StationId);
+                    for(let a= 0; a < stationsData.length; a++){
+                        let Index = wwd.layers.findIndex(element => element.displayName === "Placemarks" + stationsData[a].StationId);
+                        let IndexN = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" + stationsData[a].StationId);
+                        let buttonIndex = buttonArray.findIndex(element => element.buttonValue === stationsData[a].StationId);
                         if(Index >-1 ){
                             if(buttonIndex > -1){
                                 wwd.layers[Index].enabled = buttonArray[buttonIndex].buttonStatus
