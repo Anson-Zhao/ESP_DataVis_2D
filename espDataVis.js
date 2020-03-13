@@ -176,8 +176,8 @@ app.get('/newSnow', async function (req, res) {
 
 app.get('/query', function (req, res) {
 
-    let timeFromX = "2020-03-08T23:00:00.000Z";
-    let timeToX = "2020-03-09T08:05:00.000Z";
+    let timeFromX = "2020-01-01T18:30:00.000Z";
+    let timeToX = "2020-01-01T19:00:00.000Z";
     // let stationID = 'station_two';
     let query = 'SELECT * FROM ' + req.query.stationID + "avg WHERE time >= '" + timeFromX + "'" + " AND time<= '" + timeToX + "'";
     // let query = "SELECT * FROM 'station_two'" + " avg WHERE time >= '" + timeFromX + "'" + " AND time<= '" + timeToX + "'";
