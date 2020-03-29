@@ -20,7 +20,7 @@ const mysql = require('mysql');
 const bodyParser = require("body-parser");
 
 const con = mysql.createConnection({
-    host: "10.11.90.16",
+    host: "localhost",
     user: "AppUser",
     password: "Special888%",
     port: "3306",
@@ -156,6 +156,7 @@ app.get('/newSnow', async function (req, res) {
 });
 
 app.get('/query', function (req, res) {
+    pastTime = req.query.chartDuration;
     let query = 'SELECT * FROM ' + req.query.stationID + 'avg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime;
     influx.query(query).then
     (result => {
