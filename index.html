@@ -54,14 +54,6 @@
 </div>
 
 <script type="text/javascript">
-
-    // requirejs([
-    //     './src/WorldWind'
-    // ], function (WorldWind) {
-    //     "use strict";
-    //
-    // });
-
     //setting of the gauge
     let settings = {
         gaugeMinValue: -100000,
@@ -227,22 +219,18 @@
         credits: false
     };
 
-    // //I want array with string inside
-    // let stations = [];
-    // //single station name that we are going to deal with
-    // let stationsInfo = [];
-    //
-    // //5s average gauge data
-    // let sta;
-    // let img;
     let ini = true;
     let degrees = 0;
     let chartDT = "1d";
+    let stationsData=[];
+    let showPlacemark;
+    let buttonArray = [];
+
     let needle = new Image();
     needle.src = 'images/needle.png';
+
     let wwd = new WorldWind.WorldWindow("canvasOne");
-    // let layerManager = new LayerManager(wwd);
-    let stationsData=[];
+
     // Create and add layers to the WorldWindow.
     let layers = [
         // Imagery layers.
@@ -256,8 +244,6 @@
         {layer: new WorldWind.CoordinatesDisplayLayer(wwd), enabled: true},
         {layer: new WorldWind.ViewControlsLayer(wwd), enabled: true}
     ];
-    let showPlacemark;
-    let buttonArray = [];
 
     for (let l = 0; l < layers.length; l++) {
         layers[l].layer.enabled = layers[l].enabled;
@@ -288,7 +274,6 @@
         wwd.goTo(new WorldWind.Position(37.175229, -121.823628, 130000));
 
         setInterval(function () {
-            // console.log(wwd.worldWindowController.wwd.eventListeners);
             staQuery()}, 1200000);
 
         wwd.addEventListener("wheel",autoS);
@@ -534,10 +519,6 @@
                     // $('#' + staInfo.StationId + '_gaugeY').highcharts(options, buildGraph);
                     // $('#' + staInfo.StationId + '_gaugeZ').highcharts(options, buildGraph);
 
-                    // console.log(staInfo);
-
-                    // console.log(deltaAvg(res, 5));
-
                     createPL(staInfo,Avg(res,5))
                 }
 
@@ -578,7 +559,6 @@
                 let index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
                 wwd.layers[index].enabled = true;
                 showPlacemark = true;
-                // console.log(index);
                 $(y).show();
                 $(z).css('backgroundColor', 'gray');
             } else {
@@ -597,7 +577,6 @@
                 let index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
                 wwd.layers[index].enabled = true;
                 showPlacemark = true;
-                // console.log(index);
                 $(y).show();
                 $(z).css('backgroundColor', 'gray');
 
@@ -618,7 +597,6 @@
         }else{
             buttonArray[buttonIndex] = object
         }
-        // console.log(buttonArray);
     }
 
     function Avg(res, len) {
@@ -747,7 +725,6 @@
 
         // Rotate around this point
         ctx2d.rotate(degrees * (Math.PI / 180));
-        // console.log(degrees);
         ctx2d.drawImage(needle, -172, -172);
         ctx2d.restore();
 
@@ -779,7 +756,6 @@
         placemarkN = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, 1e2), false, null);
         placemarkN.altitudeMode = WorldWind.RELATIVE_TO_GROUND;
         // placemarkN.enabled = false;
-        // console.log(placemarkN);
 
         // Create the placemark attributes for the placemark.
         placemarkAttributesN = new WorldWind.PlacemarkAttributes(placemarkAttributesN);
@@ -789,16 +765,13 @@
         placemarkN.attributes = placemarkAttributesN;
         placemarkLayerN.enabled = false;
 
-        // console.log(placemarkLayerN);
-
         placemarkLayerN.addRenderable(placemarkN);
         placemarkLayer.addRenderable(placemark);
         wwd.addLayer(placemarkLayer);
         wwd.addLayer(placemarkLayerN);
-        // console.log(wwd.layers);
+
         // layerManager.synchronizeLayerList();
         autoS();
-
     }
 
     function autoS() {
@@ -839,8 +812,6 @@
 
         }
     }
-
-
 
 </script>
 
