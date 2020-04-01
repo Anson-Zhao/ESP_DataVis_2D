@@ -137,7 +137,7 @@ app.get('/newSnow', async function (req, res) {
     });
 
     let exportFilename = req.query.stationName + "_" + req.query.timeFrom.slice(5,-11) +'-'+ req.query.timeTo.slice(5,-11) + 'Raw.csv';
-    let link = 'rawData/'+exportFilename;
+    let link = './rawData/'+exportFilename;
     const csvWriter = createCsvWriter({
         path: link,
         header: [

@@ -396,12 +396,13 @@
                     $('#downloading').show()
 
                 },
-                success: function (res) {
+                success: function (exportFilename) {
                     console.log("success");
-                    console.log(res);
-                    var Filename = timeFrom.slice(0,-5) +'-'+ timeTo.slice(0,-5) + 'RawESPData.csv';
-                    var exportFilename = 'http://localhost:63343/ESP_DataVis_2D/'+res;
                     console.log(exportFilename);
+                    // var Filename = timeFrom.slice(0,-5) +'-'+ timeTo.slice(0,-5) + 'RawESPData.csv';
+                    // var exportFilename = 'http://localhost:63343/ESP_DataVis_2D/'+res;
+                    // var exportFilename = '/'+res;
+                    // console.log(exportFilename);
 
                     // window.open(exportFilename);
 
