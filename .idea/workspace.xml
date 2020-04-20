@@ -1,169 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="minor bug fixed">
-      <change afterPath="$PROJECT_DIR$/espDataVis_bk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/historical_bk.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/new.ejs" afterDir="false" />
+    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/after/.npmignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/after/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/after/LICENCE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/after/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/after/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/after/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/after/test/after-test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/core-util-is/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/core-util-is/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/core-util-is/float.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/core-util-is/lib/util.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/core-util-is/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/core-util-is/test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/inherits/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/inherits/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/inherits/inherits.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/inherits/inherits_browser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/inherits/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/isarray/.npmignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/isarray/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/isarray/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/isarray/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/isarray/component.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/isarray/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/isarray/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/isarray/test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/process-nextick-args/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/process-nextick-args/license.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/process-nextick-args/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/process-nextick-args/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/safe-buffer/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/safe-buffer/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/safe-buffer/index.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/safe-buffer/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/safe-buffer/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/.coveralls.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/.nvmrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/.nyc_output/f02e18a9-b1c7-4946-836e-c3dbfb9635a3.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/.nyc_output/processinfo/f02e18a9-b1c7-4946-836e-c3dbfb9635a3.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/.nyc_output/processinfo/index.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/Gruntfile.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/bower.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/component.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/coverage.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/lcov-report/base.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/lcov-report/block-navigation.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/lcov-report/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/lcov-report/prettify.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/lcov-report/prettify.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/lcov-report/seedrandom/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/lcov-report/seedrandom/lib/alea.js.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/lcov-report/seedrandom/lib/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/lcov-report/seedrandom/lib/tychei.js.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/lcov-report/seedrandom/lib/xor128.js.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/lcov-report/seedrandom/lib/xor4096.js.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/lcov-report/seedrandom/lib/xorshift7.js.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/lcov-report/seedrandom/lib/xorwow.js.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/lcov-report/seedrandom/seedrandom.js.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/lcov-report/sort-arrow-sprite.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/lcov-report/sorter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/coverage/lcov.info" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/lib/alea.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/lib/alea.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/lib/crypto.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/lib/tychei.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/lib/tychei.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/lib/xor128.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/lib/xor128.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/lib/xor4096.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/lib/xor4096.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/lib/xorshift7.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/lib/xorshift7.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/lib/xorwow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/lib/xorwow.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/seedrandom.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/seedrandom/seedrandom.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/sqlstring/HISTORY.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/sqlstring/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/sqlstring/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/sqlstring/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/sqlstring/lib/SqlString.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/sqlstring/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/string_decoder/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/string_decoder/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/string_decoder/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/string_decoder/lib/string_decoder.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/string_decoder/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/timezone-mock/.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/timezone-mock/.jshintrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/timezone-mock/.npmignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/timezone-mock/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/timezone-mock/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/timezone-mock/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/timezone-mock/lib/tzdata.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/timezone-mock/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/timezone-mock/tests/test-constructors.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/timezone-mock/tests/test-setters.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/timezone-mock/tests/test-vs-local.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/timezone-mock/timezone-mock.sublime-project" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/.npmignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/Readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/lib/FileExecutor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/lib/FileFilter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/lib/FileFinder.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/lib/Runner.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/lib/reporter/BashReporter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/lib/reporter/BashTapReporter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/lib/str.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/test/fixture/1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/test/fixture/2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/test/fixture/a/a1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/test/fixture/a/a2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/test/fixture/b/b1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/test/fixture/b/b2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/test/fixture/b/deep/file.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/test/integration/FileExecutor/test-executes-file.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/test/integration/FileFinder/test-finds-all-fixtures.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/test/integration/Runner/test-runs-files.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/test/run.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/test/unit/test-FileExecutor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/urun/test/unit/test-FileFilter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/.npmignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/Readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/browser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/lib/Collection.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/lib/TestCase.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/lib/reporter/BashReporter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/lib/reporter/ConsoleReporter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/syntax.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/test/system/test-console-reporter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/test/system/test-example.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/test/system/test-run-selected-tests.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/test/unit/test-BashReporter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/test/unit/test-Collection.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/test/unit/test-ConsoleReporter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/utest/test/unit/test-TestCase.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/util-deprecate/History.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/util-deprecate/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/util-deprecate/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/util-deprecate/browser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/util-deprecate/node.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mysql/node_modules/util-deprecate/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -384,14 +223,7 @@
       <workItem from="1586533863546" duration="59000" />
       <workItem from="1586893715010" duration="2004000" />
       <workItem from="1587341886973" duration="7525000" />
-      <workItem from="1587356557565" duration="8961000" />
-    </task>
-    <task id="LOCAL-00001" summary="esp live chart">
-      <created>1571239268892</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1571239268892</updated>
+      <workItem from="1587356557565" duration="10043000" />
     </task>
     <task id="LOCAL-00002" summary="esp live chart">
       <created>1571323742899</created>
@@ -715,7 +547,28 @@
       <option name="project" value="LOCAL" />
       <updated>1585764475905</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="minor bug fixed">
+      <created>1587410651859</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1587410651859</updated>
+    </task>
+    <task id="LOCAL-00049" summary=".">
+      <created>1587410687792</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1587410687792</updated>
+    </task>
+    <task id="LOCAL-00050" summary=".">
+      <created>1587410709512</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1587410709513</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -748,7 +601,8 @@
     <MESSAGE value="Merge branch 'master' of https://github.com/Anson-Zhao/ESP_DataVis_2D into Rachel&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;historical.html" />
     <MESSAGE value="chart date selectable" />
     <MESSAGE value="minor bug fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor bug fixed" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
   <component name="WindowStateProjectService">
     <state x="908" y="459" key="#Deployment" timestamp="1582127798343">
@@ -768,10 +622,10 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1408" y="530" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1583160026739" />
-    <state x="293" y="0" key="CommitChangelistDialog2" timestamp="1587410695550">
+    <state x="293" y="0" key="CommitChangelistDialog2" timestamp="1587410716336">
       <screen x="0" y="0" width="1440" height="923" />
     </state>
-    <state x="293" y="0" key="CommitChangelistDialog2/0.0.1440.923@0.0.1440.923" timestamp="1587410695550" />
+    <state x="293" y="0" key="CommitChangelistDialog2/0.0.1440.923@0.0.1440.923" timestamp="1587410716336" />
     <state x="391" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1585764474555" />
     <state x="946" y="311" key="CommitChangelistDialog2/0.23.2560.1308@0.23.2560.1308" timestamp="1584019414774" />
     <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1583255580947" />
@@ -789,31 +643,31 @@
       <screen x="0" y="0" width="1440" height="923" />
     </state>
     <state x="501" y="219" key="FileChooserDialogImpl/0.0.1440.923@0.0.1440.923" timestamp="1587390359399" />
-    <state width="1397" height="228" key="GridCell.Tab.0.bottom" timestamp="1587387428593">
+    <state width="1397" height="228" key="GridCell.Tab.0.bottom" timestamp="1587410758453">
       <screen x="0" y="0" width="1440" height="923" />
     </state>
-    <state width="1397" height="228" key="GridCell.Tab.0.bottom/0.0.1440.923@0.0.1440.923" timestamp="1587387428593" />
+    <state width="1397" height="228" key="GridCell.Tab.0.bottom/0.0.1440.923@0.0.1440.923" timestamp="1587410758453" />
     <state width="1865" height="265" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586894933904" />
     <state width="987" height="298" key="GridCell.Tab.0.bottom/0.23.2560.1308@0.23.2560.1308" timestamp="1584016453499" />
     <state width="1400" height="327" key="GridCell.Tab.0.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1583938858128" />
-    <state width="1397" height="228" key="GridCell.Tab.0.center" timestamp="1587387428593">
+    <state width="1397" height="228" key="GridCell.Tab.0.center" timestamp="1587410758452">
       <screen x="0" y="0" width="1440" height="923" />
     </state>
-    <state width="1397" height="228" key="GridCell.Tab.0.center/0.0.1440.923@0.0.1440.923" timestamp="1587387428593" />
+    <state width="1397" height="228" key="GridCell.Tab.0.center/0.0.1440.923@0.0.1440.923" timestamp="1587410758452" />
     <state width="1865" height="265" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586894933904" />
     <state width="987" height="298" key="GridCell.Tab.0.center/0.23.2560.1308@0.23.2560.1308" timestamp="1584016453498" />
     <state width="1400" height="327" key="GridCell.Tab.0.center/0.23.2560.1417@0.23.2560.1417" timestamp="1583938858127" />
-    <state width="1397" height="228" key="GridCell.Tab.0.left" timestamp="1587387428592">
+    <state width="1397" height="228" key="GridCell.Tab.0.left" timestamp="1587410758452">
       <screen x="0" y="0" width="1440" height="923" />
     </state>
-    <state width="1397" height="228" key="GridCell.Tab.0.left/0.0.1440.923@0.0.1440.923" timestamp="1587387428592" />
+    <state width="1397" height="228" key="GridCell.Tab.0.left/0.0.1440.923@0.0.1440.923" timestamp="1587410758452" />
     <state width="1865" height="265" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586894933904" />
     <state width="987" height="298" key="GridCell.Tab.0.left/0.23.2560.1308@0.23.2560.1308" timestamp="1584016453498" />
     <state width="1400" height="327" key="GridCell.Tab.0.left/0.23.2560.1417@0.23.2560.1417" timestamp="1583938858126" />
-    <state width="1397" height="228" key="GridCell.Tab.0.right" timestamp="1587387428593">
+    <state width="1397" height="228" key="GridCell.Tab.0.right" timestamp="1587410758452">
       <screen x="0" y="0" width="1440" height="923" />
     </state>
-    <state width="1397" height="228" key="GridCell.Tab.0.right/0.0.1440.923@0.0.1440.923" timestamp="1587387428593" />
+    <state width="1397" height="228" key="GridCell.Tab.0.right/0.0.1440.923@0.0.1440.923" timestamp="1587410758452" />
     <state width="1865" height="265" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586894933904" />
     <state width="987" height="298" key="GridCell.Tab.0.right/0.23.2560.1308@0.23.2560.1308" timestamp="1584016453499" />
     <state width="1400" height="327" key="GridCell.Tab.0.right/0.23.2560.1417@0.23.2560.1417" timestamp="1583938858128" />
@@ -907,9 +761,10 @@
     </state>
     <state x="1125" y="447" width="845" height="574" key="find.popup/0.23.2560.1308@0.23.2560.1308" timestamp="1582127467563" />
     <state x="1435" y="603" width="845" height="528" key="find.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1579298741926" />
-    <state x="1154" y="328" key="git4idea.merge.GitPullDialog" timestamp="1585424477453">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="810" y="291" key="git4idea.merge.GitPullDialog" timestamp="1587410744884">
+      <screen x="0" y="0" width="1440" height="923" />
     </state>
+    <state x="810" y="291" key="git4idea.merge.GitPullDialog/0.0.1440.923@0.0.1440.923" timestamp="1587410744884" />
     <state x="1154" y="328" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585424477453" />
     <state x="1538" y="435" key="git4idea.merge.GitPullDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1582045742886" />
     <state x="1037" y="538" key="new project wizard" timestamp="1579101598572">
