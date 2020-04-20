@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="" />
+    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/index_upd.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sshConfigs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,7 +70,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/jsLibrary" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -80,6 +85,12 @@
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/indexbackup.html" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
+      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\jsLibrary" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/node_modules" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\archive" />
       <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
@@ -87,20 +98,15 @@
       <recent name="$PROJECT_DIR$/img" />
       <recent name="$PROJECT_DIR$/archive" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\jsLibrary" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/node_modules" />
-    </key>
   </component>
-  <component name="RunManager" selected="Node.js.espDataVis.js">
+  <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration name="historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="index116.html?_ijt=4mhebuui7t5p4oes4q86ask3pg" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/index116.html?_ijt=4mhebuui7t5p4oes4q86ask3pg" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="index.html?_ijt=pl3ll9sdummqmmcs4odplgq0dh" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/index.html?_ijt=pl3ll9sdummqmmcs4odplgq0dh" useBuiltInWebServerPort="true">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/ESP_DataVis_2D_BX/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="index.html?_ijt=r175ml65f3vkfl9oo4qrtlfi9k" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/index.html?_ijt=r175ml65f3vkfl9oo4qrtlfi9k" useBuiltInWebServerPort="true">
@@ -110,19 +116,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="JavaScript Debug.index.html?_ijt=pl3ll9sdummqmmcs4odplgq0dh" />
       <item itemvalue="JavaScript Debug.index.html?_ijt=r175ml65f3vkfl9oo4qrtlfi9k" />
       <item itemvalue="JavaScript Debug.index116.html?_ijt=4mhebuui7t5p4oes4q86ask3pg" />
       <item itemvalue="JavaScript Debug.historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" />
       <item itemvalue="Node.js.espDataVis.js" />
+      <item itemvalue="JavaScript Debug.index.html" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="Node.js.espDataVis.js" />
         <item itemvalue="JavaScript Debug.historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" />
         <item itemvalue="JavaScript Debug.index116.html?_ijt=4mhebuui7t5p4oes4q86ask3pg" />
         <item itemvalue="JavaScript Debug.index.html?_ijt=r175ml65f3vkfl9oo4qrtlfi9k" />
-        <item itemvalue="JavaScript Debug.index.html?_ijt=pl3ll9sdummqmmcs4odplgq0dh" />
       </list>
     </recent_temporary>
   </component>
@@ -213,6 +219,7 @@
       <workItem from="1586224034914" duration="635000" />
       <workItem from="1586533863546" duration="59000" />
       <workItem from="1586893715010" duration="2049000" />
+      <workItem from="1587394994608" duration="3141000" />
     </task>
     <task id="LOCAL-00001" summary="esp live chart">
       <created>1571239268892</created>
@@ -550,7 +557,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586912508046</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="update dygraph libraries">
+      <created>1587395103826</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1587395103826</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -603,15 +617,16 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1408" y="530" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1583160026739" />
-    <state x="391" y="0" key="CommitChangelistDialog2" timestamp="1586912506766">
+    <state x="391" y="0" key="CommitChangelistDialog2" timestamp="1587395102334">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="391" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586912506766" />
+    <state x="391" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587395102334" />
     <state x="946" y="311" key="CommitChangelistDialog2/0.23.2560.1308@0.23.2560.1308" timestamp="1584019414774" />
     <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1583255580947" />
-    <state x="58" y="42" width="1928" height="932" key="DiffContextDialog" timestamp="1582120381212">
-      <screen x="0" y="23" width="2560" height="1308" />
+    <state x="44" y="15" width="1446" height="742" key="DiffContextDialog" timestamp="1587397578406">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="44" y="15" width="1446" height="742" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587397578406" />
     <state x="58" y="42" width="1928" height="932" key="DiffContextDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1582120381212" />
     <state x="850" y="351" width="1200" height="800" key="DiffContextDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1581008237778" />
     <state x="610" y="128" width="1144" height="734" key="DirDiffDialog" timestamp="1586912477560">
@@ -619,28 +634,28 @@
     </state>
     <state x="610" y="128" width="1144" height="734" key="DirDiffDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586912477560" />
     <state x="813" y="184" width="1525" height="923" key="DirDiffDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1584017606798" />
-    <state width="1865" height="265" key="GridCell.Tab.0.bottom" timestamp="1586912522908">
+    <state width="1865" height="265" key="GridCell.Tab.0.bottom" timestamp="1587397615733">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="265" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586912522908" />
+    <state width="1865" height="265" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587397615733" />
     <state width="987" height="298" key="GridCell.Tab.0.bottom/0.23.2560.1308@0.23.2560.1308" timestamp="1584016453499" />
     <state width="1400" height="327" key="GridCell.Tab.0.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1583938858128" />
-    <state width="1865" height="265" key="GridCell.Tab.0.center" timestamp="1586912522907">
+    <state width="1865" height="265" key="GridCell.Tab.0.center" timestamp="1587397615733">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="265" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586912522907" />
+    <state width="1865" height="265" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587397615733" />
     <state width="987" height="298" key="GridCell.Tab.0.center/0.23.2560.1308@0.23.2560.1308" timestamp="1584016453498" />
     <state width="1400" height="327" key="GridCell.Tab.0.center/0.23.2560.1417@0.23.2560.1417" timestamp="1583938858127" />
-    <state width="1865" height="265" key="GridCell.Tab.0.left" timestamp="1586912522907">
+    <state width="1865" height="265" key="GridCell.Tab.0.left" timestamp="1587397615732">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="265" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586912522907" />
+    <state width="1865" height="265" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587397615732" />
     <state width="987" height="298" key="GridCell.Tab.0.left/0.23.2560.1308@0.23.2560.1308" timestamp="1584016453498" />
     <state width="1400" height="327" key="GridCell.Tab.0.left/0.23.2560.1417@0.23.2560.1417" timestamp="1583938858126" />
-    <state width="1865" height="265" key="GridCell.Tab.0.right" timestamp="1586912522908">
+    <state width="1865" height="265" key="GridCell.Tab.0.right" timestamp="1587397615733">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1865" height="265" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586912522908" />
+    <state width="1865" height="265" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587397615733" />
     <state width="987" height="298" key="GridCell.Tab.0.right/0.23.2560.1308@0.23.2560.1308" timestamp="1584016453499" />
     <state width="1400" height="327" key="GridCell.Tab.0.right/0.23.2560.1417@0.23.2560.1417" timestamp="1583938858128" />
     <state width="1400" height="308" key="GridCell.Tab.1.bottom" timestamp="1583934807842">
@@ -675,9 +690,14 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="1400" height="308" key="GridCell.Tab.2.right/0.23.2560.1417@0.23.2560.1417" timestamp="1583934807843" />
-    <state x="1554" y="335" key="MultipleFileMergeDialog" timestamp="1579895604705">
-      <screen x="0" y="23" width="2560" height="1308" />
+    <state x="71" y="56" width="1622" height="868" key="MergeDialog" timestamp="1587396118889">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="71" y="56" width="1622" height="868" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587396118889" />
+    <state x="388" y="248" width="1057" height="483" key="MultipleFileMergeDialog" timestamp="1587396124877">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="388" y="248" width="1057" height="483" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587396124877" />
     <state x="1554" y="335" key="MultipleFileMergeDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1579895604705" />
     <state x="617" y="475" key="SettingsEditor" timestamp="1583768393177">
       <screen x="0" y="23" width="2560" height="1417" />
@@ -690,9 +710,10 @@
     <state x="742" y="343" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586912510808" />
     <state x="989" y="455" key="Vcs.Push.Dialog.v2/0.23.2560.1308@0.23.2560.1308" timestamp="1584019420314" />
     <state x="989" y="491" key="Vcs.Push.Dialog.v2/0.23.2560.1417@0.23.2560.1417" timestamp="1583255587466" />
-    <state x="688" y="291" width="1234" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1583253905247">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="516" y="197" width="926" height="588" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587397578407">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="516" y="197" width="926" height="588" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587397578407" />
     <state x="688" y="270" width="1234" height="739" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1580080435904" />
     <state x="688" y="291" width="1234" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1583253905247" />
     <state x="716" y="416" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585424055216">
@@ -708,10 +729,10 @@
     </state>
     <state x="1125" y="447" width="845" height="574" key="find.popup/0.23.2560.1308@0.23.2560.1308" timestamp="1582127467563" />
     <state x="1435" y="603" width="845" height="528" key="find.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1579298741926" />
-    <state x="1154" y="328" key="git4idea.merge.GitPullDialog" timestamp="1585424477453">
+    <state x="1154" y="328" key="git4idea.merge.GitPullDialog" timestamp="1587395124838">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1154" y="328" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585424477453" />
+    <state x="1154" y="328" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587395124838" />
     <state x="1538" y="435" key="git4idea.merge.GitPullDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1582045742886" />
     <state x="1037" y="538" key="new project wizard" timestamp="1579101598572">
       <screen x="0" y="23" width="2560" height="1417" />
