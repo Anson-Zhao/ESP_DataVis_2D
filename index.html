@@ -279,6 +279,89 @@
         wwd.addEventListener("wheel",autoS);
     });
 
+    async function query(staInfo, chartD) {
+
+        if (ini) {
+            await building(staInfo);
+        }
+
+        $.ajax({
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query',
+            url: "http://localhost:3005/query",
+            method: "get",
+            data: {stationID: staInfo.StationId, chartDuration: chartD},
+            success: async function(res){
+                if(!!res){
+                    let x_arr = [];
+                    let y_arr = [];
+                    let z_arr = [];
+
+                    await res.forEach(function(el,i) {
+                            x_arr[i] = [new Date(el.time), el.X];
+                            y_arr[i] = [new Date(el.time), el.Y];
+                            z_arr[i] = [new Date(el.time), el.Z];
+                        }
+                    );
+
+                    // sta = Avg(res,5);
+
+                    let Z = new Dygraph(
+                        // containing div
+                        document.getElementById(staInfo.StationId + "_graphZ"),
+
+                        // CSV or path to a CSV file.
+                        z_arr,
+                        {
+                            labels: [ "Data", "Z" ],
+                            animatedZooms: true,
+                            legend: 'always',
+                            showRoller: true,
+                            title: "+Z is positive altitude, -Z is below ground (unit: nT)",
+                        }
+
+                    );
+                    let Y = new Dygraph(
+                        // containing div
+                        document.getElementById(staInfo.StationId + "_graphY"),
+
+                        // CSV or path to a CSV file.
+                        y_arr,
+                        {
+                            labels: [ "Data", "Y" ],
+                            animatedZooms: true,
+                            legend: 'always',
+                            showRoller: true,
+                            title: "+Y is east, -Y is west (unit: nT)"
+                        }
+
+                    );
+
+                    let X = new Dygraph(
+                        // containing div
+                        document.getElementById(staInfo.StationId + "_graphX"),
+
+                        // CSV or path to a CSV file.
+                        x_arr,
+                        {
+                            labels: ["Data", "X"],
+                            animatedZooms: true,
+                            legend: 'always',
+                            showRoller: true,
+                            title: "+X is north, -X is south (unit: nT)"
+                        }
+                    );
+                    // $('#' + staInfo.StationId + '_gaugeX').highcharts(options, buildGraph);
+                    // $('#' + staInfo.StationId + '_gaugeY').highcharts(options, buildGraph);
+                    // $('#' + staInfo.StationId + '_gaugeZ').highcharts(options, buildGraph);
+
+                    createPL(staInfo,Avg(res,5))
+                }
+
+                // triggers()
+            }
+        })
+    }
+
     function staQuery() {
         $.ajax({
             // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stations',
@@ -444,86 +527,257 @@
         $(c).append(cdivX).append(cdivY).append(cdivZ);
     }
 
-    async function query(staInfo, chartD) {
+    let counterX = {
+        counter1: 0,
+        counter2: 0
+    };
+    //let cool = counterX.counter1;
+    let dirCounter = 0;
+    let direction;
+    let prevDirection;
+    let counterXup = 0;
+    let counterXdown = 0;
+    let counterY;
+    let counterZ;
+    let defcon1 = false;
+    let defcon2 = false;
 
-        if (ini) {
-            await building(staInfo);
+    function triggers() {
+        // Event trigger definition
+        var warning = {
+            x_warning: false,
+            y_warning: false,
+            z_warning: false
+        };
+        let x_k, x_bro = 0;
+        var dx_arr = [];
+        var cool = [];
+
+        let changeDir = false;
+        //console.log(x_arr);
+
+        // transporter.sendMail(mailOptions, function(error, info){
+        //     if (error) {
+        //         console.log(error);
+        //     } else {
+        //         console.log('Email sent: ' + info.response);
+        //     }
+        // });
+
+        //determine sample direction
+        //determine turn around point
+        //determine continuous jump oppositely
+
+        for (let i = 1; i < x_arr.length - 1; i++){
+            x_k = Math.abs(x_arr[i][1]-((x_arr[i - 1][1] + x_arr[i + 1][1])/2));  // single distance
+            // cool[0] = x_k;
+            // cool[1] = x_arr[i][0];
+            dx_arr.push([x_k, x_arr[i][0]]);
+            //console.log("Begin: ");
+            //console.log(dx_arr);
+            x_bro += x_k;
+            if (i === x_arr.length - 2){
+                let dx_avg = x_bro/dx_arr.length;
+                //console.log("End: ");
+                //console.log(dx_arr);
+                //console.log(dx_avg);
+                //direction = Math.sign(dx_arr[0]);
+                for (let j = 0; j < dx_arr.length; j++){
+                    if(dx_arr[j][0] > (3 * dx_avg)){
+                        //console.log("time is" + dx_arr[j][1]);
+                        //find direction
+                        if(j <= 1){
+                            direction = 0;
+                            prevDirection = 0;
+                        } else {
+                            direction = Math.sign(Math.abs(x_arr[j][1]) - Math.abs(x_arr[j - 1][1]));
+                            prevDirection = Math.sign(Math.abs(x_arr[j - 1][1]) - Math.abs(x_arr[j - 2][1]));
+                        }
+                        //console.log(x_arr[j + 1][1]);
+                        //check if direction is going up
+                        // console.log("curent direction is: " + direction);
+                        // console.log("prevdirection = " + prevDirection);
+                        if (direction === 1){
+                            //check if the previous value was a down value
+                            if (prevDirection === -1 && defcon1 === false){
+                                // console.log("defcon1 status: " + defcon1);
+                                // set the current counter to 0
+                                counterXup = 0;
+                                //console.log("counter up = " + counterXup);
+                                //console.log("counter down = " + counterXdown);
+                                // counterXdown++;
+                                if (counterXup >= 20){
+                                    defcon1 = true;
+                                    console.log("defcon1 is true bud at time: " + dx_arr[j][1]);
+                                } else {
+                                    defcon1 = false;
+                                }
+                                // check if the previous down counter hadn't reached 20
+                                if(counterXdown < 20 && defcon2 === false){
+                                    //console.log("checking");
+                                    //set it to zero to be reused at another time
+                                    counterXdown = 0;
+                                } else {
+                                    console.log("this is here for show")
+                                }
+                            } else {
+                                //increment the counter
+                                counterXup++;
+                                //console.log("counterXUp = " + counterXup);
+                                //console.log(counterXup);
+                                if (counterXup >= 20){
+                                    defcon1 = true;
+                                    console.log("defcon1 is true but at time: " + dx_arr[j][1]);
+                                } //else if (defcon1 === true){
+                                //     defcon1 = false;
+                                //     console.log("defcon2 is now false from line 591")
+                                // }
+
+                            }
+                            if(defcon1 == true && defcon2 == true){
+                                console.log("broski");
+                                alertFunction();
+                                defcon1 = false;
+                                defcon2 = false;
+                                counterXup = 0;
+                                counterXdown = 0;
+                                // $.ajax({
+                                //     // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query',
+                                //     url: "http://localhost:3005/mail",
+                                //     method: "get"});
+                            }
+                            //check if the current counter has reached or surpassed 20
+                            // while (counterXup >= 20) {
+                            //     defcon1 = true;
+                            //     console.log("defcon1 is true");
+                            // }
+                        }
+                        //check if direction is going down
+                        if (direction === -1){
+                            //check if the previous value was an up value
+                            if (prevDirection === 1 && defcon2 === false){
+
+                                // set the current counter to 0
+                                counterXdown = 0;
+                                // console.log("counter up = " + counterXup + "down counter part");
+                                // console.log("counter down = " + counterXdown + "down counter part");
+                                // counterXdown++;
+                                if (counterXdown >= 20){
+                                    defcon2 = true;
+                                    console.log("defcon2 is true at time: " + dx_arr[j][1]);
+                                } else {
+                                    defcon2 = false;
+                                }
+                                // check if the previous down counter hadn't reached 20
+                                if(counterXup < 20 && defcon1 === false){
+                                    console.log("checking");
+                                    //set it to zero to be reused at another time
+                                    counterXup = 0;
+                                } else {
+                                    console.log("this is here for show")
+                                }
+                            } else {
+                                //increment the counter
+                                counterXdown++;
+                                //console.log("counterXdown = " + counterXdown);
+                                if (counterXdown >= 20){
+                                    defcon2 = true;
+                                    console.log("defcon2 is true at time: " + dx_arr[j][1]);
+                                } //else if (defcon1 === true){
+                                //     defcon1 = false;
+                                //     console.log("defcon2 is now false from line 591")
+                                // }
+
+                            }
+                            if(defcon1 == true && defcon2 == true){
+                                console.log("broski");
+                                alertFunction();
+                                defcon1 = false;
+                                defcon2 = false;
+                                counterXup = 0;
+                                counterXdown = 0;
+
+                            }
+                        }
+
+                        // console.log(defcon1);
+                        // console.log(defcon2);
+
+                        if (defcon1 && defcon2) {
+
+                        }
+                        // if (Math.sign(dx_arr[j]) === 1){
+                        //     if (counterX2 < 20){
+                        //         counterX2 = 0;
+                        //     }
+                        //     counterX1++;
+                        // }else if(Math.sign(dx_arr[j]) === -1){
+                        //     if (counterX1 < 20){
+                        //         counterX1 = 0;
+                        //     }
+                        //     counterX2++;
+                        // }
+                        // if (counterX1 >= 20 || counterX2 >= 20){
+                        //     console.log("HEY MAN SOMETHING UP!");
+                        //     defcon2 = true;
+                        // }
+                        // if (counterX1 >= 20 && counterX2 >= 20){
+                        //     defcon1 = true;
+                        // }
+                    }
+                }
+            }
         }
 
-        $.ajax({
-            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query',
-            url: "http://localhost:3005/query",
-            method: "get",
-            data: {stationID: staInfo.StationId, chartDuration: chartD},
-            success: async function(res){
-                if(!!res){
-                    let x_arr = [];
-                    let y_arr = [];
-                    let z_arr = [];
-
-                    await res.forEach(function(el,i) {
-                            x_arr[i] = [new Date(el.time), el.X];
-                            y_arr[i] = [new Date(el.time), el.Y];
-                            z_arr[i] = [new Date(el.time), el.Z];
+        let y_k, y_bro = 0;
+        var dy_arr = [];
+        for (let j = 1; j < y_arr.length - 1; j++){
+            y_k = y_arr[j][1]-((y_arr[j - 1][1] + y_arr[j + 1][1])/2);
+            dy_arr[j] = y_k;
+            y_bro += y_k;
+            if (j == y_arr.length - 2){
+                let dy_avg = y_bro/y_arr.length;
+                for (let l = 0; l < dy_arr.length; l++){
+                    if(dy_arr[l] > (200 * dy_avg)){
+                        counterY++;
+                        if (counterY > 20){
+                            console.log("HEY MAN SOMETHING UP!");
+                            warning.y_warning = true;
                         }
-                    );
-
-                    // sta = Avg(res,5);
-
-                    let Z = new Dygraph(
-                        // containing div
-                        document.getElementById(staInfo.StationId + "_graphZ"),
-
-                        // CSV or path to a CSV file.
-                        z_arr,
-                        {
-                            labels: [ "Data", "Z" ],
-                            animatedZooms: true,
-                            legend: 'always',
-                            showRoller: true,
-                            title: "+Z is positive altitude, -Z is below ground (unit: nT)",
+                        else{
+                            counterY = 0;
                         }
-
-                    );
-                    let Y = new Dygraph(
-                        // containing div
-                        document.getElementById(staInfo.StationId + "_graphY"),
-
-                        // CSV or path to a CSV file.
-                        y_arr,
-                        {
-                            labels: [ "Data", "Y" ],
-                            animatedZooms: true,
-                            legend: 'always',
-                            showRoller: true,
-                            title: "+Y is east, -Y is west (unit: nT)"
-                        }
-
-                    );
-
-                    let X = new Dygraph(
-                        // containing div
-                        document.getElementById(staInfo.StationId + "_graphX"),
-
-                        // CSV or path to a CSV file.
-                        x_arr,
-                        {
-                            labels: ["Data", "X"],
-                            animatedZooms: true,
-                            legend: 'always',
-                            showRoller: true,
-                            title: "+X is north, -X is south (unit: nT)"
-                        }
-                    );
-                    // $('#' + staInfo.StationId + '_gaugeX').highcharts(options, buildGraph);
-                    // $('#' + staInfo.StationId + '_gaugeY').highcharts(options, buildGraph);
-                    // $('#' + staInfo.StationId + '_gaugeZ').highcharts(options, buildGraph);
-
-                    createPL(staInfo,Avg(res,5))
+                    }
                 }
-
             }
-        });
+        }
+
+        let z_k, z_bro = 0;
+        var dz_arr = [];
+        for (let m = 1; m < z_arr.length - 1; m++){
+            z_k = z_arr[m][1]-((z_arr[m - 1][1] + z_arr[m + 1][1])/2);
+            dz_arr[m] = z_k;
+            z_bro += z_k;
+            if (m == z_arr.length - 2){
+                let dz_avg = z_bro/z_arr.length;
+                for (let n = 0; n < dz_arr.length; n++){
+                    if(dz_arr[n] > (200 * dz_avg)){
+                        counterZ++;
+                        if (counterZ > 20){
+                            console.log("HEY MAN SOMETHING UP!");
+                            warning.z_warning = true;
+                        }
+                        else{
+                            counterZ = 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    function alertFunction() {
+        alert("Hello! I am an alert box!");
     }
 
     function buildGraph(chart) {
@@ -557,14 +811,14 @@
             if (x[0].style.display === "none") {
                 //show the placemarks
                 let index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
-                wwd.layers[index].enabled = true;
+                wwd.layers[index_u].enabled = true;
                 showPlacemark = true;
                 $(y).show();
                 $(z).css('backgroundColor', 'gray');
             } else {
                 //hide the placemarks
                 let index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
-                wwd.layers[index].enabled = false;
+                wwd.layers[index_u].enabled = false;
                 showPlacemark = false;
                 $(y).hide();
                 $(z).css('backgroundColor', 'white');
@@ -575,7 +829,7 @@
 
                 //show the placemarks
                 let index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
-                wwd.layers[index].enabled = true;
+                wwd.layers[index_u].enabled = true;
                 showPlacemark = true;
                 $(y).show();
                 $(z).css('backgroundColor', 'gray');
@@ -583,7 +837,7 @@
             } else {
                 //hide the placemarks
                 let index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
-                wwd.layers[index].enabled = false;
+                wwd.layers[index_u].enabled = false;
                 showPlacemark = false;
                 $(y).hide();
                 $(z).css('backgroundColor', 'white');
@@ -781,8 +1035,8 @@
                 let indexN = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" + stationsData[i].StationId);
                 let buttonIndex = buttonArray.findIndex(element => element.buttonValue === stationsData[i].StationId);
 
-                if(index > -1 ){
-                    wwd.layers[index].enabled = false;
+                if(index_u > -1 ){
+                    wwd.layers[index_u].enabled = false;
                 }
                 if(indexN >-1){
                     if(buttonIndex > -1){
