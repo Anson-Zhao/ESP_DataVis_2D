@@ -3,6 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src='//localhost:63342/ESP_DataVis_2D/jsLibrary/jquery-3-4-1.min.js'></script>
+    <script type="text/javascript" src="//localhost:63342/ESP_DataVis_2D/jsLibrary/dygraph2.1.0/dygraph2.1.0.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.17/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="//localhost:63342/ESP_DataVis_2D/jsLibrary/dygraph2.1.0/dygraph2.1.0.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+    <!--<link rel="stylesheet" href="//unpkg.com/flatpickr/dist/flatpickr.min.css">-->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.17/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
         body { padding-left:80px; padding-bottom: 300px; word-wrap:break-word;}
 
@@ -92,26 +109,26 @@
     </style>
 </head>
 <body>
-<script src='../jsLibrary/jquery-3-4-1.min.js'></script>
-<script type="text/javascript" src="jsLibrary/dygraph2.1.0/dygraph2.1.0.min.js"></script>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.17/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<!--<script src='../jsLibrary/jquery-3-4-1.min.js'></script>-->
+<!--<script type="text/javascript" src="../jsLibrary/dygraph2.1.0/dygraph2.1.0.min.js"></script>-->
+<!--<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>-->
+<!--<script src="https://cdn.datatables.net/1.10.17/js/jquery.dataTables.min.js"></script>-->
+<!--<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>-->
+<!--<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>-->
 
-<link rel="stylesheet" href="jsLibrary/dygraph2.1.0/dygraph2.1.0.css" />
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
-<!--<link rel="stylesheet" href="//unpkg.com/flatpickr/dist/flatpickr.min.css">-->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.17/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<!--<link rel="stylesheet" href="jsLibrary/dygraph2.1.0/dygraph2.1.0.css" />-->
+<!--<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">-->
+<!--&lt;!&ndash;<link rel="stylesheet" href="//unpkg.com/flatpickr/dist/flatpickr.min.css">&ndash;&gt;-->
+<!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">-->
+<!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+<!--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.17/css/jquery.dataTables.min.css">-->
+<!--<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">-->
 
 <!--<div id="windspeedChart" class="group">-->
 <!--    <div class="form-style-8">-->
 <!--<input type="button" onclick='window.location.replace("index.html")' class="button button2" value="Go To Mockup Home">-->
-<h2>Selection</h2>
+<h2 id = "text">Selection</h2>
 
     <br><br><br>
     <div id="graphx"></div>
@@ -120,8 +137,132 @@
 </div>
 
 <script>
-    let date = '<%= date %>';
-    console.log(date)
+    // console.log("hello")
+    var time = '<%= time %>';
+    var stationId = '<%= stationId %>';
+    // console.log(time)
+    var timeIntervalHalf = 6;
+    // var timeFrom1 = "2020-04-07T14:00:00.000Z"
+    var timeFrom = moment.utc(time,'').add(-timeIntervalHalf,'hour').format().slice(0, -1) + ".000Z";
+    // var timeTo1 = "2020-04-08T02:00:00.000Z"
+    var timeTo = moment.utc(time,'').add(timeIntervalHalf,'hour').format().slice(0, -1) + ".000Z";
+    // console.log(timeFrom, timeTo)
+    var x_arr = [];
+    var y_arr = [];
+    var z_arr = [];
+    $('#text').html(stationId+" "+ time)
+
+    var queryAndDisplay = function () {
+        $.ajax({
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newWind',
+            url: 'http://localhost:3005/newWind',
+            type: 'GET',
+            dataType: 'json',
+            async: true,
+            data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationId},
+            success:
+                //async
+            function (res) {
+                // console.log("get responce");
+                // console.log("1");
+                //  await
+                     res.forEach(function(el,i) {
+                    // var time = new Date(el.time);
+                    // console.log(new Date(el.time));
+                    // console.log(el.time._nanoISO);
+                    // console.log(el._nanoISO);
+                    x_arr[i] = [new Date(el.time), el.X];
+                    y_arr[i] = [new Date(el.time), el.Y];
+                    z_arr[i] = [new Date(el.time), el.Z];
+                    // console.log("h");
+                    // var a = '' + el.X;
+                    // var b = '' + el.Y;
+                    // var c = '' + el.Z;
+                    // var t = el.time;
+                    // download += t+','+a+','+b+','+c+'\n';
+                });
+                // console.log(x_arr[0])
+                // console.log(x_arr[x_arr.length-1])
+                // console.log(download);
+                // console.log(res);
+                Z = new Dygraph(
+
+                    // containing div
+                    document.getElementById("graphz"),
+
+                    // CSV or path to a CSV file.
+                    z_arr,
+                    {
+                        labels: [ "time", "Z" ],
+                        title: "Z (+Z is positive altitude, -Z is below ground)",
+                        rollPeriod: 1,
+                        showRoller: true,
+                        legend: 'always',
+                        showRangeSelector: true,
+                        rangeSelectorHeight: 30,
+                        // rollPeriod: 14,
+                        // showRoller: true,
+                        // customBars: true,
+                        // showRangeSelector: true
+                        // rangeSelectorHeight: 30,
+                        // rangeSelectorPlotStrokeColor: 'yellow',
+                        // rangeSelectorPlotFillColor: 'lightyellow'
+                    }
+                );
+                Y = new Dygraph(
+
+                    // containing div
+                    document.getElementById("graphy"),
+
+                    // CSV or path to a CSV file.
+                    y_arr,
+                    {
+                        labels: [ "time", "Y" ],
+                        title: "Y (+Y is east, -Y is west)",
+                        rollPeriod: 1,
+                        showRoller: true,
+                        legend: 'always',
+                        showRangeSelector: true,
+                        rangeSelectorHeight: 30,
+                        // rollPeriod: 14,
+                        // showRoller: true,
+                        // customBars: true,
+                        // showRangeSelector: true
+                        // rangeSelectorHeight: 30,
+                        // rangeSelectorPlotStrokeColor: 'yellow',
+                        // rangeSelectorPlotFillColor: 'lightyellow'
+                    }
+
+                );
+                X = new Dygraph(
+
+                    // containing div
+                    document.getElementById("graphx"),
+
+                    // CSV or path to a CSV file.
+                    x_arr,
+                    {
+
+                        // customBars: true,
+                        title: "X (+X is north, -X is south)",
+                        // ylabel: 'Temperature (F)',
+                        labels: [ "time", "X" ],
+                        rollPeriod: 1,
+                        showRoller: true,
+                        legend: 'always',
+                        showRangeSelector: true,
+                        rangeSelectorHeight: 30,
+                        // rangeSelectorPlotStrokeColor: 'yellow',
+                        // rangeSelectorPlotFillColor: 'lightyellow'
+                    }
+                );
+                // $('#requesting').hide();
+                // $("#AvgData").attr("disabled", false);
+            }
+        });
+    };
+    queryAndDisplay();
+
 </script>
 </body>
 </html>

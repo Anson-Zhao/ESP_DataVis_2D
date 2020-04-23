@@ -101,23 +101,30 @@ app.get ('/stations', function (req, res){
         res.send(result);
     });
 });
-
+//
 app.get('/newEjs',function (req,res) {
     res.setHeader("Access-Control-Allow-Origin", "*"); // Allow cross domain header
     // res.render('homepage.ejs');
-    console.log(req.query.date);
-    var date = req.query.date;
-    res.render('new.ejs', {date: date})
+    var stationId = "station_two";
+    var time = "2020-04-01T16:00:00.000Z";
+    res.render('new.ejs',{time:time , stationId:stationId})
 });
 
 app.get('/newWind', function (req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
+    // console.log("Time From: ");
+    // console.log(req.query.timeFrom);
+    // console.log("Time To: ");
+    // console.log(req.query.timeTo);
     let queryHa = 'SELECT * FROM ' + req.query.stationIs + 'avg WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'";
-// console.log(queryHa);
+    // console.log(req.query.stationIs);
+    // console.log(queryHa);
     influx.query(queryHa).then
     (result => {
         res.send(result);
-        // console.log(result)
+        // console.log(result.length);
+        // console.log(result[0]);
+        // console.log(result[result.length-1])
     }).catch(err => {
         res.status(500).send(err.stack)
     });

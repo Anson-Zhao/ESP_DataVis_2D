@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/index_upd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sshConfigs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ESP_DataVis_2D_BX.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ESP_DataVis_2D.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/new.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/new.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +53,12 @@
       <facet id="ESP_DataVis_2D/invalid/Python" />
     </ignored-facets>
   </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="ProjectId" id="1SHx6bzrjPXVkXZUEq9ADSzFb2l" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -85,12 +94,6 @@
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/indexbackup.html" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
-      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\jsLibrary" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/node_modules" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\archive" />
       <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
@@ -98,8 +101,14 @@
       <recent name="$PROJECT_DIR$/img" />
       <recent name="$PROJECT_DIR$/archive" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
+      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\jsLibrary" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/node_modules" />
+    </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.index.html">
+  <component name="RunManager" selected="Node.js.espDataVis.js">
     <configuration name="historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -119,13 +128,13 @@
       <item itemvalue="JavaScript Debug.index.html?_ijt=r175ml65f3vkfl9oo4qrtlfi9k" />
       <item itemvalue="JavaScript Debug.index116.html?_ijt=4mhebuui7t5p4oes4q86ask3pg" />
       <item itemvalue="JavaScript Debug.historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" />
-      <item itemvalue="Node.js.espDataVis.js" />
       <item itemvalue="JavaScript Debug.index.html" />
+      <item itemvalue="Node.js.espDataVis.js" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="Node.js.espDataVis.js" />
+        <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JavaScript Debug.historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" />
         <item itemvalue="JavaScript Debug.index116.html?_ijt=4mhebuui7t5p4oes4q86ask3pg" />
         <item itemvalue="JavaScript Debug.index.html?_ijt=r175ml65f3vkfl9oo4qrtlfi9k" />
@@ -575,12 +584,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -634,27 +644,35 @@
     </state>
     <state x="610" y="128" width="1144" height="734" key="DirDiffDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586912477560" />
     <state x="813" y="184" width="1525" height="923" key="DirDiffDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1584017606798" />
-    <state width="1865" height="265" key="GridCell.Tab.0.bottom" timestamp="1587397615733">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="501" y="205" key="FileChooserDialogImpl" timestamp="1587438988643">
+      <screen x="0" y="0" width="1440" height="923" />
     </state>
+    <state x="501" y="205" key="FileChooserDialogImpl/0.0.1440.923@0.0.1440.923" timestamp="1587438988643" />
+    <state width="698" height="188" key="GridCell.Tab.0.bottom" timestamp="1587611299907">
+      <screen x="0" y="0" width="1440" height="923" />
+    </state>
+    <state width="698" height="188" key="GridCell.Tab.0.bottom/0.0.1440.923@0.0.1440.923" timestamp="1587611299907" />
     <state width="1865" height="265" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587397615733" />
     <state width="987" height="298" key="GridCell.Tab.0.bottom/0.23.2560.1308@0.23.2560.1308" timestamp="1584016453499" />
     <state width="1400" height="327" key="GridCell.Tab.0.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1583938858128" />
-    <state width="1865" height="265" key="GridCell.Tab.0.center" timestamp="1587397615733">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="698" height="188" key="GridCell.Tab.0.center" timestamp="1587611299907">
+      <screen x="0" y="0" width="1440" height="923" />
     </state>
+    <state width="698" height="188" key="GridCell.Tab.0.center/0.0.1440.923@0.0.1440.923" timestamp="1587611299907" />
     <state width="1865" height="265" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587397615733" />
     <state width="987" height="298" key="GridCell.Tab.0.center/0.23.2560.1308@0.23.2560.1308" timestamp="1584016453498" />
     <state width="1400" height="327" key="GridCell.Tab.0.center/0.23.2560.1417@0.23.2560.1417" timestamp="1583938858127" />
-    <state width="1865" height="265" key="GridCell.Tab.0.left" timestamp="1587397615732">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="698" height="188" key="GridCell.Tab.0.left" timestamp="1587611299906">
+      <screen x="0" y="0" width="1440" height="923" />
     </state>
+    <state width="698" height="188" key="GridCell.Tab.0.left/0.0.1440.923@0.0.1440.923" timestamp="1587611299906" />
     <state width="1865" height="265" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587397615732" />
     <state width="987" height="298" key="GridCell.Tab.0.left/0.23.2560.1308@0.23.2560.1308" timestamp="1584016453498" />
     <state width="1400" height="327" key="GridCell.Tab.0.left/0.23.2560.1417@0.23.2560.1417" timestamp="1583938858126" />
-    <state width="1865" height="265" key="GridCell.Tab.0.right" timestamp="1587397615733">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="698" height="188" key="GridCell.Tab.0.right" timestamp="1587611299907">
+      <screen x="0" y="0" width="1440" height="923" />
     </state>
+    <state width="698" height="188" key="GridCell.Tab.0.right/0.0.1440.923@0.0.1440.923" timestamp="1587611299907" />
     <state width="1865" height="265" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587397615733" />
     <state width="987" height="298" key="GridCell.Tab.0.right/0.23.2560.1308@0.23.2560.1308" timestamp="1584016453499" />
     <state width="1400" height="327" key="GridCell.Tab.0.right/0.23.2560.1417@0.23.2560.1417" timestamp="1583938858128" />
