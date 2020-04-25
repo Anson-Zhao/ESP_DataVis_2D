@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="mockup.esp.aworldbridgelabs.com" id="34ebbd2c-96b4-4894-95d7-6db7d5223506" port="5532" customName="mockupESP" nameFormat="CUSTOM" username="ansonz" />
+      <sshConfig authType="PASSWORD" host="mockup.esp.aworldbridgelabs.com" id="bc0ab329-5e03-430e-a3a1-f761b5ac85f6" port="5532" customName="mockupESP" nameFormat="CUSTOM" username="ansonz" />
+    </configs>
+  </component>
+</project>

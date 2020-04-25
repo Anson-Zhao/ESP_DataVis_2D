@@ -92,16 +92,15 @@
     </style>
 </head>
 <body>
-<script type="text/javascript" src="jsLibrary/dygraph/dygraph.js"></script>
 <script src='jsLibrary/jquery-3-4-1.min.js'></script>
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+<script type="text/javascript" src="jsLibrary/dygraph2.1.0/dygraph2.1.0.min.js"></script>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.17/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-<link rel="stylesheet" href="jsLibrary/dygraph/dygraph.css" />
+<link rel="stylesheet" href="jsLibrary/dygraph2.1.0/dygraph2.1.0.css" />
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
 <!--<link rel="stylesheet" href="//unpkg.com/flatpickr/dist/flatpickr.min.css">-->
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -139,9 +138,9 @@
         </form>
         <div>
             <br><br>
-            <p>Please click "Show Data Charts" button above before download Avg Data.</p>
+            <p>Please click "Show Data Charts" button above before download Avg Data. The time stamp of any downloaded data is UTC</p>
             <br>
-            <button id="AvgData" disabled >Download CSV</button>
+            <button id="AvgData" disabled >Download Avg CSV</button>
             <br><br><br>
             <div display="inline-block">
                 <button id="RawData"  display="inline-block">Download Raw CSV</button>
@@ -214,8 +213,6 @@
         option.textContent = station.StationName+", "+station.City+", "+station.State;
         option.value = JSON.stringify({'stationName':station.StationName,'stationId':station.StationId});
         $('#station').append(option);
-        console.log(option);
-        console.log("option appended")
     }
 
     var timeFrom,timeTo,stationIs,querystr;
@@ -256,7 +253,7 @@
             },
             success: async function (res) {
                 // console.log("get responce");
-                console.log("1");
+                // console.log("1");
                 await res.forEach(function(el,i) {
                     // var time = new Date(el.time);
                     // console.log(el.time);
@@ -271,7 +268,6 @@
                     var t = el.time;
                     download += t+','+a+','+b+','+c+'\n';
                 });
-                console.log("2");
                 // console.log(download);
 
                 // console.log(res);
@@ -375,8 +371,6 @@
         }
     }
 
-
-
     function rawDataDownload() {
         timeFrom = document.getElementById("begin").value;
         timeTo = document.getElementById("end").value;
@@ -401,12 +395,13 @@
                     $('#downloading').show()
 
                 },
-                success: function (res) {
+                success: function (exportFilename) {
                     console.log("success");
-                    console.log(res);
-                    var Filename = timeFrom.slice(0,-5) +'-'+ timeTo.slice(0,-5) + 'RawESPData.csv';
-                    var exportFilename = 'http://localhost:63343/ESP_DataVis_2D/'+res;
                     console.log(exportFilename);
+                    // var Filename = timeFrom.slice(0,-5) +'-'+ timeTo.slice(0,-5) + 'RawESPData.csv';
+                    // var exportFilename = 'http://localhost:63343/ESP_DataVis_2D/'+res;
+                    // var exportFilename = '/'+res;
+                    // console.log(exportFilename);
 
                     // window.open(exportFilename);
 

@@ -1,14 +1,29 @@
 const Influx = require('influx');
 const express = require('express');
 const app = express();
+const nodemailer = require('nodemailer');
 // let jsonexport = require('jsonexport');
 // let path = require('path');
 // const csv = require('csv-parser');
 // let fs = require('fs');
 
-app.listen('3005');
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'youremail@gmail.com',
+        pass: 'yourpassword'
+    }
+});
+
+const mailOptions = {
+    from: 'youremail@gmail.com',
+    to: 'myfriend@yahoo.com',
+    subject: 'Sending Email using Node.js',
+    text: 'That was easy!'
+};
 
 const influx = new Influx.InfluxDB({
+    precision: 'rfc3339',
     host: 'aworldbridgelabs.com',
     database: 'RayESP',
     username: "rayf",
@@ -21,7 +36,7 @@ const mysql = require('mysql');
 const bodyParser = require("body-parser");
 
 const con = mysql.createConnection({
-    host: "10.11.90.16",
+    host: "localhost",
     user: "AppUser",
     password: "Special888%",
     port: "3306",
@@ -31,13 +46,13 @@ const con = mysql.createConnection({
 
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
-let pastTime = "2d";
+let pastTime = "3d";
 let nowTime = "2m";
 let pack=[];
 let i=0;
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
@@ -138,7 +153,7 @@ app.get('/newSnow', async function (req, res) {
     });
 
     let exportFilename = req.query.stationName + "_" + req.query.timeFrom.slice(5,-11) +'-'+ req.query.timeTo.slice(5,-11) + 'Raw.csv';
-    let link = 'rawData/'+exportFilename;
+    let link = './rawData/'+exportFilename;
     const csvWriter = createCsvWriter({
         path: link,
         header: [
@@ -157,6 +172,7 @@ app.get('/newSnow', async function (req, res) {
 });
 
 app.get('/query', function (req, res) {
+    pastTime = req.query.chartDuration;
     let query = 'SELECT * FROM ' + req.query.stationID + 'avg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime;
     influx.query(query).then
     (result => {
@@ -164,6 +180,16 @@ app.get('/query', function (req, res) {
     }).catch(err => {
         console.log(err)
     })
+});
+
+app.get('/mail', function (req, res){
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
 });
 
 // app.get('/querys', async function (req, res) {
@@ -186,3 +212,5 @@ app.get('/query', function (req, res) {
 // });
 
 
+
+app.listen('3005');
