@@ -588,11 +588,11 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1408" y="530" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1583160026739" />
-    <state x="946" y="368" key="CommitChangelistDialog2" timestamp="1583939080228">
+    <state x="946" y="368" key="CommitChangelistDialog2" timestamp="1587773700243">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="946" y="341" key="CommitChangelistDialog2/0.23.2560.1308@0.23.2560.1308" timestamp="1582120385353" />
-    <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1583939080228" />
+    <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1587773700243" />
     <state x="58" y="42" width="1928" height="932" key="DiffContextDialog" timestamp="1582120381212">
       <screen x="0" y="23" width="2560" height="1308" />
     </state>
@@ -607,25 +607,21 @@
     </state>
     <state width="1975" height="298" key="GridCell.Tab.0.bottom/0.23.2560.1308@0.23.2560.1308" timestamp="1582127705902" />
     <state width="1400" height="308" key="GridCell.Tab.0.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1584115347023" />
-    <state width="1358" height="306" key="GridCell.Tab.0.bottom/69.23.2491.1417@69.23.2491.1417" timestamp="1576167739600" />
     <state width="1400" height="308" key="GridCell.Tab.0.center" timestamp="1584115347022">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="1975" height="298" key="GridCell.Tab.0.center/0.23.2560.1308@0.23.2560.1308" timestamp="1582127705902" />
     <state width="1400" height="308" key="GridCell.Tab.0.center/0.23.2560.1417@0.23.2560.1417" timestamp="1584115347022" />
-    <state width="1358" height="306" key="GridCell.Tab.0.center/69.23.2491.1417@69.23.2491.1417" timestamp="1576167739598" />
     <state width="1400" height="308" key="GridCell.Tab.0.left" timestamp="1584115347021">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="1975" height="298" key="GridCell.Tab.0.left/0.23.2560.1308@0.23.2560.1308" timestamp="1582127705901" />
     <state width="1400" height="308" key="GridCell.Tab.0.left/0.23.2560.1417@0.23.2560.1417" timestamp="1584115347021" />
-    <state width="1358" height="306" key="GridCell.Tab.0.left/69.23.2491.1417@69.23.2491.1417" timestamp="1576167739598" />
     <state width="1400" height="308" key="GridCell.Tab.0.right" timestamp="1584115347022">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="1975" height="298" key="GridCell.Tab.0.right/0.23.2560.1308@0.23.2560.1308" timestamp="1582127705902" />
     <state width="1400" height="308" key="GridCell.Tab.0.right/0.23.2560.1417@0.23.2560.1417" timestamp="1584115347022" />
-    <state width="1358" height="306" key="GridCell.Tab.0.right/69.23.2491.1417@69.23.2491.1417" timestamp="1576167739599" />
     <state width="1400" height="308" key="GridCell.Tab.1.bottom" timestamp="1584115347026">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
@@ -677,7 +673,6 @@
     </state>
     <state x="688" y="270" width="1234" height="739" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1580080435904" />
     <state x="688" y="291" width="1234" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1583940677780" />
-    <state x="714" y="331" width="1200" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog/69.23.2491.1417@69.23.2491.1417" timestamp="1576168608313" />
     <state x="868" y="409" width="1482" height="1049" key="dock-window-1" timestamp="1579213471200">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
@@ -691,10 +686,6 @@
       <screen x="0" y="23" width="2560" height="1308" />
     </state>
     <state x="1538" y="435" key="git4idea.merge.GitPullDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1582045742886" />
-    <state x="1037" y="538" key="new project wizard" timestamp="1579101598572">
-      <screen x="0" y="23" width="2560" height="1417" />
-    </state>
-    <state x="1037" y="538" key="new project wizard/0.23.2560.1417@0.23.2560.1417" timestamp="1579101598572" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
