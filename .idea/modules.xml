@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ESP_DataVis_2D_BX.iml" filepath="$PROJECT_DIR$/.idea/ESP_DataVis_2D_BX.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ESP_DataVis_2D.iml" filepath="$PROJECT_DIR$/.idea/ESP_DataVis_2D.iml" />
     </modules>
   </component>
 </project>
