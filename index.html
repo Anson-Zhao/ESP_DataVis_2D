@@ -284,6 +284,7 @@
         if (ini) {
             await building(staInfo);
         }
+        console.log(chartD);
 
         $.ajax({
             // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query',
@@ -353,7 +354,7 @@
                     // $('#' + staInfo.StationId + '_gaugeX').highcharts(options, buildGraph);
                     // $('#' + staInfo.StationId + '_gaugeY').highcharts(options, buildGraph);
                     // $('#' + staInfo.StationId + '_gaugeZ').highcharts(options, buildGraph);
-
+                    console.log(res);
                     createPL(staInfo,Avg(res,5))
                 }
 
@@ -856,6 +857,7 @@
     function Avg(res, len) {
         let xa, ya, za;
         let arr = res.slice(Math.max(res.length - len, 0));
+        console.log(arr);
         xa = ya = za = 0;
         for (let i = 0; i < arr.length; i++) {
             xa += arr[i].X;

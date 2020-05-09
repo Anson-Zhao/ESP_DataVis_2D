@@ -10,17 +10,10 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'youremail@gmail.com',
-        pass: 'yourpassword'
+        user: 'yge5095@gmail.com',
+        pass: '1syyRFLATs%'
     }
 });
-
-const mailOptions = {
-    from: 'youremail@gmail.com',
-    to: 'myfriend@yahoo.com',
-    subject: 'Sending Email using Node.js',
-    text: 'That was easy!'
-};
 
 const influx = new Influx.InfluxDB({
     precision: 'rfc3339',
@@ -56,7 +49,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
-
 
 // function convertToCSV(objArray,m) {
 //     // console.log(objArray);
@@ -101,30 +93,58 @@ app.get ('/stations', function (req, res){
         res.send(result);
     });
 });
-//
+
+app.get ('/stationsForN', function (req, res){ //stations information used for new event page
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    var stationId = req.query.stationID;
+    console.log(req);
+    con.query("SELECT State FROM esp2.stationdata Where StationId ='"+stationId+ "';",function (err, result1) {
+        if (err){
+            throw err;
+        }else{
+            con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM esp2.stationdata Where Status = 'Active' AND State = '"+result1[0].State+"';",function (err, result) {
+                if (err) throw err;
+                // console.log(result);
+                res.send(result);
+            });
+        }
+        // console.log(result1[0].State);
+        // res.send(result);
+    });
+    // console.log(req);
+});
+
+app.get('/mail', function (req, res){
+    var time = "2020-04-01T16:00:00.000Z",
+        stationId = "station_two";
+
+    const mailOptions = {
+        from: 'yge5095@gmail.com',
+        to: 'yiyang.ge@g.northernacademy.org',
+        subject: 'ESP Station Data',
+        html:"<p><a href=\"http://localhost:3005/newEjs?time="+ time + "&stationId="+stationId+"\">click the text to view the data</a></p>"
+    };
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            //http://localhost:3005/newEjs?stationID=3333&dateTime=8888
+            console.log('Email sent: ' + info.response);
+        }
+    });
+});
+
 app.get('/newEjs',function (req,res) {
     res.setHeader("Access-Control-Allow-Origin", "*"); // Allow cross domain header
-    // res.render('homepage.ejs');
-    var stationId = "station_two";
-    var time = "2020-04-01T16:00:00.000Z";
-    res.render('new.ejs',{time:time , stationId:stationId})
+    res.render('new.ejs',req.query)
 });
 
 app.get('/newWind', function (req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
-    // console.log("Time From: ");
-    // console.log(req.query.timeFrom);
-    // console.log("Time To: ");
-    // console.log(req.query.timeTo);
     let queryHa = 'SELECT * FROM ' + req.query.stationIs + 'avg WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'";
-    // console.log(req.query.stationIs);
-    // console.log(queryHa);
     influx.query(queryHa).then
     (result => {
         res.send(result);
-        // console.log(result.length);
-        // console.log(result[0]);
-        // console.log(result[result.length-1])
     }).catch(err => {
         res.status(500).send(err.stack)
     });
@@ -202,16 +222,6 @@ app.get('/query', function (req, res) {
     })
 });
 
-app.get('/mail', function (req, res){
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
-});
-
 // app.get('/querys', async function (req, res) {
 //     // console.log(req.query.stations);
 //     // let pack = await [[req.query.stations[0],Q(req.query.stations[0])]];
@@ -230,7 +240,5 @@ app.get('/mail', function (req, res){
 //         }
 //     }
 // });
-
-
 
 app.listen('3005');
