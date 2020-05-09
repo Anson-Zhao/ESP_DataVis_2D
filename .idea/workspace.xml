@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ESP_DataVis_2D_BX.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ESP_DataVis_2D.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -220,13 +216,7 @@
       <workItem from="1586893715010" duration="2049000" />
       <workItem from="1587394994608" duration="5565000" />
       <workItem from="1588627747575" duration="726000" />
-    </task>
-    <task id="LOCAL-00002" summary="esp live chart">
-      <created>1571323742899</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1571323742899</updated>
+      <workItem from="1588967727518" duration="493000" />
     </task>
     <task id="LOCAL-00003" summary="esp live chart">
       <created>1571325811700</created>
@@ -564,7 +554,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587398437135</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="update dygraph libraries">
+      <created>1588967748926</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1588967748926</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -609,18 +606,14 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="883" y="360" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1581354788130" />
-    <state x="1605" y="474" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579708521024">
-      <screen x="0" y="23" width="2560" height="1308" />
-    </state>
-    <state x="1605" y="474" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1308@0.23.2560.1308" timestamp="1579708521024" />
     <state x="1408" y="530" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1583160026739">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1408" y="530" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1583160026739" />
-    <state x="391" y="0" key="CommitChangelistDialog2" timestamp="1587398434635">
+    <state x="391" y="0" key="CommitChangelistDialog2" timestamp="1588967747386">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="391" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587398434635" />
+    <state x="391" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588967747386" />
     <state x="946" y="311" key="CommitChangelistDialog2/0.23.2560.1308@0.23.2560.1308" timestamp="1584019414774" />
     <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1583255580947" />
     <state x="44" y="15" width="1446" height="742" key="DiffContextDialog" timestamp="1587397578406">
@@ -690,15 +683,14 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="1400" height="308" key="GridCell.Tab.2.right/0.23.2560.1417@0.23.2560.1417" timestamp="1583934807843" />
-    <state x="71" y="56" width="1622" height="868" key="MergeDialog" timestamp="1587396118889">
+    <state x="71" y="56" width="1622" height="868" key="MergeDialog" timestamp="1588968020128">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="71" y="56" width="1622" height="868" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587396118889" />
-    <state x="388" y="248" width="1057" height="483" key="MultipleFileMergeDialog" timestamp="1587396124877">
+    <state x="71" y="56" width="1622" height="868" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588968020128" />
+    <state x="388" y="248" width="1057" height="483" key="MultipleFileMergeDialog" timestamp="1588968020138">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="388" y="248" width="1057" height="483" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587396124877" />
-    <state x="1554" y="335" key="MultipleFileMergeDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1579895604705" />
+    <state x="388" y="248" width="1057" height="483" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588968020138" />
     <state x="617" y="475" key="SettingsEditor" timestamp="1583768393177">
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
@@ -714,30 +706,20 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="516" y="197" width="926" height="588" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587398455348" />
-    <state x="688" y="270" width="1234" height="739" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1580080435904" />
     <state x="688" y="291" width="1234" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1583253905247" />
     <state x="716" y="416" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585424055216">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="716" y="416" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585424055216" />
-    <state x="868" y="409" width="1482" height="1049" key="dock-window-1" timestamp="1579213471200">
-      <screen x="0" y="23" width="2560" height="1417" />
-    </state>
-    <state x="868" y="409" width="1482" height="1049" key="dock-window-1/0.23.2560.1417@0.23.2560.1417" timestamp="1579213471200" />
     <state x="1125" y="447" width="845" height="574" key="find.popup" timestamp="1582127467563">
       <screen x="0" y="23" width="2560" height="1308" />
     </state>
     <state x="1125" y="447" width="845" height="574" key="find.popup/0.23.2560.1308@0.23.2560.1308" timestamp="1582127467563" />
-    <state x="1435" y="603" width="845" height="528" key="find.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1579298741926" />
-    <state x="1154" y="328" key="git4idea.merge.GitPullDialog" timestamp="1587395124838">
+    <state x="778" y="208" key="git4idea.merge.GitPullDialog" timestamp="1588967803597">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1154" y="328" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587395124838" />
+    <state x="778" y="208" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588967803597" />
     <state x="1538" y="435" key="git4idea.merge.GitPullDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1582045742886" />
-    <state x="1037" y="538" key="new project wizard" timestamp="1579101598572">
-      <screen x="0" y="23" width="2560" height="1417" />
-    </state>
-    <state x="1037" y="538" key="new project wizard/0.23.2560.1417@0.23.2560.1417" timestamp="1579101598572" />
     <state x="809" y="391" key="publish.login" timestamp="1585424185152">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
