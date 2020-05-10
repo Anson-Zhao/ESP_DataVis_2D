@@ -183,12 +183,19 @@
             rawDownload_alert()
         });
 
+        $.ajax({
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stations',
+            url: "http://localhost:3005/newEjs",
+            method: "get",
+            dataType:"json",
+            data: {date: date}
+            // success: function(res) {
+            //     window.location.replace("/newEjs");
+            // }
+        });
+
         $('#jumpToW').click(function () {
-            $.ajax({
-                // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query',
-                url: "http://localhost:3005/mail",
-                method: "get"});
-            // window.location.replace("http://localhost:3005/newEjs");
+            window.location.replace("http://localhost:3005/newEjs");
         });
 
         // Building dynamic options
@@ -251,12 +258,11 @@
     var z_arr = [];
 
     var queryAndDisplay = function () {
-        console.log(stationIs);
         $.ajax({
             // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newWind',
             url: 'http://localhost:3005/newWind',
             type: 'GET',
-            // dataType: 'json',
+            dataType: 'json',
             async: true,
             data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationIs},
             beforeSend: function(){
@@ -272,15 +278,14 @@
                     // console.log(el.time);
                     // console.log(el.time._nanoISO);
                     // console.log(el._nanoISO);
-                    console.log("h");
                     x_arr[i] = [new Date(el.time), el.X];
                     y_arr[i] = [new Date(el.time), el.Y];
                     z_arr[i] = [new Date(el.time), el.Z];
-                    // var a = '' + el.X;
-                    // var b = '' + el.Y;
-                    // var c = '' + el.Z;
-                    // var t = el.time;
-                    // download += t+','+a+','+b+','+c+'\n';
+                    var a = '' + el.X;
+                    var b = '' + el.Y;
+                    var c = '' + el.Z;
+                    var t = el.time;
+                    download += t+','+a+','+b+','+c+'\n';
                 });
                 // console.log(download);
 
@@ -428,7 +433,6 @@
                     // document.body.appendChild(link);
                     // document.getElementById('link').click();
                     // document.body.removeChild(link);
-
                     $('#downloading').hide();
 
                     var link = document.createElement('iframe');
@@ -437,8 +441,9 @@
                     link.id = 'link';
                     document.body.appendChild(link);
                     console.log("append successfully");
-
                     // document.body.removeChild(link);
+
+
                     // res.forEach(function (el, i) {
                     //     var a = '' + el.X;
                     //     var b = '' + el.Y;

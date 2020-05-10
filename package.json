@@ -10,6 +10,7 @@
   "dependencies": {
     "csv-parse": "^4.8.5",
     "csv-writer": "latest",
+    "ejs": "^3.0.2",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "influx": "^5.5.1",
