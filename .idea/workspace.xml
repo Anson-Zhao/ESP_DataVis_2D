@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="" />
+    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,6 +58,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
@@ -217,13 +220,7 @@
       <workItem from="1587394994608" duration="5565000" />
       <workItem from="1588627747575" duration="726000" />
       <workItem from="1588967727518" duration="493000" />
-    </task>
-    <task id="LOCAL-00003" summary="esp live chart">
-      <created>1571325811700</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1571325811700</updated>
+      <workItem from="1588990680292" duration="1476000" />
     </task>
     <task id="LOCAL-00004" summary="historical data">
       <created>1571337258238</created>
@@ -561,7 +558,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588967748926</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="update dygraph libraries">
+      <created>1588990699975</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1588990699975</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -610,10 +614,10 @@
       <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state x="1408" y="530" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1583160026739" />
-    <state x="391" y="0" key="CommitChangelistDialog2" timestamp="1588967747386">
+    <state x="391" y="0" key="CommitChangelistDialog2" timestamp="1588990698789">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="391" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588967747386" />
+    <state x="391" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1588990698789" />
     <state x="946" y="311" key="CommitChangelistDialog2/0.23.2560.1308@0.23.2560.1308" timestamp="1584019414774" />
     <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1583255580947" />
     <state x="44" y="15" width="1446" height="742" key="DiffContextDialog" timestamp="1587397578406">
@@ -715,10 +719,10 @@
       <screen x="0" y="23" width="2560" height="1308" />
     </state>
     <state x="1125" y="447" width="845" height="574" key="find.popup/0.23.2560.1308@0.23.2560.1308" timestamp="1582127467563" />
-    <state x="778" y="208" key="git4idea.merge.GitPullDialog" timestamp="1588967803597">
+    <state x="778" y="208" key="git4idea.merge.GitPullDialog" timestamp="1588990719002">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="778" y="208" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588967803597" />
+    <state x="778" y="208" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588990719002" />
     <state x="1538" y="435" key="git4idea.merge.GitPullDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1582045742886" />
     <state x="809" y="391" key="publish.login" timestamp="1585424185152">
       <screen x="0" y="0" width="1920" height="1040" />
