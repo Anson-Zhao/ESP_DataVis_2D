@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ESP_DataVis_2D.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ESP_DataVis_2D.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/new.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/new.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/nodemailer/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nodemailer/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/nodemailer/lib/smtp-pool/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nodemailer/lib/smtp-pool/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/nodemailer/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nodemailer/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +89,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/indexbackup.html" />
   </component>
@@ -587,13 +587,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -645,36 +644,37 @@
     </state>
     <state x="610" y="128" width="1144" height="734" key="DirDiffDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586912477560" />
     <state x="813" y="184" width="1525" height="923" key="DirDiffDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1584017606798" />
-    <state x="501" y="205" key="FileChooserDialogImpl" timestamp="1587438988643">
-      <screen x="0" y="0" width="1440" height="923" />
+    <state x="668" y="231" key="FileChooserDialogImpl" timestamp="1589079569262">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="501" y="205" key="FileChooserDialogImpl/0.0.1440.923@0.0.1440.923" timestamp="1587438988643" />
-    <state width="1397" height="178" key="GridCell.Tab.0.bottom" timestamp="1589002951090">
-      <screen x="0" y="0" width="1440" height="923" />
+    <state x="668" y="231" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589079569262" />
+    <state width="1865" height="265" key="GridCell.Tab.0.bottom" timestamp="1589080763493">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1397" height="178" key="GridCell.Tab.0.bottom/0.0.1440.923@0.0.1440.923" timestamp="1589002951090" />
-    <state width="1865" height="265" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587397615733" />
+    <state width="1865" height="265" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589080763493" />
     <state width="987" height="298" key="GridCell.Tab.0.bottom/0.23.2560.1308@0.23.2560.1308" timestamp="1584016453499" />
     <state width="1400" height="327" key="GridCell.Tab.0.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1583938858128" />
-    <state width="1397" height="178" key="GridCell.Tab.0.center" timestamp="1589002951090">
-      <screen x="0" y="0" width="1440" height="923" />
+    <state width="1865" height="265" key="GridCell.Tab.0.center" timestamp="1589080763493">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1397" height="178" key="GridCell.Tab.0.center/0.0.1440.923@0.0.1440.923" timestamp="1589002951090" />
-    <state width="1865" height="265" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587397615733" />
+    <state width="1865" height="265" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589080763493" />
     <state width="987" height="298" key="GridCell.Tab.0.center/0.23.2560.1308@0.23.2560.1308" timestamp="1584016453498" />
     <state width="1400" height="327" key="GridCell.Tab.0.center/0.23.2560.1417@0.23.2560.1417" timestamp="1583938858127" />
-    <state width="1397" height="178" key="GridCell.Tab.0.left" timestamp="1589002951089">
-      <screen x="0" y="0" width="1440" height="923" />
+    <state width="1865" height="265" key="GridCell.Tab.0.left" timestamp="1589080763493">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1397" height="178" key="GridCell.Tab.0.left/0.0.1440.923@0.0.1440.923" timestamp="1589002951089" />
-    <state width="1865" height="265" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587397615732" />
+    <state width="1865" height="265" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589080763493" />
     <state width="987" height="298" key="GridCell.Tab.0.left/0.23.2560.1308@0.23.2560.1308" timestamp="1584016453498" />
     <state width="1400" height="327" key="GridCell.Tab.0.left/0.23.2560.1417@0.23.2560.1417" timestamp="1583938858126" />
-    <state width="1397" height="178" key="GridCell.Tab.0.right" timestamp="1589002951090">
-      <screen x="0" y="0" width="1440" height="923" />
+    <state width="1865" height="265" key="GridCell.Tab.0.right" timestamp="1589080763493">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1397" height="178" key="GridCell.Tab.0.right/0.0.1440.923@0.0.1440.923" timestamp="1589002951090" />
-    <state width="1865" height="265" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587397615733" />
+    <state width="1865" height="265" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589080763493" />
     <state width="987" height="298" key="GridCell.Tab.0.right/0.23.2560.1308@0.23.2560.1308" timestamp="1584016453499" />
     <state width="1400" height="327" key="GridCell.Tab.0.right/0.23.2560.1417@0.23.2560.1417" timestamp="1583938858128" />
     <state width="1397" height="295" key="GridCell.Tab.1.bottom" timestamp="1587822732400">
@@ -741,9 +741,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="388" y="248" width="1057" height="483" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587396124877" />
-    <state x="617" y="475" key="SettingsEditor" timestamp="1583768393177">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="463" y="155" key="SettingsEditor" timestamp="1589080336553">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="463" y="155" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589080336553" />
     <state x="617" y="434" key="SettingsEditor/0.23.2560.1308@0.23.2560.1308" timestamp="1582064062083" />
     <state x="617" y="475" key="SettingsEditor/0.23.2560.1417@0.23.2560.1417" timestamp="1583768393177" />
     <state x="557" y="304" key="Vcs.Push.Dialog.v2" timestamp="1589003369359">
@@ -762,10 +763,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="716" y="416" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585424055216" />
-    <state x="633" y="299" width="617" height="490" key="find.popup" timestamp="1588110369683">
-      <screen x="0" y="0" width="1440" height="923" />
+    <state x="534" y="157" width="823" height="668" key="find.popup" timestamp="1589075517936">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="633" y="299" width="617" height="490" key="find.popup/0.0.1440.923@0.0.1440.923" timestamp="1588110369683" />
+    <state x="534" y="157" width="823" height="668" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589075517936" />
     <state x="1125" y="447" width="845" height="574" key="find.popup/0.23.2560.1308@0.23.2560.1308" timestamp="1582127467563" />
     <state x="1154" y="328" key="git4idea.merge.GitPullDialog" timestamp="1587395124838">
       <screen x="0" y="0" width="1920" height="1040" />

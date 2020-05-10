@@ -8,10 +8,12 @@ const nodemailer = require('nodemailer');
 // let fs = require('fs');
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: 'Gmail',
     auth: {
-        user: 'yge5095@gmail.com',
-        pass: '1syyRFLATs%'
+        // user: 'yge5095@gmail.com',
+        // pass: '1syyRFLATs%'
+        user: 'aaaa.zhao@g.northernacademy.org',
+        pass: 'qwer1234'
     }
 });
 
@@ -120,7 +122,7 @@ app.get('/mail', function (req, res){
 
     const mailOptions = {
         from: 'yge5095@gmail.com',
-        to: 'yiyang.ge@g.northernacademy.org',
+        to: 'azhao@northernacademy.org',
         subject: 'ESP Station Data',
         html:"<p><a href=\"http://localhost:3005/newEjs?time="+ time + "&stationId="+stationId+"\">click the text to view the data</a></p>"
     };
