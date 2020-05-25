@@ -50,7 +50,7 @@
     <button onclick="chartDFun(this)" value="2d" id="2d" class="chartsB">2 days</button>
     <button onclick="chartDFun(this)" value="3d" id="3d" class="chartsB">3 days</button>
     <br>
-    <h2>The charts represent past 3 days data, refreshed every 20 minutes. All chart data you see below is your browser local time</h2>
+    <h2>The charts represent past <span id = "chartText">3 days</span> data, refreshed every 20 minutes. All chart data you see below is your browser local time</h2>
 </div>
 
 <script type="text/javascript">
@@ -797,6 +797,7 @@
         // disable this button and enable previous button disabled
         $(".chartsB").prop('disabled', false);
         $("#"+objButton.value).prop('disabled', true);
+        $("#chartText").html(objButton.textContent);
 
         // refresh the chart data
         staQuery()
