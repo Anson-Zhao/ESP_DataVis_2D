@@ -110,6 +110,8 @@ function diff_minutes(dt2, dt1)
 }
 
 var EQstations;
+var Flag=[];
+var Pair=[];
 con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.StationData Where StationDescription = 'Earthquake'",function (err, result) {
     // [
     //   RowDataPacket {
@@ -123,18 +125,20 @@ con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.
     console.log(result[0].StationId);
     console.log(result);
     EQstations=result;
+
+    for(var i=0;i<result.length;i++) {
+        Flag.push([result[i].StationName]);
+        Pair.push([result[i].StationName]);
+    }
     EventCheck(result);
     // res.send(result);
 });
-var Flag=[];
-var Pair=[];
+
 var c=0;
 var minute="6m";
 async function EventCheck(stations){
     console.log("all begin");
     for(var i=0;i<stations.length;i++){
-        Flag.push([stations[i].StationName]);
-        Pair.push([stations[i].StationName]);
         console.log(Date());
         var querystatement='SELECT * FROM ' + stations[i].StationId + 'avg WHERE time >= now()-' +minute+ ' AND time<= now()';
         console.log(querystatement);
