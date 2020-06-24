@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/testsssss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ESP_DataVis_2D_BX.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ESP_DataVis_2D.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,16 +28,13 @@
     <expand />
     <select />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="ESP_DataVis_2D" />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="package" />
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -43,6 +45,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="InvalidFacetManager">
     <ignored-facets>
@@ -55,7 +58,6 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -79,22 +81,27 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/indexbackup.html" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
+      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\jsLibrary" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/node_modules" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\archive" />
+      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
       <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$/img" />
       <recent name="$PROJECT_DIR$/archive" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.espDataVis.js">
@@ -104,7 +111,7 @@
     <configuration name="index116.html?_ijt=4mhebuui7t5p4oes4q86ask3pg" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/index116.html?_ijt=4mhebuui7t5p4oes4q86ask3pg" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="index.html?_ijt=pl3ll9sdummqmmcs4odplgq0dh" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/index.html?_ijt=pl3ll9sdummqmmcs4odplgq0dh" useBuiltInWebServerPort="true">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/ESP_DataVis_2D_BX/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="index.html?_ijt=r175ml65f3vkfl9oo4qrtlfi9k" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/index.html?_ijt=r175ml65f3vkfl9oo4qrtlfi9k" useBuiltInWebServerPort="true">
@@ -114,33 +121,21 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="JavaScript Debug.index.html?_ijt=pl3ll9sdummqmmcs4odplgq0dh" />
       <item itemvalue="JavaScript Debug.index.html?_ijt=r175ml65f3vkfl9oo4qrtlfi9k" />
       <item itemvalue="JavaScript Debug.index116.html?_ijt=4mhebuui7t5p4oes4q86ask3pg" />
       <item itemvalue="JavaScript Debug.historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" />
+      <item itemvalue="JavaScript Debug.index.html" />
       <item itemvalue="Node.js.espDataVis.js" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Node.js.espDataVis.js" />
+        <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JavaScript Debug.historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" />
         <item itemvalue="JavaScript Debug.index116.html?_ijt=4mhebuui7t5p4oes4q86ask3pg" />
         <item itemvalue="JavaScript Debug.index.html?_ijt=r175ml65f3vkfl9oo4qrtlfi9k" />
-        <item itemvalue="JavaScript Debug.index.html?_ijt=pl3ll9sdummqmmcs4odplgq0dh" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -219,8 +214,20 @@
       <workItem from="1583340851787" duration="2314000" />
       <workItem from="1583513089265" duration="642000" />
       <workItem from="1583514283150" duration="133000" />
-      <workItem from="1583591089540" duration="12864000" />
-      <workItem from="1584548274047" duration="1759000" />
+      <workItem from="1583591089540" duration="9889000" />
+      <workItem from="1583939891348" duration="2447000" />
+      <workItem from="1585161213661" duration="633000" />
+      <workItem from="1585421980833" duration="12799000" />
+      <workItem from="1585446532367" duration="5000" />
+      <workItem from="1585763514268" duration="3299000" />
+      <workItem from="1586062469119" duration="602000" />
+      <workItem from="1586224034914" duration="635000" />
+      <workItem from="1586533863546" duration="59000" />
+      <workItem from="1586893715010" duration="2049000" />
+      <workItem from="1587394994608" duration="3141000" />
+      <workItem from="1587773778850" duration="22020000" />
+      <workItem from="1590942447892" duration="13556000" />
+      <workItem from="1592932500663" duration="15952000" />
     </task>
     <task id="LOCAL-00001" summary="esp live chart">
       <created>1571239268892</created>
@@ -530,14 +537,42 @@
       <option name="project" value="LOCAL" />
       <updated>1583255581202</updated>
     </task>
-    <task id="LOCAL-00045" summary="Merge branch 'master' of https://github.com/Anson-Zhao/ESP_DataVis_2D into Rachel&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;historical.html">
-      <created>1583939080964</created>
+    <task id="LOCAL-00045" summary="chart date selectable">
+      <created>1585444139166</created>
       <option name="number" value="00045" />
       <option name="presentableId" value="LOCAL-00045" />
       <option name="project" value="LOCAL" />
-      <updated>1583939080964</updated>
+      <updated>1585444139167</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="chart date selectable">
+      <created>1585444766747</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1585444766747</updated>
+    </task>
+    <task id="LOCAL-00047" summary="minor bug fixed">
+      <created>1585764475905</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1585764475905</updated>
+    </task>
+    <task id="LOCAL-00048" summary="update dygraph libraries">
+      <created>1586912508046</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1586912508046</updated>
+    </task>
+    <task id="LOCAL-00049" summary="update dygraph libraries">
+      <created>1587395103826</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1587395103826</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,124 +603,105 @@
     <MESSAGE value="V1.42" />
     <MESSAGE value="V1.43" />
     <MESSAGE value="Merge branch 'master' of https://github.com/Anson-Zhao/ESP_DataVis_2D into Rachel&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;historical.html" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/Anson-Zhao/ESP_DataVis_2D into Rachel&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;historical.html" />
+    <MESSAGE value="chart date selectable" />
+    <MESSAGE value="minor bug fixed" />
+    <MESSAGE value="update dygraph libraries" />
+    <option name="LAST_COMMIT_MESSAGE" value="update dygraph libraries" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="908" y="459" key="#Deployment" timestamp="1582127798343">
-      <screen x="0" y="23" width="2560" height="1308" />
+    <state x="417" y="60" key="#Console" timestamp="1588916423607">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state x="908" y="459" key="#Deployment/0.23.2560.1308@0.23.2560.1308" timestamp="1582127798343" />
-    <state x="908" y="495" key="#Deployment/0.23.2560.1417@0.23.2560.1417" timestamp="1580915635261" />
-    <state x="883" y="360" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581354788130">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="417" y="60" key="#Console/0.23.1920.1057@0.23.1920.1057" timestamp="1588916423607" />
+    <state x="595" y="308" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1590951642396">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state x="883" y="360" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1581354788130" />
-    <state x="1605" y="474" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579708521024">
-      <screen x="0" y="23" width="2560" height="1308" />
+    <state x="595" y="308" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1920.1057@0.23.1920.1057" timestamp="1590951642396" />
+    <state x="391" y="0" key="CommitChangelistDialog2" timestamp="1587395102334">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1605" y="474" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2560.1308@0.23.2560.1308" timestamp="1579708521024" />
-    <state x="1408" y="530" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1583160026739">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="391" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587395102334" />
+    <state x="44" y="38" width="1446" height="755" key="DiffContextDialog" timestamp="1588469448331">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state x="1408" y="530" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1583160026739" />
-    <state x="946" y="368" key="CommitChangelistDialog2" timestamp="1587773732427">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="44" y="15" width="1446" height="742" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587397578406" />
+    <state x="44" y="38" width="1446" height="755" key="DiffContextDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1588469448331" />
+    <state x="610" y="128" width="1144" height="734" key="DirDiffDialog" timestamp="1586912477560">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="946" y="341" key="CommitChangelistDialog2/0.23.2560.1308@0.23.2560.1308" timestamp="1582120385353" />
-    <state x="946" y="368" key="CommitChangelistDialog2/0.23.2560.1417@0.23.2560.1417" timestamp="1587773732427" />
-    <state x="58" y="42" width="1928" height="932" key="DiffContextDialog" timestamp="1582120381212">
-      <screen x="0" y="23" width="2560" height="1308" />
+    <state x="610" y="128" width="1144" height="734" key="DirDiffDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586912477560" />
+    <state width="1380" height="247" key="GridCell.Tab.0.bottom" timestamp="1593027475377">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state x="58" y="42" width="1928" height="932" key="DiffContextDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1582120381212" />
-    <state x="850" y="351" width="1200" height="800" key="DiffContextDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1581008237778" />
-    <state x="813" y="184" width="1525" height="923" key="DirDiffDialog" timestamp="1582119933970">
-      <screen x="0" y="23" width="2560" height="1308" />
+    <state width="1865" height="265" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587397615733" />
+    <state width="1380" height="247" key="GridCell.Tab.0.bottom/0.23.1920.1057@0.23.1920.1057" timestamp="1593027475377" />
+    <state width="1380" height="305" key="GridCell.Tab.0.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1592944284986" />
+    <state width="1380" height="247" key="GridCell.Tab.0.center" timestamp="1593027475376">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state x="813" y="184" width="1525" height="923" key="DirDiffDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1582119933970" />
-    <state width="1400" height="308" key="GridCell.Tab.0.bottom" timestamp="1584115347023">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1865" height="265" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587397615733" />
+    <state width="1380" height="247" key="GridCell.Tab.0.center/0.23.1920.1057@0.23.1920.1057" timestamp="1593027475376" />
+    <state width="1380" height="305" key="GridCell.Tab.0.center/0.23.2560.1417@0.23.2560.1417" timestamp="1592944284980" />
+    <state width="1380" height="247" key="GridCell.Tab.0.left" timestamp="1593027475376">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1975" height="298" key="GridCell.Tab.0.bottom/0.23.2560.1308@0.23.2560.1308" timestamp="1582127705902" />
-    <state width="1400" height="308" key="GridCell.Tab.0.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1584115347023" />
-    <state width="1400" height="308" key="GridCell.Tab.0.center" timestamp="1584115347022">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1865" height="265" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587397615732" />
+    <state width="1380" height="247" key="GridCell.Tab.0.left/0.23.1920.1057@0.23.1920.1057" timestamp="1593027475376" />
+    <state width="1380" height="305" key="GridCell.Tab.0.left/0.23.2560.1417@0.23.2560.1417" timestamp="1592944284976" />
+    <state width="1380" height="247" key="GridCell.Tab.0.right" timestamp="1593027475377">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1975" height="298" key="GridCell.Tab.0.center/0.23.2560.1308@0.23.2560.1308" timestamp="1582127705902" />
-    <state width="1400" height="308" key="GridCell.Tab.0.center/0.23.2560.1417@0.23.2560.1417" timestamp="1584115347022" />
-    <state width="1400" height="308" key="GridCell.Tab.0.left" timestamp="1584115347021">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state width="1865" height="265" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587397615733" />
+    <state width="1380" height="247" key="GridCell.Tab.0.right/0.23.1920.1057@0.23.1920.1057" timestamp="1593027475377" />
+    <state width="1380" height="305" key="GridCell.Tab.0.right/0.23.2560.1417@0.23.2560.1417" timestamp="1592944284985" />
+    <state x="71" y="56" width="1622" height="868" key="MergeDialog" timestamp="1587396118889">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1975" height="298" key="GridCell.Tab.0.left/0.23.2560.1308@0.23.2560.1308" timestamp="1582127705901" />
-    <state width="1400" height="308" key="GridCell.Tab.0.left/0.23.2560.1417@0.23.2560.1417" timestamp="1584115347021" />
-    <state width="1400" height="308" key="GridCell.Tab.0.right" timestamp="1584115347022">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="71" y="56" width="1622" height="868" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587396118889" />
+    <state x="388" y="248" width="1057" height="483" key="MultipleFileMergeDialog" timestamp="1587396124877">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1975" height="298" key="GridCell.Tab.0.right/0.23.2560.1308@0.23.2560.1308" timestamp="1582127705902" />
-    <state width="1400" height="308" key="GridCell.Tab.0.right/0.23.2560.1417@0.23.2560.1417" timestamp="1584115347022" />
-    <state width="1400" height="308" key="GridCell.Tab.1.bottom" timestamp="1584115347026">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="388" y="248" width="1057" height="483" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587396124877" />
+    <state x="1222" y="246" key="RollbackChangesDialog" timestamp="1588441607287">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1400" height="308" key="GridCell.Tab.1.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1584115347026" />
-    <state width="1400" height="308" key="GridCell.Tab.1.center" timestamp="1584115347025">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="1222" y="246" key="RollbackChangesDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1588441607287" />
+    <state x="157" y="23" width="1446" height="1057" key="SettingsEditor" timestamp="1590944238103">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1400" height="308" key="GridCell.Tab.1.center/0.23.2560.1417@0.23.2560.1417" timestamp="1584115347025" />
-    <state width="1400" height="308" key="GridCell.Tab.1.left" timestamp="1584115347025">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="157" y="23" width="1446" height="1057" key="SettingsEditor/0.23.1920.1057@0.23.1920.1057" timestamp="1590944238103" />
+    <state x="617" y="475" key="SettingsEditor/0.23.2560.1417@0.23.2560.1417" timestamp="1587773849902" />
+    <state x="742" y="343" key="Vcs.Push.Dialog.v2" timestamp="1586912510808">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1400" height="308" key="GridCell.Tab.1.left/0.23.2560.1417@0.23.2560.1417" timestamp="1584115347025" />
-    <state width="1400" height="308" key="GridCell.Tab.1.right" timestamp="1584115347026">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="742" y="343" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586912510808" />
+    <state x="253" y="224" width="1450" height="717" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1592942353167">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1400" height="308" key="GridCell.Tab.1.right/0.23.2560.1417@0.23.2560.1417" timestamp="1584115347026" />
-    <state width="1400" height="308" key="GridCell.Tab.2.bottom" timestamp="1584115347027">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="516" y="197" width="926" height="588" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587397578407" />
+    <state x="253" y="224" width="1450" height="717" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1592942353167" />
+    <state x="716" y="446" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593029901234">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1400" height="308" key="GridCell.Tab.2.bottom/0.23.2560.1417@0.23.2560.1417" timestamp="1584115347027" />
-    <state width="1400" height="308" key="GridCell.Tab.2.center" timestamp="1584115347026">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="716" y="416" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585424055216" />
+    <state x="716" y="446" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1920.1057@0.23.1920.1057" timestamp="1593029901234" />
+    <state x="647" y="353" key="git4idea.merge.GitPullDialog" timestamp="1593029975836">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1400" height="308" key="GridCell.Tab.2.center/0.23.2560.1417@0.23.2560.1417" timestamp="1584115347026" />
-    <state width="1400" height="308" key="GridCell.Tab.2.left" timestamp="1584115347026">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="1154" y="328" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587395124838" />
+    <state x="647" y="353" key="git4idea.merge.GitPullDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1593029975836" />
+    <state x="809" y="391" key="publish.login" timestamp="1585424185152">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1400" height="308" key="GridCell.Tab.2.left/0.23.2560.1417@0.23.2560.1417" timestamp="1584115347026" />
-    <state width="1400" height="308" key="GridCell.Tab.2.right" timestamp="1584115347027">
-      <screen x="0" y="23" width="2560" height="1417" />
+    <state x="809" y="391" key="publish.login/0.0.1920.1040@0.0.1920.1040" timestamp="1585424185152" />
+    <state x="631" y="293" key="run.anything.popup" timestamp="1592251746030">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state width="1400" height="308" key="GridCell.Tab.2.right/0.23.2560.1417@0.23.2560.1417" timestamp="1584115347027" />
-    <state x="1554" y="335" key="MultipleFileMergeDialog" timestamp="1579895604705">
-      <screen x="0" y="23" width="2560" height="1308" />
+    <state x="631" y="293" key="run.anything.popup/0.23.1920.1057@0.23.1920.1057" timestamp="1592251746030" />
+    <state x="669" y="23" width="1005" height="1057" key="search.everywhere.popup" timestamp="1593027145424">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
-    <state x="1554" y="335" key="MultipleFileMergeDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1579895604705" />
-    <state x="617" y="475" key="SettingsEditor" timestamp="1583768393177">
-      <screen x="0" y="23" width="2560" height="1417" />
-    </state>
-    <state x="617" y="434" key="SettingsEditor/0.23.2560.1308@0.23.2560.1308" timestamp="1582064062083" />
-    <state x="617" y="475" key="SettingsEditor/0.23.2560.1417@0.23.2560.1417" timestamp="1583768393177" />
-    <state x="989" y="491" key="Vcs.Push.Dialog.v2" timestamp="1583939085757">
-      <screen x="0" y="23" width="2560" height="1417" />
-    </state>
-    <state x="989" y="455" key="Vcs.Push.Dialog.v2/0.23.2560.1308@0.23.2560.1308" timestamp="1582120387548" />
-    <state x="989" y="491" key="Vcs.Push.Dialog.v2/0.23.2560.1417@0.23.2560.1417" timestamp="1583939085757" />
-    <state x="688" y="291" width="1234" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1583940677780">
-      <screen x="0" y="23" width="2560" height="1417" />
-    </state>
-    <state x="688" y="270" width="1234" height="739" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1580080435904" />
-    <state x="688" y="291" width="1234" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1417@0.23.2560.1417" timestamp="1583940677780" />
-    <state x="868" y="409" width="1482" height="1049" key="dock-window-1" timestamp="1579213471200">
-      <screen x="0" y="23" width="2560" height="1417" />
-    </state>
-    <state x="868" y="409" width="1482" height="1049" key="dock-window-1/0.23.2560.1417@0.23.2560.1417" timestamp="1579213471200" />
-    <state x="1125" y="447" width="845" height="574" key="find.popup" timestamp="1582127467563">
-      <screen x="0" y="23" width="2560" height="1308" />
-    </state>
-    <state x="1125" y="447" width="845" height="574" key="find.popup/0.23.2560.1308@0.23.2560.1308" timestamp="1582127467563" />
-    <state x="1435" y="603" width="845" height="528" key="find.popup/0.23.2560.1417@0.23.2560.1417" timestamp="1579298741926" />
-    <state x="1538" y="435" key="git4idea.merge.GitPullDialog" timestamp="1582045742886">
-      <screen x="0" y="23" width="2560" height="1308" />
-    </state>
-    <state x="1538" y="435" key="git4idea.merge.GitPullDialog/0.23.2560.1308@0.23.2560.1308" timestamp="1582045742886" />
+    <state x="669" y="23" width="1005" height="1057" key="search.everywhere.popup/0.23.1920.1057@0.23.1920.1057" timestamp="1593027145424" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -709,11 +725,6 @@
           <url>file://$PROJECT_DIR$/archive/rough_draft.html</url>
           <line>185</line>
           <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/historical.html</url>
-          <line>249</line>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
