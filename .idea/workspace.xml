@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/new/June24BackupespDataVis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +74,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/new" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -88,18 +89,19 @@
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/indexbackup.html" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/new" />
+      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
+      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\jsLibrary" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/node_modules" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\archive" />
       <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
       <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$/img" />
       <recent name="$PROJECT_DIR$/archive" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
-      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\jsLibrary" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/node_modules" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.espDataVis.js">
@@ -231,6 +233,7 @@
       <workItem from="1590437771118" duration="38000" />
       <workItem from="1590728805632" duration="2221000" />
       <workItem from="1593040561495" duration="70000" />
+      <workItem from="1593045188189" duration="605000" />
     </task>
     <task id="LOCAL-00006" summary="CSS">
       <created>1571928015971</created>
@@ -579,19 +582,20 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -617,16 +621,18 @@
     </state>
     <state x="594" y="53" key="#Deployment/0.0.1676.902@0.0.1676.902" timestamp="1593040631453" />
     <state x="681" y="189" key="#Deployment/0.0.1920.1040@0.0.1920.1040" timestamp="1590374174485" />
-    <state x="391" y="0" key="CommitChangelistDialog2" timestamp="1590374105446">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="391" y="23" width="1128" height="1057" key="CommitChangelistDialog2" timestamp="1593045798098">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="293" y="0" key="CommitChangelistDialog2/0.0.1440.923@0.0.1440.923" timestamp="1589003313267" />
     <state x="391" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590374105446" />
-    <state x="33" y="13" width="1085" height="659" key="DiffContextDialog" timestamp="1588308205557">
-      <screen x="0" y="0" width="1440" height="923" />
+    <state x="391" y="23" width="1128" height="1057" key="CommitChangelistDialog2/0.23.1920.1057@0.23.1920.1057" timestamp="1593045798098" />
+    <state x="44" y="38" width="1447" height="755" key="DiffContextDialog" timestamp="1593045795029">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="33" y="13" width="1085" height="659" key="DiffContextDialog/0.0.1440.923@0.0.1440.923" timestamp="1588308205557" />
     <state x="44" y="15" width="1446" height="742" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587397578406" />
+    <state x="44" y="38" width="1447" height="755" key="DiffContextDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1593045795029" />
     <state x="610" y="128" width="1144" height="734" key="DirDiffDialog" timestamp="1586912477560">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -729,11 +735,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="716" y="416" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585424055216" />
-    <state x="534" y="157" width="823" height="668" key="find.popup" timestamp="1589075517936">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="534" y="183" width="1156" height="796" key="find.popup" timestamp="1593045424255">
+      <screen x="0" y="23" width="1920" height="1057" />
     </state>
     <state x="633" y="299" width="617" height="490" key="find.popup/0.0.1440.923@0.0.1440.923" timestamp="1588110369683" />
     <state x="534" y="157" width="823" height="668" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589075517936" />
+    <state x="534" y="183" width="1156" height="796" key="find.popup/0.23.1920.1057@0.23.1920.1057" timestamp="1593045424255" />
     <state x="1154" y="328" key="git4idea.merge.GitPullDialog" timestamp="1587395124838">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -742,6 +749,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="809" y="391" key="publish.login/0.0.1920.1040@0.0.1920.1040" timestamp="1585424185152" />
+    <state x="497" y="248" key="run.anything.popup" timestamp="1593045540973">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="497" y="248" key="run.anything.popup/0.23.1920.1057@0.23.1920.1057" timestamp="1593045540973" />
     <state x="383" y="195" key="search.everywhere.popup" timestamp="1587613809152">
       <screen x="0" y="0" width="1440" height="923" />
     </state>

@@ -2,20 +2,26 @@ const Influx = require('influx');
 const express = require('express');
 const app = express();
 const nodemailer = require('nodemailer');
+// const ib = require(ib*);
 // let jsonexport = require('jsonexport');
 // let path = require('path');
 // const csv = require('csv-parser');
 // let fs = require('fs');
 
 const transporter = nodemailer.createTransport({
-    service: 'Gmail',
+    service: 'gmail',
     auth: {
-        // user: 'yge5095@gmail.com',
-        // pass: '1syyRFLATs%'
-        user: 'aaaa.zhao@g.northernacademy.org',
-        pass: 'qwer1234'
+        user: 'youremail@gmail.com',
+        pass: 'yourpassword'
     }
 });
+
+const mailOptions = {
+    from: 'youremail@gmail.com',
+    to: 'myfriend@yahoo.com',
+    subject: 'Sending Email using Node.js',
+    text: 'That was easy!'
+};
 
 const influx = new Influx.InfluxDB({
     precision: 'rfc3339',
@@ -31,7 +37,7 @@ const mysql = require('mysql');
 const bodyParser = require("body-parser");
 
 const con = mysql.createConnection({
-    host: "localhost",
+    host: "10.11.90.16",
     user: "AppUser",
     password: "Special888%",
     port: "3306",
@@ -51,6 +57,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
+
 
 // function convertToCSV(objArray,m) {
 //     // console.log(objArray);
@@ -87,36 +94,20 @@ app.use(bodyParser.json());
 // }
 
 app.get ('/stations', function (req, res){
-    res.setHeader("Access-Control-Allow-Origin", "*");
     // console.log(req);
-    con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM esp2.stationdata Where Status = 'Active'",function (err, result) {
-        if (err) throw err;
-        // console.log(result);
+    con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.StationData Where Status = 'Active'",function (err, result) {
+        console.log(result[0].StationId);
+        // EventCheck(result);
         res.send(result);
     });
 });
 
-app.get ('/stationsForN', function (req, res){ //stations information used for new event page
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    var stationId = req.query.stationID;
-    console.log(req);
-    con.query("SELECT State FROM esp2.stationdata Where StationId ='"+stationId+ "';",function (err, result1) {
-        if (err){
-            throw err;
-        }else{
-            con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM esp2.stationdata Where Status = 'Active' AND State = '"+result1[0].State+"';",function (err, result) {
-                if (err) throw err;
-                // console.log(result);
-                res.send(result);
-            });
-        }
-        // console.log(result1[0].State);
-        // res.send(result);
-    });
-    // console.log(req);
-});
-
-
+function diff_minutes(dt2, dt1)
+{
+    var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+    diff /= 60;
+    return Math.abs(Math.round(diff));
+}
 
 var EQstations;
 var Flag=[];
@@ -142,7 +133,6 @@ con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.
     EventCheck(result);
     // res.send(result);
 });
-
 
 var c=0;
 var minute="6m";
@@ -251,44 +241,17 @@ async function EventCheck(stations){
 
 
 
-
-
-app.get('/mail', function (req, res){
-    var time = "2020-04-01T16:00:00.000Z",
-        stationId = "station_two";
-
-    const mailOptions = {
-        from: 'yge5095@gmail.com',
-        to: 'azhao@northernacademy.org',
-        subject: 'ESP Station Data',
-        html:"<p><a href=\"http://localhost:3005/newEjs?time="+ time + "&stationId="+stationId+"\">click the text to view the data</a></p>"
-    };
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-            console.log(error);
-        } else {
-            //http://localhost:3005/newEjs?stationID=3333&dateTime=8888
-            console.log('Email sent: ' + info.response);
-        }
-    });
-});
-
-app.get('/newEjs',function (req,res) {
-    res.setHeader("Access-Control-Allow-Origin", "*"); // Allow cross domain header
-    res.render('new.ejs',req.query)
-});
-
 app.get('/newWind', function (req, res) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
     let queryHa = 'SELECT * FROM ' + req.query.stationIs + 'avg WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'";
+// console.log(queryHa);
     influx.query(queryHa).then
     (result => {
         res.send(result);
+        // console.log(result)
     }).catch(err => {
         res.status(500).send(err.stack)
     });
 });
-
 // let csvData;
 // function download_csv(exportFilename) {
 //     if (exportFilename == null) {
@@ -313,7 +276,6 @@ app.get('/newWind', function (req, res) {
 // }
 
 app.get('/newSnow', async function (req, res) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
     let queryH = 'SELECT * FROM ' + req.query.stationIs + ' WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'";
     // console.log(queryH);
     let download=[];
@@ -350,7 +312,6 @@ app.get('/newSnow', async function (req, res) {
 });
 
 app.get('/query', function (req, res) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
     pastTime = req.query.chartDuration;
     let query = 'SELECT * FROM ' + req.query.stationID + 'avg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime;
     influx.query(query).then
@@ -359,6 +320,16 @@ app.get('/query', function (req, res) {
     }).catch(err => {
         console.log(err)
     })
+});
+
+app.get('/mail', function (req, res){
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
 });
 
 // app.get('/querys', async function (req, res) {
@@ -379,5 +350,9 @@ app.get('/query', function (req, res) {
 //         }
 //     }
 // });
+
+
+
+
 
 app.listen('3005');
