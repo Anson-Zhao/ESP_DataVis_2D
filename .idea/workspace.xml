@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,19 +86,19 @@
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/indexbackup.html" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/new" />
-      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
-      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\jsLibrary" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/node_modules" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\archive" />
       <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
       <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$/img" />
       <recent name="$PROJECT_DIR$/archive" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/new" />
+      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
+      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\jsLibrary" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/node_modules" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.espDataVis.js">
