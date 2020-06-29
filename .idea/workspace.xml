@@ -230,14 +230,7 @@
       <workItem from="1590437740407" duration="8000" />
       <workItem from="1590437771118" duration="38000" />
       <workItem from="1590728805632" duration="2221000" />
-      <workItem from="1593040561495" duration="70000" />
-    </task>
-    <task id="LOCAL-00006" summary="CSS">
-      <created>1571928015971</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1571928015971</updated>
+      <workItem from="1593040561495" duration="1288000" />
     </task>
     <task id="LOCAL-00007" summary="new Gauges">
       <created>1572459756942</created>
@@ -575,7 +568,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590374107149</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="update chart text">
+      <created>1593040672595</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1593040672595</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -617,10 +617,11 @@
     </state>
     <state x="594" y="53" key="#Deployment/0.0.1676.902@0.0.1676.902" timestamp="1593040631453" />
     <state x="681" y="189" key="#Deployment/0.0.1920.1040@0.0.1920.1040" timestamp="1590374174485" />
-    <state x="391" y="0" key="CommitChangelistDialog2" timestamp="1590374105446">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="341" y="0" key="CommitChangelistDialog2" timestamp="1593040670959">
+      <screen x="0" y="0" width="1676" height="902" />
     </state>
     <state x="293" y="0" key="CommitChangelistDialog2/0.0.1440.923@0.0.1440.923" timestamp="1589003313267" />
+    <state x="341" y="0" key="CommitChangelistDialog2/0.0.1676.902@0.0.1676.902" timestamp="1593040670959" />
     <state x="391" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590374105446" />
     <state x="33" y="13" width="1085" height="659" key="DiffContextDialog" timestamp="1588308205557">
       <screen x="0" y="0" width="1440" height="923" />
@@ -716,10 +717,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="155" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589080336553" />
-    <state x="742" y="343" key="Vcs.Push.Dialog.v2" timestamp="1590374109763">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="648" y="238" key="Vcs.Push.Dialog.v2" timestamp="1593040675111">
+      <screen x="0" y="0" width="1676" height="902" />
     </state>
     <state x="557" y="304" key="Vcs.Push.Dialog.v2/0.0.1440.923@0.0.1440.923" timestamp="1589003369359" />
+    <state x="648" y="238" key="Vcs.Push.Dialog.v2/0.0.1676.902@0.0.1676.902" timestamp="1593040675111" />
     <state x="742" y="343" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590374109763" />
     <state x="516" y="197" width="926" height="588" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587397578407">
       <screen x="0" y="0" width="1920" height="1040" />
