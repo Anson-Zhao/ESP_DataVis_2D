@@ -239,6 +239,7 @@
         // querystr = "timeFrom:" + timeFrom + "&timeTo:" + timeTo + "&stationIs:" + stationIs;
         // console.log(querystr);
         station = document.getElementById("station");
+        console.log(station);
         if (timeFrom && timeTo) {
             queryAndDisplay();
         } else {
@@ -367,7 +368,7 @@
     function download_csv(exportFilename) {
 
         if(exportFilename==null){
-            exportFilename = timeFrom.slice(0,-5) +'-'+ timeTo.slice(0,-5) + 'AvgESPData';
+            exportFilename = JSON.parse(document.getElementById("station").value).stationName+'_'+timeFrom.slice(0,-11)+'-'+ timeFrom.slice(14,-8)+'_'+ timeTo.slice(0,-11) +'-'+timeTo.slice(14,-8)+ 'AvgESPData';
         }
         
         var csvData = new Blob([download], {type: 'text/csv;charset=utf-8;'});
