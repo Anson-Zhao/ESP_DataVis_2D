@@ -2,20 +2,26 @@ const Influx = require('influx');
 const express = require('express');
 const app = express();
 const nodemailer = require('nodemailer');
+// const ib = require(ib*);
 // let jsonexport = require('jsonexport');
 // let path = require('path');
 // const csv = require('csv-parser');
 // let fs = require('fs');
 
 const transporter = nodemailer.createTransport({
-    service: 'Gmail',
+    service: 'gmail',
     auth: {
-        // user: 'yge5095@gmail.com',
-        // pass: '1syyRFLATs%'
-        user: 'aaaa.zhao@g.northernacademy.org',
-        pass: 'qwer1234'
+        user: 'youremail@gmail.com',
+        pass: 'yourpassword'
     }
 });
+
+const mailOptions = {
+    from: 'youremail@gmail.com',
+    to: 'myfriend@yahoo.com',
+    subject: 'Sending Email using Node.js',
+    text: 'That was easy!'
+};
 
 const influx = new Influx.InfluxDB({
     precision: 'rfc3339',
@@ -31,7 +37,7 @@ const mysql = require('mysql');
 const bodyParser = require("body-parser");
 
 const con = mysql.createConnection({
-    host: "localhost",
+    host: "10.11.90.16",
     user: "AppUser",
     password: "Special888%",
     port: "3306",
@@ -51,6 +57,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
+
 
 // function convertToCSV(objArray,m) {
 //     // console.log(objArray);
@@ -87,41 +94,26 @@ app.use(bodyParser.json());
 // }
 
 app.get ('/stations', function (req, res){
-    res.setHeader("Access-Control-Allow-Origin", "*");
     // console.log(req);
-    con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM esp2.stationdata Where Status = 'Active'",function (err, result) {
-        if (err) throw err;
-        // console.log(result);
+    con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.StationData Where Status = 'Active'",function (err, result) {
+        console.log(result[0].StationId);
+        // EventCheck(result);
         res.send(result);
     });
 });
 
-app.get ('/stationsForN', function (req, res){ //stations information used for new event page
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    var stationId = req.query.stationID;
-    console.log(req);
-    con.query("SELECT State FROM esp2.stationdata Where StationId ='"+stationId+ "';",function (err, result1) {
-        if (err){
-            throw err;
-        }else{
-            con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM esp2.stationdata Where Status = 'Active' AND State = '"+result1[0].State+"';",function (err, result) {
-                if (err) throw err;
-                // console.log(result);
-                res.send(result);
-            });
-        }
-        // console.log(result1[0].State);
-        // res.send(result);
-    });
-    // console.log(req);
-});
-
-
+function diff_minutes(dt2, dt1)
+{
+    var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+    diff /= 60;
+    return Math.abs(Math.round(diff));
+}
 
 var EQstations;
 var Flag=[];
 var Pair=[];
 con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.StationData Where StationDescription = 'Earthquake'",function (err, result) {
+    // [
     //   RowDataPacket {
     //     StationName: 'ESP02',
     //     City: 'Soquel',
@@ -130,134 +122,90 @@ con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.
     //     Longitude: '-121.947898',
     //     Latitude: '37.024433'
     //   },...]
-    // console.log(result[0].StationId);
+    console.log(result[0].StationId);
     console.log(result);
     EQstations=result;
 
     for(var i=0;i<result.length;i++) {
         Flag.push([result[i].StationName]);
         Pair.push([result[i].StationName]);
-        if(i===result.length-1){
-            console.log("EventC");
-            EventCheck(result);
-        }
     }
-
+    EventCheck(result);
     // res.send(result);
 });
-
 
 var c=0;
 var minute="6m";
 async function EventCheck(stations){
-    // console.log("all begin");
-    //check each station's data one by one
-    for(var i=1;i<2;i++){
-        // console.log(Date());
+    console.log("all begin");
+    for(var i=0;i<stations.length;i++){
+        console.log(Date());
         var querystatement='SELECT * FROM ' + stations[i].StationId + 'avg WHERE time >= now()-' +minute+ ' AND time<= now()';
-        var test='SELECT * FROM ' + stations[i].StationId + 'avg WHERE time >='+ ' \'2019-12-31T00:00:10Z\''+ ' AND '+'time<= \'2020-01-03T00:00:50Z\'';
-        console.log(test);
         console.log(querystatement);
-        await influx.query(test).then
+        await influx.query(querystatement).then
         (result => {
-            console.log('this is result');
-            console.log(result.length);
-            // console.log(result);
+            // console.log(result.length);
             // console.log(result[0].X);
             // console.log(result[0].Y);
             // console.log(result[0].Z);
-            console.log(i+querystatement);
-            console.log(result[0].time._nanoISO);
-            // console.log(result);
-            //check the Flag here
-            // for (var a = 0; a < result.length; a++) {
-            //     // DifA = result[a + 1].X - result[a].X;
-            //     DifB = result[a+1].X - result[a].X;
-            //     console.log("this is difference");
-            //     console.log(DifB);
-            //     if (Math.abs(DifB) > 9) {
-            //         Flag[i].push({
-            //             stationInfo: stations[i],
-            //             time: result[a].time._nanoISO,
-            //             X: result[a].X,
-            //             Y: result[a].Y,
-            //             Z: result[a].Z,
-            //             Diff: DifB
-            //         });
-            //         // DifA = null;
-            //         DifB = null;
-            //     } else {
-            //         // DifA = null;
-            //         DifB = null;
-            //     }
-            //     if (a === result.length - 1) {
-            //         console.log("flag done at"+Date());
-            //         // pair()
-            //     }
-            // }
+            // console.log(result[0].time._nanoISO);
+            for (var a = 0; a < result.length; a++) {
+                // DifA = result[a + 1].X - result[a].X;
+                DifB = result[a + 2].X - result[a + 1].X;
+                // console.log(DifA,DifB);
+                if (Math.abs(DifB) > 9) {
+                    Flag[i].push({
+                        stationInfo: stations[i],
+                        time: result[a].time._nanoISO,
+                        X: result[a + 2].X,
+                        Y: result[a + 2].Y,
+                        Z: result[a + 2].Z,
+                        Diff: DifB
+                    });
+                    // DifA = null;
+                    DifB = null;
+                } else {
+                    // DifA = null;
+                    DifB = null;
+                }
+                if (a === result.length - 3) {
+                    console.log("flag done at"+Date());
+                    pair()
+                }
+            }
 
-            // function pair() {
-            //     console.log("Pair begin at"+Date());
-            //     for (var b = 1; b < Flag[i].length; b++) {
-            //         // Flag[b].stationInfo===Flag[b+1].stationInfo&&
-            //
-            //         if (Date.parse(Flag[i][b + 1].time) - Date.parse(Flag[i][b].time) < 11000000 && Flag[i][b].Diff * Flag[i][b + 1].Diff < 0) {
-            //             Pair[i].push([Flag[i][b], Flag[i][b + 1]]);
-            //             Flag[i].splice(b,2)
-            //             //so the format will look like [ [stationname, [{},{}],...],...]
-            //             //when finish compair, it will be deleted.
-            //         } else {
-            //             Flag[i].splice(b,1);
-            //             b++;
-            //         }
-            //         if (b === Flag[i].length - 1) {
-            //             console.log("pair done at"+Date())
-            //         }
-            //     }
-            // }
+            function pair() {
+                console.log("Pair begin at"+Date());
+                for (var b = 1; b < Flag[i].length; b++) {
+                    // Flag[b].stationInfo===Flag[b+1].stationInfo&&
+
+                    if (Date.parse(Flag[b + 1].time) - Date.parse(Flag[b].time) < 10800000 && Flag[b].Diff * Flag[b + 1].Diff < 0) {
+                        Pair[i].push([Flag[i][b], Flag[i][b + 1]]);
+                        Flag[i].splice(b,2)
+                        //so the format will look like [ [{},{}] ]
+                        //when finish compair, it will be deleted.
+                    } else {
+                        Flag[i].splice(b,1);
+                        b++;
+                    }
+                    if (b === Flag[i].length - 1) {
+                        console.log("pair done at"+Date())
+                    }
+                }
+            }
         }).catch(err => {
-            console.log("Errors: ");
-            console.log(err)
         });
         console.log("Flag length:"+Flag[i].length);
         console.log(Pair);
         console.log("Pair Length:"+Pair[i].length);
         console.log(Date()+"one station end");
-        // if (i === stations.length - 1) {
-        //     console.log("Match begin at"+Date());
-        //     // match();
-        // }
     }
-    console.log("All stations end");
+    console.log("All end");
     // console.log(Flag);
+
     console.log(Date());
-
-
-
-    // function match(){
-    //     //check every station
-    //     for(var v=0; v<Pair.length; v++){
-    //         //check every pair in one station
-    //         for(var t=1; t<Pair[v].length; t++){
-    //             //compare with every other stations
-    //             for(var z=v+1; z<Pair.length; z++){
-    //                 //compare with every pair in other stations
-    //                 for(var y=0; y<Pair[z].length; y++){
-    //                     if(Date.parse(Pair[v][t][1].time)>Date.parse(Pair[z][y][1].time)
-    //                         &&Date.parse(Pair[v][t][1].time)<Date.parse(Pair[z][y][2].time)){
-    //                         alarm(Pair[v][t][1].time,Pair[v][t][1].stationInfo.stationId);
-    //                         alarm(Pair[z][y][1].time,Pair[z][y][1].stationInfo.stationId)
-    //                    }
-    //                 }
-    //             }
-    //         }
-    //     console.log("one station")
-    //     }
-    //     console.log("match finished")
-    // }
-
-    // setInterval(function () {
-    //     EventCheck(EQstations)}, 300000);
+    setInterval(function () {
+        EventCheck(EQstations)}, 300000);
 }
 
 // testgroup=[];
@@ -293,46 +241,17 @@ async function EventCheck(stations){
 
 
 
-
-// Alarm("2020-04-01T16:00:00.000Z","station_two");
-function alarm(time,stationId) {
-    // var time = "2020-04-01T16:00:00.000Z",
-    //     stationId = "station_two";
-
-    const mailOptions = {
-        from: 'yge5095@gmail.com',
-        to: 'lin.feng@g.northernacademy.org',
-        subject: 'ESP Station Data',
-        html:"<p><a href=\"http://localhost:3005/newEjs?time="+ time + "&stationId="+stationId+"\">click the text to view the data</a></p>"
-    };
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-            console.log(error);
-        } else {
-            //http://localhost:3005/newEjs?stationID=3333&dateTime=8888
-            console.log('Email sent: ' + info.response);
-        }
-    });
-}
-
-
-
-app.get('/newEjs',function (req,res) {
-    res.setHeader("Access-Control-Allow-Origin", "*"); // Allow cross domain header
-    res.render('new.ejs',req.query)
-});
-
 app.get('/newWind', function (req, res) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
     let queryHa = 'SELECT * FROM ' + req.query.stationIs + 'avg WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'";
+// console.log(queryHa);
     influx.query(queryHa).then
     (result => {
         res.send(result);
+        // console.log(result)
     }).catch(err => {
         res.status(500).send(err.stack)
     });
 });
-
 // let csvData;
 // function download_csv(exportFilename) {
 //     if (exportFilename == null) {
@@ -357,7 +276,6 @@ app.get('/newWind', function (req, res) {
 // }
 
 app.get('/newSnow', async function (req, res) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
     let queryH = 'SELECT * FROM ' + req.query.stationIs + ' WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'";
     // console.log(queryH);
     let download=[];
@@ -394,7 +312,6 @@ app.get('/newSnow', async function (req, res) {
 });
 
 app.get('/query', function (req, res) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
     pastTime = req.query.chartDuration;
     let query = 'SELECT * FROM ' + req.query.stationID + 'avg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime;
     influx.query(query).then
@@ -403,6 +320,16 @@ app.get('/query', function (req, res) {
     }).catch(err => {
         console.log(err)
     })
+});
+
+app.get('/mail', function (req, res){
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
 });
 
 // app.get('/querys', async function (req, res) {
@@ -423,5 +350,9 @@ app.get('/query', function (req, res) {
 //         }
 //     }
 // });
+
+
+
+
 
 app.listen('3005');
