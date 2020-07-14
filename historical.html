@@ -133,6 +133,12 @@
             <br><br>
             <input type="button" onclick="enabled = false; query();" class="button button2" value="Show Data Charts">
             <img id="requesting" src="images/888.gif" alt="download in progress" width=130 height=130 style="display:none">
+            <input type="button" onclick="enabled = false; demo();" class="button button2" value="Check the Event">
+            <input type="button" onclick="window.location.replace('http://localhost:3005/newEjs?timeFrom=2020-04-09T19:00:59Z&timeTo=2020-04-09T19:54:59Z&stationName=ESP04&stationId=station_for')" class="button button2" value="Demo">
+            <a href="ESP%20Event%2011Apr20.pdf" download="Demo_Report">
+                <input type="button" class="button button2" value="Download Demo report">
+            </a>
+
             <br><br>
 
         </form>
@@ -148,7 +154,7 @@
 <!--               -->
             </div>
 <!--                        <button id="RawData"">Download Raw CSV</button>-->
-            <button id="jumpToW">2020-04-07T16:00:00.000Z</button>
+<!--            <button id="jumpToW">2020-04-07T16:00:00.000Z</button>-->
 
             <br><br><br>
             <div id="graphx"></div>
@@ -164,8 +170,8 @@
     //stations we have
     var stations = [];
     var button =document.getElementById("jumpToW");
-    var date = button.textContent;
-    console.log(date);
+    // var date = button.textContent;
+    // console.log(date);
     //station we selected
     var station;
     $(document).ready(function () {
@@ -229,6 +235,40 @@
 
     var timeFrom,timeTo,stationIs,querystr;
     var download = "Time,X,Y,Z\n";
+
+    function demo() {
+        timeFrom = document.getElementById("begin").value;
+        timeTo = document.getElementById("end").value;
+        // stationIs = JSON.parse(document.getElementById("station").value).stationId;
+
+        station = document.getElementById("station");
+        console.log(station);
+        if (timeFrom && timeTo) {
+            Event()
+        } else {
+            confirm("Please select BOTH dates.");
+        }
+    }
+
+    function Event() {
+        $.ajax({
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newWind',
+            url: 'http://localhost:3005/newMoon',
+            type: 'GET',
+            // dataType: 'json',
+            async: true,
+            data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationIs},
+            // beforeSend: function(){
+                // display a progress animation
+                // $('#requesting').show()
+
+            // },
+            success: async function (res) {
+                console.log(res)
+
+            }
+        })
+    }
 
     function query() {
         timeFrom = document.getElementById("begin").value;

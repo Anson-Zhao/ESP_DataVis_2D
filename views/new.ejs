@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src='//localhost:63342/ESP_DataVis_2D/jsLibrary/jquery-3-4-1.min.js'></script>
-    <script src="//localhost:63342/ESP_DataVis_2D/jsLibrary/WorldWind-built.js"></script>
+    <script src='http://localhost:63342/ESP_DataVis_2D/jsLibrary/jquery-3-4-1.min.js'></script>
+    <script src="http://localhost:63342/ESP_DataVis_2D/jsLibrary/WorldWind-built.js"></script>
     <script type="text/javascript" src="//localhost:63342/ESP_DataVis_2D/jsLibrary/dygraph2.1.0/dygraph2.1.0.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.17/js/jquery.dataTables.min.js"></script>
@@ -46,11 +46,16 @@
 <div id = "newDiv"> </div>
 
 <script>
-    let time = '<%= time %>',
+    let timeFrom = '<%= timeFrom %>',
+        timeTo = '<%= timeTo %>',
+        stationName = '<%= stationName %>',
         stationId = '<%= stationId %>'; //the id of the station which turned the trigger on
+    console.log("Here is what I get")
+    console.log(stationId, timeFrom, timeTo);
     let timeIntervalHalf = 6, //this is half, so the total duration is 12 hrs
-        timeFrom = moment.utc(time,'').add(-timeIntervalHalf,'hour').format().slice(0, -1) + ".000Z", // -6h from time
-        timeTo = moment.utc(time,'').add(timeIntervalHalf,'hour').format().slice(0, -1) + ".000Z"; // +6h to time
+        timefrom = moment.utc(timeFrom,'').add(-timeIntervalHalf,'hour').format().slice(0, -1) + ".000Z", // -6h from time
+        timeto = moment.utc(timeTo,'').add(0.1,'hour').format().slice(0, -1) + ".000Z"; // +6h to time
+        // timeTo = moment.utc(timeTo)
     let x_arr = [],
         y_arr = [],
         z_arr = [];
@@ -58,7 +63,7 @@
     // let stationIdArr = ["station_the","station_two","station_for"];
 
     // a title for the new page
-    $('#text').html("Event Page for "+stationId+" at "+ time)
+    $('#text').html("Event Page for "+stationName+" from "+ timeFrom + " to " + timeTo)
     // rotate the globe
     let wwd = new WorldWind.WorldWindow("canvasOne");
 
@@ -143,7 +148,7 @@
             type: 'GET',
             // dataType: 'json',
             // async: false,
-            data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: station.StationId},
+            data: {timeFrom: timefrom, timeTo: timeto, stationIs: station.StationId},
             success: function(res) {
                 // console.log("hh4");
                 if (!!res) {
@@ -256,7 +261,7 @@
             type: 'GET',
             // dataType: 'json',
             // async: false,
-            data: {timeFrom: time, timeTo: time, stationIs: station.StationId}, //get the data from that point of time
+            data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: station.StationId}, //get the data from that point of time
             success: function (res) {
                 var X = res[0].X / 100;
                 var Y = res[0].Y / 100;
@@ -274,24 +279,24 @@
                         // console.log(sector);
                         // sector = new WorldWind.Sector(30, 40, -90, -80)
                         ctx2d.arrow(0, 0, X, Math.abs(Y), [0, 1, -10, 1, -10, 5]);
-                        ctx2d.fillStyle = "#FF0000";
+                        ctx2d.fillStyle = "#ffffe0";
                         ctx2d.fill();
                     }else { //+x,+y
                         sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+4, parseFloat(station.Longitude), parseFloat(station.Longitude)+4)
                         ctx2d.arrow(0, needleCanvas.height, X, needleCanvas.height-Y, [0, 1, -10, 1, -10, 5]);
-                        ctx2d.fillStyle = "#FF0000";
+                        ctx2d.fillStyle = "#ffffe0";
                         ctx2d.fill();
                         }
                 }else{
                     if(Y<0){ //-x,-y
                         sector = new WorldWind.Sector(parseFloat(station.Latitude)-4, parseFloat(station.Latitude), parseFloat(station.Longitude)-4, parseFloat(station.Longitude))
                         ctx2d.arrow(needleCanvas.width, 0, needleCanvas.width +X, Y, [0, 1, -10, 1, -10, 5]);
-                        ctx2d.fillStyle = "#FF0000";
+                        ctx2d.fillStyle = "#ffffe0";
                         ctx2d.fill();
                     }else { // -x, +y
                         sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+4, parseFloat(station.Longitude)-4, parseFloat(station.Longitude))
                         ctx2d.arrow(needleCanvas.width, needleCanvas.height, needleCanvas.width +X, needleCanvas.height- Y, [0, 1, -10, 1, -10, 5]);
-                        ctx2d.fillStyle = "#FF0000";
+                        ctx2d.fillStyle = "#ffffe0";
                         ctx2d.fill();
                     }
                 }
