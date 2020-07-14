@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ESP Event 11Apr20.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/espDataVisFinalVersion.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/new.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/new.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,14 +249,7 @@
       <workItem from="1593470368006" duration="14526000" />
       <workItem from="1593579548040" duration="2000" />
       <workItem from="1593621914165" duration="21211000" />
-      <workItem from="1593813258623" duration="38418000" />
-    </task>
-    <task id="LOCAL-00010" summary="new Gauges">
-      <created>1574178831563</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1574178831563</updated>
+      <workItem from="1593813258623" duration="39308000" />
     </task>
     <task id="LOCAL-00011" summary="new Gauges">
       <created>1574867231238</created>
@@ -598,7 +587,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593464079784</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="EventChecker">
+      <created>1594746319417</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1594746319419</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,13 +641,14 @@
       <screen x="0" y="23" width="1920" height="991" />
     </state>
     <state x="566" y="236" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1920.991@0.23.1920.991" timestamp="1593463639943" />
-    <state x="391" y="23" width="1128" height="1057" key="CommitChangelistDialog2" timestamp="1593464079513">
-      <screen x="0" y="23" width="1920" height="991" />
+    <state x="391" y="23" width="1128" height="994" key="CommitChangelistDialog2" timestamp="1594746318974">
+      <screen x="0" y="23" width="1920" height="994" />
     </state>
     <state x="293" y="0" key="CommitChangelistDialog2/0.0.1440.923@0.0.1440.923" timestamp="1589003313267" />
     <state x="391" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590374105446" />
     <state x="391" y="23" width="1128" height="1057" key="CommitChangelistDialog2/0.23.1920.1057@0.23.1920.1057" timestamp="1593046728851" />
     <state x="391" y="23" key="CommitChangelistDialog2/0.23.1920.991@0.23.1920.991" timestamp="1593464079513" />
+    <state x="391" y="23" width="1128" height="994" key="CommitChangelistDialog2/0.23.1920.994@0.23.1920.994" timestamp="1594746318974" />
     <state x="275" y="75" width="1447" height="709" key="DiffContextDialog" timestamp="1593537349272">
       <screen x="0" y="23" width="1920" height="992" />
     </state>
@@ -774,13 +771,14 @@
     <state x="463" y="155" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589080336553" />
     <state x="463" y="23" width="1446" height="1057" key="SettingsEditor/0.23.1920.1057@0.23.1920.1057" timestamp="1593118043910" />
     <state x="463" y="23" key="SettingsEditor/0.23.1920.991@0.23.1920.991" timestamp="1593464020952" />
-    <state x="281" y="107" key="Vcs.Push.Dialog.v2" timestamp="1593464083746">
-      <screen x="0" y="23" width="1920" height="991" />
+    <state x="281" y="107" key="Vcs.Push.Dialog.v2" timestamp="1594746329065">
+      <screen x="0" y="23" width="1920" height="994" />
     </state>
     <state x="557" y="304" key="Vcs.Push.Dialog.v2/0.0.1440.923@0.0.1440.923" timestamp="1589003369359" />
     <state x="742" y="343" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590374109763" />
     <state x="281" y="113" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1593046749593" />
     <state x="281" y="107" key="Vcs.Push.Dialog.v2/0.23.1920.991@0.23.1920.991" timestamp="1593464083746" />
+    <state x="281" y="107" key="Vcs.Push.Dialog.v2/0.23.1920.994@0.23.1920.994" timestamp="1594746329065" />
     <state x="140" y="194" width="2036" height="802" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1594234214071">
       <screen x="0" y="23" width="1920" height="991" />
     </state>
