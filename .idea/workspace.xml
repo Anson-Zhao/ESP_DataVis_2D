@@ -250,13 +250,6 @@
       <workItem from="1593621914165" duration="21211000" />
       <workItem from="1593813258623" duration="38418000" />
     </task>
-    <task id="LOCAL-00011" summary="new Gauges">
-      <created>1574867231238</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1574867231240</updated>
-    </task>
     <task id="LOCAL-00012" summary="new Gauges">
       <created>1574871487293</created>
       <option name="number" value="00012" />
@@ -593,7 +586,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594838194747</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="new index.html">
+      <created>1594839161770</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1594839161770</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -628,7 +628,8 @@
     <MESSAGE value="update dygraph libraries" />
     <MESSAGE value="update chart text" />
     <MESSAGE value="EventChecker" />
-    <option name="LAST_COMMIT_MESSAGE" value="EventChecker" />
+    <MESSAGE value="new index.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="new index.html" />
   </component>
   <component name="WindowStateProjectService">
     <state x="594" y="53" key="#Deployment" timestamp="1594836712415">
@@ -640,11 +641,11 @@
       <screen x="0" y="23" width="1920" height="991" />
     </state>
     <state x="566" y="236" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1920.991@0.23.1920.991" timestamp="1593463639943" />
-    <state x="341" y="0" width="985" height="902" key="CommitChangelistDialog2" timestamp="1594838192774">
+    <state x="341" y="0" width="985" height="902" key="CommitChangelistDialog2" timestamp="1594839160460">
       <screen x="0" y="0" width="1676" height="902" />
     </state>
     <state x="293" y="0" key="CommitChangelistDialog2/0.0.1440.923@0.0.1440.923" timestamp="1589003313267" />
-    <state x="341" y="0" width="985" height="902" key="CommitChangelistDialog2/0.0.1676.902@0.0.1676.902" timestamp="1594838192774" />
+    <state x="341" y="0" width="985" height="902" key="CommitChangelistDialog2/0.0.1676.902@0.0.1676.902" timestamp="1594839160460" />
     <state x="391" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590374105446" />
     <state x="391" y="23" width="1128" height="1057" key="CommitChangelistDialog2/0.23.1920.1057@0.23.1920.1057" timestamp="1593046728851" />
     <state x="391" y="23" key="CommitChangelistDialog2/0.23.1920.991@0.23.1920.991" timestamp="1593464079513" />
@@ -772,11 +773,11 @@
     <state x="463" y="155" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589080336553" />
     <state x="463" y="23" width="1446" height="1057" key="SettingsEditor/0.23.1920.1057@0.23.1920.1057" timestamp="1593118043910" />
     <state x="463" y="23" key="SettingsEditor/0.23.1920.991@0.23.1920.991" timestamp="1593464020952" />
-    <state x="245" y="76" key="Vcs.Push.Dialog.v2" timestamp="1594838200143">
+    <state x="245" y="76" key="Vcs.Push.Dialog.v2" timestamp="1594839163831">
       <screen x="0" y="0" width="1676" height="902" />
     </state>
     <state x="557" y="304" key="Vcs.Push.Dialog.v2/0.0.1440.923@0.0.1440.923" timestamp="1589003369359" />
-    <state x="245" y="76" key="Vcs.Push.Dialog.v2/0.0.1676.902@0.0.1676.902" timestamp="1594838200143" />
+    <state x="245" y="76" key="Vcs.Push.Dialog.v2/0.0.1676.902@0.0.1676.902" timestamp="1594839163831" />
     <state x="742" y="343" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590374109763" />
     <state x="281" y="113" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1593046749593" />
     <state x="281" y="107" key="Vcs.Push.Dialog.v2/0.23.1920.991@0.23.1920.991" timestamp="1593464083746" />
