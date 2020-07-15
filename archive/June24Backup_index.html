@@ -1,14 +1,74 @@
 <html>
 <head>
-    <link rel="stylesheet" href="jsLibrary/dygraph2.1.0/dygraph2.1.0.css" />
-    <link rel="stylesheet" href="main.css" />
+<<<<<<< HEAD
+    <link rel="stylesheet" href="../jsLibrary/dygraph2.1.0/dygraph2.1.0.css" />
+    <link rel="stylesheet" href="../main.css" />
+=======
+    <style>
+        #gx, #gy, #gz, #gx2, #gy2, #gz2 {
+            width:190px; height:200px;
+            display: inline-block;
+            margin: 1em;
+        }
 
-    <script src='jsLibrary/jquery-3-4-1.min.js'></script>
-    <script src="jsLibrary/WorldWind-built.js"></script>
-    <script type="text/javascript" src="jsLibrary/dygraph2.1.0/dygraph2.1.0.min.js"></script>
-    <script src="jsLibrary/justgage-1.2.2/raphael-2.1.4.min.js"></script>
-    <script src="jsLibrary/justgage-1.2.2/justgage.js"></script>
-    <script src="jsLibrary/gauge2-1-5.min.js"></script>
+        #gz,#gz2{
+            margin-left: 100px;
+        }
+        /*#graphx, #graphx2, #graphy, #graphy2, #graphz, #graphz2, #vector, #vector2{*/
+        /*    display: inline-block;*/
+        /*}*/
+        #but1, #but2, #but3, #but4, #direction{
+            display: inline-block;
+        }
+
+        h2 {
+            display: block;
+        }
+
+        #station_one, #station_two{
+            background-color: gray;
+        }
+
+        .chart {
+            float: left;
+        }
+
+        .charts, .gauges {
+            /*position:relative;*/
+            left: 90px;
+            width: max-content;
+            display: inline-table;
+        }
+        #compass1{
+            left: 30px;
+            top:350px;
+            float:left;
+        }
+        #compass2{
+            left: 80px;
+            top:1000px;
+            display: inline-block;
+        }
+        #depth1{
+            left: 540px;
+            top:350px;
+        }
+        #depth2{
+            position :absolute;
+            left: 550px;
+            top:1000px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="../jsLibrary/dygraph/dygraph.css" />
+>>>>>>> 0f57663464e554234193b528d3323aa9606cebb9
+
+    <script src='../jsLibrary/jquery-3-4-1.min.js'></script>
+    <script src="../jsLibrary/WorldWind-built.js"></script>
+    <script type="text/javascript" src="../jsLibrary/dygraph2.1.0/dygraph2.1.0.min.js"></script>
+    <script src="../jsLibrary/justgage-1.2.2/raphael-2.1.4.min.js"></script>
+    <script src="../jsLibrary/justgage-1.2.2/justgage.js"></script>
+    <script src="../jsLibrary/gauge2-1-5.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -30,11 +90,42 @@
     <h1>ESP Stations</h1>
 </div>
 
+<<<<<<< HEAD
 <div class="col-sm-9" id="globe">
     <canvas id="canvasOne" width="1000" height="1000"
             style="width: 50%; height: auto; background-color: white;">
         Your browser does not support HTML5 Canvas.
     </canvas>
+=======
+<!--Gauges-->
+<div id="gauge">
+    <h2>The gauges represent live X (N-S), Y (E-W), Z (+ - altitude) from the ESP Stations with a 2-minute delay</h2>
+    <h2>ESP 01, Middletown, NY</h2><br><br>
+    <div class="compasses" >
+        <!--            <h3>ESP 01</h3>-->
+        <canvas  id="compass1" width="400" height="300"></canvas>
+        <canvas  id="depth1" width="200" height="300"></canvas>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="gauges">
+        <div id="gx" ></div>
+        <div id="gy"></div>
+        <div id="gz"></div>
+    </div><br>
+
+    <h2>ESP 02, Soquel, CA</h2><br><br>
+    <div class="compasses" >
+        <h3>ESP 02</h3>
+        <canvas id="compass2" width="300" height="300"></canvas>
+        <canvas id="depth2" width="200" height="300"></canvas>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="gauges">
+        <div id="gx2"></div>
+        <div id="gy2"></div>
+        <div id="gz2"></div>
+    </div>
+>>>>>>> 0f57663464e554234193b528d3323aa9606cebb9
 </div>
 
 <!--<div id="gauge">-->
@@ -42,6 +133,7 @@
 <!--    <h2>The gauges represent live X (N-S), Y (E-W), Z (+ - altitude) from the ESP Stations with a 42-minute delay</h2>-->
 <!--</div>-->
 
+<<<<<<< HEAD
 <div id="live_chart">
     <h1>Live Chart</h1>
     <br>
@@ -50,7 +142,13 @@
     <button onclick="chartDFun(this)" value="2d" id="2d" class="chartsB">2 days</button>
     <button onclick="chartDFun(this)" value="3d" id="3d" class="chartsB">3 days</button>
     <br>
-    <h2>The charts represent past <span id = "chartText">3 days</span> data, refreshed every 20 minutes. All chart data you see below is your browser local time</h2>
+    <h2>The charts represent past 3 days data, refreshed every 20 minutes. All chart data you see below is your browser local time</h2>
+=======
+<div id = 'direction'>
+    <h1>Direction and Depth</h1>
+    <p>Updates every 5 seconds, with a 2-minute delay</p>
+
+>>>>>>> 0f57663464e554234193b528d3323aa9606cebb9
 </div>
 
 <script type="text/javascript">
@@ -219,6 +317,7 @@
         credits: false
     };
 
+<<<<<<< HEAD
     let ini = true;
     let degrees = 0;
     let chartDT = "1d";
@@ -248,6 +347,26 @@
     for (let l = 0; l < layers.length; l++) {
         layers[l].layer.enabled = layers[l].enabled;
         wwd.addLayer(layers[l].layer);
+=======
+    document.getElementById("fakeBu").click();
+
+    var staone = [],
+        statwo = [];
+
+    function avg(res,len){
+        var xa, ya, za;
+        var arr = res.slice(Math.max(res.length - len, 1));
+        xa = ya = za = 0;
+        for(var i = 0; i<arr.length; i++){
+            xa += arr[i].mean;
+            ya += arr[i].mean_1;
+            za += arr[i].mean_2
+        }
+        xa = xa/len;
+        ya = ya/len;
+        za = za/len;
+        return [xa, ya, za];
+>>>>>>> 0f57663464e554234193b528d3323aa9606cebb9
     }
 
     //create canvas for placemarks
@@ -269,7 +388,33 @@
 
     $(document).ready(async function () {
 
+<<<<<<< HEAD
         await staQuery();
+=======
+                res.forEach(function(el,i) {
+                        x_arr[i] = [new Date(el.time), el.mean];
+                        y_arr[i] = [new Date(el.time), el.mean_1];
+                        z_arr[i] = [new Date(el.time), el.mean_2];
+                    }
+                );
+
+                staone = avg(res,5);
+
+                Z = new Dygraph(
+
+                    // containing div
+                    document.getElementById("graphz"),
+
+                    // CSV or path to a CSV file.
+                    z_arr,
+                    {
+                        labels: [ "Data", "Z" ],
+                        animatedZooms: true,
+                        legend: 'always',
+                        showRoller: true,
+                        title: "+Z is positive altitude, -Z is below ground",
+                    }
+>>>>>>> 0f57663464e554234193b528d3323aa9606cebb9
 
         wwd.goTo(new WorldWind.Position(37.175229, -121.823628, 130000));
 
@@ -279,10 +424,93 @@
         wwd.addEventListener("wheel",autoS);
     });
 
+    async function query(staInfo, chartD) {
+
+        if (ini) {
+            await building(staInfo);
+        }
+
+        $.ajax({
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query',
+            url: "http://localhost:3005/query",
+            method: "get",
+            data: {stationID: staInfo.StationId, chartDuration: chartD},
+            success: async function(res){
+                if(!!res){
+                    let x_arr = [];
+                    let y_arr = [];
+                    let z_arr = [];
+
+                    await res.forEach(function(el,i) {
+                            x_arr[i] = [new Date(el.time), el.X];
+                            y_arr[i] = [new Date(el.time), el.Y];
+                            z_arr[i] = [new Date(el.time), el.Z];
+                        }
+                    );
+
+                    // sta = Avg(res,5);
+
+                    let Z = new Dygraph(
+                        // containing div
+                        document.getElementById(staInfo.StationId + "_graphZ"),
+
+                        // CSV or path to a CSV file.
+                        z_arr,
+                        {
+                            labels: [ "Data", "Z" ],
+                            animatedZooms: true,
+                            legend: 'always',
+                            showRoller: true,
+                            title: "+Z is positive altitude, -Z is below ground (unit: nT)",
+                        }
+
+                    );
+                    let Y = new Dygraph(
+                        // containing div
+                        document.getElementById(staInfo.StationId + "_graphY"),
+
+                        // CSV or path to a CSV file.
+                        y_arr,
+                        {
+                            labels: [ "Data", "Y" ],
+                            animatedZooms: true,
+                            legend: 'always',
+                            showRoller: true,
+                            title: "+Y is east, -Y is west (unit: nT)"
+                        }
+
+                    );
+
+                    let X = new Dygraph(
+                        // containing div
+                        document.getElementById(staInfo.StationId + "_graphX"),
+
+                        // CSV or path to a CSV file.
+                        x_arr,
+                        {
+                            labels: ["Data", "X"],
+                            animatedZooms: true,
+                            legend: 'always',
+                            showRoller: true,
+                            title: "+X is north, -X is south (unit: nT)"
+                        }
+                    );
+                    // $('#' + staInfo.StationId + '_gaugeX').highcharts(options, buildGraph);
+                    // $('#' + staInfo.StationId + '_gaugeY').highcharts(options, buildGraph);
+                    // $('#' + staInfo.StationId + '_gaugeZ').highcharts(options, buildGraph);
+
+                    createPL(staInfo,Avg(res,5))
+                }
+
+                // triggers()
+            }
+        })
+    }
+
     function staQuery() {
         $.ajax({
-            url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stations',
-            // url: "http://localhost:3005/stations",
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stations',
+            url: "http://localhost:3005/stations",
             method: "get",
             async: false,
             success: function(res) {
@@ -444,86 +672,257 @@
         $(c).append(cdivX).append(cdivY).append(cdivZ);
     }
 
-    async function query(staInfo, chartD) {
+    let counterX = {
+        counter1: 0,
+        counter2: 0
+    };
+    //let cool = counterX.counter1;
+    let dirCounter = 0;
+    let direction;
+    let prevDirection;
+    let counterXup = 0;
+    let counterXdown = 0;
+    let counterY;
+    let counterZ;
+    let defcon1 = false;
+    let defcon2 = false;
 
-        if (ini) {
-            await building(staInfo);
+    function triggers() {
+        // Event trigger definition
+        var warning = {
+            x_warning: false,
+            y_warning: false,
+            z_warning: false
+        };
+        let x_k, x_bro = 0;
+        var dx_arr = [];
+        var cool = [];
+
+        let changeDir = false;
+        //console.log(x_arr);
+
+        // transporter.sendMail(mailOptions, function(error, info){
+        //     if (error) {
+        //         console.log(error);
+        //     } else {
+        //         console.log('Email sent: ' + info.response);
+        //     }
+        // });
+
+        //determine sample direction
+        //determine turn around point
+        //determine continuous jump oppositely
+
+        for (let i = 1; i < x_arr.length - 1; i++){
+            x_k = Math.abs(x_arr[i][1]-((x_arr[i - 1][1] + x_arr[i + 1][1])/2));  // single distance
+            // cool[0] = x_k;
+            // cool[1] = x_arr[i][0];
+            dx_arr.push([x_k, x_arr[i][0]]);
+            //console.log("Begin: ");
+            //console.log(dx_arr);
+            x_bro += x_k;
+            if (i === x_arr.length - 2){
+                let dx_avg = x_bro/dx_arr.length;
+                //console.log("End: ");
+                //console.log(dx_arr);
+                //console.log(dx_avg);
+                //direction = Math.sign(dx_arr[0]);
+                for (let j = 0; j < dx_arr.length; j++){
+                    if(dx_arr[j][0] > (3 * dx_avg)){
+                        //console.log("time is" + dx_arr[j][1]);
+                        //find direction
+                        if(j <= 1){
+                            direction = 0;
+                            prevDirection = 0;
+                        } else {
+                            direction = Math.sign(Math.abs(x_arr[j][1]) - Math.abs(x_arr[j - 1][1]));
+                            prevDirection = Math.sign(Math.abs(x_arr[j - 1][1]) - Math.abs(x_arr[j - 2][1]));
+                        }
+                        //console.log(x_arr[j + 1][1]);
+                        //check if direction is going up
+                        // console.log("curent direction is: " + direction);
+                        // console.log("prevdirection = " + prevDirection);
+                        if (direction === 1){
+                            //check if the previous value was a down value
+                            if (prevDirection === -1 && defcon1 === false){
+                                // console.log("defcon1 status: " + defcon1);
+                                // set the current counter to 0
+                                counterXup = 0;
+                                //console.log("counter up = " + counterXup);
+                                //console.log("counter down = " + counterXdown);
+                                // counterXdown++;
+                                if (counterXup >= 20){
+                                    defcon1 = true;
+                                    console.log("defcon1 is true bud at time: " + dx_arr[j][1]);
+                                } else {
+                                    defcon1 = false;
+                                }
+                                // check if the previous down counter hadn't reached 20
+                                if(counterXdown < 20 && defcon2 === false){
+                                    //console.log("checking");
+                                    //set it to zero to be reused at another time
+                                    counterXdown = 0;
+                                } else {
+                                    console.log("this is here for show")
+                                }
+                            } else {
+                                //increment the counter
+                                counterXup++;
+                                //console.log("counterXUp = " + counterXup);
+                                //console.log(counterXup);
+                                if (counterXup >= 20){
+                                    defcon1 = true;
+                                    console.log("defcon1 is true but at time: " + dx_arr[j][1]);
+                                } //else if (defcon1 === true){
+                                //     defcon1 = false;
+                                //     console.log("defcon2 is now false from line 591")
+                                // }
+
+                            }
+                            if(defcon1 == true && defcon2 == true){
+                                console.log("broski");
+                                alertFunction();
+                                defcon1 = false;
+                                defcon2 = false;
+                                counterXup = 0;
+                                counterXdown = 0;
+                                // $.ajax({
+                                //     // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query',
+                                //     url: "http://localhost:3005/mail",
+                                //     method: "get"});
+                            }
+                            //check if the current counter has reached or surpassed 20
+                            // while (counterXup >= 20) {
+                            //     defcon1 = true;
+                            //     console.log("defcon1 is true");
+                            // }
+                        }
+                        //check if direction is going down
+                        if (direction === -1){
+                            //check if the previous value was an up value
+                            if (prevDirection === 1 && defcon2 === false){
+
+                                // set the current counter to 0
+                                counterXdown = 0;
+                                // console.log("counter up = " + counterXup + "down counter part");
+                                // console.log("counter down = " + counterXdown + "down counter part");
+                                // counterXdown++;
+                                if (counterXdown >= 20){
+                                    defcon2 = true;
+                                    console.log("defcon2 is true at time: " + dx_arr[j][1]);
+                                } else {
+                                    defcon2 = false;
+                                }
+                                // check if the previous down counter hadn't reached 20
+                                if(counterXup < 20 && defcon1 === false){
+                                    console.log("checking");
+                                    //set it to zero to be reused at another time
+                                    counterXup = 0;
+                                } else {
+                                    console.log("this is here for show")
+                                }
+                            } else {
+                                //increment the counter
+                                counterXdown++;
+                                //console.log("counterXdown = " + counterXdown);
+                                if (counterXdown >= 20){
+                                    defcon2 = true;
+                                    console.log("defcon2 is true at time: " + dx_arr[j][1]);
+                                } //else if (defcon1 === true){
+                                //     defcon1 = false;
+                                //     console.log("defcon2 is now false from line 591")
+                                // }
+
+                            }
+                            if(defcon1 == true && defcon2 == true){
+                                console.log("broski");
+                                alertFunction();
+                                defcon1 = false;
+                                defcon2 = false;
+                                counterXup = 0;
+                                counterXdown = 0;
+
+                            }
+                        }
+
+                        // console.log(defcon1);
+                        // console.log(defcon2);
+
+                        if (defcon1 && defcon2) {
+
+                        }
+                        // if (Math.sign(dx_arr[j]) === 1){
+                        //     if (counterX2 < 20){
+                        //         counterX2 = 0;
+                        //     }
+                        //     counterX1++;
+                        // }else if(Math.sign(dx_arr[j]) === -1){
+                        //     if (counterX1 < 20){
+                        //         counterX1 = 0;
+                        //     }
+                        //     counterX2++;
+                        // }
+                        // if (counterX1 >= 20 || counterX2 >= 20){
+                        //     console.log("HEY MAN SOMETHING UP!");
+                        //     defcon2 = true;
+                        // }
+                        // if (counterX1 >= 20 && counterX2 >= 20){
+                        //     defcon1 = true;
+                        // }
+                    }
+                }
+            }
         }
 
-        $.ajax({
-            url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query',
-            // url: "http://localhost:3005/query",
-            method: "get",
-            data: {stationID: staInfo.StationId, chartDuration: chartD},
-            success: async function(res){
-                if(!!res){
-                    let x_arr = [];
-                    let y_arr = [];
-                    let z_arr = [];
-
-                    await res.forEach(function(el,i) {
-                            x_arr[i] = [new Date(el.time), el.X];
-                            y_arr[i] = [new Date(el.time), el.Y];
-                            z_arr[i] = [new Date(el.time), el.Z];
+        let y_k, y_bro = 0;
+        var dy_arr = [];
+        for (let j = 1; j < y_arr.length - 1; j++){
+            y_k = y_arr[j][1]-((y_arr[j - 1][1] + y_arr[j + 1][1])/2);
+            dy_arr[j] = y_k;
+            y_bro += y_k;
+            if (j == y_arr.length - 2){
+                let dy_avg = y_bro/y_arr.length;
+                for (let l = 0; l < dy_arr.length; l++){
+                    if(dy_arr[l] > (200 * dy_avg)){
+                        counterY++;
+                        if (counterY > 20){
+                            console.log("HEY MAN SOMETHING UP!");
+                            warning.y_warning = true;
                         }
-                    );
-
-                    // sta = Avg(res,5);
-
-                    let Z = new Dygraph(
-                        // containing div
-                        document.getElementById(staInfo.StationId + "_graphZ"),
-
-                        // CSV or path to a CSV file.
-                        z_arr,
-                        {
-                            labels: [ "Data", "Z" ],
-                            animatedZooms: true,
-                            legend: 'always',
-                            showRoller: true,
-                            title: "+Z is positive altitude, -Z is below ground (unit: nT)",
+                        else{
+                            counterY = 0;
                         }
-
-                    );
-                    let Y = new Dygraph(
-                        // containing div
-                        document.getElementById(staInfo.StationId + "_graphY"),
-
-                        // CSV or path to a CSV file.
-                        y_arr,
-                        {
-                            labels: [ "Data", "Y" ],
-                            animatedZooms: true,
-                            legend: 'always',
-                            showRoller: true,
-                            title: "+Y is east, -Y is west (unit: nT)"
-                        }
-
-                    );
-
-                    let X = new Dygraph(
-                        // containing div
-                        document.getElementById(staInfo.StationId + "_graphX"),
-
-                        // CSV or path to a CSV file.
-                        x_arr,
-                        {
-                            labels: ["Data", "X"],
-                            animatedZooms: true,
-                            legend: 'always',
-                            showRoller: true,
-                            title: "+X is north, -X is south (unit: nT)"
-                        }
-                    );
-                    // $('#' + staInfo.StationId + '_gaugeX').highcharts(options, buildGraph);
-                    // $('#' + staInfo.StationId + '_gaugeY').highcharts(options, buildGraph);
-                    // $('#' + staInfo.StationId + '_gaugeZ').highcharts(options, buildGraph);
-
-                    createPL(staInfo,Avg(res,5))
+                    }
                 }
-
             }
-        });
+        }
+
+        let z_k, z_bro = 0;
+        var dz_arr = [];
+        for (let m = 1; m < z_arr.length - 1; m++){
+            z_k = z_arr[m][1]-((z_arr[m - 1][1] + z_arr[m + 1][1])/2);
+            dz_arr[m] = z_k;
+            z_bro += z_k;
+            if (m == z_arr.length - 2){
+                let dz_avg = z_bro/z_arr.length;
+                for (let n = 0; n < dz_arr.length; n++){
+                    if(dz_arr[n] > (200 * dz_avg)){
+                        counterZ++;
+                        if (counterZ > 20){
+                            console.log("HEY MAN SOMETHING UP!");
+                            warning.z_warning = true;
+                        }
+                        else{
+                            counterZ = 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    function alertFunction() {
+        alert("Hello! I am an alert box!");
     }
 
     function buildGraph(chart) {
@@ -542,7 +941,6 @@
         // disable this button and enable previous button disabled
         $(".chartsB").prop('disabled', false);
         $("#"+objButton.value).prop('disabled', true);
-        $("#chartText").html(objButton.textContent);
 
         // refresh the chart data
         staQuery()
@@ -558,14 +956,14 @@
             if (x[0].style.display === "none") {
                 //show the placemarks
                 let index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
-                wwd.layers[index].enabled = true;
+                wwd.layers[index_u].enabled = true;
                 showPlacemark = true;
                 $(y).show();
                 $(z).css('backgroundColor', 'gray');
             } else {
                 //hide the placemarks
                 let index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
-                wwd.layers[index].enabled = false;
+                wwd.layers[index_u].enabled = false;
                 showPlacemark = false;
                 $(y).hide();
                 $(z).css('backgroundColor', 'white');
@@ -574,17 +972,22 @@
         }else{
             if (x[0].style.display === "none") {
 
+<<<<<<< HEAD
                 //show the placemarks
                 let index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
-                wwd.layers[index].enabled = true;
+                wwd.layers[index_u].enabled = true;
                 showPlacemark = true;
                 $(y).show();
                 $(z).css('backgroundColor', 'gray');
+=======
+        // Draw the compass onto the canvas
+        ctx.drawImage(img, 50, 0);
+>>>>>>> 0f57663464e554234193b528d3323aa9606cebb9
 
             } else {
                 //hide the placemarks
                 let index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
-                wwd.layers[index].enabled = false;
+                wwd.layers[index_u].enabled = false;
                 showPlacemark = false;
                 $(y).hide();
                 $(z).css('backgroundColor', 'white');
@@ -624,6 +1027,7 @@
         }
     }
 
+<<<<<<< HEAD
     function deltaAvg(res, len) {
         if (res.length < len * 2) {
             return console.log("Data length is insufficient");
@@ -647,6 +1051,10 @@
             }
         }
     }
+=======
+        // Draw the image back and up
+        ctx.drawImage(needle, -122, -190);
+>>>>>>> 0f57663464e554234193b528d3323aa9606cebb9
 
     function calcAngleDegrees(x, y) {
         return Math.atan2(y, x) * 180 / Math.PI;
@@ -725,6 +1133,7 @@
         ctx2d.translate(153, 140);
 
         // Rotate around this point
+<<<<<<< HEAD
         ctx2d.rotate(degrees * (Math.PI / 180));
         ctx2d.drawImage(needle, -172, -172);
         ctx2d.restore();
@@ -781,9 +1190,68 @@
                 let index = wwd.layers.findIndex(element => element.displayName === "Placemarks" + stationsData[i].StationId);
                 let indexN = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" + stationsData[i].StationId);
                 let buttonIndex = buttonArray.findIndex(element => element.buttonValue === stationsData[i].StationId);
+=======
+        ctx2.rotate(degrees2 * (Math.PI / 180));
 
-                if(index > -1 ){
-                    wwd.layers[index].enabled = false;
+        // Draw the image back and up
+        ctx2.drawImage(needle2, -172, -172);
+
+        // Restore the previous drawing state
+        ctx2.restore();
+    }
+
+    function imgLoaded() {
+        // Image loaded event complete.  Start the timer
+        setInterval(draw, 5000);
+    }
+    function imgLoaded2() {
+        // Image loaded event complete.  Start the timer
+        setInterval(draw2, 5000);
+    }
+
+    var img2 = null,
+        needle2 = null,
+        ctx2 = null,
+        degrees2 = 0;
+
+
+    function clearCanvas2() {
+        // clear canvas
+        ctx2.clearRect(0, 0, 300, 300);
+        // ctx2.clearRect(0, 0, 300, 300);
+    }
+
+
+    function init() {
+        // Grab the compass element
+        var canvas2 = document.getElementById('compass2');
+        canvas2.style.position = "absolute";
+
+        // Canvas supported?
+        if (canvas2.getContext('2d')) {
+            ctx2 = canvas2.getContext('2d');
+
+            // Load the needle image
+            needle2 = new Image();
+            needle2.src = 'jsLibrary/compass/needle.png';
+
+            // Load the compass image
+            img2 = new Image();
+            img2.src = 'jsLibrary/compass/compass.png';
+            img2.onload = imgLoaded2;
+        } else {
+            alert("Canvas not supported!");
+        }
+
+        // Grab the compass element
+        var canvas = document.getElementById('compass1');
+        canvas.style.position = "absolute";
+        document.getElementById('depth1').style.position = 'absolute';
+        // var canvas2 = document.getElementById('compass2');
+>>>>>>> 0f57663464e554234193b528d3323aa9606cebb9
+
+                if(index_u > -1 ){
+                    wwd.layers[index_u].enabled = false;
                 }
                 if(indexN >-1){
                     if(buttonIndex > -1){
