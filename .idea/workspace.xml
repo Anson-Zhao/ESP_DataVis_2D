@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Check&amp;AlarmUnespDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/archive/Check&amp;AlarmUnespDataVis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/June24Backup_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/archive/June24Backup_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testsssss" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +43,7 @@
     <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="704719ad-7e4e-4c51-acac-b0cbd304aa2b" />
+    <option name="defaultAccountId" value="43f56675-0aef-4d34-821c-5c9ac78fabfe" />
   </component>
   <component name="InvalidFacetManager">
     <ignored-facets>
@@ -91,24 +86,24 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/indexbackup.html" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\archive" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
+      <recent name="$PROJECT_DIR$/images" />
+      <recent name="$PROJECT_DIR$/img" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/new" />
       <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
       <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\jsLibrary" />
       <recent name="$PROJECT_DIR$/node_modules" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\archive" />
-      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
-      <recent name="$PROJECT_DIR$/images" />
-      <recent name="$PROJECT_DIR$/img" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.espDataVis.js">
@@ -254,13 +249,6 @@
       <workItem from="1593579548040" duration="2000" />
       <workItem from="1593621914165" duration="21211000" />
       <workItem from="1593813258623" duration="38418000" />
-    </task>
-    <task id="LOCAL-00010" summary="new Gauges">
-      <created>1574178831563</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1574178831563</updated>
     </task>
     <task id="LOCAL-00011" summary="new Gauges">
       <created>1574867231238</created>
@@ -598,7 +586,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593464079784</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="EventChecker">
+      <created>1594838194747</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1594838194747</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,10 +640,11 @@
       <screen x="0" y="23" width="1920" height="991" />
     </state>
     <state x="566" y="236" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1920.991@0.23.1920.991" timestamp="1593463639943" />
-    <state x="391" y="23" width="1128" height="1057" key="CommitChangelistDialog2" timestamp="1593464079513">
-      <screen x="0" y="23" width="1920" height="991" />
+    <state x="341" y="0" width="985" height="902" key="CommitChangelistDialog2" timestamp="1594838192774">
+      <screen x="0" y="0" width="1676" height="902" />
     </state>
     <state x="293" y="0" key="CommitChangelistDialog2/0.0.1440.923@0.0.1440.923" timestamp="1589003313267" />
+    <state x="341" y="0" width="985" height="902" key="CommitChangelistDialog2/0.0.1676.902@0.0.1676.902" timestamp="1594838192774" />
     <state x="391" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590374105446" />
     <state x="391" y="23" width="1128" height="1057" key="CommitChangelistDialog2/0.23.1920.1057@0.23.1920.1057" timestamp="1593046728851" />
     <state x="391" y="23" key="CommitChangelistDialog2/0.23.1920.991@0.23.1920.991" timestamp="1593464079513" />
@@ -659,10 +655,10 @@
     <state x="44" y="15" width="1446" height="742" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587397578406" />
     <state x="275" y="78" width="1447" height="755" key="DiffContextDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1593118259679" />
     <state x="275" y="75" width="1447" height="709" key="DiffContextDialog/0.23.1920.992@0.23.1920.992" timestamp="1593537349272" />
-    <state x="532" y="111" width="999" height="637" key="DirDiffDialog" timestamp="1594837219181">
+    <state x="532" y="111" width="999" height="637" key="DirDiffDialog" timestamp="1594838547896">
       <screen x="0" y="0" width="1676" height="902" />
     </state>
-    <state x="532" y="111" width="999" height="637" key="DirDiffDialog/0.0.1676.902@0.0.1676.902" timestamp="1594837219181" />
+    <state x="532" y="111" width="999" height="637" key="DirDiffDialog/0.0.1676.902@0.0.1676.902" timestamp="1594838547896" />
     <state x="610" y="128" width="1144" height="734" key="DirDiffDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586912477560" />
     <state x="668" y="231" key="FileChooserDialogImpl" timestamp="1589079569262">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -769,16 +765,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="388" y="248" width="1057" height="483" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587396124877" />
-    <state x="463" y="23" width="1446" height="1057" key="SettingsEditor" timestamp="1593464020952">
-      <screen x="0" y="23" width="1920" height="991" />
+    <state x="404" y="0" width="1263" height="902" key="SettingsEditor" timestamp="1594838211306">
+      <screen x="0" y="0" width="1676" height="902" />
     </state>
+    <state x="404" y="0" width="1263" height="902" key="SettingsEditor/0.0.1676.902@0.0.1676.902" timestamp="1594838211306" />
     <state x="463" y="155" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589080336553" />
     <state x="463" y="23" width="1446" height="1057" key="SettingsEditor/0.23.1920.1057@0.23.1920.1057" timestamp="1593118043910" />
     <state x="463" y="23" key="SettingsEditor/0.23.1920.991@0.23.1920.991" timestamp="1593464020952" />
-    <state x="281" y="107" key="Vcs.Push.Dialog.v2" timestamp="1593464083746">
-      <screen x="0" y="23" width="1920" height="991" />
+    <state x="245" y="76" key="Vcs.Push.Dialog.v2" timestamp="1594838200143">
+      <screen x="0" y="0" width="1676" height="902" />
     </state>
     <state x="557" y="304" key="Vcs.Push.Dialog.v2/0.0.1440.923@0.0.1440.923" timestamp="1589003369359" />
+    <state x="245" y="76" key="Vcs.Push.Dialog.v2/0.0.1676.902@0.0.1676.902" timestamp="1594838200143" />
     <state x="742" y="343" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590374109763" />
     <state x="281" y="113" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1593046749593" />
     <state x="281" y="107" key="Vcs.Push.Dialog.v2/0.23.1920.991@0.23.1920.991" timestamp="1593464083746" />
