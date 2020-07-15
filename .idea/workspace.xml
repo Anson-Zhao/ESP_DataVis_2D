@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/espDataVis_0715bk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
-    </list>
+    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -251,14 +246,7 @@
       <workItem from="1593470368006" duration="14526000" />
       <workItem from="1593579548040" duration="2000" />
       <workItem from="1593621914165" duration="21211000" />
-      <workItem from="1593813258623" duration="52816000" />
-    </task>
-    <task id="LOCAL-00012" summary="new Gauges">
-      <created>1574871487293</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1574871487293</updated>
+      <workItem from="1593813258623" duration="53269000" />
     </task>
     <task id="LOCAL-00013" summary="new Gauges">
       <created>1574874471797</created>
@@ -596,7 +584,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594756001822</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="EventChecker">
+      <created>1594840184513</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1594840184513</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,14 +638,14 @@
       <screen x="0" y="23" width="1920" height="991" />
     </state>
     <state x="566" y="236" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1920.991@0.23.1920.991" timestamp="1593463639943" />
-    <state x="391" y="23" width="1128" height="994" key="CommitChangelistDialog2" timestamp="1594756001606">
+    <state x="360" y="23" width="1128" height="994" key="CommitChangelistDialog2" timestamp="1594840184293">
       <screen x="0" y="23" width="1920" height="994" />
     </state>
     <state x="293" y="0" key="CommitChangelistDialog2/0.0.1440.923@0.0.1440.923" timestamp="1589003313267" />
     <state x="391" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590374105446" />
     <state x="391" y="23" width="1128" height="1057" key="CommitChangelistDialog2/0.23.1920.1057@0.23.1920.1057" timestamp="1593046728851" />
     <state x="391" y="23" key="CommitChangelistDialog2/0.23.1920.991@0.23.1920.991" timestamp="1593464079513" />
-    <state x="391" y="23" width="1128" height="994" key="CommitChangelistDialog2/0.23.1920.994@0.23.1920.994" timestamp="1594756001606" />
+    <state x="360" y="23" width="1128" height="994" key="CommitChangelistDialog2/0.23.1920.994@0.23.1920.994" timestamp="1594840184293" />
     <state x="275" y="75" width="1447" height="709" key="DiffContextDialog" timestamp="1593537349272">
       <screen x="0" y="23" width="1920" height="992" />
     </state>
@@ -771,24 +766,25 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="71" y="56" width="1622" height="868" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587396118889" />
-    <state x="388" y="248" width="1057" height="483" key="MultipleFileMergeDialog" timestamp="1587396124877">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="388" y="260" width="1057" height="483" key="MultipleFileMergeDialog" timestamp="1594840305928">
+      <screen x="0" y="23" width="1920" height="994" />
     </state>
     <state x="388" y="248" width="1057" height="483" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587396124877" />
+    <state x="388" y="260" key="MultipleFileMergeDialog/0.23.1920.994@0.23.1920.994" timestamp="1594840305928" />
     <state x="463" y="23" width="1446" height="1057" key="SettingsEditor" timestamp="1593464020952">
       <screen x="0" y="23" width="1920" height="991" />
     </state>
     <state x="463" y="155" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589080336553" />
     <state x="463" y="23" width="1446" height="1057" key="SettingsEditor/0.23.1920.1057@0.23.1920.1057" timestamp="1593118043910" />
     <state x="463" y="23" key="SettingsEditor/0.23.1920.991@0.23.1920.991" timestamp="1593464020952" />
-    <state x="281" y="107" key="Vcs.Push.Dialog.v2" timestamp="1594756054178">
+    <state x="281" y="107" key="Vcs.Push.Dialog.v2" timestamp="1594840378118">
       <screen x="0" y="23" width="1920" height="994" />
     </state>
     <state x="557" y="304" key="Vcs.Push.Dialog.v2/0.0.1440.923@0.0.1440.923" timestamp="1589003369359" />
     <state x="742" y="343" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590374109763" />
     <state x="281" y="113" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1593046749593" />
     <state x="281" y="107" key="Vcs.Push.Dialog.v2/0.23.1920.991@0.23.1920.991" timestamp="1593464083746" />
-    <state x="281" y="107" key="Vcs.Push.Dialog.v2/0.23.1920.994@0.23.1920.994" timestamp="1594756054178" />
+    <state x="281" y="107" key="Vcs.Push.Dialog.v2/0.23.1920.994@0.23.1920.994" timestamp="1594840378118" />
     <state x="129" y="211" width="1759" height="805" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1594770317768">
       <screen x="0" y="23" width="1920" height="994" />
     </state>
@@ -798,10 +794,11 @@
     <state x="129" y="211" width="1759" height="805" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1920.994@0.23.1920.994" timestamp="1594770317768" />
     <state x="-167" y="558" width="2036" height="802" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1333@0.23.2560.1333" timestamp="1594165754202" />
     <state x="161" y="572" width="1759" height="805" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1594768053259" />
-    <state x="716" y="416" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585424055216">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="716" y="421" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594840207885">
+      <screen x="0" y="23" width="1920" height="994" />
     </state>
     <state x="716" y="416" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585424055216" />
+    <state x="716" y="421" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1920.994@0.23.1920.994" timestamp="1594840207885" />
     <state x="660" y="515" width="1468" height="724" key="dock-window-1" timestamp="1593631665904">
       <screen x="0" y="23" width="1920" height="992" />
     </state>
