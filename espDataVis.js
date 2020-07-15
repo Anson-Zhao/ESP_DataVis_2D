@@ -184,37 +184,6 @@ app.get ('/newMoon', function (req, res) { //stations information used for new e
     console.log("These are new things")
     console.log(timeFrom, timeTo);
     moon(timeFrom,timeTo,FLAG,PAIR)
-    // moon(FLAG,PAIR)
-    // async function moon(Flag,Pair) {
-    // for(var i=0;i<EQstations.length;i++){
-    // Flag.push([{stationInfo: EQstations[i]}]);
-    // Pair.push([{stationInfo: EQstations[i]}]);
-    //
-    // var Qstring='SELECT * FROM ' + EQstations[i].StationId + 'avg WHERE time >= ' +"\'"+timeFrom+"\'"+ ' AND time<= '+"\'"+timeTo+"\'";
-    // console.log(Qstring)
-    // await influx.query(Qstring).then
-    // (result => {
-    //     console.log("result")
-    //     console.log(result.length)
-    //     flag(result,Flag,Pair);
-    //     if (i === EQstations.length -1) {
-    //         console.log(Flag[0]);
-    //         console.log(Flag[1]);
-    //         console.log(Flag[2]);
-    //         // await pair(Flag,Pair)
-    //     }
-    // }).catch(err => {
-    //     console.log("Errors: ");
-    //     console.log(err)
-    // });
-    // if(i===EQstations.length-1){
-    //     match(Pair)
-    // }
-    // }
-
-// }
-
-
     res.send("event success")
 });
 
@@ -248,9 +217,7 @@ con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.
 
 
 function alarm(timeFrom,timeTo,stationId,stationName) {
-    // var time = "2020-04-01T16:00:00.000Z",
-    //     stationId = "station_two";
-    console.log(timeFrom,timeTo,stationId,stationName)
+    // console.log(timeFrom,timeTo,stationId,stationName)
 
     const mailOptions = {
         from: 'yge5095@gmail.com',
@@ -314,10 +281,8 @@ async function EventCheck(stations,Flag,Pair){
                             Z: result[a].Z,
                             Diff: DifB
                         });
-                        // DifA = null;
                         DifB = null;
                     } else {
-                        // DifA = null;
                         DifB = null;
                     }
                     // console.log(a)
@@ -330,43 +295,6 @@ async function EventCheck(stations,Flag,Pair){
                     }
                 }
             }
-            //
-            // function pair(Flag,Pair) {
-            //     console.log("Pair begin at"+Date());
-            //     // console.log(Flag)
-            //     for (var b = 1; b <= Flag[i].length-1; b++) {
-            //         // Flag[b].stationInfo===Flag[b+1].stationInfo&&
-            //         // console.log(Flag[i][b].time);
-            //         // console.log(Date.parse(Flag[i][b + 1].time) - Date.parse(Flag[i][b].time));
-            //         // console.log(Flag[i][b].Diff * Flag[i][b + 1].Diff);
-            //         // console.log('flag length: '+Flag[i].length)
-            //         // console.log('number of b: '+b);
-            //         // console.log(Flag)
-            //
-            //         if (Date.parse(Flag[i][b + 1].time) - Date.parse(Flag[i][b].time) < 11000000 && Flag[i][b].Diff * Flag[i][b + 1].Diff < 0) {
-            //             var array=[];
-            //             array.push(Flag[i][b], Flag[i][b + 1])
-            //             Pair[i].push(array);
-            //             // console.log(Flag[i][b])
-            //             Flag[i].splice(b,2)
-            //             // console.log("a pair and flg length: "+Flag[i].length)
-            //             // console.log(Flag[i])
-            //             b--;
-            //             //so the format will look like [ [{stationname}, [{},{}],...],...]
-            //             //when finish compair, it will be deleted.
-            //         } else {
-            //             Flag[i].splice(b,1);
-            //             b--;
-            //
-            //         }
-            //         if (b===Flag[i].length-1) {
-            //             // console.log("pair done at"+Date())
-            //             // console.log(Pair)
-            //             // console.log(Flag)
-            //             // console.log(Pair[0][1])
-            //         }
-            //     }
-            // }
         }).catch(err => {
             console.log("Errors: ");
             console.log(err)
@@ -398,15 +326,6 @@ async function EventCheck(stations,Flag,Pair){
         //     }
         // ]
         console.log(Date()+"one station end");
-        // if (i === stations.length-1) {
-        //     console.log("Match begin at"+Date());
-        //     console.log("these are pairs")
-        //     console.log(Pair[0])
-        //     console.log(Pair[1])
-        //     console.log(Pair[2])
-        //     // console.log(Flag[0])
-        //     match(Pair);
-        // }
     }
     console.log("All stations end");
     // console.log(Flag);
@@ -415,42 +334,6 @@ async function EventCheck(stations,Flag,Pair){
     setInterval(function () {
         EventCheck(EQstations,Flag,Pair)}, 300000);
 }
-
-// testgroup=[];
-// test1();
-// function test1(result){
-//     for(var a=0;a<result.length;a++) {
-//         // DifA = result[a + 1].X - result[a].X;
-//         DifB = result[a + 2].X - result[a + 1].X;
-//         if (Math.abs(DifB) > 9) {
-//             Flag.push({stationInfo:stations[i],time:result[a].time._nanoISO, X:result[a + 2].X, Y:result[a + 2].Y, Z:result[a + 2].Z, Diff:DifB});
-//             DifA = null;
-//             DifB = null;
-//         } else {
-//             DifA = null;
-//             DifB = null;
-//         }
-//     }
-//     for(var b=0; a<Flag.length;b++) {
-//     if (Flag[b].stationInfo===Flag[b+1].stationInfo&&Date.parse(Flag[b + 1].time) - Date.parse(Flag[b].time) < 10800000&&Flag[b].Diff * Flag[b + 1].Diff < 0) {
-//         Pair.push([Flag[b],Flag[b+1]])
-//         //so the format will look like [ [{},{}] ]
-//     } else {
-//         b++;
-//     }
-// }
-// }
-// console.log(Date.parse("2020-05-31T16:42:35.000Z"));
-// console.log(Date.parse("2020-05-31T16:42:35.000Z") - Date.parse("2020-05-31T16:42:37.000Z"));
-// if (Date.parse(EndT) - Date.parse(BeginT) > 10800000) {
-//     BeginT = EndT = null;
-// }
-
-
-
-
-
-// Alarm("2020-04-01T16:00:00.000Z","station_two");
 
 
 
@@ -474,28 +357,6 @@ app.get('/newWind', function (req, res) {
     });
 });
 
-// let csvData;
-// function download_csv(exportFilename) {
-//     if (exportFilename == null) {
-//         exportFilename = timeFrom + '-' + timeTo + 'AvgESPData';
-//     }
-//     console.log(download);
-//
-//
-//     csvData = new Blob([download], {type: 'text/csv;charset=utf-8;'});
-//     // IE11 & Edge
-//     if (navigator.msSaveBlob) {
-//         navigator.msSaveBlob(csvData, exportFilename);
-//     } else {
-//         //In FF link must be added to DOM to be clicked
-//         let link = document.createElement('a');
-//         link.href = window.URL.createObjectURL(csvData);
-//         link.setAttribute('download', exportFilename);
-//         document.body.appendChild(link);
-//         link.click();
-//         document.body.removeChild(link);
-//     }
-// }
 
 app.get('/newSnow', async function (req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -545,24 +406,5 @@ app.get('/query', function (req, res) {
         console.log(err)
     })
 });
-
-// app.get('/querys', async function (req, res) {
-//     // console.log(req.query.stations);
-//     // let pack = await [[req.query.stations[0],Q(req.query.stations[0])]];
-//     for(i = 0; i<req.query.stations.length; i++){
-//         // let result;
-//         let query = 'SELECT * FROM ' + req.query.stations[i] + 'avg WHERE time >= now() - ' + pastTime + ' AND time<=now() - '+ nowTime;
-//         await influx.query(query).then
-//         (result => {
-//             pack[i]= [req.query.stations[i],result];
-//         }).catch(err => {
-//             console.log(err)
-//         });
-//
-//         if (i === req.query.stations.length - 1) {
-//             res.send(pack);
-//         }
-//     }
-// });
 
 app.listen('3005');
