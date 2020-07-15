@@ -179,19 +179,19 @@ function match(Pair){
 app.get ('/newMoon', function (req, res) { //stations information used for new event page
     var timeFrom = req.query.timeFrom;
     var timeTo = req.query.timeTo;
-    var FLAG = []
-    var PAIR = []
+    var FLAGH = []
+    var PAIRH = []
     console.log("These are new things")
     console.log(timeFrom, timeTo);
-    moon(timeFrom,timeTo,FLAG,PAIR)
+    moon(timeFrom,timeTo,FLAGH,PAIRH)
     res.send("event success")
 });
 
 
 
 var EQstations;
-var Flag=[];
-var Pair=[];
+var FlagN=[];
+var PairN=[];
 con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.stationdata Where StationDescription = 'Earthquake'",function (err, result) {
     //   RowDataPacket {
     //     StationName: 'ESP02',
@@ -204,10 +204,10 @@ con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.
     EQstations=result;
 
     for(var i=0;i<result.length;i++) {
-        Flag.push([{stationInfo: result[i]}]);
-        Pair.push([{stationInfo: result[i]}]);
+        FlagN.push([{stationInfo: result[i]}]);
+        PairN.push([{stationInfo: result[i]}]);
         if(i===result.length-1){
-            EventCheck(result,Flag,Pair);
+            EventCheck(result,FlagN,PairN);
         }
     }
 
@@ -332,7 +332,7 @@ async function EventCheck(stations,Flag,Pair){
     console.log(Date());
 
     setInterval(function () {
-        EventCheck(EQstations,Flag,Pair)}, 300000);
+        EventCheck(EQstations,FlagN,PairN)}, 300000);
 }
 
 
