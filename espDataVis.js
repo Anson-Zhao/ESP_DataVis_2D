@@ -213,7 +213,7 @@ function alarm(timeFrom,timeTo,stationId,stationName) {
         subject: 'ESP Station Data',
         // html:'<p><a href="http://localhost:3005/newEjs?timeFrom="'+ timeFrom + "&timeTo=" + timeTo + "&stationName=" +
         //     stationName + "&stationId=" + stationId + '"\">From ' + timeFrom + " to " + timeTo + ", there is an abnormal spike happened on station " + stationName + "</a></p>"
-        html: '<p><a href="https://mockup.esp.aworldbridgelabs.com:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&stationName='+stationName+'&stationId='+stationId+'">' +
+        html: '<p><a href="https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&stationName='+stationName+'&stationId='+stationId+'">' +
             'From ' + timeFrom + " to " + timeTo + ", there is an abnormal spike happened on station " + stationName + '</a></p>'
 
     };
@@ -236,7 +236,7 @@ async function EventCheck(stations,Flag,Pair){
         // console.log(Date());
         var querystatement='SELECT * FROM ' + stations[i].StationId + 'avg WHERE time >= now()-' +minute+ ' AND time<= now()';
         var test='SELECT * FROM ' + stations[i].StationId + 'avg WHERE time >='+ ' \'2020-04-09T00:00:10Z\''+ ' AND '+'time<= \'2020-04-11T00:00:50Z\'';
-        console.log(test);
+        // console.log(test);
         // console.log(querystatement);
         await influx.query(querystatement).then
         (result => {
@@ -256,7 +256,7 @@ async function EventCheck(stations,Flag,Pair){
                 for (var a = 0; a < result.length; a++) {
                     // DifA = result[a + 1].X - result[a].X;
                     // console.log(a);
-                    console.log(result.length)
+                    // console.log(result.length)
                     DifB = result[a+1].X - result[a].X;
                     // console.log("this is difference");
                     // console.log(DifB);
@@ -295,6 +295,7 @@ async function EventCheck(stations,Flag,Pair){
 
 app.get('/newEjs',function (req,res) {
     res.setHeader("Access-Control-Allow-Origin", "*"); // Allow cross domain header
+    // console.log("Receive A Demo request: ");
     // console.log(req.query.timeFrom,req.query.timeTo,req.query.stationName,req.query.stationId)
     res.render('new.ejs', {timeFrom: req.query.timeFrom, timeTo: req.query.timeTo, stationName: req.query.stationName, stationId: req.query.stationId})
 });

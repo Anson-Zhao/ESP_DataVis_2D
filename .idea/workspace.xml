@@ -20,7 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/new.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/new.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +92,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
@@ -107,7 +112,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/indexbackup.html" />
   </component>
@@ -271,14 +276,8 @@
       <workItem from="1593621914165" duration="21211000" />
       <workItem from="1593813258623" duration="54019000" />
       <workItem from="1594845057347" duration="4467000" />
-      <workItem from="1595007284082" duration="1750000" />
-    </task>
-    <task id="LOCAL-00018" summary="V1.4">
-      <created>1579704520296</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1579704520296</updated>
+      <workItem from="1595007284082" duration="2334000" />
+      <workItem from="1595010146512" duration="5382000" />
     </task>
     <task id="LOCAL-00019" summary="V1.4">
       <created>1579710688335</created>
@@ -616,7 +615,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595008706708</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="clean up console.log">
+      <created>1595009100405</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1595009100405</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -664,11 +670,11 @@
       <screen x="0" y="23" width="1920" height="991" />
     </state>
     <state x="566" y="236" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1920.991@0.23.1920.991" timestamp="1593463639943" />
-    <state x="314" y="0" width="985" height="902" key="CommitChangelistDialog2" timestamp="1595008705236">
+    <state x="314" y="0" width="985" height="902" key="CommitChangelistDialog2" timestamp="1595009098960">
       <screen x="0" y="0" width="1676" height="902" />
     </state>
     <state x="293" y="0" key="CommitChangelistDialog2/0.0.1440.923@0.0.1440.923" timestamp="1589003313267" />
-    <state x="314" y="0" width="985" height="902" key="CommitChangelistDialog2/0.0.1676.902@0.0.1676.902" timestamp="1595008705236" />
+    <state x="314" y="0" width="985" height="902" key="CommitChangelistDialog2/0.0.1676.902@0.0.1676.902" timestamp="1595009098960" />
     <state x="391" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590374105446" />
     <state x="391" y="23" width="1128" height="1057" key="CommitChangelistDialog2/0.23.1920.1057@0.23.1920.1057" timestamp="1593046728851" />
     <state x="391" y="23" key="CommitChangelistDialog2/0.23.1920.991@0.23.1920.991" timestamp="1593464079513" />
@@ -681,10 +687,10 @@
     <state x="44" y="15" width="1446" height="742" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587397578406" />
     <state x="275" y="78" width="1447" height="755" key="DiffContextDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1593118259679" />
     <state x="275" y="75" width="1447" height="709" key="DiffContextDialog/0.23.1920.992@0.23.1920.992" timestamp="1593537349272" />
-    <state x="174" y="8" width="999" height="668" key="DirDiffDialog" timestamp="1595009044930">
+    <state x="174" y="8" width="999" height="668" key="DirDiffDialog" timestamp="1595019689730">
       <screen x="0" y="0" width="1676" height="902" />
     </state>
-    <state x="174" y="8" width="999" height="668" key="DirDiffDialog/0.0.1676.902@0.0.1676.902" timestamp="1595009044930" />
+    <state x="174" y="8" width="999" height="668" key="DirDiffDialog/0.0.1676.902@0.0.1676.902" timestamp="1595019689730" />
     <state x="610" y="128" width="1144" height="734" key="DirDiffDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586912477560" />
     <state x="668" y="231" key="FileChooserDialogImpl" timestamp="1589079569262">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -808,18 +814,18 @@
     </state>
     <state x="388" y="248" width="1057" height="483" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587396124877" />
     <state x="388" y="260" key="MultipleFileMergeDialog/0.23.1920.994@0.23.1920.994" timestamp="1594840654612" />
-    <state x="404" y="0" width="1263" height="902" key="SettingsEditor" timestamp="1595007241032">
+    <state x="404" y="0" width="1263" height="902" key="SettingsEditor" timestamp="1595013588053">
       <screen x="0" y="0" width="1676" height="902" />
     </state>
-    <state x="404" y="0" width="1263" height="902" key="SettingsEditor/0.0.1676.902@0.0.1676.902" timestamp="1595007241032" />
+    <state x="404" y="0" width="1263" height="902" key="SettingsEditor/0.0.1676.902@0.0.1676.902" timestamp="1595013588053" />
     <state x="463" y="155" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589080336553" />
     <state x="463" y="23" width="1446" height="1057" key="SettingsEditor/0.23.1920.1057@0.23.1920.1057" timestamp="1593118043910" />
     <state x="463" y="23" key="SettingsEditor/0.23.1920.991@0.23.1920.991" timestamp="1593464020952" />
-    <state x="245" y="76" key="Vcs.Push.Dialog.v2" timestamp="1595008708329">
+    <state x="245" y="76" key="Vcs.Push.Dialog.v2" timestamp="1595009102136">
       <screen x="0" y="0" width="1676" height="902" />
     </state>
     <state x="557" y="304" key="Vcs.Push.Dialog.v2/0.0.1440.923@0.0.1440.923" timestamp="1589003369359" />
-    <state x="245" y="76" key="Vcs.Push.Dialog.v2/0.0.1676.902@0.0.1676.902" timestamp="1595008708329" />
+    <state x="245" y="76" key="Vcs.Push.Dialog.v2/0.0.1676.902@0.0.1676.902" timestamp="1595009102136" />
     <state x="742" y="343" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590374109763" />
     <state x="281" y="113" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1593046749593" />
     <state x="281" y="107" key="Vcs.Push.Dialog.v2/0.23.1920.991@0.23.1920.991" timestamp="1593464083746" />
@@ -852,10 +858,11 @@
       <screen x="0" y="23" width="1920" height="991" />
     </state>
     <state x="157" y="146" width="1468" height="768" key="dock-window-3/0.23.1920.991@0.23.1920.991" timestamp="1593464268479" />
-    <state x="534" y="183" width="1156" height="796" key="find.popup" timestamp="1593045424255">
-      <screen x="0" y="23" width="1920" height="1057" />
+    <state x="466" y="0" width="1010" height="902" key="find.popup" timestamp="1595019322540">
+      <screen x="0" y="0" width="1676" height="902" />
     </state>
     <state x="633" y="299" width="617" height="490" key="find.popup/0.0.1440.923@0.0.1440.923" timestamp="1588110369683" />
+    <state x="466" y="0" width="1010" height="902" key="find.popup/0.0.1676.902@0.0.1676.902" timestamp="1595019322540" />
     <state x="534" y="157" width="823" height="668" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589075517936" />
     <state x="534" y="183" width="1156" height="796" key="find.popup/0.23.1920.1057@0.23.1920.1057" timestamp="1593045424255" />
     <state x="536" y="256" key="git4idea.merge.GitPullDialog" timestamp="1595007220390">
