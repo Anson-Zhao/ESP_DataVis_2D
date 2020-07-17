@@ -58,11 +58,11 @@ app.get ('/stations', function (req, res){
 app.get ('/stationsForN', function (req, res){ //stations information used for new event page
     res.setHeader("Access-Control-Allow-Origin", "*");
     var stationId = req.query.stationID;
-    console.log("station Id")
-    console.log(stationId);
+    // console.log("station Id")
+    // console.log(stationId);
     con.query("SELECT State FROM ESP2.stationdata Where StationId ='"+stationId+ "';",function (err, result1) {
-        console.log("result")
-        console.log(result1)
+        // console.log("result")
+        // console.log(result1)
         if (err){
             throw err;
         }else{
@@ -79,11 +79,11 @@ async function moon(timeFrom,timeTo,Flag,Pair){
             Flag.push([{stationInfo: EQstations[i]}]);
             Pair.push([{stationInfo: EQstations[i]}]);
             var Qstring='SELECT * FROM ' + EQstations[i].StationId + 'avg WHERE time >= ' +"\'"+timeFrom+"\'"+ ' AND time<= '+"\'"+timeTo+"\'";
-            console.log(Qstring)
+            // console.log(Qstring)
             await influx.query(Qstring).then
             (result => {
-                console.log("result")
-                console.log(result.length)
+                // console.log("result")
+                // console.log(result.length)
                 for (var a = 0; a < result.length; a++) {
                     DifB = result[a+1].X - result[a].X;
                     if (Math.abs(DifB) > 9) {
@@ -105,9 +105,9 @@ async function moon(timeFrom,timeTo,Flag,Pair){
                 console.log(err)
             });
             if (i === EQstations.length -1) {
-                console.log(Flag[0]);
-                console.log(Flag[1]);
-                console.log(Flag[2]);
+                // console.log(Flag[0]);
+                // console.log(Flag[1]);
+                // console.log(Flag[2]);
                 await pair(Flag,Pair)
             }
     }
@@ -132,14 +132,14 @@ function pair(Flag,Pair) {
             }
         }
         if(i===Flag.length-1){
-            console.log(Pair)
+            // console.log(Pair)
             match(Pair)
         }
     }
 }
 
 function match(Pair){
-    console.log("match begin at"+Date())
+    // console.log("match begin at"+Date())
     //check every station
     for(var v=0; v<Pair.length; v++){
         //check every pair in one station
@@ -151,17 +151,17 @@ function match(Pair){
                 // console.log('other stations: '+Pair.length+'/'+z)
                 //compare with every pair in other stations
                 for(var y=1; y<Pair[z].length; y++){
-                    console.log('pair in other stations:'+y)
+                    // console.log('pair in other stations:'+y)
                     // console.log(Pair[v][t][1].time)
                     // console.log(Pair[z][y][0].time)
                     // console.log(Pair[v][0].stationInfo.StationId)
                     if(Date.parse(Pair[v][t][1].time)>Date.parse(Pair[z][y][0].time)
                         &&Date.parse(Pair[v][t][1].time)<Date.parse(Pair[z][y][1].time)){
-                        console.log("hi there")
-                        console.log(Pair[v][t][1].time)
-                        console.log(Pair[z][y][0].time)
-                        console.log(Pair[v][0].stationInfo.StationId)
-                        console.log(Pair[v][t][0].time,Pair[v][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName)
+                        // console.log("hi there")
+                        // console.log(Pair[v][t][1].time)
+                        // console.log(Pair[z][y][0].time)
+                        // console.log(Pair[v][0].stationInfo.StationId)
+                        // console.log(Pair[v][t][0].time,Pair[v][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName)
                         alarm(Pair[v][t][0].time,Pair[v][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName);
                         alarm(Pair[z][y][0].time,Pair[z][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName)
                         Pair[z].splice(y,1)
@@ -181,8 +181,8 @@ app.get ('/newMoon', function (req, res) { //stations information used for new e
     var timeTo = req.query.timeTo;
     var FLAGH = []
     var PAIRH = []
-    console.log("These are new things")
-    console.log(timeFrom, timeTo);
+    // console.log("These are new things")
+    // console.log(timeFrom, timeTo);
     moon(timeFrom,timeTo,FLAGH,PAIRH)
     res.send("event success")
 });
@@ -193,14 +193,6 @@ var EQstations;
 var FlagN=[];
 var PairN=[];
 con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.stationdata Where StationDescription = 'Earthquake'",function (err, result) {
-    //   RowDataPacket {
-    //     StationName: 'ESP02',
-    //     City: 'Soquel',
-    //     State: 'California',
-    //     StationId: 'station_two',
-    //     Longitude: '-121.947898',
-    //     Latitude: '37.024433'
-    //   },...]
     EQstations=result;
 
     for(var i=0;i<result.length;i++) {
@@ -210,11 +202,7 @@ con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.
             EventCheck(result,FlagN,PairN);
         }
     }
-
 });
-
-
-
 
 function alarm(timeFrom,timeTo,stationId,stationName) {
     // console.log(timeFrom,timeTo,stationId,stationName)
@@ -225,7 +213,7 @@ function alarm(timeFrom,timeTo,stationId,stationName) {
         subject: 'ESP Station Data',
         // html:'<p><a href="http://localhost:3005/newEjs?timeFrom="'+ timeFrom + "&timeTo=" + timeTo + "&stationName=" +
         //     stationName + "&stationId=" + stationId + '"\">From ' + timeFrom + " to " + timeTo + ", there is an abnormal spike happened on station " + stationName + "</a></p>"
-        html: '<p><a href="/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&stationName='+stationName+'&stationId='+stationId+'">' +
+        html: '<p><a href="https://mockup.esp.aworldbridgelabs.com:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&stationName='+stationName+'&stationId='+stationId+'">' +
             'From ' + timeFrom + " to " + timeTo + ", there is an abnormal spike happened on station " + stationName + '</a></p>'
 
     };
@@ -234,7 +222,7 @@ function alarm(timeFrom,timeTo,stationId,stationName) {
             console.log(error);
         } else {
             //http://localhost:3005/newEjs?stationID=3333&dateTime=8888
-            console.log('Email sent: ' + info.response);
+            // console.log('Email sent: ' + info.response);
         }
     });
 }
@@ -288,9 +276,9 @@ async function EventCheck(stations,Flag,Pair){
                     // console.log(a)
                     // console.log(result.length)
                     if (a === result.length -3) {
-                        console.log("flag round done at"+Date());
+                        // console.log("flag round done at"+Date());
                         // console.log("Flag length:"+Flag[i].length);
-                        console.log(Flag[i]);
+                        // console.log(Flag[i]);
                         await pair(Flag,Pair)
                     }
                 }
@@ -299,55 +287,22 @@ async function EventCheck(stations,Flag,Pair){
             console.log("Errors: ");
             console.log(err)
         });
-
-        // console.log("Pair Length:"+Pair[i].length);
-        // console.log(Pair);
-        //format:
-        // [
-        //     [ { stationInfo: [RowDataPacket] }, [ [Object], [Object] ] ],
-        //     [ { stationInfo: [RowDataPacket] } ],
-        //     [ { stationInfo: [RowDataPacket] } ]
-        // ]
-        //two objects look like:
-        // [
-        //     {
-        //         time: '2020-01-01T02:21:59Z',
-        //         X: 25385.435536666668,
-        //         Y: -6292.829026666666,
-        //         Z: -35964.70881,
-        //         Diff: -9.169136666667328
-        //     },
-        //     {
-        //         time: '2020-01-01T04:28:59Z',
-        //         X: 25406.02273333333,
-        //         Y: -6308.46234,
-        //         Z: -35989.95120333333,
-        //         Diff: 9.576666666667734
-        //     }
-        // ]
-        console.log(Date()+"one station end");
     }
-    console.log("All stations end");
-    // console.log(Flag);
-    console.log(Date());
 
     setInterval(function () {
         EventCheck(EQstations,FlagN,PairN)}, 300000);
 }
 
-
-
-
 app.get('/newEjs',function (req,res) {
     res.setHeader("Access-Control-Allow-Origin", "*"); // Allow cross domain header
-    console.log(req.query.timeFrom,req.query.timeTo,req.query.stationName,req.query.stationId)
+    // console.log(req.query.timeFrom,req.query.timeTo,req.query.stationName,req.query.stationId)
     res.render('new.ejs', {timeFrom: req.query.timeFrom, timeTo: req.query.timeTo, stationName: req.query.stationName, stationId: req.query.stationId})
 });
 
 app.get('/newWind', function (req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
-    console.log("Time FROM")
-    console.log(req.query.stationIs,req.query.timeFrom,req.query.timeTo)
+    // console.log("Time FROM")
+    // console.log(req.query.stationIs,req.query.timeFrom,req.query.timeTo)
     let queryHa = 'SELECT * FROM ' + req.query.stationIs + 'avg WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'";
     influx.query(queryHa).then
     (result => {
@@ -356,7 +311,6 @@ app.get('/newWind', function (req, res) {
         res.status(500).send(err.stack)
     });
 });
-
 
 app.get('/newSnow', async function (req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -390,7 +344,6 @@ app.get('/newSnow', async function (req, res) {
     await csvWriter
         .writeRecords(download)
         .then(()=> {
-
             res.send(link);
         });
 });
