@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/views/new.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/new.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,14 +271,7 @@
       <workItem from="1593621914165" duration="21211000" />
       <workItem from="1593813258623" duration="54019000" />
       <workItem from="1594845057347" duration="4467000" />
-      <workItem from="1595007284082" duration="1403000" />
-    </task>
-    <task id="LOCAL-00017" summary="modulize">
-      <created>1579625399349</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1579625399349</updated>
+      <workItem from="1595007284082" duration="1750000" />
     </task>
     <task id="LOCAL-00018" summary="V1.4">
       <created>1579704520296</created>
@@ -616,7 +609,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595008479485</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="clean up console.log">
+      <created>1595008706708</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1595008706708</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -664,10 +664,11 @@
       <screen x="0" y="23" width="1920" height="991" />
     </state>
     <state x="566" y="236" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1920.991@0.23.1920.991" timestamp="1593463639943" />
-    <state x="360" y="23" width="1128" height="994" key="CommitChangelistDialog2" timestamp="1594853434724">
-      <screen x="0" y="23" width="1920" height="992" />
+    <state x="314" y="0" width="985" height="902" key="CommitChangelistDialog2" timestamp="1595008705236">
+      <screen x="0" y="0" width="1676" height="902" />
     </state>
     <state x="293" y="0" key="CommitChangelistDialog2/0.0.1440.923@0.0.1440.923" timestamp="1589003313267" />
+    <state x="314" y="0" width="985" height="902" key="CommitChangelistDialog2/0.0.1676.902@0.0.1676.902" timestamp="1595008705236" />
     <state x="391" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590374105446" />
     <state x="391" y="23" width="1128" height="1057" key="CommitChangelistDialog2/0.23.1920.1057@0.23.1920.1057" timestamp="1593046728851" />
     <state x="391" y="23" key="CommitChangelistDialog2/0.23.1920.991@0.23.1920.991" timestamp="1593464079513" />
@@ -680,9 +681,10 @@
     <state x="44" y="15" width="1446" height="742" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587397578406" />
     <state x="275" y="78" width="1447" height="755" key="DiffContextDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1593118259679" />
     <state x="275" y="75" width="1447" height="709" key="DiffContextDialog/0.23.1920.992@0.23.1920.992" timestamp="1593537349272" />
-    <state x="610" y="128" width="1144" height="734" key="DirDiffDialog" timestamp="1586912477560">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="174" y="8" width="999" height="668" key="DirDiffDialog" timestamp="1595009044930">
+      <screen x="0" y="0" width="1676" height="902" />
     </state>
+    <state x="174" y="8" width="999" height="668" key="DirDiffDialog/0.0.1676.902@0.0.1676.902" timestamp="1595009044930" />
     <state x="610" y="128" width="1144" height="734" key="DirDiffDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586912477560" />
     <state x="668" y="231" key="FileChooserDialogImpl" timestamp="1589079569262">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -813,11 +815,11 @@
     <state x="463" y="155" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589080336553" />
     <state x="463" y="23" width="1446" height="1057" key="SettingsEditor/0.23.1920.1057@0.23.1920.1057" timestamp="1593118043910" />
     <state x="463" y="23" key="SettingsEditor/0.23.1920.991@0.23.1920.991" timestamp="1593464020952" />
-    <state x="245" y="76" key="Vcs.Push.Dialog.v2" timestamp="1595007227935">
+    <state x="245" y="76" key="Vcs.Push.Dialog.v2" timestamp="1595008708329">
       <screen x="0" y="0" width="1676" height="902" />
     </state>
     <state x="557" y="304" key="Vcs.Push.Dialog.v2/0.0.1440.923@0.0.1440.923" timestamp="1589003369359" />
-    <state x="245" y="76" key="Vcs.Push.Dialog.v2/0.0.1676.902@0.0.1676.902" timestamp="1595007227935" />
+    <state x="245" y="76" key="Vcs.Push.Dialog.v2/0.0.1676.902@0.0.1676.902" timestamp="1595008708329" />
     <state x="742" y="343" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1590374109763" />
     <state x="281" y="113" key="Vcs.Push.Dialog.v2/0.23.1920.1057@0.23.1920.1057" timestamp="1593046749593" />
     <state x="281" y="107" key="Vcs.Push.Dialog.v2/0.23.1920.991@0.23.1920.991" timestamp="1593464083746" />
