@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sshConfigs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,14 +254,7 @@
       <workItem from="1593813258623" duration="52816000" />
       <workItem from="1594848435703" duration="888000" />
       <workItem from="1594852712987" duration="2003000" />
-      <workItem from="1595006165871" duration="48000" />
-    </task>
-    <task id="LOCAL-00014" summary="modulize">
-      <created>1576081645218</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1576081645218</updated>
+      <workItem from="1595006165871" duration="800000" />
     </task>
     <task id="LOCAL-00015" summary="modulize">
       <created>1578586971033</created>
@@ -603,7 +592,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594841317934</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="some changes.">
+      <created>1595006535311</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1595006535311</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,7 +635,8 @@
     <MESSAGE value="update chart text" />
     <MESSAGE value="EventChecker" />
     <MESSAGE value="xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="xml" />
+    <MESSAGE value="some changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="some changes." />
   </component>
   <component name="WindowStateProjectService">
     <state x="594" y="53" key="#Deployment" timestamp="1595006213086">
@@ -659,11 +656,11 @@
       <screen x="0" y="23" width="1920" height="991" />
     </state>
     <state x="566" y="236" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1920.991@0.23.1920.991" timestamp="1593463639943" />
-    <state x="341" y="0" width="1128" height="994" key="CommitChangelistDialog2" timestamp="1594841316625">
+    <state x="341" y="0" width="1128" height="994" key="CommitChangelistDialog2" timestamp="1595006533757">
       <screen x="0" y="0" width="1676" height="902" />
     </state>
     <state x="293" y="0" key="CommitChangelistDialog2/0.0.1440.923@0.0.1440.923" timestamp="1589003313267" />
-    <state x="341" y="0" key="CommitChangelistDialog2/0.0.1676.902@0.0.1676.902" timestamp="1594841316625" />
+    <state x="341" y="0" key="CommitChangelistDialog2/0.0.1676.902@0.0.1676.902" timestamp="1595006533757" />
     <state x="391" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1590374105446" />
     <state x="391" y="23" width="1128" height="1057" key="CommitChangelistDialog2/0.23.1920.1057@0.23.1920.1057" timestamp="1593046728851" />
     <state x="391" y="23" key="CommitChangelistDialog2/0.23.1920.991@0.23.1920.991" timestamp="1593464079513" />
