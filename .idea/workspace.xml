@@ -20,8 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/new.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/new.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,14 +271,7 @@
       <workItem from="1593621914165" duration="21211000" />
       <workItem from="1593813258623" duration="54019000" />
       <workItem from="1594845057347" duration="4467000" />
-      <workItem from="1595007284082" duration="1093000" />
-    </task>
-    <task id="LOCAL-00016" summary="modulize">
-      <created>1578942183375</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1578942183375</updated>
+      <workItem from="1595007284082" duration="1403000" />
     </task>
     <task id="LOCAL-00017" summary="modulize">
       <created>1579625399349</created>
@@ -617,7 +609,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594853434888</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="clean up console.log">
+      <created>1595008479485</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1595008479485</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -652,7 +651,8 @@
     <MESSAGE value="update dygraph libraries" />
     <MESSAGE value="update chart text" />
     <MESSAGE value="EventChecker" />
-    <option name="LAST_COMMIT_MESSAGE" value="EventChecker" />
+    <MESSAGE value="clean up console.log" />
+    <option name="LAST_COMMIT_MESSAGE" value="clean up console.log" />
   </component>
   <component name="WindowStateProjectService">
     <state x="594" y="53" key="#Deployment" timestamp="1593040631453">
