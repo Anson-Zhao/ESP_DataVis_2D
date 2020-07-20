@@ -88,7 +88,7 @@ async function moon(timeFrom,timeTo,Flag,Pair){
                     DifB = result[a+1].X - result[a].X;
                     if (Math.abs(DifB) > 9) {
                         Flag[i].push({
-                            stationInfo: EQstations[i],
+                            // stationInfo: EQstations[i],
                             time: result[a].time._nanoISO,
                             X: result[a].X,
                             Y: result[a].Y,
@@ -132,7 +132,7 @@ function pair(Flag,Pair) {
             }
         }
         if(i===Flag.length-1){
-            // console.log(Pair)
+            console.log(Pair[0].length,Pair[1].length,Pair[2].length)
             match(Pair)
         }
     }
@@ -209,7 +209,7 @@ function alarm(timeFrom,timeTo,stationId,stationName) {
 
     const mailOptions = {
         from: 'yge5095@gmail.com',
-        to: 'lin.feng@g.northernacademy.org,ron@trilliumlearning.com,azhao@northernacademy.org',
+        to: 'lin.feng@g.northernacademy.org, ron@trilliumlearning.com, azhao@northernacademy.org',
         subject: 'ESP Station Data',
         // html:'<p><a href="http://localhost:3005/newEjs?timeFrom="'+ timeFrom + "&timeTo=" + timeTo + "&stationName=" +
         //     stationName + "&stationId=" + stationId + '"\">From ' + timeFrom + " to " + timeTo + ", there is an abnormal spike happened on station " + stationName + "</a></p>"
@@ -227,9 +227,33 @@ function alarm(timeFrom,timeTo,stationId,stationName) {
     });
 }
 
+function Delete(Pair) {
+    for(var i=0;i<Pair.length;i++){
+        for(var a=0;a<Pair[i].length;a++){
+            if(Date.parse(Pair[i][a][1].time)>Date.parse(Date())+1800000){
+                Pair[i].splice(a,1)
+                //[[{StaInfo},{{},{}}],
+                // [{StaInfo}],
+                // [Sta]]
+            }
+        }
+    }
+}
+
 var c=0;
 var minute="6m";
 async function EventCheck(stations,Flag,Pair){
+    // con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.stationdata Where StationDescription = 'Earthquake'",function (err, result) {
+    //     EQstations=result;
+
+        // for(var i=0;i<result.length;i++) {
+        //     FlagN.push([{stationInfo: result[i]}]);
+        //     PairN.push([{stationInfo: result[i]}]);
+            // if(i===result.length-1){
+            //     EventCheck(result,FlagN,PairN);
+            // }
+        // }
+    // });
     // console.log("all begin");
     //check each station's data one by one
     for(var i=0;i<stations.length;i++){
@@ -291,6 +315,8 @@ async function EventCheck(stations,Flag,Pair){
 
     setInterval(function () {
         EventCheck(EQstations,FlagN,PairN)}, 300000);
+    setInterval(function () {
+        Delete(PairN)}, 300000);
 }
 
 app.get('/newEjs',function (req,res) {
