@@ -22,8 +22,6 @@
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="clean up console.log">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/new.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/new.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -683,10 +681,10 @@
     <state x="44" y="15" width="1446" height="742" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587397578406" />
     <state x="275" y="78" width="1447" height="755" key="DiffContextDialog/0.23.1920.1057@0.23.1920.1057" timestamp="1593118259679" />
     <state x="275" y="75" width="1447" height="709" key="DiffContextDialog/0.23.1920.992@0.23.1920.992" timestamp="1593537349272" />
-    <state x="174" y="8" width="999" height="668" key="DirDiffDialog" timestamp="1595019689730">
+    <state x="174" y="8" width="999" height="668" key="DirDiffDialog" timestamp="1595372468989">
       <screen x="0" y="0" width="1676" height="902" />
     </state>
-    <state x="174" y="8" width="999" height="668" key="DirDiffDialog/0.0.1676.902@0.0.1676.902" timestamp="1595019689730" />
+    <state x="174" y="8" width="999" height="668" key="DirDiffDialog/0.0.1676.902@0.0.1676.902" timestamp="1595372468989" />
     <state x="610" y="128" width="1144" height="734" key="DirDiffDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586912477560" />
     <state x="668" y="231" key="FileChooserDialogImpl" timestamp="1589079569262">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -860,11 +858,11 @@
       <screen x="0" y="23" width="1920" height="991" />
     </state>
     <state x="157" y="146" width="1468" height="768" key="dock-window-3/0.23.1920.991@0.23.1920.991" timestamp="1593464268479" />
-    <state x="466" y="0" width="1010" height="902" key="find.popup" timestamp="1595019322540">
+    <state x="466" y="0" width="1010" height="902" key="find.popup" timestamp="1595371829378">
       <screen x="0" y="0" width="1676" height="902" />
     </state>
     <state x="633" y="299" width="617" height="490" key="find.popup/0.0.1440.923@0.0.1440.923" timestamp="1588110369683" />
-    <state x="466" y="0" width="1010" height="902" key="find.popup/0.0.1676.902@0.0.1676.902" timestamp="1595019322540" />
+    <state x="466" y="0" width="1010" height="902" key="find.popup/0.0.1676.902@0.0.1676.902" timestamp="1595371829378" />
     <state x="534" y="157" width="823" height="668" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589075517936" />
     <state x="534" y="183" width="1156" height="796" key="find.popup/0.23.1920.1057@0.23.1920.1057" timestamp="1593045424255" />
     <state x="536" y="256" key="git4idea.merge.GitPullDialog" timestamp="1595007220390">
