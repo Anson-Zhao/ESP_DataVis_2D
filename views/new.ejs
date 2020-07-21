@@ -36,8 +36,10 @@
 
 <!--<h2 id ="jump">go back to homepage</h2>-->
 
-<h1 id = "text"></h1>
-<h2 id="message"></h2>
+<h2 id = "text"></h2>
+<h3 id="info"></h3>
+<h4 id="message"></h4>
+
 
 <div class="col-sm-9" id="globe">
     <canvas id="canvasOne" width="1000" height="1000"
@@ -75,7 +77,8 @@
 
     // a title for the new page
     $('#text').html("Event Page for "+stationName+" from "+ timeFrom + " to " + timeTo)
-    $('#message').html(city+"  "+state+'   latitude: '+la + '  longitude: '+lo)
+    $('#info').html("City: "+city+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"State:"+state)
+    $('#message').html("Latitude: "+la+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Longitude:"+lo)
     // rotate the globe
     let wwd = new WorldWind.WorldWindow("canvasOne");
 
