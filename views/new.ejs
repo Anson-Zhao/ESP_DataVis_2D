@@ -36,10 +36,12 @@
 
 <!--<h2 id ="jump">go back to homepage</h2>-->
 
-<h2 id = "text"></h2>
+<h1 id = "text"></h1>
+<h2 id="message"></h2>
 
 <div class="col-sm-9" id="globe">
     <canvas id="canvasOne" width="1000" height="1000"
+            style="width: 50%; height: auto; background-color: white;">
             style="width: 50%; height: auto; background-color: white;">
         Your browser does not support HTML5 Canvas.
     </canvas>
@@ -54,9 +56,13 @@
     let timeFrom = '<%= timeFrom %>',
         timeTo = '<%= timeTo %>',
         stationName = '<%= stationName %>',
+        city = '<%= city %>',
+        state = '<%= state %>',
+        lo = '<%= lo %>',
+        la = '<%= la %>',
         stationId = '<%= stationId %>'; //the id of the station which turned the trigger on
     console.log("Here is what I get")
-    console.log(stationId, timeFrom, timeTo);
+    console.log(stationId, timeFrom, timeTo, city, state, lo, la);
     let timeIntervalHalf = 6, //this is half, so the total duration is 12 hrs
         timefrom = moment.utc(timeFrom,'').add(-timeIntervalHalf,'hour').format().slice(0, -1) + ".000Z", // -6h from time
         timeto = moment.utc(timeTo,'').add(0.1,'hour').format().slice(0, -1) + ".000Z"; // +6h to time
@@ -69,6 +75,7 @@
 
     // a title for the new page
     $('#text').html("Event Page for "+stationName+" from "+ timeFrom + " to " + timeTo)
+    $('#message').html(city+"  "+state+'   latitude: '+la + '  longitude: '+lo)
     // rotate the globe
     let wwd = new WorldWind.WorldWindow("canvasOne");
 
@@ -91,7 +98,7 @@
         wwd.addLayer(layers[l].layer);
     }
 
-    wwd.goTo(new WorldWind.Position(36.375229, -121.823628, 320000));
+    wwd.goTo(new WorldWind.Position(36.375229, -121.823628, 600000));
 
     $.ajax({
         // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stationsForN',
