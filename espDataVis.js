@@ -26,13 +26,13 @@ const mysql = require('mysql');
 const bodyParser = require("body-parser");
 
 const con = mysql.createConnection({
-    // host: "10.11.90.16",
-    host: "localhost",
+    host: "10.11.90.16",
+    // host: "localhost",
     user: "AppUser",
     password: "Special888%",
     port: "3306",
     Schema: "ESP2",
-    Table: "StationData"
+    Table: "stationdata"
 });
 
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
@@ -59,15 +59,15 @@ app.get ('/stations', function (req, res){
 app.get ('/stationsForN', function (req, res){ //stations information used for new event page
     res.setHeader("Access-Control-Allow-Origin", "*");
     var stationId = req.query.stationID;
-    // console.log("station Id")
-    // console.log(stationId);
+    console.log("station Id")
+    console.log(stationId);
     con.query("SELECT State FROM ESP2.stationdata Where StationId ='"+stationId+ "';",function (err, result1) {
         // console.log("result")
         // console.log(result1)
         if (err){
             throw err;
         }else{
-            con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.stationdata Where Status = 'Active' AND State = '"+result1[0].State+"';",function (err, result) {
+            con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.stationdata Where StationDescription = 'Earthquake'",function (err, result) {
                 if (err) throw err;
                 res.send(result);
             });
@@ -75,6 +75,7 @@ app.get ('/stationsForN', function (req, res){ //stations information used for n
     });
 });
 
+//this part is working for the Check the selectable time period event (in historical page) as the flag part.
 async function moon(timeFrom,timeTo,Flag,Pair,email){
     for(var i=0;i<EQstations.length;i++){
             Flag.push([{stationInfo: EQstations[i]}]);
@@ -110,11 +111,13 @@ async function moon(timeFrom,timeTo,Flag,Pair,email){
                 // console.log(Flag[1]);
                 // console.log(Flag[2]);
                 await pair(Flag,Pair,email)
+                await seconds(Flag,email)
             }
     }
 }
 
-
+//Match the Flags of different stations into pairs and push them into pair(an array), the step after flag.
+//The whole event checker part will use this function together.
 function pair(Flag,Pair,email) {
     for (var i=0;i<Flag.length;i++){
         for (var b = 1; b < Flag[i].length-1; b++) {
@@ -134,11 +137,15 @@ function pair(Flag,Pair,email) {
         }
         if(i===Flag.length-1){
             console.log(Pair[0].length,Pair[1].length,Pair[2].length)
+            console.log(Pair[0])
+            console.log(Pair[1])
+            console.log(Pair[2])
             match(Pair,email)
         }
     }
 }
 
+//to see whether the time of different stations are matched with each other. If it is, then call the alarm and send the necessary info as parameters.
 function match(Pair,email){
     // console.log("match begin at"+Date())
     //check every station
@@ -163,16 +170,22 @@ function match(Pair,email){
                         // console.log(Pair[z][y][0].time)
                         // console.log(Pair[v][0].stationInfo.StationId)
                         // console.log(Pair[v][t][0].time,Pair[v][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName)
-                        alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][t][0].time,Pair[v][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email);
-                        alarm(Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][y][0].time,Pair[z][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,email)
+                        alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][t][0].time,Pair[v][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email,
+                            Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][y][0].time,Pair[z][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,
+                            Pair[v][t][0].X,Pair[v][t][0].Y,Pair[v][t][0].Z,Pair[v][t][0].Diff,Pair[v][t][1].X,Pair[v][t][1].Y,Pair[v][t][1].Z,Pair[v][t][1].Diff,
+                            Pair[z][y][0].X,Pair[z][y][0].Y,Pair[z][y][0].Z,Pair[z][y][0].Diff,Pair[z][y][1].X,Pair[z][y][1].Y,Pair[z][y][1].Z,Pair[z][y][1].Diff);
+                        // alarm(Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][y][0].time,Pair[z][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,email)
                         Pair[z].splice(y,1)
                         Pair[v].splice(t,1)
                         continue
                     }
                     else if(Date.parse(Pair[z][y][1].time)>Date.parse(Pair[v][t][0].time)
                         &&Date.parse(Pair[z][y][1].time)<Date.parse(Pair[v][t][1].time)){
-                        alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][t][0].time,Pair[v][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email);
-                        alarm(Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][y][0].time,Pair[z][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,email)
+                        alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][t][0].time,Pair[v][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email,
+                            Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][y][0].time,Pair[z][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,
+                            Pair[v][t][0].X,Pair[v][t][0].Y,Pair[v][t][0].Z,Pair[v][t][0].Diff,Pair[v][t][1].X,Pair[v][t][1].Y,Pair[v][t][1].Z,Pair[v][t][1].Diff,
+                            Pair[z][y][0].X,Pair[z][y][0].Y,Pair[z][y][0].Z,Pair[z][y][0].Diff,Pair[z][y][1].X,Pair[z][y][1].Y,Pair[z][y][1].Z,Pair[z][y][1].Diff);
+                        // alarm(Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][y][0].time,Pair[z][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,email)
                         Pair[z].splice(y,1)
                         Pair[v].splice(t,1)
                         continue
@@ -182,6 +195,51 @@ function match(Pair,email){
         }
     }
 }
+
+//If there is anomaly happened in two stations within 20s, which is flags. Then call the alarm.
+function seconds(Flag,email){
+    // console.log("match begin at"+Date())
+    //check every station
+    for(var v=0; v<Flag.length; v++){
+        //check every pair in one station
+        // console.log("stations: "+Pair.length+'/'+v)
+        for(var t=1; t<Flag[v].length; t++){
+            //compare with every other stations
+            // console.log('pairs: '+Pair[v].length+"/"+t)
+            for(var z=v+1; z<Flag.length; z++){
+                // console.log('other stations: '+Pair.length+'/'+z)
+                //compare with every pair in other stations
+                for(var y=1; y<Flag[z].length; y++){
+                    // console.log('pair in other stations:'+y)
+                    // console.log(Pair[v][t][1].time)
+                    // console.log(Pair[z][y][0].time)
+                    // console.log(Pair[v][0].stationInfo.StationId)
+                    if(Date.parse(Flag[v][t].time)>Date.parse(Flag[z][y].time)-20000
+                    &&Date.parse(Flag[v][t].time)<Date.parse(Flag[z][y].time)+20000){
+                        // console.log("hi there")
+                        // console.log(Pair[v][t][1].time)
+                        // console.log(Pair[z][y][0].time)
+                        // console.log(Pair[v][0].stationInfo.StationId)
+                        // console.log(Pair[v][t][0].time,Pair[v][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName)
+                        alarm(Flag[v][0].stationInfo.City, Flag[v][0].stationInfo.State, Flag[v][0].stationInfo.Longitude, Flag[v][0].stationInfo.Latitude, Flag[v][t].time,null,Flag[v][0].stationInfo.StationId,Flag[v][0].stationInfo.StationName,email,
+                            Flag[z][0].stationInfo.City, Flag[z][0].stationInfo.State, Flag[z][0].stationInfo.Longitude, Flag[z][0].stationInfo.Latitude, Flag[z][y].time,null,Flag[z][0].stationInfo.StationId,Flag[z][0].stationInfo.StationName,
+                            Pair[v][t].X,Pair[v][t].Y,Pair[v][t].Z,Pair[v][t].Diff,null,null,null,null,
+                            Pair[z][y].X,Pair[z][y].Y,Pair[z][y].Z,Pair[z][y].Diff,null,null,null,null);
+                        // alarm(Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][y][0].time,Pair[z][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,email)
+                        continue
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+//this is part that responsible for the check the event (in historical page) where you can select specific time period.
 app.get ('/newMoon', function (req, res) { //stations information used for new event page
     var timeFrom = req.query.timeFrom;
     var timeTo = req.query.timeTo;
@@ -195,7 +253,7 @@ app.get ('/newMoon', function (req, res) { //stations information used for new e
 });
 
 
-
+var DeEmail='lin.feng@g.northernacademy.org, ron@trilliumlearning.com, azhao@northernacademy.org';
 var EQstations;
 var FlagN=[];
 var PairN=[];
@@ -210,9 +268,13 @@ con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.
         }
     }
 });
-var DeEmail='lin.feng@g.northernacademy.org, ron@trilliumlearning.com, azhao@northernacademy.org'
+
+//this is the alarm that will send out the notification link to the specific email
 // StationName,City,State,StationId,Longitude,Latitude
-function alarm(city,state,lo,la,timeFrom,timeTo,stationId,stationName,email) {
+function alarm(city,state,lo,la,timeFrom,timeTo,stationId,stationName,email,
+               city2,state2,lo2,la2,timeFrom2,timeTo2,stationId2,stationName2,
+               bx,by,bz,bd,ex,ey,ez,ed,
+               bx2,by2,bz2,bd2,ex2,ey2,ez2,ed2) {
     // console.log(timeFrom,timeTo,stationId,stationName)
 
     const mailOptions = {
@@ -223,8 +285,12 @@ function alarm(city,state,lo,la,timeFrom,timeTo,stationId,stationName,email) {
         //     stationName + "&stationId=" + stationId + '"\">From ' + timeFrom + " to " + timeTo + ", there is an abnormal spike happened on station " + stationName + "</a></p>"
         // html: '<p><a href="https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&city='+city+'&state='+state+'&lo='+lo+'&la='+la+'&stationName='+stationName+'&stationId='+stationId+'">' +
         //     'From ' + timeFrom + " to " + timeTo + ", there is an anopoly happened on station " + stationName + '</a></p>'
-        html: '<p><a href="http://localhost:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&city='+city+'&state='+state+'&lo='+lo+'&la='+la+'&stationName='+stationName+'&stationId='+stationId+'">' +
-            'From ' + timeFrom + " to " + timeTo + ", there is an anopoly happened on station " + stationName + '</a></p>'
+        html: '<p><a href="http://localhost:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&city='+city+'&state='+state+'&lo='+lo+'&la='+la+'&stationName='+stationName+'&stationId='+stationId
+            +'&timeFrom2='+timeFrom2+'&timeTo2='+timeTo2+'&city2='+city2+'&state2='+state2+'&lo2='+lo2+'&la2='+la2+'&stationName2='+stationName2+'&stationId2='+stationId2
+            +'&bx='+bx+'&by='+by+'&bz='+bz+'&bd='+bd+'&ex='+ex+'&ey='+ey+'&ez='+ez+'&ed='+ed
+            +'&bx2='+bx2+'&by2='+by2+'&bz2='+bz2+'&bd2='+bd2+'&ex2='+ex2+'&ey2='+ey2+'&ez2='+ez2+'&ed2='+ed2+'">' +
+            'From ' + timeFrom + " to " + timeTo + ", there is an anomaly happened on station " + stationName
+            + ". At the same time, there is an anomaly happened on station "+ stationName2+", and the time range is "+timeFrom2+" to "+timeTo2+". "+'</a></p>'
 
     };
     transporter.sendMail(mailOptions, function(error, info){
@@ -271,12 +337,12 @@ async function EventCheck(stations,Flag,Pair,email){
     for(var i=0;i<stations.length;i++){
         // console.log(Date());
         var querystatement='SELECT * FROM ' + stations[i].StationId + 'avg WHERE time >= now()-' +minute+ ' AND time<= now()';
-        var test='SELECT * FROM ' + stations[i].StationId + 'avg WHERE time >='+ ' \'2020-04-09T00:00:10Z\''+ ' AND '+'time<= \'2020-04-11T00:00:50Z\'';
+        var test='SELECT * FROM ' + stations[i].StationId + 'avg WHERE time >='+ ' \'2020-07-27T00:00:10Z\''+ ' AND '+'time<= \'2020-07-30T00:00:50Z\'';
         // console.log(test);
         // console.log(querystatement);
-        await influx.query(querystatement).then
+        await influx.query(test).then
         (result => {
-            // console.log('this is result');
+            console.log('this is result');
             // console.log(result.length);
             // console.log(result);
             // console.log(result[0].X);
@@ -316,6 +382,7 @@ async function EventCheck(stations,Flag,Pair,email){
                         // console.log("Flag length:"+Flag[i].length);
                         // console.log(Flag[i]);
                         await pair(Flag,Pair,email)
+                        await seconds(Flag,email)
                     }
                 }
             }
@@ -335,13 +402,17 @@ app.get('/newEjs',function (req,res) {
     res.setHeader("Access-Control-Allow-Origin", "*"); // Allow cross domain header
     // console.log("Receive A Demo request: ");
     // console.log(req.query.timeFrom,req.query.timeTo,req.query.stationName,req.query.stationId)
-    res.render('new.ejs', {timeFrom: req.query.timeFrom, timeTo: req.query.timeTo, stationName: req.query.stationName, stationId: req.query.stationId, city: req.query.city, state: req.query.state, la: req.query.la, lo: req.query.lo})
+    res.render('new.ejs', {timeFrom: req.query.timeFrom, timeTo: req.query.timeTo, stationName: req.query.stationName, stationId: req.query.stationId, city: req.query.city, state: req.query.state, la: req.query.la, lo: req.query.lo,
+        timeFrom2: req.query.timeFrom2, timeTo2: req.query.timeTo2, stationName2: req.query.stationName2, stationId2: req.query.stationId2, city2: req.query.city2, state2: req.query.state2, la2: req.query.la2, lo2: req.query.lo2,
+        bx: req.query.bx, by: req.query.by, bz: req.query.bz, bd: req.query.bd, ex: req.query.ex,ey: req.query.ey, ez: req.query.ez, ed: req.query.ed,
+        bx2: req.query.bx2, by2: req.query.by2, bz2: req.query.bz2, bd2: req.query.bd2, ex2: req.query.ex2,ey2: req.query.ey2, ez2: req.query.ez2, ed2: req.query.ed2,
+    })
 });
 
 app.get('/newWind', function (req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     // console.log("Time FROM")
-    // console.log(req.query.stationIs,req.query.timeFrom,req.query.timeTo)
+    console.log(req.query.stationIs,req.query.timeFrom,req.query.timeTo)
     let queryHa = 'SELECT * FROM ' + req.query.stationIs + 'avg WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'";
     influx.query(queryHa).then
     (result => {
