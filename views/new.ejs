@@ -24,6 +24,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
         body { padding-left:80px; padding-bottom: 300px; word-wrap:break-word;}
+        table, td{
+            border: 1px solid black;
+        }
+        table {
+            table-layout: fixed ;
+            width: 100% ;
+        }
+        td {
+            width: 25% ;
+        }
     </style>
 </head>
 <body>
@@ -37,9 +47,19 @@
 
 <!--<h2 id ="jump">go back to homepage</h2>-->
 
-<h2 id = "text"></h2>
-<h3 id="info"></h3>
+<!--<h2 id = "text"></h2>-->
+<!--<h3 id="info"></h3>-->
 <h4 id="message"></h4>
+<!--<h4 id="data"></h4>-->
+<!--<h3 id="info2"></h3>-->
+<!--<h4 id="message2"></h4>-->
+<!--<h4 id="data2"></h4>-->
+<table id="tableone">
+    <thead id="headone"></thead>
+</table>
+<table id="tabletwo">
+    <thead id="headtwo"></thead>
+</table>
 
 
 <div class="col-sm-9" id="globe">
@@ -56,30 +76,345 @@
 <div id = "newDiv"> </div>
 
 <script>
-    let timeFrom = '<%= timeFrom %>',
-        timeTo = '<%= timeTo %>',
-        stationName = '<%= stationName %>',
-        city = '<%= city %>',
-        state = '<%= state %>',
-        lo = '<%= lo %>',
-        la = '<%= la %>',
-        stationId = '<%= stationId %>'; //the id of the station which turned the trigger on
-    console.log("Here is what I get")
-    console.log(stationId, timeFrom, timeTo, city, state, lo, la);
-    let timeIntervalHalf = 6, //this is half, so the total duration is 12 hrs
-        timefrom = moment.utc(timeFrom,'').add(-timeIntervalHalf,'hour').format().slice(0, -1) + ".000Z", // -6h from time
-        timeto = moment.utc(timeTo,'').add(0.1,'hour').format().slice(0, -1) + ".000Z"; // +6h to time
-        // timeTo = moment.utc(timeTo)
-    let x_arr = [],
-        y_arr = [],
-        z_arr = [];
-    let ini = true;
-    // let stationIdArr = ["station_the","station_two","station_for"];
+    // if(ex!==null){
+    //     var m=0;
+        let timeFrom = '<%= timeFrom %>',
+            timeTo = '<%= timeTo %>',
+            stationName = '<%= stationName %>',
+            city = '<%= city %>',
+            state = '<%= state %>',
+            lo = '<%= lo %>',
+            la = '<%= la %>',
+            stationId = '<%= stationId %>',
+            timeFrom2 = '<%= timeFrom2 %>',
+            timeTo2 = '<%= timeTo2 %>',
+            stationName2 = '<%= stationName2 %>',
+            city2 = '<%= city2 %>',
+            state2 = '<%= state2 %>',
+            lo2 = '<%= lo2 %>',
+            la2 = '<%= la2 %>',
+            stationId2 = '<%= stationId2 %>',
+            bx = '<%= bx %>',
+            by = '<%= by %>',
+            bz = '<%= bz %>',
+            bd = '<%= bd %>',
+            ex = '<%= ex %>',
+            ey = '<%= ey %>',
+            ez = '<%= ez %>',
+            ed = '<%= ed %>',
+            bx2 = '<%= bx2 %>',
+            by2 = '<%= by2 %>',
+            bz2 = '<%= bz2 %>',
+            bd2 = '<%= bd2 %>',
+            ex2 = '<%= ex2 %>',
+            ey2 = '<%= ey2 %>',
+            ez2 = '<%= ez2 %>',
+            ed2 = '<%= ed2 %>'; //the id of the station which turned the trigger on
+    <!--}else{-->
+    <!--    var m=1-->
+    <!--    var timeFrom = '<%= timeFrom %>',-->
+    <!--        timeTo = '<%= timeTo %>',-->
+    <!--        stationName = '<%= stationName %>',-->
+    <!--        city = '<%= city %>',-->
+    <!--        state = '<%= state %>',-->
+    <!--        lo = '<%= lo %>',-->
+    <!--        la = '<%= la %>',-->
+    <!--        stationId = '<%= stationId %>',-->
+    <!--        timeFrom2 = '<%= timeFrom2 %>',-->
+    <!--        timeTo2 = '<%= timeTo2 %>',-->
+    <!--        stationName2 = '<%= stationName2 %>',-->
+    <!--        city2 = '<%= city2 %>',-->
+    <!--        state2 = '<%= state2 %>',-->
+    <!--        lo2 = '<%= lo2 %>',-->
+    <!--        la2 = '<%= la2 %>',-->
+    <!--        stationId2 = '<%= stationId2 %>',-->
+    <!--        bx = '<%= bx %>',-->
+    <!--        by = '<%= by %>',-->
+    <!--        bz = '<%= bz %>',-->
+    <!--        bd = '<%= bd %>',-->
+    <!--        bx2 = '<%= bx2 %>',-->
+    <!--        by2 = '<%= by2 %>',-->
+    <!--        bz2 = '<%= bz2 %>',-->
+    <!--        bd2 = '<%= bd2 %>'-->
+    <!--}-->
+    console.log(ex)
+    console.log(ex!==0)
+    var timefrom,timeto
+    // if(ex!==0){
+        console.log(ex)
+        console.log("Here is what I get")
+        console.log(stationId, timeFrom, timeTo, city, state, lo, la);
+    if(timeTo.length>6){
+        var times=[Date.parse(timeFrom),Date.parse(timeTo),Date.parse(timeFrom2),Date.parse(timeTo2)]
+        console.log(times)
+        var row = $("<tr>")
+        var row0 = $("<tr>");
+        var row1 = $("<tr>");
+        var row2 = $("<tr>");
+        var row3 = $("<tr>");
 
-    // a title for the new page
-    $('#text').html("Event Page for "+stationName+" from "+ timeFrom + " to " + timeTo)
-    $('#info').html("City: "+city+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"State:"+state)
-    $('#message').html("Latitude: "+la+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Longitude:"+lo)
+        row.append($("<th>Station:</th>"))
+            .append($("<th>"+stationName+"</th>"))
+        row0.append($("<td>City:</td>"))
+            .append($("<td>"+city+"</td>"))
+            .append($("<td>State:</td>"))
+            .append($("<td>"+ state+"</td>"))
+            .append($("<td>Latitude:</td>"))
+            .append($("<td>"+parseFloat(la).toFixed(2)+"</td>"))
+            .append($("<td>Longitude:</td>"))
+            .append($("<td>"+parseFloat(lo).toFixed(2)+"</td>"))
+        row1.append($("<td>Begin Time:</td>"))
+            .append($("<td>"+new Date(timeFrom)+"</td>"))
+            .append($("<td>End Time:</td>"))
+            .append($("<td>"+new Date(timeTo)+"</td>"));
+        row2.append($("<td>Begin X:</td>"))
+            .append($("<td>"+parseFloat(bx).toFixed(2)+"</td>"))
+            .append($("<td>Begin Y:</td>"))
+            .append($("<td>"+parseFloat(by).toFixed(2)+"</td>"))
+            .append($("<td>Begin Z:</td>"))
+            .append($("<td>"+parseFloat(bz).toFixed(2)+"</td>"))
+            .append($("<td>Begin Difference(X):</td>"))
+            .append($("<td>"+parseFloat(bd).toFixed(2)+"</td>"))
+        row3.append($("<td>End X:</td>"))
+            .append($("<td>"+parseFloat(ex).toFixed(2)+"</td>"))
+            .append($("<td>End Y:</td>"))
+            .append($("<td>"+parseFloat(ey).toFixed(2)+"</td>"))
+            .append($("<td>End Z:</td>"))
+            .append($("<td>"+parseFloat(ez).toFixed(2)+"</td>"))
+            .append($("<td>End Difference(X):</td>"))
+            .append($("<td>"+parseFloat(ed).toFixed(2)+"</td>"))
+
+        $("#headone").append(row);
+        $("#tableone").append(row0)
+            .append(row1)
+            .append(row2)
+            .append(row3);
+
+        var row_ = $("<tr>")
+        var row_0 = $("<tr>");
+        var row_1 = $("<tr>");
+        var row_2 = $("<tr>");
+        var row_3 = $("<tr>");
+
+        row_.append($("<th>Station:</th>"))
+            .append($("<th>"+stationName2+"</th>"))
+        row_0.append($("<td>City:</td>"))
+            .append($("<td>"+city2+"</td>"))
+            .append($("<td>State:</td>"))
+            .append($("<td>"+ state2+"</td>"))
+            .append($("<td>Latitude:</td>"))
+            .append($("<td>"+parseFloat(la2).toFixed(2)+"</td>"))
+            .append($("<td>Longitude:</td>"))
+            .append($("<td>"+parseFloat(lo2).toFixed(2)+"</td>"))
+        row_1.append($("<td>Begin Time:</td>"))
+            .append($("<td>"+new Date(timeFrom2)+"</td>"))
+            .append($("<td>End Time:</td>"))
+            .append($("<td>"+new Date(timeTo2)+"</td>"));
+        row_2.append($("<td>Begin X:</td>"))
+            .append($("<td>"+parseFloat(bx2).toFixed(2)+"</td>"))
+            .append($("<td>Begin Y:</td>"))
+            .append($("<td>"+parseFloat(by2).toFixed(2)+"</td>"))
+            .append($("<td>Begin Z:</td>"))
+            .append($("<td>"+parseFloat(bz2).toFixed(2)+"</td>"))
+            .append($("<td>Begin Difference(X):</td>"))
+            .append($("<td>"+parseFloat(bd2).toFixed(2)+"</td>"))
+        row_3.append($("<td>End X:</td>"))
+            .append($("<td>"+parseFloat(ex2).toFixed(2)+"</td>"))
+            .append($("<td>End Y:</td>"))
+            .append($("<td>"+parseFloat(ey2).toFixed(2)+"</td>"))
+            .append($("<td>End Z:</td>"))
+            .append($("<td>"+parseFloat(ez2).toFixed(2)+"</td>"))
+            .append($("<td>End Difference:</td>"))
+            .append($("<td>"+parseFloat(ed2).toFixed(2)+"</td>"))
+
+        $("#headtwo").append(row_);
+        $("#tabletwo").append(row_0)
+            .append(row_1)
+            .append(row_2)
+            .append(row_3);
+    }else{
+        var times=[Date.parse(timeFrom),Date.parse(Date()),Date.parse(timeFrom2)]
+        console.log(times)
+        $('#message').html("This is an initial event page, so the data is not completed.")
+        var row = $("<tr>")
+        var row0 = $("<tr>");
+        var row1 = $("<tr>");
+        var row2 = $("<tr>");
+        var row3 = $("<tr>");
+
+        row.append($("<th>Station:</th>"))
+            .append($("<th>"+stationName+"</th>"))
+        row0.append($("<td>City:</td>"))
+            .append($("<td>"+city+"</td>"))
+            .append($("<td>State:</td>"))
+            .append($("<td>"+ state+"</td>"))
+            .append($("<td>Latitude:</td>"))
+            .append($("<td>"+parseFloat(la).toFixed(2)+"</td>"))
+            .append($("<td>Longitude:</td>"))
+            .append($("<td>"+parseFloat(lo).toFixed(2)+"</td>"))
+        row1.append($("<td>Begin Time:</td>"))
+            .append($("<td>"+new Date(timeFrom)+"</td>"))
+            .append($("<td>End Time:</td>"))
+            .append($("<td>Not Available</td>"));
+        row2.append($("<td>Begin X:</td>"))
+            .append($("<td>"+parseFloat(bx).toFixed(2)+"</td>"))
+            .append($("<td>Begin Y:</td>"))
+            .append($("<td>"+parseFloat(by).toFixed(2)+"</td>"))
+            .append($("<td>Begin Z:</td>"))
+            .append($("<td>"+parseFloat(bz).toFixed(2)+"</td>"))
+            .append($("<td>Begin Difference(X):</td>"))
+            .append($("<td>"+parseFloat(bd).toFixed(2)+"</td>"))
+        row3.append($("<td>End X:</td>"))
+            .append($("<td>Not Available</td>"))
+            .append($("<td>End Y:</td>"))
+            .append($("<td>Not Available</td>"))
+            .append($("<td>End Z:</td>"))
+            .append($("<td>Not Available</td>"))
+            .append($("<td>End Difference(X):</td>"))
+            .append($("<td>Not Available</td>"))
+
+        $("#headone").append(row);
+        $("#tableone").append(row0)
+            .append(row1)
+            .append(row2)
+            .append(row3);
+
+        var row_ = $("<tr>")
+        var row_0 = $("<tr>");
+        var row_1 = $("<tr>");
+        var row_2 = $("<tr>");
+        var row_3 = $("<tr>");
+
+        row_.append($("<th>Station:</th>"))
+            .append($("<th>"+stationName2+"</th>"))
+        row_0.append($("<td>City:</td>"))
+            .append($("<td>"+city2+"</td>"))
+            .append($("<td>State:</td>"))
+            .append($("<td>"+ state2+"</td>"))
+            .append($("<td>Latitude:</td>"))
+            .append($("<td>"+parseFloat(la2).toFixed(2)+"</td>"))
+            .append($("<td>Longitude:</td>"))
+            .append($("<td>"+parseFloat(lo2).toFixed(2)+"</td>"))
+        row_1.append($("<td>Begin Time:</td>"))
+            .append($("<td>"+new Date(timeFrom2)+"</td>"))
+            .append($("<td>End Time:</td>"))
+            .append($("<td>Not Available</td>"));
+        row_2.append($("<td>Begin X:</td>"))
+            .append($("<td>"+parseFloat(bx2).toFixed(2)+"</td>"))
+            .append($("<td>Begin Y:</td>"))
+            .append($("<td>"+parseFloat(by2).toFixed(2)+"</td>"))
+            .append($("<td>Begin Z:</td>"))
+            .append($("<td>"+parseFloat(bz2).toFixed(2)+"</td>"))
+            .append($("<td>Begin Difference(X):</td>"))
+            .append($("<td>"+parseFloat(bd2).toFixed(2)+"</td>"))
+        row_3.append($("<td>End X:</td>"))
+            .append($("<td>"+parseFloat(ex2).toFixed(2)+"</td>"))
+            .append($("<td>End Y:</td>"))
+            .append($("<td>Not Available</td>"))
+            .append($("<td>End Z:</td>"))
+            .append($("<td>Not Available</td>"))
+            .append($("<td>End Difference:</td>"))
+            .append($("<td>Not Available</td>"))
+
+        $("#headtwo").append(row_);
+        $("#tabletwo").append(row_0)
+            .append(row_1)
+            .append(row_2)
+            .append(row_3);
+    }
+        var timeFroms=Math.min(...times)
+        var timeTos=Math.max(...times)
+        var timeIntervalHalf = 6, //this is half, so the total duration is 12 hrs
+            timefrom = moment.utc(timeFroms,'').add(-timeIntervalHalf,'hour').format().slice(0, -1) + ".000Z", // -6h from time
+            timeto = moment.utc(timeTos,'').add(0.1,'hour').format().slice(0, -1) + ".000Z"; // +6h to time
+            // timeTo = moment.utc(timeTo)
+
+        console.log(times,timeFroms,timeTos,timefrom,timeto)
+        let x_arr = [],
+            y_arr = [],
+            z_arr = [];
+        let ini = true;
+        // let stationIdArr = ["station_the","station_two","station_for"];
+
+
+        // var tables = document.getElementById(table);
+        // var row1 = tables.insertRow(0);
+        // var Time1 = row.insertCell(0);
+        // var Time_1= row.insertCell(1);
+        // var row2 = tables.insertRow(1);
+        // var Time2 = row2.insertCell(0);
+        // var Time_2= row2.insertCell(1);
+        // var row3 = tables.insertRow(2);
+        // var x1 = row3.insertCell(0);
+        // var x_1= row3.insertCell(1);
+        // var row4 = table.insertRow(3);
+        // var y1 = row4.insertCell(0);
+        // var y_1= row4.insertCell(1);
+        // var row5 = table.insertRow(4);
+        // var z1 = row5.insertCell(0);
+        // var z_1= row5.insertCell(1);
+        // var row6 = table.insertRow(5);
+        // var d1 = row6.insertCell(0);
+        // var d_1= row6.insertCell(1);
+
+
+
+
+
+
+
+
+
+        // a title for the new page
+        // $('#text').html("Event Page for "+stationName+" and "+stationName2)
+        // $('#info').html("Station: "+stationName)
+        // $('#message').html("City: "+city+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"State:"+state+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Latitude: "+la+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Longitude:"+lo+'<br>'
+        //     // + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+        //     +"Begin time: "+new Date(Date.parse(timeFrom))+"<br>"+"End time: "+new Date(Date.parse(timeTo)));
+        // $('#data').html("Begin X: "+parseFloat(bx).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Y: "+parseFloat(by).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Z: "+parseFloat(bz).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Difference: "+parseFloat(bd).toFixed(2)+"<br>"+
+        // "End X: "+parseFloat(ex).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Y: "+parseFloat(ey).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Z: "+parseFloat(ez).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Difference: "+parseFloat(ed).toFixed(2))
+        // $('#info2').html("Station: "+stationName2+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+        // $('#message2').html("City: "+city2+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"State:"+state2+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Latitude: "+la2+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Longitude:"+lo2+'<br>'
+        //     +"Begin time: "+new Date(timeFrom2)+"<br>"+"End time: "+new Date(timeTo2))
+        // $('#data2').html("Begin X: "+parseFloat(bx2).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Y: "+parseFloat(by2).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Z: "+parseFloat(bz2).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Difference: "+parseFloat(bd2).toFixed(2)+"<br>"+
+        //     "End X: "+parseFloat(ex2).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Y: "+parseFloat(ey2).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Z: "+parseFloat(ez2).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Difference: "+parseFloat(ed2).toFixed(2))
+    // }
+    // else if(ex==0){
+    //     console.log("Here is what I get")
+    //     console.log(stationId, timeFrom, timeTo, city, state, lo, la);
+    //     var times=[Date.parse(timeFrom),Date.parse(timeTo),Date.parse(timeFrom2),Date.parse(timeTo2)]
+    //     var timeFroms=Math.min(...times)
+    //     var timeto=Date.now()
+    //     console.log(timeTos)
+    //     let timeIntervalHalf = 6, //this is half, so the total duration is 12 hrs
+    //         timefrom = moment.utc(timeFroms,'').add(-timeIntervalHalf,'hour').format().slice(0, -1) + ".000Z"; // -6h from time
+    //         // timeto = moment.utc(timeTos,'').add(0.1,'hour').format().slice(0, -1) + ".000Z"; // +6h to time
+    //     // timeTo = moment.utc(timeTo)
+    //     console.log(times,timeFroms,timefrom,timeto)
+    //     let x_arr = [],
+    //         y_arr = [],
+    //         z_arr = [];
+    //     let ini = true;
+    //     // let stationIdArr = ["station_the","station_two","station_for"];
+    //
+    //     // a title for the new page
+    //     $('#text').html("Event Page for "+stationName+" and "+stationName2)
+    //     $('#info').html("Station: "+stationName)
+    //     $('#message').html("City: "+city+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"State:"+state+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Latitude: "+la+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Longitude:"+lo+'<br>'
+    //         // + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+    //         +"Begin time: "+new Date(Date.parse(timeFrom))+"<br>"+"End time: "+new Date(Date.parse(timeTo)));
+    //     $('#data').html("Begin X: "+parseFloat(bx).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Y: "+parseFloat(by).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Z: "+parseFloat(bz).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Difference: "+parseFloat(bd).toFixed(2)+"<br>"+
+    //         "End X: "+parseFloat(ex).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Y: "+parseFloat(ey).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Z: "+parseFloat(ez).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Difference: "+parseFloat(ed).toFixed(2))
+    //     $('#info2').html("Station: "+stationName2+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+    //     $('#message2').html("City: "+city2+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"State:"+state2+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Latitude: "+la2+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Longitude:"+lo2+'<br>'
+    //         +"Begin time: "+new Date(timeFrom2)+"<br>"+"End time: "+new Date(timeTo2))
+    //     $('#data2').html("Begin X: "+parseFloat(bx2).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Y: "+parseFloat(by2).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Z: "+parseFloat(bz2).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Difference: "+parseFloat(bd2).toFixed(2)+"<br>"+
+    //         "End X: "+parseFloat(ex2).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Y: "+parseFloat(ey2).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Z: "+parseFloat(ez2).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Difference: "+parseFloat(ed2).toFixed(2))
+    //
+    // }
+
+
+
     // rotate the globe
     let wwd = new WorldWind.WorldWindow("canvasOne");
 
@@ -111,6 +446,8 @@
         async: false,
         data: {stationID: stationId},
         success: function(res) {
+            console.log("stations")
+            console.log(res)
             // stationsData=[];
             res.forEach(function(el,i) {
 
@@ -123,6 +460,7 @@
     });
 
     function building(station){
+        console.log("building")
         //add live chart title
         let cTitle = document.createElement("h2");
         cTitle.className = station.StationId;
@@ -166,7 +504,7 @@
             // async: false,
             data: {timeFrom: timefrom, timeTo: timeto, stationIs: station.StationId},
             success: function(res) {
-                // console.log("hh4");
+                console.log("query");
                 if (!!res) {
                     // console.log("hhh")
                     let x_arr = [];
@@ -263,6 +601,7 @@
 
     //draw the arrows and create surface Image
     function drawArrows(station){
+        console.log("drawArrows")
         //create canvas according to stationId
         let needleCanvas = document.createElement("canvas");
         needleCanvas.id= station.StationId  + "_needle";
