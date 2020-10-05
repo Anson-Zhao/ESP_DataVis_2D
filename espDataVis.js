@@ -238,14 +238,14 @@ function valid(Pair,email){
                 }
             }
         }
-    if(v ===Pair.length-1){
-        console.log("vaid pairs")
-        console.log(validing)
-        console.log("station 2 xy pairs: "+validing[0][1].length)
-        console.log("station 3 xy pairs: "+validing[1][1].length)
-        console.log("station 4 xy pairs: "+validing[2][1].length)
-        match(validing,email)
-    }
+        if(v ===Pair.length-1){
+            console.log("vaid pairs")
+            console.log(validing)
+            console.log("station 2 xy pairs: "+validing[0][1].length)
+            console.log("station 3 xy pairs: "+validing[1][1].length)
+            console.log("station 4 xy pairs: "+validing[2][1].length)
+            match(validing,email)
+        }
     }
 }
 
@@ -276,6 +276,11 @@ function match(Pair,email){
                         // console.log(Pair[z][y][0].time)
                         // console.log(Pair[v][0].stationInfo.StationId)
                         // console.log(Pair[v][t][0].time,Pair[v][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName)
+                        alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][m][t][0].time,Pair[v][m][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email,
+                            Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][m][y][0].time,Pair[z][m][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,
+                            Pair[v][m][t][0].X,Pair[v][m][t][0].Y,Pair[v][m][t][0].Z,Pair[v][m][t][0].Diff,Pair[v][m][t][1].X,Pair[v][m][t][1].Y,Pair[v][m][t][1].Z,Pair[v][m][t][1].Diff,
+                            Pair[z][m][y][0].X,Pair[z][m][y][0].Y,Pair[z][m][y][0].Z,Pair[z][m][y][0].Diff,Pair[z][m][y][1].X,Pair[z][m][y][1].Y,Pair[z][m][y][1].Z,Pair[z][m][y][1].Diff,
+                            Pair[v][m][t][2].Diff,Pair[v][m][t][3].Diff,Pair[z][m][y][2].Diff,Pair[z][m][y][3].Diff);
                         // alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][m][t][0].time,Pair[v][m][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email,
                         //     Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][m][y][0].time,Pair[z][m][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,
                         //     Pair[v][m][t][0].X,Pair[v][m][t][0].Y,Pair[v][m][t][0].Z,Pair[v][m][t][0].Diff,Pair[v][m][t][1].X,Pair[v][m][t][1].Y,Pair[v][m][t][1].Z,Pair[v][m][t][1].Diff,
