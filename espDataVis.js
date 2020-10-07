@@ -1,4 +1,4 @@
-      mconst Influx = require('influx');
+const Influx = require('influx');
 const express = require('express');
 const app = express();
 const nodemailer = require('nodemailer');
@@ -276,11 +276,10 @@ function match(Pair,email){
                         // console.log(Pair[z][y][0].time)
                         // console.log(Pair[v][0].stationInfo.StationId)
                         // console.log(Pair[v][t][0].time,Pair[v][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName)
-                        alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][m][t][0].time,Pair[v][m][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email,
-                            Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][m][y][0].time,Pair[z][m][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,
-                            Pair[v][m][t][0].X,Pair[v][m][t][0].Y,Pair[v][m][t][0].Z,Pair[v][m][t][0].Diff,Pair[v][m][t][1].X,Pair[v][m][t][1].Y,Pair[v][m][t][1].Z,Pair[v][m][t][1].Diff,
-                            Pair[z][m][y][0].X,Pair[z][m][y][0].Y,Pair[z][m][y][0].Z,Pair[z][m][y][0].Diff,Pair[z][m][y][1].X,Pair[z][m][y][1].Y,Pair[z][m][y][1].Z,Pair[z][m][y][1].Diff,
-                            Pair[v][m][t][2].Diff,Pair[v][m][t][3].Diff,Pair[z][m][y][2].Diff,Pair[z][m][y][3].Diff);
+                        alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][m][t][0][0],Pair[v][m][t][0][1],Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email,
+                            Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][m][y][0][0],Pair[z][m][y][0][1],Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,
+                            Pair[v][m][t][1][0].Diff,Pair[v][m][t][2][0].Diff,
+                            Pair[z][m][y][1][0].Diff,Pair[z][m][y][2][0].Diff);
                         // alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][m][t][0].time,Pair[v][m][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email,
                         //     Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][m][y][0].time,Pair[z][m][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,
                         //     Pair[v][m][t][0].X,Pair[v][m][t][0].Y,Pair[v][m][t][0].Z,Pair[v][m][t][0].Diff,Pair[v][m][t][1].X,Pair[v][m][t][1].Y,Pair[v][m][t][1].Z,Pair[v][m][t][1].Diff,
@@ -296,6 +295,10 @@ function match(Pair,email){
                     else if(Date.parse(Pair[z][m][y][0][1])>Date.parse(Pair[v][m][t][0][0])
                         &&Date.parse(Pair[z][m][y][0][1])<Date.parse(Pair[v][m][t][0][1])){
                         console.log("Hi there")
+                        alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][m][t][0][0],Pair[v][m][t][0][1],Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email,
+                            Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][m][y][0][0],Pair[z][m][y][0][1],Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,
+                            Pair[v][m][t][1][0].Diff,Pair[v][m][t][2][0].Diff,
+                            Pair[z][m][y][1][0].Diff,Pair[z][m][y][2][0].Diff);
                         // alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][m][t][0].time,Pair[v][m][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email,
                         //     Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][m][y][0].time,Pair[z][m][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,
                         //     Pair[v][m][t][0].X,Pair[v][m][t][0].Y,Pair[v][m][t][0].Z,Pair[v][m][t][0].Diff,Pair[v][m][t][1].X,Pair[v][m][t][1].Y,Pair[v][m][t][1].Z,Pair[v][m][t][1].Diff,
@@ -387,9 +390,7 @@ con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.
 // StationName,City,State,StationId,Longitude,Latitude
 function alarm(city,state,lo,la,timeFrom,timeTo,stationId,stationName,email,
                city2,state2,lo2,la2,timeFrom2,timeTo2,stationId2,stationName2,
-               bx,by,bz,bd,ex,ey,ez,ed,
-               bx2,by2,bz2,bd2,ex2,ey2,ez2,ed2,
-               bdy,edy,bdy2,edy2) {
+               bd1x,bd1y,bd2x,bd2y) {
     // console.log(timeFrom,timeTo,stationId,stationName)
 
     const mailOptions = {
@@ -402,9 +403,7 @@ function alarm(city,state,lo,la,timeFrom,timeTo,stationId,stationName,email,
         //     'From ' + timeFrom + " to " + timeTo + ", there is an anopoly happened on station " + stationName + '</a></p>'
         html: '<p><a href="http://localhost:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&city='+city+'&state='+state+'&lo='+lo+'&la='+la+'&stationName='+stationName+'&stationId='+stationId
             +'&timeFrom2='+timeFrom2+'&timeTo2='+timeTo2+'&city2='+city2+'&state2='+state2+'&lo2='+lo2+'&la2='+la2+'&stationName2='+stationName2+'&stationId2='+stationId2
-            +'&bx='+bx+'&by='+by+'&bz='+bz+'&bd='+bd+'&ex='+ex+'&ey='+ey+'&ez='+ez+'&ed='+ed
-            +'&bx2='+bx2+'&by2='+by2+'&bz2='+bz2+'&bd2='+bd2+'&ex2='+ex2+'&ey2='+ey2+'&ez2='+ez2+'&ed2='+ed2
-            +'&bdy='+bdy+'&edy='+edy+'&bdy2='+bdy2+'&edy2='+edy2+'">' +
+            +'&bdx='+bd1x+'&bdy='+bd1x+'&bdx2='+bd2x+'&bdy2='+bd2y+'">' +
             'From ' + timeFrom + " to " + timeTo + ", there is an anomaly happened on station " + stationName
             + ". At the same time, there is an anomaly happened on station "+ stationName2+", and the time range is "+timeFrom2+" to "+timeTo2+". Notification: The time periods here are using x's time as a reference."+'</a></p>'
 
@@ -550,9 +549,7 @@ app.get('/newEjs',function (req,res) {
     // console.log(req.query.timeFrom,req.query.timeTo,req.query.stationName,req.query.stationId)
     res.render('new.ejs', {timeFrom: req.query.timeFrom, timeTo: req.query.timeTo, stationName: req.query.stationName, stationId: req.query.stationId, city: req.query.city, state: req.query.state, la: req.query.la, lo: req.query.lo,
         timeFrom2: req.query.timeFrom2, timeTo2: req.query.timeTo2, stationName2: req.query.stationName2, stationId2: req.query.stationId2, city2: req.query.city2, state2: req.query.state2, la2: req.query.la2, lo2: req.query.lo2,
-        bx: req.query.bx, by: req.query.by, bz: req.query.bz, bd: req.query.bd, ex: req.query.ex,ey: req.query.ey, ez: req.query.ez, ed: req.query.ed,
-        bx2: req.query.bx2, by2: req.query.by2, bz2: req.query.bz2, bd2: req.query.bd2, ex2: req.query.ex2,ey2: req.query.ey2, ez2: req.query.ez2, ed2: req.query.ed2,
-        bdy: req.query.bdy,edy: req.query.edy,bdy2: req.query.bdy2,edy2: req.query.edy2
+        bdx: req.query.bdx,bdy: req.query.bdy,bdx2: req.query.bdx2,bdy2: req.query.bdy2
     })
 });
 
