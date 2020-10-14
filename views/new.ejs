@@ -594,28 +594,39 @@
                 var rad=Math.atan(ri)
                 var rad2=Math.atan(ri2)
 
+
+                console.log(ri)
+                console.log(ri2)
                 console.log(rad)
                 console.log(rad2)
 
                 if(station.StationId===stationId){
+
                     console.log('running')
-                    sector = new WorldWind.Sector(parseFloat(station.Latitude) -4, parseFloat(station.Latitude), parseFloat(station.Longitude), parseFloat(station.Longitude) +4)
+                    console.log(station.Latitude+station.Longitude)
+                    sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+ri, parseFloat(station.Longitude), parseFloat(station.Longitude)+1)
+                    console.log(parseFloat(station.Latitude)+ri)
+                    console.log(parseFloat(station.Longitude)+1)
                     ctx2d.arrow(0, 0, X, Math.abs(Y), [0, 1, -10, 1, -10, 5]);
                     ctx2d.fillStyle = "#ffffe0";
-                    ctx2d.fill();
-                }else if(station.StationId===stationId2){
+                    ctx2d.fill();}
+                if(station.StationId===stationId2){
                     console.log('running2')
-                    sector = new WorldWind.Sector(parseFloat(station.Latitude) -4, parseFloat(station.Latitude), parseFloat(station.Longitude), parseFloat(station.Longitude) )
+                    console.log(station.Latitude+station.Longitude)
+                    sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+ri2, parseFloat(station.Longitude), parseFloat(station.Longitude)+1 )
+                    console.log(parseFloat(station.Latitude)+ri2)
+                    console.log(parseFloat(station.Longitude)+1)
                     ctx2d.arrow(0, needleCanvas.height, X, needleCanvas.height-Y, [0, 1, -10, 1, -10, 5]);
                     ctx2d.fillStyle = "#ffffe0";
-                    ctx2d.fill();
-                }else{
+                    ctx2d.fill()}
+                if(station.StationId!=stationId&station.StationId!=stationId2){
                     console.log("running3")
                     sector = new WorldWind.Sector(parseFloat(station.Latitude) , parseFloat(station.Latitude), parseFloat(station.Longitude), parseFloat(station.Longitude) )
                     ctx2d.arrow(0, needleCanvas.height, X, needleCanvas.height-Y, [0, 1, -10, 1, -10, 5]);
                     ctx2d.fillStyle = "#ffffe0";
                     ctx2d.fill();
                 }
+            
 
 
 
