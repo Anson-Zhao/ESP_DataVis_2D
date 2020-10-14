@@ -96,12 +96,38 @@
             bdy = '<%= bdy %>',
             bdx2 = '<%= bdx2 %>',
             bdy2 = '<%= bdy2 %>'; //the id of the station which turned the trigger on
-
-    // console.log(ex)
-    // console.log(ex!==0)
+      <!--}else{-->
+      <!--  var m=1-->
+      <!--    var timeFrom = '<%= timeFrom %>',-->
+      <!--        timeTo = '<%= timeTo %>', -->
+      <!--        stationName = '<%= stationName %>',-->
+      <!--        city = '<%= city %>', -->
+      <!--        state = '<%= state %>',-->
+      <!--        lo = '<%= lo %>',-->
+      <!--        la = '<%= la %>',-->
+      <!--        stationId = '<%= stationId %>',-->
+      <!--        timeFrom2 = '<%= timeFrom2 %>',-->
+      <!--        timeTo2 = '<%= timeTo2 %>',-->
+      <!--        stationName2 = '<%= stationName2 %>',-->
+      <!--        city2 = '<%= city2 %>', -->
+      <!--        state2 = '<%= state2 %>', -->
+      <!--        lo2 = '<%= lo2 %>', -->
+      <!--        la2 = '<%= la2 %>', -->
+      <!--        stationId2 = '<%= stationId2 %>', -->
+      <!--        bx = '<%= bx %>', -->
+      <!--        by = '<%= by %>', -->
+      <!--        bz = '<%= bz %>', -->
+      <!--        bd = '<%= bd %>', -->
+      <!--        bx2 = '<%= bx2 %>', -->
+      <!--        by2 = '<%= by2 %>', -->
+      <!--        bz2 = '<%= bz2 %>', -->
+      <!--        bd2 = '<%= bd2 %>' ;-->
+      <!--  }-->
+    console.log(ex)
+    console.log(ex!==0)
     var timefrom,timeto
     // if(ex!==0){
-    //     console.log(ex)
+        console.log(ex)
         console.log("Here is what I get")
         console.log(stationId, timeFrom, timeTo, city, state, lo, la);
     if(timeTo.length>6){
@@ -588,76 +614,33 @@
                 //first 2 numbers are coordinates of start point,
                 // and the 2 after is the coordinates of  the end point
                 // the array at the end controls the shape of the arrow.
-                console.log(station.StationId);
-                var ri=bdx/bdy
-                var ri2=bdx2/bdy2
-                var rad=Math.atan(ri)
-                var rad2=Math.atan(ri2)
-
-
-                console.log(ri)
-                console.log(ri2)
-                console.log(rad)
-                console.log(rad2)
-
-                if(station.StationId===stationId){
-
-                    console.log('running')
-                    console.log(station.Latitude+station.Longitude)
-                    sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+ri, parseFloat(station.Longitude), parseFloat(station.Longitude)+1)
-                    console.log(parseFloat(station.Latitude)+ri)
-                    console.log(parseFloat(station.Longitude)+1)
-                    ctx2d.arrow(0, 0, X, Math.abs(Y), [0, 1, -10, 1, -10, 5]);
-                    ctx2d.fillStyle = "#ffffe0";
-                    ctx2d.fill();}
-                if(station.StationId===stationId2){
-                    console.log('running2')
-                    console.log(station.Latitude+station.Longitude)
-                    sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+ri2, parseFloat(station.Longitude), parseFloat(station.Longitude)+1 )
-                    console.log(parseFloat(station.Latitude)+ri2)
-                    console.log(parseFloat(station.Longitude)+1)
-                    ctx2d.arrow(0, needleCanvas.height, X, needleCanvas.height-Y, [0, 1, -10, 1, -10, 5]);
-                    ctx2d.fillStyle = "#ffffe0";
-                    ctx2d.fill()}
-                if(station.StationId!=stationId&station.StationId!=stationId2){
-                    console.log("running3")
-                    sector = new WorldWind.Sector(parseFloat(station.Latitude) , parseFloat(station.Latitude), parseFloat(station.Longitude), parseFloat(station.Longitude) )
-                    ctx2d.arrow(0, needleCanvas.height, X, needleCanvas.height-Y, [0, 1, -10, 1, -10, 5]);
-                    ctx2d.fillStyle = "#ffffe0";
-                    ctx2d.fill();
+                if(X>0){ //sorry for my stupid logic :) heihei
+                    if(Y<0){ //+x, -y
+                        sector = new WorldWind.Sector(parseFloat(station.Latitude) -4, parseFloat(station.Latitude), parseFloat(station.Longitude), parseFloat(station.Longitude) + 4)
+                        // console.log(sector);
+                        // sector = new WorldWind.Sector(30, 40, -90, -80)
+                        ctx2d.arrow(0, 0, X, Math.abs(Y), [0, 1, -10, 1, -10, 5]);
+                        ctx2d.fillStyle = "#ffffe0";
+                        ctx2d.fill();
+                    }else { //+x,+y
+                        sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+4, parseFloat(station.Longitude), parseFloat(station.Longitude)+4)
+                        ctx2d.arrow(0, needleCanvas.height, X, needleCanvas.height-Y, [0, 1, -10, 1, -10, 5]);
+                        ctx2d.fillStyle = "#ffffe0";
+                        ctx2d.fill();
+                        }
+                }else{
+                    if(Y<0){ //-x,-y
+                        sector = new WorldWind.Sector(parseFloat(station.Latitude)-4, parseFloat(station.Latitude), parseFloat(station.Longitude)-4, parseFloat(station.Longitude))
+                        ctx2d.arrow(needleCanvas.width, 0, needleCanvas.width +X, Y, [0, 1, -10, 1, -10, 5]);
+                        ctx2d.fillStyle = "#ffffe0";
+                        ctx2d.fill();
+                    }else { // -x, +y
+                        sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+4, parseFloat(station.Longitude)-4, parseFloat(station.Longitude))
+                        ctx2d.arrow(needleCanvas.width, needleCanvas.height, needleCanvas.width +X, needleCanvas.height- Y, [0, 1, -10, 1, -10, 5]);
+                        ctx2d.fillStyle = "#ffffe0";
+                        ctx2d.fill();
+                    }
                 }
-            
-
-
-
-
-                // if(X>0){ //sorry for my stupid logic :) heihei
-                //     if(Y<0){ //+x, -y
-                //         sector = new WorldWind.Sector(parseFloat(station.Latitude) -4, parseFloat(station.Latitude), parseFloat(station.Longitude), parseFloat(station.Longitude) + 4)
-                //         // console.log(sector);
-                //         // sector = new WorldWind.Sector(30, 40, -90, -80)
-                //         ctx2d.arrow(0, 0, X, Math.abs(Y), [0, 1, -10, 1, -10, 5]);
-                //         ctx2d.fillStyle = "#ffffe0";
-                //         ctx2d.fill();
-                //     }else { //+x,+y
-                //         sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+4, parseFloat(station.Longitude), parseFloat(station.Longitude)+4)
-                //         ctx2d.arrow(0, needleCanvas.height, X, needleCanvas.height-Y, [0, 1, -10, 1, -10, 5]);
-                //         ctx2d.fillStyle = "#ffffe0";
-                //         ctx2d.fill();
-                //         }
-                // }else{
-                //     if(Y<0){ //-x,-y
-                //         sector = new WorldWind.Sector(parseFloat(station.Latitude)-4, parseFloat(station.Latitude), parseFloat(station.Longitude)-4, parseFloat(station.Longitude))
-                //         ctx2d.arrow(needleCanvas.width, 0, needleCanvas.width +X, Y, [0, 1, -10, 1, -10, 5]);
-                //         ctx2d.fillStyle = "#ffffe0";
-                //         ctx2d.fill();
-                //     }else { // -x, +y
-                //         sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+4, parseFloat(station.Longitude)-4, parseFloat(station.Longitude))
-                //         ctx2d.arrow(needleCanvas.width, needleCanvas.height, needleCanvas.width +X, needleCanvas.height- Y, [0, 1, -10, 1, -10, 5]);
-                //         ctx2d.fillStyle = "#ffffe0";
-                //         ctx2d.fill();
-                //     }
-                // }
 
                 //create surface image---
 
