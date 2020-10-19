@@ -14,9 +14,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="R User Library" level="project" />
     <orderEntry type="library" name="R Skeletons" level="application" />
-    <orderEntry type="library" name="canvas-arrow" level="application" />
     <orderEntry type="library" name="moment-with-locales" level="application" />
-    <orderEntry type="library" name="canvas-arrow" level="application" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="renderExternalDocumentation" value="true" />
