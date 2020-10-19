@@ -2,6 +2,8 @@ const Influx = require('influx');
 const express = require('express');
 const app = express();
 const nodemailer = require('nodemailer');
+app.engine('ejs',require("ejs").renderFile);
+app.set('view engine', 'ejs');
 
 const transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -166,7 +168,7 @@ function pair(Flag,Pair,email) {
                 var array2=[];
                 array2.push(Flag[i][2][a], Flag[i][2][a + 1])
                 Pair[i][2].push(array2);
-                Flag[i][2].splice(1,2)
+                Flag[i][2].splxice(1,2)
                 // console.log("pair y push")
                 a--;
                 //so the format will look like [ [{stationname}, [[{},{}],...],[[{},{}],...]],...]

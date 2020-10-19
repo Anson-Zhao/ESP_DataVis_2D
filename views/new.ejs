@@ -594,9 +594,9 @@
                     console.log('running')
                     console.log(station.Latitude+station.Longitude)
                     sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+ri, parseFloat(station.Longitude), parseFloat(station.Longitude)+1)
-                    console.log(parseFloat(station.Latitude)+ri)
+                    console.log(10000*ri)
                     console.log(parseFloat(station.Longitude)+1)
-                    ctx2d.arrow(0, 0, Math.abs(1000*ri), 1000, [0, 3, -10, 1, -10, 5]);
+                    ctx2d.arrow(0, 0, Math.abs(10000*ri), 10000, [0, 1, -200, 1, -200, 100]);
                     ctx2d.fillStyle = "#ee0000";
                     ctx2d.fill();}
                 if(station.StationId===stationId2){
@@ -604,14 +604,14 @@
                     console.log(station.Latitude+station.Longitude)
                     sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+ri2, parseFloat(station.Longitude), parseFloat(station.Longitude)+1 )
                     console.log(parseFloat(station.Latitude)+ri2)
-                    console.log(parseFloat(station.Longitude)+1)
-                    ctx2d.arrow(0, 0, Math.abs(1000*ri2), 1000, [0, 3, -10, 1, -10, 5]);
+                    console.log(Math.abs(10000*ri2))
+                    ctx2d.arrow(0, 0, Math.abs(10000*ri2), 10000, [0, 1, -1000, 1, -1000, 1000]);
                     ctx2d.fillStyle = "#ee0000";
                     ctx2d.fill()}
                 if(station.StationId!=stationId&station.StationId!=stationId2){
                     console.log("running3")
                     sector = new WorldWind.Sector(parseFloat(station.Latitude) , parseFloat(station.Latitude), parseFloat(station.Longitude), parseFloat(station.Longitude) )
-                    ctx2d.arrow(0, 0, 0, 0, [0, 1, -10, 1, -10, 5]);
+                    ctx2d.arrow(0, 0, 0, 0, [0, 1, -1000, 1, -1000, 1000]);
                     ctx2d.fillStyle = "#ee0000";
                     ctx2d.fill();
                 }
