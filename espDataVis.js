@@ -464,7 +464,7 @@ async function EventCheck(stations,Flag,Pair,email){
 
         // console.log(Date());
         var querystatement='SELECT * FROM ' + stations[i].StationId + 'avg WHERE time >= now()-' +minute+ ' AND time<= now()';
-        var test='SELECT * FROM ' + stations[i].StationId + 'avg WHERE time >='+ ' \'2020-09-25T00:00:10Z\''+ ' AND '+'time<= \'2020-09-29T00:00:50Z\'';
+        var test='SELECT * FROM ' + stations[i].StationId + 'avg WHERE time >='+ ' \'2020-10-20T00:00:10Z\''+ ' AND '+'time<= \'2020-10-23T00:00:50Z\'';
         // console.log(test);
         // console.log(querystatement);
         await influx.query(test).then
