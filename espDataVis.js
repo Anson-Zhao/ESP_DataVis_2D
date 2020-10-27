@@ -168,7 +168,7 @@ function pair(Flag,Pair,email) {
                 var array2=[];
                 array2.push(Flag[i][2][a], Flag[i][2][a + 1])
                 Pair[i][2].push(array2);
-                Flag[i][2].splxice(1,2)
+                Flag[i][2].splice(1,2)
                 // console.log("pair y push")
                 a--;
                 //so the format will look like [ [{stationname}, [[{},{}],...],[[{},{}],...]],...]
@@ -405,7 +405,7 @@ function alarm(city,state,lo,la,timeFrom,timeTo,stationId,stationName,email,
         //     'From ' + timeFrom + " to " + timeTo + ", there is an anopoly happened on station " + stationName + '</a></p>'
         html: '<p><a href="http://localhost:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&city='+city+'&state='+state+'&lo='+lo+'&la='+la+'&stationName='+stationName+'&stationId='+stationId
             +'&timeFrom2='+timeFrom2+'&timeTo2='+timeTo2+'&city2='+city2+'&state2='+state2+'&lo2='+lo2+'&la2='+la2+'&stationName2='+stationName2+'&stationId2='+stationId2
-            +'&bdx='+bd1x+'&bdy='+bd1x+'&bdx2='+bd2x+'&bdy2='+bd2y+'">' +
+            +'&bdx='+bd1x+'&bdy='+bd1y+'&bdx2='+bd2x+'&bdy2='+bd2y+'">' +
             'From ' + timeFrom + " to " + timeTo + ", there is an anomaly happened on station " + stationName
             + ". At the same time, there is an anomaly happened on station "+ stationName2+", and the time range is "+timeFrom2+" to "+timeTo2+". Notification: The time periods here are using x's time as a reference."+'</a></p>'
 

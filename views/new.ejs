@@ -555,8 +555,8 @@
         //create canvas according to stationId
         let needleCanvas = document.createElement("canvas");
         needleCanvas.id= station.StationId  + "_needle";
-        needleCanvas.width = 600;
-        needleCanvas.height = 600;
+        needleCanvas.width = 1000;
+        needleCanvas.height = 1000;
         // $('#newDiv').append(needleCanvas);
         let ctx2d = needleCanvas.getContext("2d");
 
@@ -582,37 +582,42 @@
                 if(station.StationId===stationId) {
                     var X = 10*bdx;
                     var Y = 10*bdy;
-                    console.log(X)
-                    console.log(Y)
+                    console.log(X,bdx)
+                    console.log(Y,bdy)
+                    console.log(station.Latitude,station.Longitude)
                     if (X > 0) { //sorry for my stupid logic :) heihei
                         if (Y < 0) { //+x, -y
-                            sector = new WorldWind.Sector(parseFloat(station.Latitude) - 4, parseFloat(station.Latitude), parseFloat(station.Longitude), parseFloat(station.Longitude) + 4)
+                            sector = new WorldWind.Sector(parseFloat(station.Latitude) -4, parseFloat(station.Latitude), parseFloat(station.Longitude), parseFloat(station.Longitude) + 4)
                             // console.log(sector);
                             // sector = new WorldWind.Sector(30, 40, -90, -80)
                             ctx2d.arrow(0, 0, X, Math.abs(Y), [0, 1, -10, 1, -10, 5]);
                             ctx2d.fillStyle = "#ffffe0";
                             ctx2d.fill();
                             console.log("01+-")
+                            console.log(sector)
                         } else { //+x,+y
                             sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude) + 4, parseFloat(station.Longitude), parseFloat(station.Longitude) + 4)
                             ctx2d.arrow(0, needleCanvas.height, X, needleCanvas.height - Y, [0, 1, -10, 1, -10, 5]);
                             ctx2d.fillStyle = "#ffffe0";
                             ctx2d.fill();
                             console.log("01++")
+                            console.log(sector)
                         }
                     } else {
                         if (Y < 0) { //-x,-y
-                            sector = new WorldWind.Sector(parseFloat(station.Latitude) - 4, parseFloat(station.Latitude), parseFloat(station.Longitude) - 4, parseFloat(station.Longitude))
-                            ctx2d.arrow(needleCanvas.width, 0, needleCanvas.width - X, Math.abs(Y), [0, 1, -10, 1, -10, 5]);
+                            sector = new WorldWind.Sector(parseFloat(station.Latitude) -4, parseFloat(station.Latitude), parseFloat(station.Longitude) -4, parseFloat(station.Longitude))
+                            ctx2d.arrow(needleCanvas.width, 0, needleCanvas.width + X, Math.abs(Y), [0, 1, -10, 1, -10, 5]);
                             ctx2d.fillStyle = "#ffffe0";
                             ctx2d.fill();
                             console.log("01--")
+                            console.log(sector)
                         } else { // -x, +y
                             sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude) + 4, parseFloat(station.Longitude) - 4, parseFloat(station.Longitude))
-                            ctx2d.arrow(needleCanvas.width, needleCanvas.height-Math.abs(Y), needleCanvas.width - X, [0, 1, -10, 1, -10, 5]);
+                            ctx2dctx2d.arrow(needleCanvas.width, needleCanvas.height, needleCanvas.width +X, needleCanvas.height- Y, [0, 1, -10, 1, -10, 5]);
                             ctx2d.fillStyle = "#ffffe0";
                             ctx2d.fill();
                             console.log("01-+")
+                            console.log(sector)
                         }
                     }
                 }
@@ -630,6 +635,7 @@
                     var Y=10*bdy2;
                     console.log(X)
                     console.log(Y)
+                    console.log(station.Latitude,station.Longitude)
                     if(X>0){ //sorry for my stupid logic :) heihei
                         if(Y<0){ //+x, -y
                             sector = new WorldWind.Sector(parseFloat(station.Latitude) -4, parseFloat(station.Latitude), parseFloat(station.Longitude), parseFloat(station.Longitude) + 4)
@@ -639,26 +645,30 @@
                             ctx2d.fillStyle = "#ffffe0";
                             ctx2d.fill();
                             console.log("02+-")
+                            console.log(sector)
                         }else { //+x,+y
                             sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+4, parseFloat(station.Longitude), parseFloat(station.Longitude)+4)
                             ctx2d.arrow(0, needleCanvas.height, X, needleCanvas.height-Y, [0, 1, -10, 1, -10, 5]);
                             ctx2d.fillStyle = "#ffffe0";
                             ctx2d.fill();
                             console.log("02++")
+                            console.log(sector)
                         }
                     }else{
                         if(Y<0){ //-x,-y
                             sector = new WorldWind.Sector(parseFloat(station.Latitude)-4, parseFloat(station.Latitude), parseFloat(station.Longitude)-4, parseFloat(station.Longitude))
-                            ctx2d.arrow(needleCanvas.width, 0, needleCanvas.width +X, Y, [0, 1, -10, 1, -10, 5]);
+                            ctx2d.arrow(needleCanvas.width, 0, needleCanvas.width -X, Y, [0, 1, -10, 1, -10, 5]);
                             ctx2d.fillStyle = "#ffffe0";
                             ctx2d.fill();
                             console.log("02--")
+                            console.log(sector)
                         }else { // -x, +y
                             sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+4, parseFloat(station.Longitude)-4, parseFloat(station.Longitude))
                             ctx2d.arrow(needleCanvas.width, needleCanvas.height, needleCanvas.width +X, needleCanvas.height- Y, [0, 1, -10, 1, -10, 5]);
                             ctx2d.fillStyle = "#ffffe0";
                             ctx2d.fill();
                             console.log("02-+")
+                            console.log(sector)
                         }
                     }
                     // console.log('running2')
