@@ -656,8 +656,8 @@
                         }
                     }else{
                         if(Y<0){ //-x,-y
-                            sector = new WorldWind.Sector(parseFloat(station.Latitude)-4, parseFloat(station.Latitude), parseFloat(station.Longitude)-4, parseFloat(station.Longitude))
-                            ctx2d.arrow(needleCanvas.width, 0, needleCanvas.width -X, Y, [0, 1, -10, 1, -10, 5]);
+                            sector = new WorldWind.Sector(parseFloat(station.Latitude) -4, parseFloat(station.Latitude), parseFloat(station.Longitude) -4, parseFloat(station.Longitude))
+                            ctx2d.arrow(needleCanvas.width, 0, needleCanvas.width + X, Math.abs(Y), [0, 1, -10, 1, -10, 5]);
                             ctx2d.fillStyle = "#ffffe0";
                             ctx2d.fill();
                             console.log("02--")
