@@ -92,16 +92,15 @@
     </style>
 </head>
 <body>
-<script type="text/javascript" src="jsLibrary/dygraph/dygraph.js"></script>
 <script src='jsLibrary/jquery-3-4-1.min.js'></script>
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+<script type="text/javascript" src="jsLibrary/dygraph2.1.0/dygraph2.1.0.min.js"></script>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.17/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-<link rel="stylesheet" href="jsLibrary/dygraph/dygraph.css" />
+<link rel="stylesheet" href="jsLibrary/dygraph2.1.0/dygraph2.1.0.css" />
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
 <!--<link rel="stylesheet" href="//unpkg.com/flatpickr/dist/flatpickr.min.css">-->
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -131,15 +130,31 @@
                 <option></option>
             </select>
             </div>
+            <div>
+                <h4 class="floatingBox">Please Enter your email here:</h4>
+<!--                <form >-->
+                     <input type="text" id="frm1"><br><br>
+                <p>(If you want to put more than one email, please separate with comma.)</p>
+                    <!--                    <input type="button" onclick="myFunction()" value="Submit">-->
+<!--                </form>-->
+            </div>
+
             <br><br>
             <input type="button" onclick="enabled = false; query();" class="button button2" value="Show Data Charts">
             <img id="requesting" src="images/888.gif" alt="download in progress" width=130 height=130 style="display:none">
+            <input type="button" onclick="enabled = false; demo();" class="button button2" value="Check the Event">
+<!--            <input type="button" onclick="window.location.replace('https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newEjs?timeFrom=2020-04-09T19:00:59Z&timeTo=2020-04-09T19:54:59Z&stationName=ESP04&stationId=station_for')" class="button button2" value="Demo">-->
+            <input type="button" onclick="window.location.replace('http://localhost:3005/newEjs?timeFrom=2020-04-10T17:40:59Z&timeTo=2020-04-10T18:39:59Z&city=San%20Jose%20(North)&state=California&lo=-121.922422&la=37.402684&stationName=ESP03&stationId=station_the&timeFrom2=2020-04-10T18:02:01Z&timeTo2=2020-04-10T18:31:59Z&city2=San%20Jose%20(South)&state2=California&lo2=-121.823628&la2=37.175229&stationName2=ESP04&stationId2=station_for&bx=23059.350376666665&by=-6915.69726&bz=-31357.25732&bd=48.249223333335976&ex=23097.267363333332&ey=-6841.740126666667&ez=-31317.680093333332&ed=-14.067363333331741&bx2=23030.0674&by2=-8798&bz2=-42291.8659&bd2=10.910800000001473&ex2=23022.376336666668&ey2=-8804.468653333333&ez2=-42283.307283333335&ed2=-198.37633666666807')" class="button button2" value="Demo">
+            <a href="ESP%20Event%2011Apr20.pdf" download="Demo_Report">
+                <input type="button" class="button button2" value="Download Demo report">
+            </a>
+
             <br><br>
 
         </form>
         <div>
             <br><br>
-            <p>Please click "Show Data Charts" button above before download Avg Data.</p>
+            <p>Please click "Show Data Charts" button above before download Avg Data. The time stamp of any downloaded data is UTC</p>
             <br>
             <button id="AvgData" disabled >Download Avg CSV</button>
             <br><br><br>
@@ -148,7 +163,8 @@
                 <img id="downloading" src="images/888.gif" alt="download in progress" width=130 height=130 style = "display:none">
 <!--               -->
             </div>
-            <!--            <button id="RawData"">Download Raw CSV</button>-->
+<!--                        <button id="RawData"">Download Raw CSV</button>-->
+<!--            <button id="jumpToW">2020-04-07T16:00:00.000Z</button>-->
 
             <br><br><br>
             <div id="graphx"></div>
@@ -163,6 +179,9 @@
 <script>
     //stations we have
     var stations = [];
+    var button =document.getElementById("jumpToW");
+    // var date = button.textContent;
+    // console.log(date);
     //station we selected
     var station;
     $(document).ready(function () {
@@ -178,6 +197,14 @@
         $('#RawData').click(function(e){
             e.preventDefault();
             rawDownload_alert()
+        });
+
+        $('#jumpToW').click(function () {
+            $.ajax({
+                // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/mail',
+                url: "http://localhost:3005/mail",
+                method: "get"});
+            // window.location.replace("http://localhost:3005/newEjs");
         });
 
         // Building dynamic options
@@ -214,12 +241,46 @@
         option.textContent = station.StationName+", "+station.City+", "+station.State;
         option.value = JSON.stringify({'stationName':station.StationName,'stationId':station.StationId});
         $('#station').append(option);
-        // console.log(option);
-        // console.log("option appended")
     }
 
     var timeFrom,timeTo,stationIs,querystr;
     var download = "Time,X,Y,Z\n";
+
+    function demo() {
+        timeFrom = document.getElementById("begin").value;
+        timeTo = document.getElementById("end").value;
+        // stationIs = JSON.parse(document.getElementById("station").value).stationId;
+
+        station = document.getElementById("station");
+        email = document.getElementById("frm1").value;
+        console.log(station);
+        console.log(email);
+        if (timeFrom && timeTo) {
+            Event()
+        } else {
+            confirm("Please select BOTH dates.");
+        }
+    }
+
+    function Event() {
+        $.ajax({
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newMoon',
+            url: 'http://localhost:3005/newMoon',
+            type: 'GET',
+            // dataType: 'json',
+            async: true,
+            data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationIs, email: email},
+            // beforeSend: function(){
+                // display a progress animation
+                // $('#requesting').show()
+
+            // },
+            success: async function (res) {
+                console.log(res)
+
+            }
+        })
+    }
 
     function query() {
         timeFrom = document.getElementById("begin").value;
@@ -230,6 +291,7 @@
         // querystr = "timeFrom:" + timeFrom + "&timeTo:" + timeTo + "&stationIs:" + stationIs;
         // console.log(querystr);
         station = document.getElementById("station");
+        console.log(station);
         if (timeFrom && timeTo) {
             queryAndDisplay();
         } else {
@@ -242,12 +304,12 @@
     var z_arr = [];
 
     var queryAndDisplay = function () {
-        console.log(timeFrom, timeTo, stationIs);
+        console.log(stationIs);
         $.ajax({
             // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newWind',
             url: 'http://localhost:3005/newWind',
             type: 'GET',
-            dataType: 'json',
+            // dataType: 'json',
             async: true,
             data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: stationIs},
             beforeSend: function(){
@@ -263,14 +325,15 @@
                     // console.log(el.time);
                     // console.log(el.time._nanoISO);
                     // console.log(el._nanoISO);
+                    console.log("h");
                     x_arr[i] = [new Date(el.time), el.X];
                     y_arr[i] = [new Date(el.time), el.Y];
                     z_arr[i] = [new Date(el.time), el.Z];
-                    var a = '' + el.X;
-                    var b = '' + el.Y;
-                    var c = '' + el.Z;
-                    var t = el.time;
-                    download += t+','+a+','+b+','+c+'\n';
+                    // var a = '' + el.X;
+                    // var b = '' + el.Y;
+                    // var c = '' + el.Z;
+                    // var t = el.time;
+                    // download += t+','+a+','+b+','+c+'\n';
                 });
                 // console.log(download);
 
@@ -357,7 +420,7 @@
     function download_csv(exportFilename) {
 
         if(exportFilename==null){
-            exportFilename = timeFrom.slice(0,-5) +'-'+ timeTo.slice(0,-5) + 'AvgESPData';
+            exportFilename = JSON.parse(document.getElementById("station").value).stationName+'_'+timeFrom.slice(0,-11)+'-'+ timeFrom.slice(14,-8)+'_'+ timeTo.slice(0,-11) +'-'+timeTo.slice(14,-8)+ 'AvgESPData';
         }
         
         var csvData = new Blob([download], {type: 'text/csv;charset=utf-8;'});
@@ -399,12 +462,13 @@
                     $('#downloading').show()
 
                 },
-                success: function (res) {
+                success: function (exportFilename) {
                     console.log("success");
-                    console.log(res);
-                    var Filename = timeFrom.slice(0,-5) +'-'+ timeTo.slice(0,-5) + 'RawESPData.csv';
-                    var exportFilename = 'http://localhost:63343/ESP_DataVis_2D/'+res;
                     console.log(exportFilename);
+                    // var Filename = timeFrom.slice(0,-5) +'-'+ timeTo.slice(0,-5) + 'RawESPData.csv';
+                    // var exportFilename = 'http://localhost:63343/ESP_DataVis_2D/'+res;
+                    // var exportFilename = '/'+res;
+                    // console.log(exportFilename);
 
                     // window.open(exportFilename);
 
@@ -417,6 +481,7 @@
                     // document.body.appendChild(link);
                     // document.getElementById('link').click();
                     // document.body.removeChild(link);
+
                     $('#downloading').hide();
 
                     var link = document.createElement('iframe');
@@ -425,9 +490,8 @@
                     link.id = 'link';
                     document.body.appendChild(link);
                     console.log("append successfully");
+
                     // document.body.removeChild(link);
-
-
                     // res.forEach(function (el, i) {
                     //     var a = '' + el.X;
                     //     var b = '' + el.Y;

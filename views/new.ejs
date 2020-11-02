@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src='https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com/jsLibrary/jquery-3-4-1.min.js'></script>
+    <script src="https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com/jsLibrary/WorldWind-built.js"></script>
+    <script type="text/javascript" src="https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com/jsLibrary/dygraph2.1.0/dygraph2.1.0.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.17/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://frogcat.github.io/canvas-arrow/canvas-arrow.js"></script>`
+
+    <link rel="stylesheet" href="https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com/jsLibrary/dygraph2.1.0/dygraph2.1.0.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+    <!--<link rel="stylesheet" href="//unpkg.com/flatpickr/dist/flatpickr.min.css">-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.17/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        body { padding-left:80px; padding-bottom: 300px; word-wrap:break-word;}
+        table, td{
+            border: 1px solid black;
+        }
+        table {
+            table-layout: fixed ;
+            width: 100% ;
+        }
+        td {
+            width: 25% ;
+        }
+    </style>
+</head>
+<body>
+
+<div id="but0">
+    <!--    <p>Historical Data Charts &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>-->
+    <button onclick='window.location.replace("http://localhost:63342/ESP_DataVis_2D/historical.html")'>Historical Data</button>
+<!--    <button onclick='window.location.replace("https://mockup.esp.aworldbridgelabs.com/historical.html")'>Historical Data</button>-->
+</div>
+<!--<input type="button" onclick='window.location.replace("index.html")' class="button button2" value="Go To Mockup Home">-->
+
+<!--<h2 id ="jump">go back to homepage</h2>-->
+
+<!--<h2 id = "text"></h2>-->
+<!--<h3 id="info"></h3>-->
+<h4 id="message"></h4>
+<!--<h4 id="data"></h4>-->
+<!--<h3 id="info2"></h3>-->
+<!--<h4 id="message2"></h4>-->
+<!--<h4 id="data2"></h4>-->
+<table id="tableone">
+    <thead id="headone"></thead>
+</table>
+<br><br>
+<table id="tabletwo">
+    <thead id="headtwo"></thead>
+</table>
+<br><br><br>
+<div class="col-sm-9" id="globe">
+    <canvas id="canvasOne" width="1000" height="1000"
+            style="width: 50%; height: auto; background-color: white;">
+            style="width: 50%; height: auto; background-color: white;">
+        Your browser does not support HTML5 Canvas.
+    </canvas>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<!--would be filled out afterwards according to station id-->
+<div id = "newDiv"> </div>
+
+<script>
+    // if(ex!==null){
+    //     var m=0;
+        let timeFrom = '<%= timeFrom %>',
+            timeTo = '<%= timeTo %>',
+            stationName = '<%= stationName %>',
+            city = '<%= city %>',
+            state = '<%= state %>',
+            lo = '<%= lo %>',
+            la = '<%= la %>',
+            stationId = '<%= stationId %>',
+            timeFrom2 = '<%= timeFrom2 %>',
+            timeTo2 = '<%= timeTo2 %>',
+            stationName2 = '<%= stationName2 %>',
+            city2 = '<%= city2 %>',
+            state2 = '<%= state2 %>',
+            lo2 = '<%= lo2 %>',
+            la2 = '<%= la2 %>',
+            stationId2 = '<%= stationId2 %>',
+            bdx = '<%= bdx %>',
+            bdy = '<%= bdy %>',
+            bdx2 = '<%= bdx2 %>',
+            bdy2 = '<%= bdy2 %>'; //the id of the station which turned the trigger on
+
+    // console.log(ex)
+    // console.log(ex!==0)
+    var timefrom,timeto
+    // if(ex!==0){
+    //     console.log(ex)
+        console.log("Here is what I get")
+        console.log(stationId, timeFrom, timeTo, city, state, lo, la);
+    if(timeTo.length>6){
+        var times=[Date.parse(timeFrom),Date.parse(timeTo),Date.parse(timeFrom2),Date.parse(timeTo2)]
+        console.log(times)
+        var row = $("<tr>")
+        var row0 = $("<tr>");
+        var row1 = $("<tr>");
+        var row2 = $("<tr>");
+        var row3 = $("<tr>");
+
+        row.append($("<td>Station:</td>"))
+            .append($("<td>"+stationName+"</td>"))
+        row0.append($("<td>City:</td>"))
+            .append($("<td>"+city+"</td>"))
+            .append($("<td>State:</td>"))
+            .append($("<td>"+ state+"</td>"))
+        row1.append($("<td>Begin Time:</td>"))
+            .append($("<td>"+new Date(timeFrom)+"</td>"))
+            .append($("<td>End Time:</td>"))
+            .append($("<td>"+new Date(timeTo)+"</td>"));
+         row2.append($("<td>Latitude:</td>"))
+            .append($("<td>"+parseFloat(la).toFixed(2)+"</td>"))
+            .append($("<td>Longitude:</td>"))
+            .append($("<td>"+parseFloat(lo).toFixed(2)+"</td>"))
+// <!--             .append($("<td>Begin Z:</td>")) -->
+// <!--             .append($("<td>"+parseFloat(bz).toFixed(2)+"</td>")) -->
+// <!--             .append($("<td>Begin Difference(X):</td>")) -->
+// <!--             .append($("<td>"+parseFloat(bd).toFixed(2)+"</td>")) -->
+// <!--         row3.append($("<td>End X:</td>")) -->
+// <!--             .append($("<td>"+parseFloat(ex).toFixed(2)+"</td>")) -->
+// <!--             .append($("<td>End Y:</td>")) -->
+// <!--             .append($("<td>"+parseFloat(ey).toFixed(2)+"</td>")) -->
+// <!--             .append($("<td>End Z:</td>")) -->
+// <!--             .append($("<td>"+parseFloat(ez).toFixed(2)+"</td>")) -->
+// <!--             .append($("<td>End Difference(X):</td>")) -->
+// <!--             .append($("<td>"+parseFloat(ed).toFixed(2)+"</td>")) -->
+
+        $("#headone").append(row);
+        $("#tableone").append(row0)
+            .append(row1)
+             .append(row2)
+// <!--             .append(row3); -->
+
+        var row_ = $("<tr>")
+        var row_0 = $("<tr>");
+        var row_1 = $("<tr>");
+        var row_2 = $("<tr>");
+        var row_3 = $("<tr>");
+
+        row_.append($("<td>Station:</td>"))
+            .append($("<td>"+stationName2+"</td>"))
+        row_0.append($("<td>City:</td>"))
+            .append($("<td>"+city2+"</td>"))
+            .append($("<td>State:</td>"))
+            .append($("<td>"+ state2+"</td>"))
+        row_1.append($("<td>Begin Time:</td>"))
+            .append($("<td>"+new Date(timeFrom2)+"</td>"))
+            .append($("<td>End Time:</td>"))
+            .append($("<td>"+new Date(timeTo2)+"</td>"));
+       row_2.append($("<td>Latitude:</td>"))
+            .append($("<td>"+parseFloat(la2).toFixed(2)+"</td>"))
+            .append($("<td>Longitude:</td>"))
+            .append($("<td>"+parseFloat(lo2).toFixed(2)+"</td>"))
+// <!--             .append($("<td>Begin Z:</td>")) -->
+// <!--             .append($("<td>"+parseFloat(bz2).toFixed(2)+"</td>")) -->
+// <!--             .append($("<td>Begin Difference(X):</td>")) -->
+// <!--             .append($("<td>"+parseFloat(bd2).toFixed(2)+"</td>")) -->
+// <!--         row_3.append($("<td>End X:</td>")) -->
+// <!--             .append($("<td>"+parseFloat(ex2).toFixed(2)+"</td>")) -->
+// <!--             .append($("<td>End Y:</td>")) -->
+// <!--             .append($("<td>"+parseFloat(ey2).toFixed(2)+"</td>")) -->
+// <!--             .append($("<td>End Z:</td>")) -->
+// <!--             .append($("<td>"+parseFloat(ez2).toFixed(2)+"</td>")) -->
+// <!--             .append($("<td>End Difference:</td>")) -->
+// <!--             .append($("<td>"+parseFloat(ed2).toFixed(2)+"</td>")) -->
+
+        $("#headtwo").append(row_);
+        $("#tabletwo").append(row_0)
+            .append(row_1)
+             .append(row_2)
+// <!--             .append(row_3); -->
+    }else{
+        var times=[Date.parse(timeFrom),Date.parse(Date()),Date.parse(timeFrom2)]
+        console.log(times)
+        $('#message').html("This is an initial event page, so the data is not completed.")
+        var row = $("<tr>")
+        var row0 = $("<tr>");
+        var row1 = $("<tr>");
+        var row2 = $("<tr>");
+        var row3 = $("<tr>");
+
+        row.append($("<td>Station:</td>"))
+            .append($("<td>"+stationName+"</td>"))
+        row0.append($("<td>City:</td>"))
+            .append($("<td>"+city+"</td>"))
+            .append($("<td>State:</td>"))
+            .append($("<td>"+ state+"</td>"))
+        row1.append($("<td>Begin Time:</td>"))
+            .append($("<td>"+new Date(timeFrom)+"</td>"))
+            .append($("<td>End Time:</td>"))
+            .append($("<td>Not Available</td>"));
+         row2.append($("<td>Latitude:</td>"))
+            .append($("<td>"+parseFloat(la).toFixed(2)+"</td>"))
+            .append($("<td>Longitude:</td>"))
+            .append($("<td>"+parseFloat(lo).toFixed(2)+"</td>"))
+// <!--             .append($("<td>Begin Z:</td>")) -->
+// <!--             .append($("<td>"+parseFloat(bz).toFixed(2)+"</td>")) -->
+// <!--             .append($("<td>Begin Difference(X):</td>")) -->
+// <!--             .append($("<td>"+parseFloat(bd).toFixed(2)+"</td>")) -->
+// <!--         row3.append($("<td>End X:</td>")) -->
+// <!--             .append($("<td>Not Available</td>")) -->
+// <!--             .append($("<td>End Y:</td>")) -->
+// <!--             .append($("<td>Not Available</td>")) -->
+// <!--             .append($("<td>End Z:</td>")) -->
+// <!--             .append($("<td>Not Available</td>")) -->
+// <!--             .append($("<td>End Difference(X):</td>")) -->
+// <!--             .append($("<td>Not Available</td>")) -->
+
+        $("#headone").append(row);
+        $("#tableone").append(row0)
+            .append(row1)
+            .append(row2)
+// <!--             .append(row3); -->
+
+        var row_ = $("<tr>")
+        var row_0 = $("<tr>");
+        var row_1 = $("<tr>");
+        var row_2 = $("<tr>");
+        var row_3 = $("<tr>");
+
+        row_.append($("<td>Station:</td>"))
+            .append($("<td>"+stationName2+"</td>"))
+        row_0.append($("<td>City:</td>"))
+            .append($("<td>"+city2+"</td>"))
+            .append($("<td>State:</td>"))
+            .append($("<td>"+ state2+"</td>"))
+        row_1.append($("<td>Begin Time:</td>"))
+            .append($("<td>"+new Date(timeFrom2)+"</td>"))
+            .append($("<td>End Time:</td>"))
+            .append($("<td>Not Available</td>"));
+       row_2            .append($("<td>Latitude:</td>"))
+    .append($("<td>"+parseFloat(la2).toFixed(2)+"</td>"))
+            .append($("<td>Longitude:</td>"))
+            .append($("<td>"+parseFloat(lo2).toFixed(2)+"</td>"))
+// .append($("<td>Begin X:</td>")) -->
+// <!--             .append($("<td>"+parseFloat(bx2).toFixed(2)+"</td>")) -->
+// <!--             .append($("<td>Begin Y:</td>")) -->
+// <!--             .append($("<td>"+parseFloat(by2).toFixed(2)+"</td>")) -->
+// <!--             .append($("<td>Begin Z:</td>")) -->
+// <!--             .append($("<td>"+parseFloat(bz2).toFixed(2)+"</td>")) -->
+// <!--             .append($("<td>Begin Difference(X):</td>")) -->
+// <!--             .append($("<td>"+parseFloat(bd2).toFixed(2)+"</td>")) -->
+// <!--         row_3.append($("<td>End X:</td>")) -->
+// <!--             .append($("<td>"+parseFloat(ex2).toFixed(2)+"</td>")) -->
+// <!--             .append($("<td>End Y:</td>")) -->
+// <!--             .append($("<td>Not Available</td>")) -->
+// <!--             .append($("<td>End Z:</td>")) -->
+// <!--             .append($("<td>Not Available</td>")) -->
+// <!--             .append($("<td>End Difference:</td>")) -->
+// <!--             .append($("<td>Not Available</td>")) -->
+
+        $("#headtwo").append(row_);
+        $("#tabletwo").append(row_0)
+            .append(row_1)
+             .append(row_2)
+// <!--             .append(row_3); -->
+    }
+        var timeFroms=Math.min(...times)
+        var timeTos=Math.max(...times)
+        var timeIntervalHalf = 6, //this is half, so the total duration is 12 hrs
+            timefrom = moment.utc(timeFroms,'').add(-timeIntervalHalf,'hour').format().slice(0, -1) + ".000Z", // -6h from time
+            timeto = moment.utc(timeTos,'').add(0.1,'hour').format().slice(0, -1) + ".000Z"; // +6h to time
+            // timeTo = moment.utc(timeTo)
+
+        console.log(times,timeFroms,timeTos,timefrom,timeto)
+        let x_arr = [],
+            y_arr = [],
+            z_arr = [];
+        let ini = true;
+        // let stationIdArr = ["station_the","station_two","station_for"];
+
+
+        // var tables = document.getElementById(table);
+        // var row1 = tables.insertRow(0);
+        // var Time1 = row.insertCell(0);
+        // var Time_1= row.insertCell(1);
+        // var row2 = tables.insertRow(1);
+        // var Time2 = row2.insertCell(0);
+        // var Time_2= row2.insertCell(1);
+        // var row3 = tables.insertRow(2);
+        // var x1 = row3.insertCell(0);
+        // var x_1= row3.insertCell(1);
+        // var row4 = table.insertRow(3);
+        // var y1 = row4.insertCell(0);
+        // var y_1= row4.insertCell(1);
+        // var row5 = table.insertRow(4);
+        // var z1 = row5.insertCell(0);
+        // var z_1= row5.insertCell(1);
+        // var row6 = table.insertRow(5);
+        // var d1 = row6.insertCell(0);
+        // var d_1= row6.insertCell(1);
+
+
+
+
+
+
+
+
+
+        // a title for the new page
+        // $('#text').html("Event Page for "+stationName+" and "+stationName2)
+        // $('#info').html("Station: "+stationName)
+        // $('#message').html("City: "+city+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"State:"+state+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Latitude: "+la+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Longitude:"+lo+'<br>'
+        //     // + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+        //     +"Begin time: "+new Date(Date.parse(timeFrom))+"<br>"+"End time: "+new Date(Date.parse(timeTo)));
+        // $('#data').html("Begin X: "+parseFloat(bx).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Y: "+parseFloat(by).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Z: "+parseFloat(bz).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Difference: "+parseFloat(bd).toFixed(2)+"<br>"+
+        // "End X: "+parseFloat(ex).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Y: "+parseFloat(ey).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Z: "+parseFloat(ez).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Difference: "+parseFloat(ed).toFixed(2))
+        // $('#info2').html("Station: "+stationName2+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+        // $('#message2').html("City: "+city2+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"State:"+state2+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Latitude: "+la2+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Longitude:"+lo2+'<br>'
+        //     +"Begin time: "+new Date(timeFrom2)+"<br>"+"End time: "+new Date(timeTo2))
+        // $('#data2').html("Begin X: "+parseFloat(bx2).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Y: "+parseFloat(by2).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Z: "+parseFloat(bz2).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Difference: "+parseFloat(bd2).toFixed(2)+"<br>"+
+        //     "End X: "+parseFloat(ex2).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Y: "+parseFloat(ey2).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Z: "+parseFloat(ez2).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Difference: "+parseFloat(ed2).toFixed(2))
+    // }
+    // else if(ex==0){
+    //     console.log("Here is what I get")
+    //     console.log(stationId, timeFrom, timeTo, city, state, lo, la);
+    //     var times=[Date.parse(timeFrom),Date.parse(timeTo),Date.parse(timeFrom2),Date.parse(timeTo2)]
+    //     var timeFroms=Math.min(...times)
+    //     var timeto=Date.now()
+    //     console.log(timeTos)
+    //     let timeIntervalHalf = 6, //this is half, so the total duration is 12 hrs
+    //         timefrom = moment.utc(timeFroms,'').add(-timeIntervalHalf,'hour').format().slice(0, -1) + ".000Z"; // -6h from time
+    //         // timeto = moment.utc(timeTos,'').add(0.1,'hour').format().slice(0, -1) + ".000Z"; // +6h to time
+    //     // timeTo = moment.utc(timeTo)
+    //     console.log(times,timeFroms,timefrom,timeto)
+    //     let x_arr = [],
+    //         y_arr = [],
+    //         z_arr = [];
+    //     let ini = true;
+    //     // let stationIdArr = ["station_the","station_two","station_for"];
+    //
+    //     // a title for the new page
+    //     $('#text').html("Event Page for "+stationName+" and "+stationName2)
+    //     $('#info').html("Station: "+stationName)
+    //     $('#message').html("City: "+city+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"State:"+state+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Latitude: "+la+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Longitude:"+lo+'<br>'
+    //         // + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+    //         +"Begin time: "+new Date(Date.parse(timeFrom))+"<br>"+"End time: "+new Date(Date.parse(timeTo)));
+    //     $('#data').html("Begin X: "+parseFloat(bx).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Y: "+parseFloat(by).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Z: "+parseFloat(bz).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Difference: "+parseFloat(bd).toFixed(2)+"<br>"+
+    //         "End X: "+parseFloat(ex).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Y: "+parseFloat(ey).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Z: "+parseFloat(ez).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Difference: "+parseFloat(ed).toFixed(2))
+    //     $('#info2').html("Station: "+stationName2+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+    //     $('#message2').html("City: "+city2+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"State:"+state2+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Latitude: "+la2+ '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+"Longitude:"+lo2+'<br>'
+    //         +"Begin time: "+new Date(timeFrom2)+"<br>"+"End time: "+new Date(timeTo2))
+    //     $('#data2').html("Begin X: "+parseFloat(bx2).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Y: "+parseFloat(by2).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Z: "+parseFloat(bz2).toFixed(2)+"&nbsp;&nbsp;&nbsp;"+"Begin Difference: "+parseFloat(bd2).toFixed(2)+"<br>"+
+    //         "End X: "+parseFloat(ex2).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Y: "+parseFloat(ey2).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Z: "+parseFloat(ez2).toFixed(2)+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"End Difference: "+parseFloat(ed2).toFixed(2))
+    //
+    // }
+
+
+
+    // rotate the globe
+    let wwd = new WorldWind.WorldWindow("canvasOne");
+
+    // Create and add layers to the WorldWindow.
+    let layers = [
+        // Imagery layers.
+        {layer: new WorldWind.BMNGLayer(), enabled: true},
+        {layer: new WorldWind.BMNGLandsatLayer(), enabled: false},
+        {layer: new WorldWind.BingAerialWithLabelsLayer(null), enabled: true},
+        // Add atmosphere layer on top of all base layers.
+        {layer: new WorldWind.AtmosphereLayer(), enabled: true},
+        // WorldWindow UI layers.
+        // {layer: new WorldWind.CompassLayer(), enabled: true},
+        {layer: new WorldWind.CoordinatesDisplayLayer(wwd), enabled: true},
+        // {layer: new WorldWind.ViewControlsLayer(wwd), enabled: true}
+    ];
+
+    for (let l = 0; l < layers.length; l++) {
+        layers[l].layer.enabled = layers[l].enabled;
+        wwd.addLayer(layers[l].layer);
+    }
+
+    wwd.goTo(new WorldWind.Position(36.375229, -121.823628, 600000));
+
+    $.ajax({
+        // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stationsForN',
+        url: "http://localhost:3005/stationsForN",
+        method: "get",
+        async: false,
+        data: {stationID: stationId},
+        success: function(res) {
+            console.log("stations")
+            console.log(res)
+            // stationsData=[];
+            res.forEach(function(el,i) {
+
+                queryAndDisplay(el);
+                // console.log(el)
+                // if (ini && i === res.length - 1) { ini = false }
+
+            });
+        }
+    });
+
+    function building(station){
+        console.log("building")
+        //add live chart title
+        let cTitle = document.createElement("h2");
+        cTitle.className = station.StationId;
+        cTitle.textContent = station.StationName;
+
+        //add live chart Div
+        let chartDiv = document.createElement("div");
+        chartDiv.className = station.StationId+" charts";
+        chartDiv.setAttribute("style", "left: 90px; width: max-content; display: inline-table;");
+        $('#newDiv').append(cTitle).append(chartDiv);
+
+        //add xyz divs into live chart Div
+        let cdivX = document.createElement("div");
+        let cdivY = document.createElement("div");
+        let cdivZ = document.createElement("div");
+        cdivX.className = "chart n0";
+        cdivY.className = "chart n1";
+        cdivZ.className = "chart n2";
+        cdivX.id = station.StationId+"_graphX";
+        cdivY.id = station.StationId+"_graphY";
+        cdivZ.id = station.StationId+"_graphZ";
+        cdivX.setAttribute("style", "float: left;");
+        cdivY.setAttribute("style", "float: left;");
+        cdivZ.setAttribute("style", "float: left;");
+        let c = "."+station.StationId+".charts";
+        $(c).append(cdivX).append(cdivY).append(cdivZ);
+    }
+
+    async function queryAndDisplay(station){
+        //wait until all the elements are created, then call query and display function
+        // if (ini) {
+        await building(station);
+        // }
+        drawArrows(station);
+
+        $.ajax({
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newWind',
+            url: 'http://localhost:3005/newWind',
+            type: 'GET',
+            // dataType: 'json',
+            // async: false,
+            data: {timeFrom: timefrom, timeTo: timeto, stationIs: station.StationId},
+            success: function(res) {
+                console.log("query");
+                if (!!res) {
+                    // console.log("hhh")
+                    let x_arr = [];
+                    let y_arr = [];
+                    let z_arr = [];
+
+                    res.forEach(function (el, i) {
+                        x_arr[i] = [new Date(el.time), el.X];
+                        y_arr[i] = [new Date(el.time), el.Y];
+                        z_arr[i] = [new Date(el.time), el.Z];
+
+                        if(i===res.length-1){
+
+                            Z = new Dygraph(
+                                // containing div
+                                document.getElementById(station.StationId + "_graphZ"),
+
+                                // CSV or path to a CSV file.
+                                z_arr,
+                                {
+                                    labels: ["time", "Z"],
+                                    title: "Z (+Z is positive altitude, -Z is below ground)",
+                                    rollPeriod: 1,
+                                    showRoller: true,
+                                    legend: 'always',
+                                    showRangeSelector: true,
+                                    rangeSelectorHeight: 30,
+                                    // rollPeriod: 14,
+                                    // showRoller: true,
+                                    // customBars: true,
+                                    // showRangeSelector: true
+                                    // rangeSelectorHeight: 30,
+                                    // rangeSelectorPlotStrokeColor: 'yellow',
+                                    // rangeSelectorPlotFillColor: 'lightyellow'
+                                }
+                            );
+                            Y = new Dygraph(
+                                // containing div
+                                document.getElementById(station.StationId + "_graphY"),
+
+                                // CSV or path to a CSV file.
+                                y_arr,
+                                {
+                                    labels: ["time", "Y"],
+                                    title: "Y (+Y is east, -Y is west)",
+                                    rollPeriod: 1,
+                                    showRoller: true,
+                                    legend: 'always',
+                                    showRangeSelector: true,
+                                    rangeSelectorHeight: 30,
+                                    // rollPeriod: 14,
+                                    // showRoller: true,
+                                    // customBars: true,
+                                    // showRangeSelector: true
+                                    // rangeSelectorHeight: 30,
+                                    // rangeSelectorPlotStrokeColor: 'yellow',
+                                    // rangeSelectorPlotFillColor: 'lightyellow'
+                                }
+                            );
+                            X = new Dygraph(
+                                // containing div
+                                document.getElementById(station.StationId + "_graphX"),
+
+                                // CSV or path to a CSV file.
+                                x_arr,
+                                {
+
+                                    // customBars: true,
+                                    title: "X (+X is north, -X is south)",
+                                    // ylabel: 'Temperature (F)',
+                                    labels: ["time", "X"],
+                                    rollPeriod: 1,
+                                    showRoller: true,
+                                    legend: 'always',
+                                    showRangeSelector: true,
+                                    rangeSelectorHeight: 30,
+                                    // rangeSelectorPlotStrokeColor: 'yellow',
+                                    // rangeSelectorPlotFillColor: 'lightyellow'
+                                }
+                            );
+                        }
+                    });
+                    // console.log(x_arr[0])
+                    // console.log(x_arr[x_arr.length-1])
+                    // console.log(download);
+                    // console.log(res);
+
+                    // $('#requesting').hide();
+                    // $("#AvgData").attr("disabled", false);
+                }
+            }
+        });
+    }
+
+    //draw the arrows and create surface Image
+    function drawArrows(station){
+        console.log(station)
+        //create canvas according to stationId
+        let needleCanvas = document.createElement("canvas");
+        needleCanvas.id= station.StationId  + "_needle";
+        needleCanvas.width = 1000;
+        needleCanvas.height = 1000;
+        // $('#newDiv').append(needleCanvas);
+        let ctx2d = needleCanvas.getContext("2d");
+
+                ctx2d.beginPath();
+                let sector;
+
+                //draw arrows----
+                //first 2 numbers are coordinates of start point,
+                // and the 2 after is the coordinates of  the end point
+                // the array at the end controls the shape of the arrow.
+                console.log(station.StationId);
+                var ri=bdx/bdy
+                var ri2=bdx2/bdy2
+                var rad=Math.atan(ri)
+                var rad2=Math.atan(ri2)
+
+
+                // console.log(ri)
+                // console.log(ri2)
+                // console.log(rad)
+                // console.log(rad2)
+
+                if(station.StationId===stationId) {
+                    var X = 10*bdx;
+                    var Y = 10*bdy;
+                    console.log(X,bdx)
+                    console.log(Y,bdy)
+                    console.log(station.Latitude,station.Longitude)
+                    if (X > 0) { //sorry for my stupid logic :) heihei
+                        if (Y < 0) { //+x, -y
+                            sector = new WorldWind.Sector(parseFloat(station.Latitude) -4, parseFloat(station.Latitude), parseFloat(station.Longitude), parseFloat(station.Longitude) + 4)
+                            // console.log(sector);
+                            // sector = new WorldWind.Sector(30, 40, -90, -80)
+                            ctx2d.arrow(0, 0, X, Math.abs(Y), [0, 1, -10, 1, -10, 5]);
+                            ctx2d.fillStyle = "#ffffe0";
+                            ctx2d.fill();
+                            console.log("01+-")
+                            console.log(sector)
+                        } else { //+x,+y
+                            sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude) + 4, parseFloat(station.Longitude), parseFloat(station.Longitude) + 4)
+                            ctx2d.arrow(0, needleCanvas.height, X, needleCanvas.height - Y, [0, 1, -10, 1, -10, 5]);
+                            ctx2d.fillStyle = "#ffffe0";
+                            ctx2d.fill();
+                            console.log("01++")
+                            console.log(sector)
+                        }
+                    } else {
+                        if (Y < 0) { //-x,-y
+                            sector = new WorldWind.Sector(parseFloat(station.Latitude) -4, parseFloat(station.Latitude), parseFloat(station.Longitude) -4, parseFloat(station.Longitude))
+                            ctx2d.arrow(needleCanvas.width, 0, needleCanvas.width + X, Math.abs(Y), [0, 1, -10, 1, -10, 5]);
+                            ctx2d.fillStyle = "#ffffe0";
+                            ctx2d.fill();
+                            console.log("01--")
+                            console.log(sector)
+                        } else { // -x, +y
+                            sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude) + 4, parseFloat(station.Longitude) - 4, parseFloat(station.Longitude))
+                            ctx2d.arrow(needleCanvas.width, needleCanvas.height, needleCanvas.width +X, needleCanvas.height- Y, [0, 1, -10, 1, -10, 5]);
+                            ctx2d.fillStyle = "#ffffe0";
+                            ctx2d.fill();
+                            console.log("01-+")
+                            console.log(sector)
+                        }
+                    }
+                }
+
+                    // console.log('running')
+                    // console.log(station.Latitude+station.Longitude)
+                    // sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+ri, parseFloat(station.Longitude), parseFloat(station.Longitude)+1)
+                    // console.log(100*ri)
+                    // // console.log(parseFloat(station.Longitude)+1)
+                    // ctx2d.arrow(5, 5, 100*ri, 100, [0, 5, -20, 5, -20, 10]);
+                    // ctx2d.fillStyle = "#ee0000";
+                    // ctx2d.fill();}
+                if(station.StationId===stationId2){
+                    var X=10*bdx2;
+                    var Y=10*bdy2;
+                    console.log(X)
+                    console.log(Y)
+                    console.log(station.Latitude,station.Longitude)
+                    if(X>0){ //sorry for my stupid logic :) heihei
+                        if(Y<0){ //+x, -y
+                            sector = new WorldWind.Sector(parseFloat(station.Latitude) -4, parseFloat(station.Latitude), parseFloat(station.Longitude), parseFloat(station.Longitude) + 4)
+                            // console.log(sector);
+                            // sector = new WorldWind.Sector(30, 40, -90, -80)
+                            ctx2d.arrow(0, 0, X, Math.abs(Y), [0, 1, -10, 1, -10, 5]);
+                            ctx2d.fillStyle = "#ffffe0";
+                            ctx2d.fill();
+                            console.log("02+-")
+                            console.log(sector)
+                        }else { //+x,+y
+                            sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+4, parseFloat(station.Longitude), parseFloat(station.Longitude)+4)
+                            ctx2d.arrow(0, needleCanvas.height, X, needleCanvas.height-Y, [0, 1, -10, 1, -10, 5]);
+                            ctx2d.fillStyle = "#ffffe0";
+                            ctx2d.fill();
+                            console.log("02++")
+                            console.log(sector)
+                        }
+                    }else{
+                        if(Y<0){ //-x,-y
+                            sector = new WorldWind.Sector(parseFloat(station.Latitude) -4, parseFloat(station.Latitude), parseFloat(station.Longitude) -4, parseFloat(station.Longitude))
+                            ctx2d.arrow(needleCanvas.width, 0, needleCanvas.width + X, Math.abs(Y), [0, 1, -10, 1, -10, 5]);
+                            ctx2d.fillStyle = "#ffffe0";
+                            ctx2d.fill();
+                            console.log("02--")
+                            console.log(sector)
+                        }else { // -x, +y
+                            sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+4, parseFloat(station.Longitude)-4, parseFloat(station.Longitude))
+                            ctx2d.arrow(needleCanvas.width, needleCanvas.height, needleCanvas.width +X, needleCanvas.height- Y, [0, 1, -10, 1, -10, 5]);
+                            ctx2d.fillStyle = "#ffffe0";
+                            ctx2d.fill();
+                            console.log("02-+")
+                            console.log(sector)
+                        }
+                    }
+                    // console.log('running2')
+                    // console.log(station.Latitude+station.Longitude)
+                    // sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+ri2, parseFloat(station.Longitude), parseFloat(station.Longitude)+1)
+                    //
+                    // console.log(100*ri2)
+                    // // console.log(Math.abs(10000*ri2))
+                    // ctx2d.arrow(5, 5, 100*ri2, 100, [0, 5, -20, 5, -20, 10]);
+                    // ctx2d.fillStyle = "#ee0000";
+                    // ctx2d.fill()
+                }
+                if(station.StationId!=stationId&station.StationId!=stationId2){
+                    console.log("running3")
+                    sector = new WorldWind.Sector(parseFloat(station.Latitude) , parseFloat(station.Latitude), parseFloat(station.Longitude), parseFloat(station.Longitude) )
+                    ctx2d.arrow(0, 0, 0, 0, [0, 1, -1000, 1, -1000, 1000]);
+                    ctx2d.fillStyle = "#ee0000";
+                    ctx2d.fill();
+                }
+
+                //create surface image---
+
+                var surfaceImage = new WorldWind.SurfaceImage(sector, new WorldWind.ImageSource(needleCanvas));
+
+                // Add the surface images to a layer and the layer to the WorldWindow's layer list.
+                var surfaceImageLayer = new WorldWind.RenderableLayer();
+                surfaceImageLayer.displayName = station.StationName;
+                surfaceImageLayer.addRenderable(surfaceImage);
+                wwd.addLayer(surfaceImageLayer);
+    }
+
+    // function drawArrows(station){
+    //     console.log(station)
+    //     //create canvas according to stationId
+    //     let needleCanvas = document.createElement("canvas");
+    //     needleCanvas.id= station.StationId  + "_needle";
+    //     needleCanvas.width = 300;
+    //     needleCanvas.height = 300;
+    //     // $('#newDiv').append(needleCanvas);
+    //     let ctx2d = needleCanvas.getContext("2d");
+    //
+    //     $.ajax({
+    //         // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newWind',
+    //         url: 'http://localhost:3005/newWind',
+    //         type: 'GET',
+    //         // dataType: 'json',
+    //         // async: false,
+    //         data: {timeFrom: timeFrom, timeTo: timeTo, stationIs: station.StationId}, //get the data from that point of time
+    //         success: function (res) {
+    //             var X = res[0].X / 100;
+    //             var Y = res[0].Y / 100;
+    //             // console.log(X , Y);
+    //             ctx2d.beginPath();
+    //             let sector;
+    //
+    //             //draw arrows----
+    //             //first 2 numbers are coordinates of start point,
+    //             // and the 2 after is the coordinates of  the end point
+    //             // the array at the end controls the shape of the arrow.
+    //             console.log(station.StationId);
+    //             var ri=bdx/bdy
+    //             var ri2=bdx2/bdy2
+    //             var rad=Math.atan(ri)
+    //             var rad2=Math.atan(ri2)
+    //
+    //
+    //             console.log(ri)
+    //             console.log(ri2)
+    //             console.log(rad)
+    //             console.log(rad2)
+    //
+    //             if(station.StationId===stationId){
+    //
+    //                 console.log('running')
+    //                 console.log(station.Latitude+station.Longitude)
+    //                 sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+ri, parseFloat(station.Longitude), parseFloat(station.Longitude)+1)
+    //                 console.log(parseFloat(station.Latitude)+ri)
+    //                 console.log(parseFloat(station.Longitude)+1)
+    //                 ctx2d.arrow(0, 0, X, Math.abs(Y), [0, 1, -10, 1, -10, 5]);
+    //                 ctx2d.fillStyle = "#ee0000";
+    //                 ctx2d.fill();}
+    //             if(station.StationId===stationId2){
+    //                 console.log('running2')
+    //                 console.log(station.Latitude+station.Longitude)
+    //                 sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+ri2, parseFloat(station.Longitude), parseFloat(station.Longitude)+1 )
+    //                 console.log(parseFloat(station.Latitude)+ri2)
+    //                 console.log(parseFloat(station.Longitude)+1)
+    //                 ctx2d.arrow(0, needleCanvas.height, X, needleCanvas.height-Y, [0, 1, -10, 1, -10, 5]);
+    //                 ctx2d.fillStyle = "#ee0000";
+    //                 ctx2d.fill()}
+    //             if(station.StationId!=stationId&station.StationId!=stationId2){
+    //                 console.log("running3")
+    //                 sector = new WorldWind.Sector(parseFloat(station.Latitude) , parseFloat(station.Latitude), parseFloat(station.Longitude), parseFloat(station.Longitude) )
+    //                 ctx2d.arrow(0, needleCanvas.height, X, needleCanvas.height-Y, [0, 1, -10, 1, -10, 5]);
+    //                 ctx2d.fillStyle = "#ee0000";
+    //                 ctx2d.fill();
+    //             }
+    //
+    //
+    //
+    //
+    //
+    //             if(X>0){ //sorry for my stupid logic :) heihei
+    //                 if(Y<0){ //+x, -y
+    //                     sector = new WorldWind.Sector(parseFloat(station.Latitude) -4, parseFloat(station.Latitude), parseFloat(station.Longitude), parseFloat(station.Longitude) + 4)
+    //                     // console.log(sector);
+    //                     // sector = new WorldWind.Sector(30, 40, -90, -80)
+    //                     ctx2d.arrow(0, 0, X, Math.abs(Y), [0, 1, -10, 1, -10, 5]);
+    //                     ctx2d.fillStyle = "#ffffe0";
+    //                     ctx2d.fill();
+    //                 }else { //+x,+y
+    //                     sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+4, parseFloat(station.Longitude), parseFloat(station.Longitude)+4)
+    //                     ctx2d.arrow(0, needleCanvas.height, X, needleCanvas.height-Y, [0, 1, -10, 1, -10, 5]);
+    //                     ctx2d.fillStyle = "#ffffe0";
+    //                     ctx2d.fill();
+    //                     }
+    //             }else{
+    //                 if(Y<0){ //-x,-y
+    //                     sector = new WorldWind.Sector(parseFloat(station.Latitude)-4, parseFloat(station.Latitude), parseFloat(station.Longitude)-4, parseFloat(station.Longitude))
+    //                     ctx2d.arrow(needleCanvas.width, 0, needleCanvas.width +X, Y, [0, 1, -10, 1, -10, 5]);
+    //                     ctx2d.fillStyle = "#ffffe0";
+    //                     ctx2d.fill();
+    //                 }else { // -x, +y
+    //                     sector = new WorldWind.Sector(parseFloat(station.Latitude), parseFloat(station.Latitude)+4, parseFloat(station.Longitude)-4, parseFloat(station.Longitude))
+    //                     ctx2d.arrow(needleCanvas.width, needleCanvas.height, needleCanvas.width +X, needleCanvas.height- Y, [0, 1, -10, 1, -10, 5]);
+    //                     ctx2d.fillStyle = "#ffffe0";
+    //                     ctx2d.fill();
+    //                 }
+    //             }
+    //
+    //             //create surface image---
+    //
+    //             var surfaceImage = new WorldWind.SurfaceImage(sector, new WorldWind.ImageSource(needleCanvas));
+    //
+    //             // Add the surface images to a layer and the layer to the WorldWindow's layer list.
+    //             var surfaceImageLayer = new WorldWind.RenderableLayer();
+    //             surfaceImageLayer.displayName = station.StationName;
+    //             surfaceImageLayer.addRenderable(surfaceImage);
+    //             wwd.addLayer(surfaceImageLayer);
+    //
+    //             //create placemarks
+    //             // let placemark,
+    //             //     placemarkAttributes = new WorldWind.PlacemarkAttributes(null),
+    //             //     highlightAttributes,
+    //             //     placemarkLayer = new WorldWind.RenderableLayer("Placemarks" + station.StationId),
+    //             //     latitude = station.Latitude,
+    //             //     longitude = station.Longitude;
+    //             //
+    //             // //set attribute for one placemark
+    //             // placemarkAttributes.imageScale = 0.3;
+    //             // placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
+    //             //     WorldWind.OFFSET_FRACTION, 0.5);
+    //             // placemarkAttributes.imageColor = WorldWind.Color.WHITE;
+    //             // placemarkAttributes.labelAttributes.scale = 0;
+    //             //
+    //             // //set attributes
+    //             // placemarkAttributes.imageScale = 0.5;
+    //             // placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
+    //             //     WorldWind.OFFSET_FRACTION, 0.5);
+    //             // placemarkAttributes.imageColor = WorldWind.Color.WHITE;
+    //             // placemarkAttributes.labelAttributes.color = WorldWind.Color.YELLOW;
+    //             // placemarkAttributes.labelAttributes.offset = new WorldWind.Offset(
+    //             //     WorldWind.OFFSET_FRACTION, 0.5,
+    //             //     WorldWind.OFFSET_FRACTION, 1.0);
+    //             // placemarkAttributes.leaderLineAttributes.outlineColor = WorldWind.Color.RED;
+    //             // placemark = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, 1e2), true, null);
+    //             // placemark.label = station.StationName + "\n";
+    //             //
+    //             // placemarkAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
+    //             // // placemarkAttributes.imageSource =WorldWind.configuration.baseUrl + "images/pushpins/"
+    //             //
+    //             // placemarkAttributes.imageSource = new WorldWind.ImageSource(needleCanvas);
+    //             // placemark.attributes = placemarkAttributes;
+    //             //
+    //             // highlightAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
+    //             // highlightAttributes.imageScale = 1.2;
+    //             // placemark.highlightAttributes = highlightAttributes;
+    //             // placemarkLayer.addRenderable(placemark);
+    //             // wwd.addLayer(placemarkLayer);
+    //         }
+    //     });
+    // }
+
+</script>
+</body>
+</html>

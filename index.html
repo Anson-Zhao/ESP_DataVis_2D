@@ -1,10 +1,11 @@
 <html>
 <head>
-    <link rel="stylesheet" href="jsLibrary/dygraph/dygraph.css" />
+    <link rel="stylesheet" href="jsLibrary/dygraph2.1.0/dygraph2.1.0.css" />
     <link rel="stylesheet" href="main.css" />
 
     <script src='jsLibrary/jquery-3-4-1.min.js'></script>
-    <script type="text/javascript" src="jsLibrary/dygraph/dygraph.js"></script>
+    <script src="jsLibrary/WorldWind-built.js"></script>
+    <script type="text/javascript" src="jsLibrary/dygraph2.1.0/dygraph2.1.0.min.js"></script>
     <script src="jsLibrary/justgage-1.2.2/raphael-2.1.4.min.js"></script>
     <script src="jsLibrary/justgage-1.2.2/justgage.js"></script>
     <script src="jsLibrary/gauge2-1-5.min.js"></script>
@@ -43,785 +44,775 @@
 
 <div id="live_chart">
     <h1>Live Chart</h1>
-    <h2>The charts represent past 3 days data, refreshed every 20 minutes</h2>
+    <br>
+    <button onclick="chartDFun(this)" value="12h" id="12h" class="chartsB">12 hours</button>
+    <button onclick="chartDFun(this)" value="1d" id="1d" class="chartsB" disabled>1 day</button>
+    <button onclick="chartDFun(this)" value="2d" id="2d" class="chartsB">2 days</button>
+    <button onclick="chartDFun(this)" value="3d" id="3d" class="chartsB">3 days</button>
+    <br>
+    <h2>The charts represent past <span id = "chartText">3 days</span> data, refreshed every 20 minutes. All chart data you see below is your browser local time</h2>
 </div>
 
 <script type="text/javascript">
+    //setting of the gauge
+    let settings = {
+        gaugeMinValue: -100000,
+        gaugeMaxValue: 100000,
+        gaugeStartValue: 0,
+        gaugeStartAngle: -90,
+        gaugeEndAngle: 90,
+        gaugeUpdateInterval: 5000 // ms
+    };
+    let options = {
+        tooltip: {
+            enabled: false
+        },
+        chart: {
+            type: 'gauge',
+            backgroundColor: 'rgba(255, 255, 255, 0)',
+            plotBackgroundColor: null,
+            plotBackgroundImage: null,
+            plotBorderWidth: 0,
+            plotShadow: false,
+            spacing: [5, 30, 5, 30],
+            style: {
+                fontSize: '1em'
+            }
+        },
 
-    requirejs(['./src/WorldWind'
-            // ,'./LayerManager'
-        ],
-        function (WorldWind) {
-            "use strict";
-            //setting of the gauge
-            let settings = {
-                gaugeMinValue: -100000,
-                gaugeMaxValue: 100000,
-                gaugeStartValue: 0,
-                gaugeStartAngle: -90,
-                gaugeEndAngle: 90,
-                gaugeUpdateInterval: 5000 // ms
-            };
-            let options = {
-                tooltip: {
-                    enabled: false
-                },
-                chart: {
-                    type: 'gauge',
-                    backgroundColor: 'rgba(255, 255, 255, 0)',
-                    plotBackgroundColor: null,
-                    plotBackgroundImage: null,
-                    plotBorderWidth: 0,
-                    plotShadow: false,
-                    spacing: [5, 30, 5, 30],
-                    style: {
-                        fontSize: '1em'
-                    }
-                },
+        title: false,
 
-                title: false,
+        pane: {
+            startAngle: settings.gaugeStartAngle,
+            endAngle: settings.gaugeEndAngle,
+            background: {
+                backgroundColor: 'rgba(255, 255, 255, 0)',
+                borderWidth: 0,
+                innerRadius: '60%',
+                outerRadius: '100%',
+                shape: 'arc'
+            }
+        },
 
-                pane: {
-                    startAngle: settings.gaugeStartAngle,
-                    endAngle: settings.gaugeEndAngle,
-                    background: {
-                        backgroundColor: 'rgba(255, 255, 255, 0)',
-                        borderWidth: 0,
-                        innerRadius: '60%',
-                        outerRadius: '100%',
-                        shape: 'arc'
-                    }
-                },
+        plotOptions: {
+            gauge: {
+                // dial: {
+                //  radius: 0
+                //  },
+                //  pivot: {
+                //  radius: 0
+                //  },
+                dataLabels: {
+                    borderWidth: 0,
+                    padding: 0,
+                    fontSize: 3,
+                    verticalAlign: 'middle',
+                    // style: false,
+                    formatter: function () {
+                        let output = '<div class="gauge-data">';
+                        output += '<span class="gauge-value">' + this.y + '</span>';
+                        output += '</div>';
 
-                plotOptions: {
-                    gauge: {
-                        // dial: {
-                        //  radius: 0
-                        //  },
-                        //  pivot: {
-                        //  radius: 0
-                        //  },
-                        dataLabels: {
-                            borderWidth: 0,
-                            padding: 0,
-                            fontSize: 3,
-                            verticalAlign: 'middle',
-                            // style: false,
-                            formatter: function () {
-                                let output = '<div class="gauge-data">';
-                                output += '<span class="gauge-value">' + this.y + '</span>';
-                                output += '</div>';
-
-                                return output;
-                            },
-                            useHTML: true
-                        }
+                        return output;
                     },
-                    pie: {
-                        dataLabels: {
-                            enabled: true,
-                            distance: -10,
-                            style: false
-                        },
-                        startAngle: settings.gaugeStartAngle,
-                        endAngle: settings.gaugeEndAngle,
-                        center: ['50%', '50%'],
-                        states: {
-                            hover: {
-                                enabled: false
-                            }
-                        }
-                    }
+                    useHTML: true
+                }
+            },
+            pie: {
+                dataLabels: {
+                    enabled: true,
+                    distance: -10,
+                    style: false
                 },
-
-                // the value axis
-                yAxis: {
-                    offset: 0,
-                    min: settings.gaugeMinValue,
-                    max: settings.gaugeMaxValue,
-
-                    title: false,
-
-                    minorTickWidth: 0,
-                    //the interval of the short line
-                    tickPixelInterval: 30,
-                    tickWidth: 2,
-                    tickPosition: 'outside',
-                    //the length of the short line
-                    tickLength: 15,
-                    tickColor: '#666666',
-                    lineColor: '#666666',
-                    labels: {
-                        //distance between the line and number
-                        distance: 25,
-                        rotation: "0",
-                        step: 2,
-                    },
-
-                    plotBands: [{
-                        thickness: 15,
-                        outerRadius: "120%",
-                        from: -100000,
-                        to: -75000,
-                        color: '#FB8585' // red
-                    }, {
-                        thickness: 15,
-                        outerRadius: "120%",
-                        from: 100000,
-                        to: 75000,
-                        color: '#FB8585' // red
-                    }, {
-                        thickness: 15,
-                        outerRadius: "120%",
-                        from: -50000,
-                        to: 50000,
-                        color: '#83DAD9'
-                    }, {
-                        thickness: 15,
-                        outerRadius: "120%",
-                        from: 50000,
-                        to: 75000,
-                        color: '#F9E7AE'
-                    }, {
-                        thickness: 15,
-                        outerRadius: "120%",
-                        from: -50000,
-                        to: -75000,
-                        color: '#F9E7AE'
-                    }
-                    ]
-                },
-
-                series: [{
-                    type: 'gauge',
-                    data: [settings.gaugeStartValue],
-                }, {
-                    type : 'pie',
-                    innerSize : '96%',
-                    data : [{
-                        y : settings.gaugeStartValue,
-                        name : "",
-                        color : "#0bbeba"
-                    }, {
-                        y : settings.gaugeMaxValue - settings.gaugeStartValue,
-                        name : '',
-                        color : "#666666"
-                    }]
-                }],
-
-                navigation: {
-                    buttonOptions: {
+                startAngle: settings.gaugeStartAngle,
+                endAngle: settings.gaugeEndAngle,
+                center: ['50%', '50%'],
+                states: {
+                    hover: {
                         enabled: false
                     }
-                },
-
-                credits: false
-            };
-
-            // //I want array with string inside
-            // let stations = [];
-            // //single station name that we are going to deal with
-            // let stationsInfo = [];
-            //
-            // //5s average gauge data
-            // let sta;
-            // let img;
-            let ini = true;
-            let degrees = 0;
-            let needle = new Image();
-            needle.src = 'images/needle.png';
-            let wwd = new WorldWind.WorldWindow("canvasOne");
-            // let layerManager = new LayerManager(wwd);
-            let stationsData=[];
-            // Create and add layers to the WorldWindow.
-            let layers = [
-                // Imagery layers.
-                {layer: new WorldWind.BMNGLayer(), enabled: true},
-                {layer: new WorldWind.BMNGLandsatLayer(), enabled: false},
-                {layer: new WorldWind.BingAerialWithLabelsLayer(null), enabled: true},
-                // Add atmosphere layer on top of all base layers.
-                {layer: new WorldWind.AtmosphereLayer(), enabled: true},
-                // WorldWindow UI layers.
-                {layer: new WorldWind.CompassLayer(), enabled: true},
-                {layer: new WorldWind.CoordinatesDisplayLayer(wwd), enabled: true},
-                {layer: new WorldWind.ViewControlsLayer(wwd), enabled: true}
-            ];
-            let showPlacemark;
-            let buttonArray = [];
-
-            for (let l = 0; l < layers.length; l++) {
-                layers[l].layer.enabled = layers[l].enabled;
-                wwd.addLayer(layers[l].layer);
+                }
             }
+        },
 
-            //create canvas for placemarks
-            let canvas = document.createElement("canvas"),
-                ctx2d = canvas.getContext("2d"),
-                size = 64, c = size / 2  - 0.5, innerRadius = 5, outerRadius = 20;
+        // the value axis
+        yAxis: {
+            offset: 0,
+            min: settings.gaugeMinValue,
+            max: settings.gaugeMaxValue,
 
-            canvas.width = size;
-            canvas.height = size;
+            title: false,
 
-            let gradient = ctx2d.createRadialGradient(c, c, innerRadius, c, c, outerRadius);
-            gradient.addColorStop(0, 'rgb(204, 255, 255)');
-            gradient.addColorStop(0.5, 'rgb(102, 153, 255)');
-            gradient.addColorStop(1, 'rgb(102, 0, 255)');
+            minorTickWidth: 0,
+            //the interval of the short line
+            tickPixelInterval: 30,
+            tickWidth: 2,
+            tickPosition: 'outside',
+            //the length of the short line
+            tickLength: 15,
+            tickColor: '#666666',
+            lineColor: '#666666',
+            labels: {
+                //distance between the line and number
+                distance: 25,
+                rotation: "0",
+                step: 2,
+            },
 
-            ctx2d.fillStyle = gradient;
-            ctx2d.arc(c, c, outerRadius, 0, 2 * Math.PI, false);
-            ctx2d.fill();
+            plotBands: [{
+                thickness: 15,
+                outerRadius: "120%",
+                from: -100000,
+                to: -75000,
+                color: '#FB8585' // red
+            }, {
+                thickness: 15,
+                outerRadius: "120%",
+                from: 100000,
+                to: 75000,
+                color: '#FB8585' // red
+            }, {
+                thickness: 15,
+                outerRadius: "120%",
+                from: -50000,
+                to: 50000,
+                color: '#83DAD9'
+            }, {
+                thickness: 15,
+                outerRadius: "120%",
+                from: 50000,
+                to: 75000,
+                color: '#F9E7AE'
+            }, {
+                thickness: 15,
+                outerRadius: "120%",
+                from: -50000,
+                to: -75000,
+                color: '#F9E7AE'
+            }
+            ]
+        },
 
-            $(document).ready(async function () {
+        series: [{
+            type: 'gauge',
+            data: [settings.gaugeStartValue],
+        }, {
+            type : 'pie',
+            innerSize : '96%',
+            data : [{
+                y : settings.gaugeStartValue,
+                name : "",
+                color : "#0bbeba"
+            }, {
+                y : settings.gaugeMaxValue - settings.gaugeStartValue,
+                name : '',
+                color : "#666666"
+            }]
+        }],
 
-                await staQuery();
+        navigation: {
+            buttonOptions: {
+                enabled: false
+            }
+        },
 
-                wwd.goTo(new WorldWind.Position(37.175229, -121.823628, 130000));
+        credits: false
+    };
 
-                setInterval(function () {
-                    // console.log(wwd.worldWindowController.wwd.eventListeners);
-                    staQuery()}, 1200000);
+    let ini = true;
+    let degrees = 0;
+    let chartDT = "1d";
+    let stationsData=[];
+    let showPlacemark;
+    let buttonArray = [];
 
-            });
+    let needle = new Image();
+    needle.src = 'images/needle.png';
 
-            function staQuery() {
-                $.ajax({
-                    // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stations',
-                    url: "http://localhost:3005/stations",
-                    method: "get",
-                    async: false,
-                    success: function(res) {
-                        res.forEach(function(el,i) {
+    let wwd = new WorldWind.WorldWindow("canvasOne");
 
-                            // stationData.length = 0;
-                            stationsData.push(el);
-                            if(stationsData.length > 4){
-                                stationsData.length = 4
-                            }
-                            query(el);
+    // Create and add layers to the WorldWindow.
+    let layers = [
+        // Imagery layers.
+        {layer: new WorldWind.BMNGLayer(), enabled: true},
+        {layer: new WorldWind.BMNGLandsatLayer(), enabled: false},
+        {layer: new WorldWind.BingAerialWithLabelsLayer(null), enabled: true},
+        // Add atmosphere layer on top of all base layers.
+        {layer: new WorldWind.AtmosphereLayer(), enabled: true},
+        // WorldWindow UI layers.
+        {layer: new WorldWind.CompassLayer(), enabled: true},
+        {layer: new WorldWind.CoordinatesDisplayLayer(wwd), enabled: true},
+        {layer: new WorldWind.ViewControlsLayer(wwd), enabled: true}
+    ];
 
-                            if (i == res.length - 1) { ini = false }
-                        });
-                    }
+    for (let l = 0; l < layers.length; l++) {
+        layers[l].layer.enabled = layers[l].enabled;
+        wwd.addLayer(layers[l].layer);
+    }
+
+    //create canvas for placemarks
+    let canvas = document.createElement("canvas"),
+        ctx2d = canvas.getContext("2d"),
+        size = 64, c = size / 2  - 0.5, innerRadius = 5, outerRadius = 20;
+
+    canvas.width = size;
+    canvas.height = size;
+
+    let gradient = ctx2d.createRadialGradient(c, c, innerRadius, c, c, outerRadius);
+    gradient.addColorStop(0, 'rgb(204, 255, 255)');
+    gradient.addColorStop(0.5, 'rgb(102, 153, 255)');
+    gradient.addColorStop(1, 'rgb(102, 0, 255)');
+
+    ctx2d.fillStyle = gradient;
+    ctx2d.arc(c, c, outerRadius, 0, 2 * Math.PI, false);
+    ctx2d.fill();
+
+    $(document).ready(async function () {
+
+        await staQuery();
+
+        wwd.goTo(new WorldWind.Position(37.175229, -121.823628, 130000));
+
+        setInterval(function () {
+            staQuery()}, 1200000);
+
+        wwd.addEventListener("wheel",autoS);
+    });
+
+    function staQuery() {
+        $.ajax({
+            url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stations',
+            // url: "http://localhost:3005/stations",
+            method: "get",
+            async: false,
+            success: function(res) {
+                stationsData=[];
+                res.forEach(function(el,i) {
+                    // stationData.length = 0;
+                    stationsData.push(el);
+                    // if(stationsData.length > 4){
+                    //     stationsData.length = 4
+                    // }
+                    query(el, chartDT);
+
+                    if (ini && i == res.length - 1) { ini = false }
                 });
             }
-
-            function building(station){
-                //***station here is an object now, it include name, state, city, and id.
-                // The name of them are StationName,City,State,StationId
-                // So if you need call id now, you should call station.stationId.
-                // I changed the previous codes of you for you already, but you need to remember it for new codes.
-
-                //Notification: space means two classes, '_' means one class.
-
-                //add the button Div
-                let butDiv = document.createElement("div");
-                butDiv.id = station.StationId+"_butDiv";
-                butDiv.setAttribute("style", "display: inline-block; margin-right: 40px;");
-                let br = document.createElement("br");
-                $('#control_button').append(butDiv);
-
-                //add button's title
-                let butTitle = document.createElement("p");
-                butTitle.id = station.StationId+"_butTitle";
-                butTitle.textContent = station.City+", "+station.State;
-
-                //add the control button
-                let button = document.createElement("button");
-                button.id = station.StationId;
-                button.value = station.StationId;
-                button.textContent = station.StationName;
-                button.setAttribute("style", "background-color: gray;");
-                button.setAttribute("onclick", "check(this)");
-                button.onclick = function () {
-                    check(this);
-                };
-                $('#'+station.StationId+"_butDiv").append(button).append(butTitle);
-
-                //add gauge title
-                let Gtitle = document.createElement("h2");
-                Gtitle.className = station.StationId;
-                Gtitle.textContent = station.StationName+", "+station.City+", "+station.State;
-                // $('#gauge').append(Gtitle);
-
-                //create canvas for compass
-                let canvasCompass = document.createElement("canvas");
-                canvasCompass.id= station.StationId + "_canvas";
-                canvasCompass.setAttribute("width", 300);
-                canvasCompass.setAttribute("height", 300);
-
-                //create compass div
-                let compassDiv = document.createElement("div");
-                compassDiv.id = station.StationId +'_C';
-                compassDiv.className = station.StationId;
-                compassDiv.setAttribute("style","display:inline-block;");
-                compassDiv.append(canvasCompass);
-
-                //create canvas for y-label of the coordinate
-                let yLabelC = document.createElement("canvas");
-                yLabelC.id = "y-label_" + station.StationId;
-                yLabelC.setAttribute("style","width : 20; height : 270; display: inline-block;");
-                yLabelC.setAttribute("width",20);
-                yLabelC.setAttribute("height",270);
-
-                //create canvas for x-label of the coordinate
-                let xLabelC = document.createElement("canvas");
-                xLabelC.id = "x-label_" + station.StationId;
-                xLabelC.setAttribute("style","display:table-cell; vertical-align: middle;");
-                xLabelC.setAttribute("width",270);
-                xLabelC.setAttribute("height",20);
-
-                //create canvas for the coordinate
-                let depthC = document.createElement("canvas");
-                depthC.id = "depth_" + station.StationId;
-                depthC.setAttribute("style", "display:table-cell; vertical-align: middle;");
-                depthC.setAttribute("width", 270);
-                depthC.setAttribute("height", 300);
-
-                //create a div for x-label and coordinate
-                let verticalDiv = document.createElement("div");
-                verticalDiv.id = "vertical_"+station.StationId;
-                verticalDiv.setAttribute("style","display: inline-block;");
-                verticalDiv.append(xLabelC);
-                verticalDiv.append(depthC);
-
-                //create div for the vector (arrow)
-                let vectorDiv = document.createElement("div");
-                vectorDiv.id = station.StationId+"_D";
-                vectorDiv.className = station.StationId;
-                vectorDiv.setAttribute("style","display: inline-block;");
-                vectorDiv.append(yLabelC);
-                vectorDiv.append(verticalDiv);
-
-                let depDirDiv = document.createElement('div');
-                depDirDiv.className = station;
-                depDirDiv.append(compassDiv);
-                depDirDiv.append(vectorDiv);
-
-                //add gauge Div
-                // let gaugeDiv = document.createElement("div");
-                // gaugeDiv.className = station.StationId+" container";
-                // gaugeDiv.setAttribute("style", "margin: 0 auto; font-size: 16px; left: 90px; width: max-content; display: inline-table;");
-                // // $('#gauge').append(Gtitle).append(compassDiv).append(vectorDiv).append(gaugeDiv);
-                // $('#gauge').append(Gtitle).append(gaugeDiv);
-
-                //add xyz divs into gauge Div
-                let gdivX = document.createElement("div");
-                let gdivY = document.createElement("div");
-                let gdivZ = document.createElement("div");
-                gdivX.className = "contain n0";
-                gdivY.className = "contain n1";
-                gdivZ.className = "contain n2";
-                gdivX.id = station.StationId+"_gaugeX";
-                gdivY.id = station.StationId+"_gaugeY";
-                gdivZ.id = station.StationId+"_gaugeZ";
-                gdivX.setAttribute("style", "float: left; width: 250px; height: 250px; display: inline-table;");
-                gdivY.setAttribute("style", "float: left; width: 250px; height: 250px; display: inline-table;");
-                gdivZ.setAttribute("style", "float: left; width: 250px; height: 250px; display: inline-table;");
-                let b = "."+station.StationId+".container";
-                $(b).append(gdivX).append(gdivY).append(gdivZ);
-
-                //add live chart title
-                let cTitle = document.createElement("h2");
-                cTitle.className = station.StationId;
-                cTitle.textContent = station.StationName;
-
-                //add live chart Div
-                let chartDiv = document.createElement("div");
-                chartDiv.className = station.StationId+" charts";
-                chartDiv.setAttribute("style", "left: 90px; width: max-content; display: inline-table;");
-                $('#live_chart').append(cTitle).append(chartDiv);
-
-                //add xyz divs into live chart Div
-                let cdivX = document.createElement("div");
-                let cdivY = document.createElement("div");
-                let cdivZ = document.createElement("div");
-                cdivX.className = "chart n0";
-                cdivY.className = "chart n1";
-                cdivZ.className = "chart n2";
-                cdivX.id = station.StationId+"_graphX";
-                cdivY.id = station.StationId+"_graphY";
-                cdivZ.id = station.StationId+"_graphZ";
-                cdivX.setAttribute("style", "float: left;");
-                cdivY.setAttribute("style", "float: left;");
-                cdivZ.setAttribute("style", "float: left;");
-                let c = "."+station.StationId+".charts";
-                $(c).append(cdivX).append(cdivY).append(cdivZ);
-            }
-
-            async function query(staInfo) {
-
-                if (ini) {
-                    await building(staInfo);
-                }
-
-                $.ajax({
-                    // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query',
-                    url: "http://localhost:3005/query",
-                    method: "get",
-                    data: {stationID: staInfo.StationId},
-                    success: async function(res){
-
-                        if(!!res){
-                            let x_arr = [];
-                            let y_arr = [];
-                            let z_arr = [];
-
-                            await res.forEach(function(el,i) {
-                                    x_arr[i] = [new Date(el.time), el.X];
-                                    y_arr[i] = [new Date(el.time), el.Y];
-                                    z_arr[i] = [new Date(el.time), el.Z];
-                                }
-                            );
-
-                            // sta = Avg(res,5);
-
-                            let Z = new Dygraph(
-                                // containing div
-                                document.getElementById(staInfo.StationId + "_graphZ"),
-
-                                // CSV or path to a CSV file.
-                                z_arr,
-                                {
-                                    labels: [ "Data", "Z" ],
-                                    animatedZooms: true,
-                                    legend: 'always',
-                                    showRoller: true,
-                                    title: "+Z is positive altitude, -Z is below ground (unit: nT)",
-                                }
-
-                            );
-                            let Y = new Dygraph(
-                                // containing div
-                                document.getElementById(staInfo.StationId + "_graphY"),
-
-                                // CSV or path to a CSV file.
-                                y_arr,
-                                {
-                                    labels: [ "Data", "Y" ],
-                                    animatedZooms: true,
-                                    legend: 'always',
-                                    showRoller: true,
-                                    title: "+Y is east, -Y is west (unit: nT)"
-                                }
-
-                            );
-
-                            let X = new Dygraph(
-                                // containing div
-                                document.getElementById(staInfo.StationId + "_graphX"),
-
-                                // CSV or path to a CSV file.
-                                x_arr,
-                                {
-                                    labels: ["Data", "X"],
-                                    animatedZooms: true,
-                                    legend: 'always',
-                                    showRoller: true,
-                                    title: "+X is north, -X is south (unit: nT)"
-                                }
-                            );
-                            // $('#' + staInfo.StationId + '_gaugeX').highcharts(options, buildGraph);
-                            // $('#' + staInfo.StationId + '_gaugeY').highcharts(options, buildGraph);
-                            // $('#' + staInfo.StationId + '_gaugeZ').highcharts(options, buildGraph);
-
-                            // console.log(staInfo);
-
-                            // console.log(deltaAvg(res, 5));
-
-                            createPL(staInfo,Avg(res,5))
-                        }
-
-                    }
-                });
-            }
-
-            function buildGraph(chart) {
-                let a = $(this)[0].renderTo.className.slice(-1);
-                if (!chart.renderer.forExport) {
-                    let gaugePoint = chart.series[0].points[0];
-                    let newVal = parseInt(sta[a]);
-                    gaugePoint.update(newVal);
-                }
-            }
-
-            function check(objButton) {
-                let x = document.getElementsByClassName(objButton.value);
-                let y = '.'+objButton.value;
-                let z = '#'+objButton.value;
-
-                if(wwd.drawContext.eyePosition.altitude < 200000){
-
-                    if (x[0].style.display === "none") {
-                        //show the placemarks
-                        let index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
-                        wwd.layers[index].enabled = true;
-                        showPlacemark = true;
-                        // console.log(index);
-                        $(y).show();
-                        $(z).css('backgroundColor', 'gray');
-                    } else {
-                        //hide the placemarks
-                        let index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
-                        wwd.layers[index].enabled = false;
-                        showPlacemark = false;
-                        $(y).hide();
-                        $(z).css('backgroundColor', 'white');
-                    }
-
-                }else{
-                    if (x[0].style.display === "none") {
-
-                        //show the placemarks
-                        let index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
-                        wwd.layers[index].enabled = true;
-                        showPlacemark = true;
-                        console.log(index);
-                        $(y).show();
-                        $(z).css('backgroundColor', 'gray');
-
-                    } else {
-                        //hide the placemarks
-                        let index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
-                        wwd.layers[index].enabled = false;
-                        showPlacemark = false;
-                        $(y).hide();
-                        $(z).css('backgroundColor', 'white');
-
-                    }
-                }
-                let object = {"buttonValue": objButton.value, "buttonStatus":showPlacemark};
-                let buttonIndex = buttonArray.findIndex(element => element.buttonValue === objButton.value);
-                if(buttonIndex === -1) {
-                    buttonArray.push(object);
-                }else{
-                    buttonArray[buttonIndex] = object
-                }
-                // console.log(buttonArray);
-            }
-
-            function Avg(res, len) {
-                let xa, ya, za;
-                let arr = res.slice(Math.max(res.length - len, 0));
-                xa = ya = za = 0;
-                for (let i = 0; i < arr.length; i++) {
-                    xa += arr[i].X;
-                    ya += arr[i].Y;
-                    za += arr[i].Z;
-                    if (i == arr.length - 1) {
-                        if (res.length < len) {
-                            xa = xa / res.length;
-                            ya = ya / res.length;
-                            za = za / res.length;
-                            return [xa, ya, za];
-                        } else {
-                            xa = xa / len;
-                            ya = ya / len;
-                            za = za / len;
-                            return [xa, ya, za];
-                        }
-                    }
-                }
-            }
-
-            function deltaAvg(res, len) {
-                if (res.length < len * 2) {
-                    return console.log("Data length is insufficient");
-                } else {
-                    let xa, ya, za;
-                    xa = ya = za = 0;
-                    let sliceDelta = Math.max(res.length - len * 2, 0);
-                    let arrDelta = res.slice(sliceDelta);
-                    for (let i = 0; i < arrDelta.length / 2; i++) {
-
-                        xa += arrDelta[i].X - arrDelta[i + len].X;
-                        ya += arrDelta[i].Y - arrDelta[i + len].Y;
-                        za += arrDelta[i].Z - arrDelta[i + len].Z;
-
-                        if (i == arrDelta.length / 2 - 1) {
-                            xa = xa / len;
-                            ya = ya / len;
-                            za = za / len;
-                            return [xa, ya, za];
-                        }
-                    }
-                }
-            }
-
-            function calcAngleDegrees(x, y) {
-                return Math.atan2(y, x) * 180 / Math.PI;
-            }
-
-            function createPL(stationData,staAvg) {
-
-                if(!!staAvg){
-
-                    degrees = calcAngleDegrees(staAvg[0], staAvg[1]);
-
-                    if(wwd.layers.length > layers.length + 3){
-                        for (let a = 0; a < wwd.layers.length; a++){
-                            if(wwd.layers[a].displayName === "Placemarks"+stationData.StationId){
-                                wwd.layers[a].renderables.length = 0;
-                                wwd.layers.splice(a,1);
-                            }
-                            if(wwd.layers[a].displayName === "customPlacemarks" + stationData.StationId){
-                                wwd.layers[a].renderables.length = 0;
-                                wwd.layers.splice(a,1);
-                            }
-                        }
-                    }
-                }else {
-
-                    degrees = 0;
-
-                    if(wwd.layers.length > layers.length + 3){
-                        for (let a = 0; a < wwd.layers.length; a++){
-                            if(wwd.layers[a].displayName === "Placemarks"+stationData.StationId){
-                                wwd.layers[a].renderables.length = 0;
-                                wwd.layers.splice(a,1);
-                            }
-                            if(wwd.layers[a].displayName === "customPlacemarks" + stationData.StationId){
-                                wwd.layers[a].renderables.length = 0;
-                                wwd.layers.splice(a,1);
-                            }
-                        }
-                    }
-                }
-
-                let needleCanvas = document.createElement("canvas");
-                needleCanvas.id= stationData.StationId + "_needle";
-                needleCanvas.width = 300;
-                needleCanvas.height = 300;
-                let ctx2d = needleCanvas.getContext("2d");
-
-                let placemark,
-                    placemarkN,
-                    placemarkAttributes = new WorldWind.PlacemarkAttributes(null),
-                    placemarkAttributesN = new WorldWind.PlacemarkAttributes(null),
-                    highlightAttributes,
-                    placemarkLayer = new WorldWind.RenderableLayer("Placemarks" + stationData.StationId),
-                    placemarkLayerN = new WorldWind.RenderableLayer("customPlacemarks" + stationData.StationId),
-                    latitude = stationData.Latitude,
-                    longitude = stationData.Longitude;
-
-                //set attribute for one placemark
-                placemarkAttributes.imageScale = 0.3;
-                placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
-                    WorldWind.OFFSET_FRACTION, 0.5);
-                placemarkAttributes.imageColor = WorldWind.Color.WHITE;
-                placemarkAttributes.labelAttributes.scale = 0;
-
-                //set attribute for another placemark
-                placemarkAttributesN.imageScale = 0.3;
-                placemarkAttributesN.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
-                    WorldWind.OFFSET_FRACTION, 0.5);
-                placemarkAttributesN.imageColor = WorldWind.Color.WHITE;
-                placemarkAttributesN.labelAttributes.scale = 0;
-
-
-                ctx2d.clearRect(0, 0, needleCanvas.width, needleCanvas.width);
-                ctx2d.save();
-                // setInterval(interval,5000);
-                ctx2d.translate(153, 140);
-
-                // Rotate around this point
-                ctx2d.rotate(degrees * (Math.PI / 180));
-                // console.log(degrees);
-                ctx2d.drawImage(needle, -172, -172);
-                ctx2d.restore();
-
-                //set attributes
-                placemarkAttributes.imageScale = 0.5;
-                placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
-                    WorldWind.OFFSET_FRACTION, 0.5);
-                placemarkAttributes.imageColor = WorldWind.Color.WHITE;
-                placemarkAttributes.labelAttributes.color = WorldWind.Color.YELLOW;
-                placemarkAttributes.labelAttributes.offset = new WorldWind.Offset(
-                    WorldWind.OFFSET_FRACTION, 0.5,
-                    WorldWind.OFFSET_FRACTION, 1.0);
-                placemarkAttributes.leaderLineAttributes.outlineColor = WorldWind.Color.RED;
-                placemark = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, 1e2), true, null);
-                placemark.label = stationData.StationName + "\n";
-                // + "Lat " + latitude + "\n"
-                // + "Lon " + longitude;
-
-                placemarkAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
-                // placemarkAttributes.imageSource =WorldWind.configuration.baseUrl + "images/pushpins/"
-
-                placemarkAttributes.imageSource = new WorldWind.ImageSource(needleCanvas);
-                placemark.attributes = placemarkAttributes;
-
-                highlightAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
-                highlightAttributes.imageScale = 1.2;
-                placemark.highlightAttributes = highlightAttributes;
-
-                placemarkN = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, 1e2), false, null);
-                placemarkN.altitudeMode = WorldWind.RELATIVE_TO_GROUND;
-                // placemarkN.enabled = false;
-                // console.log(placemarkN);
-
-                // Create the placemark attributes for the placemark.
-                placemarkAttributesN = new WorldWind.PlacemarkAttributes(placemarkAttributesN);
-
-                // Wrap the canvas created above in an ImageSource object to specify it as the placemark image source.
-                placemarkAttributesN.imageSource = new WorldWind.ImageSource(canvas);
-                placemarkN.attributes = placemarkAttributesN;
-                placemarkLayerN.enabled = false;
-
-                // console.log(placemarkLayerN);
-
-                placemarkLayerN.addRenderable(placemarkN);
-                placemarkLayer.addRenderable(placemark);
-                wwd.addLayer(placemarkLayer);
-                wwd.addLayer(placemarkLayerN);
-                // console.log(wwd.layers);
-                // layerManager.synchronizeLayerList();
-                autoS();
-
-            }
-
-            function autoS() {
-                if(wwd.drawContext.eyePosition.altitude > 200000){
-                    for(let i= 0; i < stationsData.length; i++){
-                        let index = wwd.layers.findIndex(element => element.displayName === "Placemarks" + stationsData[i].StationId);
-                        let indexN = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" + stationsData[i].StationId);
-                        let buttonIndex = buttonArray.findIndex(element => element.buttonValue === stationsData[i].StationId);
-
-                        if(index > -1 ){
-                            wwd.layers[index].enabled = false;
-                        }
-                        if(indexN >-1){
-                            if(buttonIndex > -1){
-                                wwd.layers[indexN].enabled = buttonArray[buttonIndex].buttonStatus
-                            }else{
-                                wwd.layers[indexN].enabled = true;
-                            }
-                        }
-                    }
-
-                } else{
-                    for(let a= 0; a < stationsData.length; a++){
-                        let Index = wwd.layers.findIndex(element => element.displayName === "Placemarks" + stationsData[a].StationId);
-                        let IndexN = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" + stationsData[a].StationId);
-                        let buttonIndex = buttonArray.findIndex(element => element.buttonValue === stationsData[a].StationId);
-                        if(Index >-1 ){
-                            if(buttonIndex > -1){
-                                wwd.layers[Index].enabled = buttonArray[buttonIndex].buttonStatus
-                            }else{
-                                wwd.layers[Index].enabled = true;
-                            }
-                        }
-                        if(IndexN >-1 ){
-                            wwd.layers[IndexN].enabled = false;
-                        }
-                    }
-
-                }
-            }
-
-            wwd.addEventListener("wheel",autoS);
-
         });
+    }
 
+    function building(station){
+        //***station here is an object now, it include name, state, city, and id.
+        // The name of them are StationName,City,State,StationId
+        // So if you need call id now, you should call station.stationId.
+        // I changed the previous codes of you for you already, but you need to remember it for new codes.
+
+        //Notification: space means two classes, '_' means one class.
+
+        //add the button Div
+        let butDiv = document.createElement("div");
+        butDiv.id = station.StationId+"_butDiv";
+        butDiv.setAttribute("style", "display: inline-block; margin-right: 40px;");
+        let br = document.createElement("br");
+        $('#control_button').append(butDiv);
+
+        //add button's title
+        let butTitle = document.createElement("p");
+        butTitle.id = station.StationId+"_butTitle";
+        butTitle.textContent = station.City+", "+station.State;
+
+        //add the control button
+        let button = document.createElement("button");
+        button.id = station.StationId;
+        button.value = station.StationId;
+        button.textContent = station.StationName;
+        button.setAttribute("style", "background-color: gray;");
+        button.setAttribute("onclick", "check(this)");
+        button.onclick = function () {
+            check(this);
+        };
+        $('#'+station.StationId+"_butDiv").append(button).append(butTitle);
+
+        //add gauge title
+        let Gtitle = document.createElement("h2");
+        Gtitle.className = station.StationId;
+        Gtitle.textContent = station.StationName+", "+station.City+", "+station.State;
+        // $('#gauge').append(Gtitle);
+
+        //create canvas for compass
+        let canvasCompass = document.createElement("canvas");
+        canvasCompass.id= station.StationId + "_canvas";
+        canvasCompass.setAttribute("width", 300);
+        canvasCompass.setAttribute("height", 300);
+
+        //create compass div
+        let compassDiv = document.createElement("div");
+        compassDiv.id = station.StationId +'_C';
+        compassDiv.className = station.StationId;
+        compassDiv.setAttribute("style","display:inline-block;");
+        compassDiv.append(canvasCompass);
+
+        //create canvas for y-label of the coordinate
+        let yLabelC = document.createElement("canvas");
+        yLabelC.id = "y-label_" + station.StationId;
+        yLabelC.setAttribute("style","width : 20; height : 270; display: inline-block;");
+        yLabelC.setAttribute("width",20);
+        yLabelC.setAttribute("height",270);
+
+        //create canvas for x-label of the coordinate
+        let xLabelC = document.createElement("canvas");
+        xLabelC.id = "x-label_" + station.StationId;
+        xLabelC.setAttribute("style","display:table-cell; vertical-align: middle;");
+        xLabelC.setAttribute("width",270);
+        xLabelC.setAttribute("height",20);
+
+        //create canvas for the coordinate
+        let depthC = document.createElement("canvas");
+        depthC.id = "depth_" + station.StationId;
+        depthC.setAttribute("style", "display:table-cell; vertical-align: middle;");
+        depthC.setAttribute("width", 270);
+        depthC.setAttribute("height", 300);
+
+        //create a div for x-label and coordinate
+        let verticalDiv = document.createElement("div");
+        verticalDiv.id = "vertical_"+station.StationId;
+        verticalDiv.setAttribute("style","display: inline-block;");
+        verticalDiv.append(xLabelC);
+        verticalDiv.append(depthC);
+
+        //create div for the vector (arrow)
+        let vectorDiv = document.createElement("div");
+        vectorDiv.id = station.StationId+"_D";
+        vectorDiv.className = station.StationId;
+        vectorDiv.setAttribute("style","display: inline-block;");
+        vectorDiv.append(yLabelC);
+        vectorDiv.append(verticalDiv);
+
+        let depDirDiv = document.createElement('div');
+        depDirDiv.className = station;
+        depDirDiv.append(compassDiv);
+        depDirDiv.append(vectorDiv);
+
+        //add gauge Div
+        // let gaugeDiv = document.createElement("div");
+        // gaugeDiv.className = station.StationId+" container";
+        // gaugeDiv.setAttribute("style", "margin: 0 auto; font-size: 16px; left: 90px; width: max-content; display: inline-table;");
+        // // $('#gauge').append(Gtitle).append(compassDiv).append(vectorDiv).append(gaugeDiv);
+        // $('#gauge').append(Gtitle).append(gaugeDiv);
+
+        //add xyz divs into gauge Div
+        let gdivX = document.createElement("div");
+        let gdivY = document.createElement("div");
+        let gdivZ = document.createElement("div");
+        gdivX.className = "contain n0";
+        gdivY.className = "contain n1";
+        gdivZ.className = "contain n2";
+        gdivX.id = station.StationId+"_gaugeX";
+        gdivY.id = station.StationId+"_gaugeY";
+        gdivZ.id = station.StationId+"_gaugeZ";
+        gdivX.setAttribute("style", "float: left; width: 250px; height: 250px; display: inline-table;");
+        gdivY.setAttribute("style", "float: left; width: 250px; height: 250px; display: inline-table;");
+        gdivZ.setAttribute("style", "float: left; width: 250px; height: 250px; display: inline-table;");
+        let b = "."+station.StationId+".container";
+        $(b).append(gdivX).append(gdivY).append(gdivZ);
+
+        //add live chart title
+        let cTitle = document.createElement("h2");
+        cTitle.className = station.StationId;
+        cTitle.textContent = station.StationName;
+
+        //add live chart Div
+        let chartDiv = document.createElement("div");
+        chartDiv.className = station.StationId+" charts";
+        chartDiv.setAttribute("style", "left: 90px; width: max-content; display: inline-table;");
+        $('#live_chart').append(cTitle).append(chartDiv);
+
+        //add xyz divs into live chart Div
+        let cdivX = document.createElement("div");
+        let cdivY = document.createElement("div");
+        let cdivZ = document.createElement("div");
+        cdivX.className = "chart n0";
+        cdivY.className = "chart n1";
+        cdivZ.className = "chart n2";
+        cdivX.id = station.StationId+"_graphX";
+        cdivY.id = station.StationId+"_graphY";
+        cdivZ.id = station.StationId+"_graphZ";
+        cdivX.setAttribute("style", "float: left;");
+        cdivY.setAttribute("style", "float: left;");
+        cdivZ.setAttribute("style", "float: left;");
+        let c = "."+station.StationId+".charts";
+        $(c).append(cdivX).append(cdivY).append(cdivZ);
+    }
+
+    async function query(staInfo, chartD) {
+
+        if (ini) {
+            await building(staInfo);
+        }
+
+        $.ajax({
+            url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query',
+            // url: "http://localhost:3005/query",
+            method: "get",
+            data: {stationID: staInfo.StationId, chartDuration: chartD},
+            success: async function(res){
+                if(!!res){
+                    let x_arr = [];
+                    let y_arr = [];
+                    let z_arr = [];
+
+                    await res.forEach(function(el,i) {
+                            x_arr[i] = [new Date(el.time), el.X];
+                            y_arr[i] = [new Date(el.time), el.Y];
+                            z_arr[i] = [new Date(el.time), el.Z];
+                        }
+                    );
+
+                    // sta = Avg(res,5);
+
+                    let Z = new Dygraph(
+                        // containing div
+                        document.getElementById(staInfo.StationId + "_graphZ"),
+
+                        // CSV or path to a CSV file.
+                        z_arr,
+                        {
+                            labels: [ "Data", "Z" ],
+                            animatedZooms: true,
+                            legend: 'always',
+                            showRoller: true,
+                            title: "+Z is positive altitude, -Z is below ground (unit: nT)",
+                        }
+
+                    );
+                    let Y = new Dygraph(
+                        // containing div
+                        document.getElementById(staInfo.StationId + "_graphY"),
+
+                        // CSV or path to a CSV file.
+                        y_arr,
+                        {
+                            labels: [ "Data", "Y" ],
+                            animatedZooms: true,
+                            legend: 'always',
+                            showRoller: true,
+                            title: "+Y is east, -Y is west (unit: nT)"
+                        }
+
+                    );
+
+                    let X = new Dygraph(
+                        // containing div
+                        document.getElementById(staInfo.StationId + "_graphX"),
+
+                        // CSV or path to a CSV file.
+                        x_arr,
+                        {
+                            labels: ["Data", "X"],
+                            animatedZooms: true,
+                            legend: 'always',
+                            showRoller: true,
+                            title: "+X is north, -X is south (unit: nT)"
+                        }
+                    );
+                    // $('#' + staInfo.StationId + '_gaugeX').highcharts(options, buildGraph);
+                    // $('#' + staInfo.StationId + '_gaugeY').highcharts(options, buildGraph);
+                    // $('#' + staInfo.StationId + '_gaugeZ').highcharts(options, buildGraph);
+
+                    createPL(staInfo,Avg(res,5))
+                }
+
+            }
+        });
+    }
+
+    function buildGraph(chart) {
+        let a = $(this)[0].renderTo.className.slice(-1);
+        if (!chart.renderer.forExport) {
+            let gaugePoint = chart.series[0].points[0];
+            let newVal = parseInt(sta[a]);
+            gaugePoint.update(newVal);
+        }
+    }
+
+    function chartDFun(objButton) {
+        // get button value to reset chart duration time
+        chartDT = objButton.value;
+
+        // disable this button and enable previous button disabled
+        $(".chartsB").prop('disabled', false);
+        $("#"+objButton.value).prop('disabled', true);
+        $("#chartText").html(objButton.textContent);
+
+        // refresh the chart data
+        staQuery()
+    }
+
+    function check(objButton) {
+        let x = document.getElementsByClassName(objButton.value);
+        let y = '.'+objButton.value;
+        let z = '#'+objButton.value;
+
+        if(wwd.drawContext.eyePosition.altitude < 200000){
+
+            if (x[0].style.display === "none") {
+                //show the placemarks
+                let index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
+                wwd.layers[index].enabled = true;
+                showPlacemark = true;
+                $(y).show();
+                $(z).css('backgroundColor', 'gray');
+            } else {
+                //hide the placemarks
+                let index = wwd.layers.findIndex(element => element.displayName === "Placemarks" +objButton.value);
+                wwd.layers[index].enabled = false;
+                showPlacemark = false;
+                $(y).hide();
+                $(z).css('backgroundColor', 'white');
+            }
+
+        }else{
+            if (x[0].style.display === "none") {
+
+                //show the placemarks
+                let index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
+                wwd.layers[index].enabled = true;
+                showPlacemark = true;
+                $(y).show();
+                $(z).css('backgroundColor', 'gray');
+
+            } else {
+                //hide the placemarks
+                let index = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" +objButton.value);
+                wwd.layers[index].enabled = false;
+                showPlacemark = false;
+                $(y).hide();
+                $(z).css('backgroundColor', 'white');
+
+            }
+        }
+        let object = {"buttonValue": objButton.value, "buttonStatus":showPlacemark};
+        let buttonIndex = buttonArray.findIndex(element => element.buttonValue === objButton.value);
+        if(buttonIndex === -1) {
+            buttonArray.push(object);
+        }else{
+            buttonArray[buttonIndex] = object
+        }
+    }
+
+    function Avg(res, len) {
+        let xa, ya, za;
+        let arr = res.slice(Math.max(res.length - len, 0));
+        xa = ya = za = 0;
+        for (let i = 0; i < arr.length; i++) {
+            xa += arr[i].X;
+            ya += arr[i].Y;
+            za += arr[i].Z;
+            if (i == arr.length - 1) {
+                if (res.length < len) {
+                    xa = xa / res.length;
+                    ya = ya / res.length;
+                    za = za / res.length;
+                    return [xa, ya, za];
+                } else {
+                    xa = xa / len;
+                    ya = ya / len;
+                    za = za / len;
+                    return [xa, ya, za];
+                }
+            }
+        }
+    }
+
+    function deltaAvg(res, len) {
+        if (res.length < len * 2) {
+            return console.log("Data length is insufficient");
+        } else {
+            let xa, ya, za;
+            xa = ya = za = 0;
+            let sliceDelta = Math.max(res.length - len * 2, 0);
+            let arrDelta = res.slice(sliceDelta);
+            for (let i = 0; i < arrDelta.length / 2; i++) {
+
+                xa += arrDelta[i].X - arrDelta[i + len].X;
+                ya += arrDelta[i].Y - arrDelta[i + len].Y;
+                za += arrDelta[i].Z - arrDelta[i + len].Z;
+
+                if (i == arrDelta.length / 2 - 1) {
+                    xa = xa / len;
+                    ya = ya / len;
+                    za = za / len;
+                    return [xa, ya, za];
+                }
+            }
+        }
+    }
+
+    function calcAngleDegrees(x, y) {
+        return Math.atan2(y, x) * 180 / Math.PI;
+    }
+
+    function createPL(stationData,staAvg) {
+
+        if(!!staAvg){
+
+            degrees = calcAngleDegrees(staAvg[0], staAvg[1]);
+
+            if(wwd.layers.length > layers.length + 3){
+                for (let a = 0; a < wwd.layers.length; a++){
+                    if(wwd.layers[a].displayName === "Placemarks"+stationData.StationId){
+                        wwd.layers[a].renderables.length = 0;
+                        wwd.layers.splice(a,1);
+                    }
+                    if(wwd.layers[a].displayName === "customPlacemarks" + stationData.StationId){
+                        wwd.layers[a].renderables.length = 0;
+                        wwd.layers.splice(a,1);
+                    }
+                }
+            }
+        }else {
+
+            degrees = 0;
+
+            if(wwd.layers.length > layers.length + 3){
+                for (let a = 0; a < wwd.layers.length; a++){
+                    if(wwd.layers[a].displayName === "Placemarks"+stationData.StationId){
+                        wwd.layers[a].renderables.length = 0;
+                        wwd.layers.splice(a,1);
+                    }
+                    if(wwd.layers[a].displayName === "customPlacemarks" + stationData.StationId){
+                        wwd.layers[a].renderables.length = 0;
+                        wwd.layers.splice(a,1);
+                    }
+                }
+            }
+        }
+
+        let needleCanvas = document.createElement("canvas");
+        needleCanvas.id= stationData.StationId + "_needle";
+        needleCanvas.width = 300;
+        needleCanvas.height = 300;
+        let ctx2d = needleCanvas.getContext("2d");
+
+        let placemark,
+            placemarkN,
+            placemarkAttributes = new WorldWind.PlacemarkAttributes(null),
+            placemarkAttributesN = new WorldWind.PlacemarkAttributes(null),
+            highlightAttributes,
+            placemarkLayer = new WorldWind.RenderableLayer("Placemarks" + stationData.StationId),
+            placemarkLayerN = new WorldWind.RenderableLayer("customPlacemarks" + stationData.StationId),
+            latitude = stationData.Latitude,
+            longitude = stationData.Longitude;
+
+        //set attribute for one placemark
+        placemarkAttributes.imageScale = 0.3;
+        placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
+            WorldWind.OFFSET_FRACTION, 0.5);
+        placemarkAttributes.imageColor = WorldWind.Color.WHITE;
+        placemarkAttributes.labelAttributes.scale = 0;
+
+        //set attribute for another placemark
+        placemarkAttributesN.imageScale = 0.3;
+        placemarkAttributesN.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
+            WorldWind.OFFSET_FRACTION, 0.5);
+        placemarkAttributesN.imageColor = WorldWind.Color.WHITE;
+        placemarkAttributesN.labelAttributes.scale = 0;
+
+
+        ctx2d.clearRect(0, 0, needleCanvas.width, needleCanvas.width);
+        ctx2d.save();
+        // setInterval(interval,5000);
+        ctx2d.translate(153, 140);
+
+        // Rotate around this point
+        ctx2d.rotate(degrees * (Math.PI / 180));
+        ctx2d.drawImage(needle, -172, -172);
+        ctx2d.restore();
+
+        //set attributes
+        placemarkAttributes.imageScale = 0.5;
+        placemarkAttributes.imageOffset = new WorldWind.Offset(WorldWind.OFFSET_FRACTION, 0.5,
+            WorldWind.OFFSET_FRACTION, 0.5);
+        placemarkAttributes.imageColor = WorldWind.Color.WHITE;
+        placemarkAttributes.labelAttributes.color = WorldWind.Color.YELLOW;
+        placemarkAttributes.labelAttributes.offset = new WorldWind.Offset(
+            WorldWind.OFFSET_FRACTION, 0.5,
+            WorldWind.OFFSET_FRACTION, 1.0);
+        placemarkAttributes.leaderLineAttributes.outlineColor = WorldWind.Color.RED;
+        placemark = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, 1e2), true, null);
+        placemark.label = stationData.StationName + "\n";
+        // + "Lat " + latitude + "\n"
+        // + "Lon " + longitude;
+
+        placemarkAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
+        // placemarkAttributes.imageSource =WorldWind.configuration.baseUrl + "images/pushpins/"
+
+        placemarkAttributes.imageSource = new WorldWind.ImageSource(needleCanvas);
+        placemark.attributes = placemarkAttributes;
+
+        highlightAttributes = new WorldWind.PlacemarkAttributes(placemarkAttributes);
+        highlightAttributes.imageScale = 1.2;
+        placemark.highlightAttributes = highlightAttributes;
+
+        placemarkN = new WorldWind.Placemark(new WorldWind.Position(latitude, longitude, 1e2), false, null);
+        placemarkN.altitudeMode = WorldWind.RELATIVE_TO_GROUND;
+        // placemarkN.enabled = false;
+
+        // Create the placemark attributes for the placemark.
+        placemarkAttributesN = new WorldWind.PlacemarkAttributes(placemarkAttributesN);
+
+        // Wrap the canvas created above in an ImageSource object to specify it as the placemark image source.
+        placemarkAttributesN.imageSource = new WorldWind.ImageSource(canvas);
+        placemarkN.attributes = placemarkAttributesN;
+        placemarkLayerN.enabled = false;
+
+        placemarkLayerN.addRenderable(placemarkN);
+        placemarkLayer.addRenderable(placemark);
+        wwd.addLayer(placemarkLayer);
+        wwd.addLayer(placemarkLayerN);
+
+        // layerManager.synchronizeLayerList();
+        autoS();
+    }
+
+    function autoS() {
+        if(wwd.drawContext.eyePosition.altitude > 200000){
+            for(let i= 0; i < stationsData.length; i++){
+                let index = wwd.layers.findIndex(element => element.displayName === "Placemarks" + stationsData[i].StationId);
+                let indexN = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" + stationsData[i].StationId);
+                let buttonIndex = buttonArray.findIndex(element => element.buttonValue === stationsData[i].StationId);
+
+                if(index > -1 ){
+                    wwd.layers[index].enabled = false;
+                }
+                if(indexN >-1){
+                    if(buttonIndex > -1){
+                        wwd.layers[indexN].enabled = buttonArray[buttonIndex].buttonStatus
+                    }else{
+                        wwd.layers[indexN].enabled = true;
+                    }
+                }
+            }
+
+        } else{
+            for(let a= 0; a < stationsData.length; a++){
+                let Index = wwd.layers.findIndex(element => element.displayName === "Placemarks" + stationsData[a].StationId);
+                let IndexN = wwd.layers.findIndex(element => element.displayName === "customPlacemarks" + stationsData[a].StationId);
+                let buttonIndex = buttonArray.findIndex(element => element.buttonValue === stationsData[a].StationId);
+                if(Index >-1 ){
+                    if(buttonIndex > -1){
+                        wwd.layers[Index].enabled = buttonArray[buttonIndex].buttonStatus
+                    }else{
+                        wwd.layers[Index].enabled = true;
+                    }
+                }
+                if(IndexN >-1 ){
+                    wwd.layers[IndexN].enabled = false;
+                }
+            }
+
+        }
+    }
 
 </script>
 
