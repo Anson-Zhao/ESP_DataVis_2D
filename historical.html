@@ -214,8 +214,8 @@
         option.textContent = station.StationName+", "+station.City+", "+station.State;
         option.value = JSON.stringify({'stationName':station.StationName,'stationId':station.StationId});
         $('#station').append(option);
-        console.log(option);
-        console.log("option appended")
+        // console.log(option);
+        // console.log("option appended")
     }
 
     var timeFrom,timeTo,stationIs,querystr;
@@ -242,6 +242,7 @@
     var z_arr = [];
 
     var queryAndDisplay = function () {
+        console.log(timeFrom, timeTo, stationIs);
         $.ajax({
             // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newWind',
             url: 'http://localhost:3005/newWind',
