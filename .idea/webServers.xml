@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="1324e6aa-e109-48d0-8764-282f10784a33" name="mockup.esp" url="http://localhost/">
+      <webServer id="1324e6aa-e109-48d0-8764-282f10784a33" name="mockup.esp" url="">
         <fileTransfer rootFolder="/var/www/espmockup" accessType="SFTP" host="mockup.esp.aworldbridgelabs.com" port="5532" sshConfigId="bc0ab329-5e03-430e-a3a1-f761b5ac85f6" sshConfig="mockupESP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
