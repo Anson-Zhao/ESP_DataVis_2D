@@ -146,6 +146,7 @@ async function moon(timeFrom,timeTo,Flag,Pair,email){
 function pair(Flag,Pair,email) {
     console.log("Pair running")
     var i
+    //checking x
     for (i=0;i<Flag.length;i++){
         for (var b = 0; b < Flag[i][1].length-1; b++) {
             if (Date.parse(Flag[i][1][b + 1].time) - Date.parse(Flag[i][1][b].time) < 11000000 && Flag[i][1][b].Diff * Flag[i][1][b + 1].Diff < 0) {
@@ -163,6 +164,7 @@ function pair(Flag,Pair,email) {
 
             }
         }
+        //checking y
         for (var a = 0; a < Flag[i][2].length-1; a++) {
             if (Date.parse(Flag[i][2][a + 1].time) - Date.parse(Flag[i][2][a].time) < 11000000 && Flag[i][2][a].Diff * Flag[i][2][a + 1].Diff < 0) {
                 var array2=[];
@@ -407,7 +409,7 @@ function alarm(city,state,lo,la,timeFrom,timeTo,stationId,stationName,email,
             +'&timeFrom2='+timeFrom2+'&timeTo2='+timeTo2+'&city2='+city2+'&state2='+state2+'&lo2='+lo2+'&la2='+la2+'&stationName2='+stationName2+'&stationId2='+stationId2
             +'&bdx='+bd1x+'&bdy='+bd1y+'&bdx2='+bd2x+'&bdy2='+bd2y+'">' +
             'From ' + timeFrom + " to " + timeTo + ", there is an anomaly happened on station " + stationName
-            + ". At the same time, there is an anomaly happened on station "+ stationName2+", and the time range is "+timeFrom2+" to "+timeTo2+". Notification: The time periods here are using x's time as a reference."+'</a></p>'
+            + ". At the same time, there is an anomaly happened on station "+ stationName2+", and the time range is "+timeFrom2+" to "+timeTo2+". Notification: The time periods here are using the widest time(xUy) as a reference."+'</a></p>'
 
     };
     transporter.sendMail(mailOptions, function(error, info){
@@ -467,13 +469,13 @@ async function EventCheck(stations,Flag,Pair,email){
         var test='SELECT * FROM ' + stations[i].StationId + 'avg WHERE time >='+ ' \'2020-10-15T00:00:10Z\''+ ' AND '+'time<= \'2020-10-24T00:00:50Z\'';
         // console.log(test);
         // console.log(querystatement);
-        await influx.query(test).then
+        await influx.query(querystatement).then
         (result => {
             console.log('this is result');
             console.log(result.length);
             // console.log(result);
             // console.log(result[0].X);
-            // console.log(result[0].Y);
+            // console.log(re                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               sult[0].Y);
             // console.log(result[0].Z);
             // console.log(i+querystatement);
             // console.log(result[0].time._nanoISO);
@@ -539,8 +541,8 @@ async function EventCheck(stations,Flag,Pair,email){
         }
     }
 
-    // setInterval(function () {
-    //     EventCheck(EQstations,FlagN,PairN,DeEmail)}, 300000);
+    setInterval(function () {
+        EventCheck(EQstations,FlagN,PairN,DeEmail)}, 300000);
     setInterval(function () {
         Delete(PairN)}, 300000);
 }
