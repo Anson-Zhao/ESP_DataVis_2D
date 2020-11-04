@@ -16093,10 +16093,12 @@ define('../../src/util/measure/AreaMeasurer',[
 define('../../src/WWConf',[], function () {
     let WWConf = {
         // CORS_Proxy: 'http://10.11.90.16:9084/',
-        CORS_Proxy: 'https://cors.aworldbridgelabs.com:9084/',
-        // CORS_Proxy: '',
-        Elev_Svr:  'http://emxsys.net/worldwind26/elev',
-        Wms_Svr: 'http://emxsys.net/worldwind25/wms',
+        // CORS_Proxy: 'https://cors.aworldbridgelabs.com:9084/',
+        CORS_Proxy: '',
+        // Elev_Svr:  'http://emxsys.net/worldwind26/elev',
+        Elev_Svr:  'https://worldwind26.arc.nasa.gov/elev',
+        // Wms_Svr: 'http://emxsys.net/worldwind25/wms',
+        Wms_Svr: 'https://worldwind25.arc.nasa.gov/wms',
         Virtual_Earth: 'https://worldwind27.arc.nasa.gov/wms/virtualearth'
     };
     return WWConf;
