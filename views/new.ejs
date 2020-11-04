@@ -390,7 +390,7 @@
     wwd.goTo(new WorldWind.Position(36.375229, -121.823628, 600000));
 
     $.ajax({
-        // url: 'https://mockup.esp.aworldbridgelabs.com:3005/stationsForN',
+        // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stationsForN',
         url: "http://localhost:3005/stationsForN",
         method: "get",
         async: false,
@@ -447,7 +447,7 @@
         drawArrows(station);
 
         $.ajax({
-            // url: 'https://mockup.esp.aworldbridgelabs.com:3005/newWind',
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newWind',
             url: 'http://localhost:3005/newWind',
             type: 'GET',
             // dataType: 'json',

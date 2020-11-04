@@ -281,7 +281,7 @@
 
     function staQuery() {
         $.ajax({
-            // url: 'https://mockup.esp.aworldbridgelabs.com:3005/stations',
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stations',
             url: "http://localhost:3005/stations",
             method: "get",
             async: false,
@@ -451,7 +451,7 @@
         }
 
         $.ajax({
-            // url: 'https://mockup.esp.aworldbridgelabs.com:3005/query',
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/query',
             url: "http://localhost:3005/query",
             method: "get",
             data: {stationID: staInfo.StationId, chartDuration: chartD},
