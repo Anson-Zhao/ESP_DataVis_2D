@@ -19,11 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="remove cors">
+    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="add cors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/new.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/new.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,14 +282,7 @@
       <workItem from="1602088634449" duration="2972000" />
       <workItem from="1602690347309" duration="325000" />
       <workItem from="1604422029858" duration="4675000" />
-      <workItem from="1604522372182" duration="388000" />
-    </task>
-    <task id="LOCAL-00033" summary="V1.42">
-      <created>1581523774078</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1581523774078</updated>
+      <workItem from="1604522372182" duration="1079000" />
     </task>
     <task id="LOCAL-00034" summary="V1.42">
       <created>1581611258656</created>
@@ -630,7 +620,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604515552144</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="add cors">
+      <created>1604522771353</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1604522771353</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -668,7 +665,8 @@
     <MESSAGE value="clean up console.log" />
     <MESSAGE value="V2" />
     <MESSAGE value="remove cors" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove cors" />
+    <MESSAGE value="add cors" />
+    <option name="LAST_COMMIT_MESSAGE" value="add cors" />
   </component>
   <component name="WindowStateProjectService">
     <state x="597" y="57" width="1200" height="992" key="#Deployment" timestamp="1604506091094">
@@ -696,11 +694,11 @@
     <state x="240" y="23" key="CommitChangelistDialog2/0.23.2048.1061@0.23.2048.1061" timestamp="1603813902221" />
     <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1316@0.23.2560.1316" timestamp="1603296425890" />
     <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1318@0.23.2560.1318" timestamp="1603901336458" />
-    <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog" timestamp="1604515439791">
+    <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog" timestamp="1604522952760">
       <screen x="0" y="23" width="2560" height="1318" />
     </state>
     <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1604515051821" />
-    <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog/0.23.2560.1318@0.23.2560.1318" timestamp="1604515439791" />
+    <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog/0.23.2560.1318@0.23.2560.1318" timestamp="1604522952760" />
     <state x="715" y="431" key="Github.Dialog.Accounts.Choose" timestamp="1603813929284">
       <screen x="0" y="23" width="2048" height="1061" />
     </state>
@@ -804,18 +802,19 @@
     </state>
     <state x="494" y="23" key="SettingsEditor/0.23.2048.1061@0.23.2048.1061" timestamp="1603133845555" />
     <state x="618" y="23" key="SettingsEditor/0.23.2560.1316@0.23.2560.1316" timestamp="1603294979607" />
-    <state x="409" y="124" key="Vcs.Push.Dialog.v2" timestamp="1604515554359">
+    <state x="409" y="124" key="Vcs.Push.Dialog.v2" timestamp="1604522772904">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="409" y="124" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1604515554359" />
+    <state x="409" y="124" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1604522772904" />
     <state x="281" y="107" key="Vcs.Push.Dialog.v2/0.23.1920.995@0.23.1920.995" timestamp="1597942318435" />
     <state x="327" y="114" key="Vcs.Push.Dialog.v2/0.23.2048.1061@0.23.2048.1061" timestamp="1603813926275" />
     <state x="409" y="136" key="Vcs.Push.Dialog.v2/0.23.2560.1316@0.23.2560.1316" timestamp="1603138823360" />
     <state x="409" y="137" key="Vcs.Push.Dialog.v2/0.23.2560.1329@0.23.2560.1329" timestamp="1601482746739" />
-    <state x="224" y="546" width="1759" height="793" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1603294458357">
-      <screen x="0" y="23" width="2560" height="1316" />
+    <state x="224" y="572" width="1759" height="868" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1604522952761">
+      <screen x="0" y="23" width="2560" height="1318" />
     </state>
     <state x="224" y="546" width="1759" height="793" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1316@0.23.2560.1316" timestamp="1603294458357" />
+    <state x="224" y="572" width="1759" height="868" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1318@0.23.2560.1318" timestamp="1604522952761" />
     <state x="42" y="211" width="1759" height="804" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1335@0.23.2560.1335" timestamp="1595891507546" />
     <state x="955" y="550" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601475228953">
       <screen x="0" y="23" width="2560" height="1316" />
