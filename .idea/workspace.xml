@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="add cors" />
+    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -283,13 +286,6 @@
       <workItem from="1604522372182" duration="1170000" />
       <workItem from="1604606750603" duration="174000" />
       <workItem from="1604924942213" duration="1961000" />
-    </task>
-    <task id="LOCAL-00035" summary="V1.43">
-      <created>1582037155272</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1582037155272</updated>
     </task>
     <task id="LOCAL-00036" summary="V1.43">
       <created>1582045443048</created>
@@ -627,7 +623,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604592479764</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="add cors">
+      <created>1604951923648</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1604951923648</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -686,11 +689,11 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="755" y="310" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1598736915965" />
-    <state x="300" y="23" width="1085" height="905" key="CommitChangelistDialog2" timestamp="1603901336458">
-      <screen x="0" y="23" width="2560" height="1318" />
+    <state x="240" y="23" width="1085" height="905" key="CommitChangelistDialog2" timestamp="1604951923485">
+      <screen x="0" y="23" width="2048" height="1061" />
     </state>
     <state x="225" y="23" width="1085" height="905" key="CommitChangelistDialog2/0.23.1920.995@0.23.1920.995" timestamp="1597942306546" />
-    <state x="240" y="23" key="CommitChangelistDialog2/0.23.2048.1061@0.23.2048.1061" timestamp="1603813902221" />
+    <state x="240" y="23" key="CommitChangelistDialog2/0.23.2048.1061@0.23.2048.1061" timestamp="1604951923485" />
     <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1316@0.23.2560.1316" timestamp="1603296425890" />
     <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1318@0.23.2560.1318" timestamp="1603901336458" />
     <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog" timestamp="1604522952760">
@@ -798,9 +801,10 @@
     </state>
     <state x="224" y="546" width="1759" height="793" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1316@0.23.2560.1316" timestamp="1603294458357" />
     <state x="224" y="572" width="1759" height="868" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1318@0.23.2560.1318" timestamp="1604522952761" />
-    <state x="955" y="550" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601475228953">
-      <screen x="0" y="23" width="2560" height="1316" />
+    <state x="764" y="448" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604951953339">
+      <screen x="0" y="23" width="2048" height="1061" />
     </state>
+    <state x="764" y="448" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.2048.1061@0.23.2048.1061" timestamp="1604951953339" />
     <state x="955" y="550" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.2560.1316@0.23.2560.1316" timestamp="1601475228953" />
     <state x="1503" y="433" width="738" height="574" key="find.popup" timestamp="1604946617899">
       <screen x="0" y="0" width="2560" height="1440" />
