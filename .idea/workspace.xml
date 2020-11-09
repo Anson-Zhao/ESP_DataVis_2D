@@ -98,7 +98,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/indexbackup.html" />
   </component>
@@ -279,21 +279,7 @@
       <workItem from="1600716725386" duration="12599000" />
       <workItem from="1602088634449" duration="2972000" />
       <workItem from="1602690347309" duration="325000" />
-      <workItem from="1604950724209" duration="294000" />
-    </task>
-    <task id="LOCAL-00034" summary="V1.42">
-      <created>1581611258656</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1581611258656</updated>
-    </task>
-    <task id="LOCAL-00035" summary="V1.43">
-      <created>1582037155272</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1582037155272</updated>
+      <workItem from="1604950724209" duration="598000" />
     </task>
     <task id="LOCAL-00036" summary="V1.43">
       <created>1582045443048</created>
@@ -624,7 +610,21 @@
       <option name="project" value="LOCAL" />
       <updated>1604950986043</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="clean up console.log">
+      <created>1604951036444</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1604951036444</updated>
+    </task>
+    <task id="LOCAL-00084" summary="clean up console.log">
+      <created>1604951171340</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1604951171340</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -679,11 +679,11 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="755" y="310" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1598736915965" />
-    <state x="240" y="23" width="1085" height="905" key="CommitChangelistDialog2" timestamp="1604951036161">
+    <state x="240" y="23" width="1085" height="905" key="CommitChangelistDialog2" timestamp="1604951171058">
       <screen x="0" y="23" width="2048" height="1061" />
     </state>
     <state x="225" y="23" width="1085" height="905" key="CommitChangelistDialog2/0.23.1920.995@0.23.1920.995" timestamp="1597942306546" />
-    <state x="240" y="23" key="CommitChangelistDialog2/0.23.2048.1061@0.23.2048.1061" timestamp="1604951036161" />
+    <state x="240" y="23" key="CommitChangelistDialog2/0.23.2048.1061@0.23.2048.1061" timestamp="1604951171058" />
     <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1316@0.23.2560.1316" timestamp="1603296425890" />
     <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1318@0.23.2560.1318" timestamp="1603901336458" />
     <state x="715" y="431" key="Github.Dialog.Accounts.Choose" timestamp="1604351238559">
@@ -763,10 +763,10 @@
       <screen x="0" y="23" width="2048" height="1061" />
     </state>
     <state x="691" y="289" key="NewModule_or_Project.wizard/0.23.2048.1061@0.23.2048.1061" timestamp="1603812513565" />
-    <state x="618" y="23" width="1263" height="902" key="SettingsEditor" timestamp="1603294979607">
-      <screen x="0" y="23" width="2560" height="1316" />
+    <state x="494" y="23" width="1263" height="902" key="SettingsEditor" timestamp="1604951268332">
+      <screen x="0" y="23" width="2048" height="1061" />
     </state>
-    <state x="494" y="23" key="SettingsEditor/0.23.2048.1061@0.23.2048.1061" timestamp="1603133845555" />
+    <state x="494" y="23" key="SettingsEditor/0.23.2048.1061@0.23.2048.1061" timestamp="1604951268332" />
     <state x="618" y="23" key="SettingsEditor/0.23.2560.1316@0.23.2560.1316" timestamp="1603294979607" />
     <state x="327" y="114" key="Vcs.Push.Dialog.v2" timestamp="1604351235716">
       <screen x="0" y="23" width="2048" height="1061" />
@@ -783,6 +783,10 @@
       <screen x="0" y="23" width="2560" height="1316" />
     </state>
     <state x="955" y="550" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.2560.1316@0.23.2560.1316" timestamp="1601475228953" />
+    <state x="593" y="216" width="604" height="735" key="find.popup" timestamp="1604951322981">
+      <screen x="0" y="23" width="2048" height="1061" />
+    </state>
+    <state x="593" y="216" width="604" height="735" key="find.popup/0.23.2048.1061@0.23.2048.1061" timestamp="1604951322981" />
     <state x="675" y="246" key="new project wizard" timestamp="1603812404908">
       <screen x="0" y="23" width="2048" height="1061" />
     </state>
