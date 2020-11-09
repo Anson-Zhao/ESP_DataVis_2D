@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="WW Lib Changes" />
+    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +64,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="JupyterTrust" id="71175b30-28b3-4906-9951-5f93c563cad4" />
+  <component name="JupyterTrust" id="118f2b2d-30ad-43a4-91f4-f17972f50b79" />
   <component name="ProjectId" id="1SHx6bzrjPXVkXZUEq9ADSzFb2l" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -98,7 +101,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/indexbackup.html" />
   </component>
@@ -283,13 +286,6 @@
       <workItem from="1604522372182" duration="1170000" />
       <workItem from="1604606750603" duration="174000" />
       <workItem from="1604924942213" duration="1961000" />
-    </task>
-    <task id="LOCAL-00037" summary="V1.43">
-      <created>1582045876575</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1582045876575</updated>
     </task>
     <task id="LOCAL-00038" summary="V1.43">
       <created>1582046134800</created>
@@ -620,14 +616,21 @@
       <option name="project" value="LOCAL" />
       <updated>1604955559864</updated>
     </task>
-    <task id="LOCAL-00085" summary="WW Lib Changes">
-      <created>1604956171191</created>
+    <task id="LOCAL-00085" summary="add cors">
+      <created>1604955680791</created>
       <option name="number" value="00085" />
       <option name="presentableId" value="LOCAL-00085" />
       <option name="project" value="LOCAL" />
-      <updated>1604956171191</updated>
+      <updated>1604955680791</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="add cors">
+      <created>1604955726236</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1604955726236</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -666,8 +669,7 @@
     <MESSAGE value="V2" />
     <MESSAGE value="remove cors" />
     <MESSAGE value="add cors" />
-    <MESSAGE value="WW Lib Changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="WW Lib Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="add cors" />
   </component>
   <component name="WindowStateProjectService">
     <state x="597" y="57" width="1200" height="992" key="#Deployment" timestamp="1604506091094">
@@ -687,17 +689,17 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="755" y="310" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1598736915965" />
-    <state x="300" y="23" width="1085" height="905" key="CommitChangelistDialog2" timestamp="1604955599998">
+    <state x="300" y="23" width="1085" height="905" key="CommitChangelistDialog2" timestamp="1604955725632">
       <screen x="0" y="23" width="2560" height="1316" />
     </state>
     <state x="225" y="23" width="1085" height="905" key="CommitChangelistDialog2/0.23.1920.995@0.23.1920.995" timestamp="1597942306546" />
     <state x="240" y="23" key="CommitChangelistDialog2/0.23.2048.1061@0.23.2048.1061" timestamp="1603813902221" />
-    <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1316@0.23.2560.1316" timestamp="1604955599998" />
+    <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1316@0.23.2560.1316" timestamp="1604955725632" />
     <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1318@0.23.2560.1318" timestamp="1603901336458" />
-    <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog" timestamp="1604956165723">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog" timestamp="1604522952760">
+      <screen x="0" y="23" width="2560" height="1318" />
     </state>
-    <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1604956165723" />
+    <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1604515051821" />
     <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog/0.23.2560.1318@0.23.2560.1318" timestamp="1604522952760" />
     <state x="715" y="431" key="Github.Dialog.Accounts.Choose" timestamp="1603813929284">
       <screen x="0" y="23" width="2048" height="1061" />
@@ -776,28 +778,32 @@
       <screen x="0" y="23" width="2560" height="1335" />
     </state>
     <state width="1793" height="294" key="GridCell.Tab.2.right/0.23.2560.1335@0.23.2560.1335" timestamp="1598734965686" />
+    <state x="702" y="361" key="MultipleFileMergeDialog" timestamp="1604955739036">
+      <screen x="0" y="23" width="2560" height="1316" />
+    </state>
+    <state x="702" y="361" key="MultipleFileMergeDialog/0.23.2560.1316@0.23.2560.1316" timestamp="1604955739036" />
     <state x="864" y="361" key="NewModule_or_Project.wizard" timestamp="1604508055760">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="864" y="361" key="NewModule_or_Project.wizard/0.0.2560.1440@0.0.2560.1440" timestamp="1604508055760" />
     <state x="691" y="289" key="NewModule_or_Project.wizard/0.23.2048.1061@0.23.2048.1061" timestamp="1603812513565" />
-    <state x="618" y="23" width="1263" height="902" key="SettingsEditor" timestamp="1604955674939">
+    <state x="618" y="23" width="1263" height="902" key="SettingsEditor" timestamp="1604958123873">
       <screen x="0" y="23" width="2560" height="1316" />
     </state>
     <state x="494" y="23" key="SettingsEditor/0.23.2048.1061@0.23.2048.1061" timestamp="1603133845555" />
-    <state x="618" y="23" key="SettingsEditor/0.23.2560.1316@0.23.2560.1316" timestamp="1604955674939" />
-    <state x="409" y="124" key="Vcs.Push.Dialog.v2" timestamp="1604956173536">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state x="618" y="23" key="SettingsEditor/0.23.2560.1316@0.23.2560.1316" timestamp="1604958123873" />
+    <state x="775" y="419" key="Vcs.Push.Dialog.v2" timestamp="1604955769612">
+      <screen x="0" y="23" width="2560" height="1316" />
     </state>
-    <state x="409" y="124" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1604956173536" />
+    <state x="409" y="124" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1604592482128" />
     <state x="281" y="107" key="Vcs.Push.Dialog.v2/0.23.1920.995@0.23.1920.995" timestamp="1597942318435" />
     <state x="327" y="114" key="Vcs.Push.Dialog.v2/0.23.2048.1061@0.23.2048.1061" timestamp="1603813926275" />
-    <state x="775" y="419" key="Vcs.Push.Dialog.v2/0.23.2560.1316@0.23.2560.1316" timestamp="1604955581522" />
+    <state x="775" y="419" key="Vcs.Push.Dialog.v2/0.23.2560.1316@0.23.2560.1316" timestamp="1604955769612" />
     <state x="409" y="137" key="Vcs.Push.Dialog.v2/0.23.2560.1329@0.23.2560.1329" timestamp="1601482746739" />
-    <state x="224" y="572" width="1759" height="868" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1604522952761">
-      <screen x="0" y="23" width="2560" height="1318" />
+    <state x="224" y="546" width="1759" height="793" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1604959138857">
+      <screen x="0" y="23" width="2560" height="1316" />
     </state>
-    <state x="224" y="546" width="1759" height="793" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1316@0.23.2560.1316" timestamp="1603294458357" />
+    <state x="224" y="546" width="1759" height="793" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1316@0.23.2560.1316" timestamp="1604959138857" />
     <state x="224" y="572" width="1759" height="868" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.2560.1318@0.23.2560.1318" timestamp="1604522952761" />
     <state x="955" y="550" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601475228953">
       <screen x="0" y="23" width="2560" height="1316" />
@@ -844,6 +850,7 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/espDataVis.js</url>
           <line>227</line>
+          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
