@@ -279,20 +279,7 @@
       <workItem from="1600716725386" duration="12599000" />
       <workItem from="1602088634449" duration="2972000" />
       <workItem from="1602690347309" duration="325000" />
-    </task>
-    <task id="LOCAL-00032" summary="V1.42">
-      <created>1581443780956</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1581443780956</updated>
-    </task>
-    <task id="LOCAL-00033" summary="V1.42">
-      <created>1581523774078</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1581523774078</updated>
+      <workItem from="1604950724209" duration="294000" />
     </task>
     <task id="LOCAL-00034" summary="V1.42">
       <created>1581611258656</created>
@@ -623,7 +610,21 @@
       <option name="project" value="LOCAL" />
       <updated>1604351219281</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="clean up console.log">
+      <created>1604950815101</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1604950815101</updated>
+    </task>
+    <task id="LOCAL-00082" summary="clean up console.log">
+      <created>1604950986043</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1604950986043</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
