@@ -204,7 +204,6 @@
                 // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/mail',
                 url: "http://localhost:3005/mail",
                 method: "get"});
-            // window.location.replace("http://localhost:3005/newEjs");
         });
 
         // Building dynamic options
@@ -217,7 +216,7 @@
                 // console.log("This is the stations result:");
                 // console.log(res);
                 stations = res;
-                for(var i=0; i<res.length; i++) {
+                for( var i=0; i<res.length; i++) {
                     // console.log("This is the station being called:");
                     // console.log(res[i].StationId);
                     building(res[i]);
@@ -264,7 +263,7 @@
 
     function Event() {
         $.ajax({
-            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newMoon',
+            // url: 'http://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newMoon',
             url: 'http://localhost:3005/newMoon',
             type: 'GET',
             // dataType: 'json',
