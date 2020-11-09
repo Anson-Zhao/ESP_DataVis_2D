@@ -61,8 +61,8 @@ app.get ('/stations', function (req, res){
 app.get ('/stationsForN', function (req, res){ //stations information used for new event page
     res.setHeader("Access-Control-Allow-Origin", "*");
     var stationId = req.query.stationID;
-    console.log("station Id")
-    console.log(stationId);
+    // console.log("station Id")
+    // console.log(stationId);
     con.query("SELECT State FROM ESP2.stationdata Where StationId ='"+stationId+ "';",function (err, result1) {
         // console.log("result")
         // console.log(result1)
@@ -131,12 +131,12 @@ async function moon(timeFrom,timeTo,Flag,Pair,email){
                 console.log(err)
             });
             if (i === EQstations.length -1) {
-                console.log("this is flag")
-                console.log(Flag[0]);
-                console.log(Flag[1]);
-                console.log(Flag[2]);
+                // console.log("this is flag")
+                // console.log(Flag[0]);
+                // console.log(Flag[1]);
+                // console.log(Flag[2]);
                 await pair(Flag,Pair,email)
-                await seconds(Flag,email)
+                // await seconds(Flag,email)
             }
     }
 }
@@ -144,7 +144,7 @@ async function moon(timeFrom,timeTo,Flag,Pair,email){
 //Match the Flags of different stations into pairs and push them into pair(an array), the step after flag.
 //The whole event checker part will use this function together.
 function pair(Flag,Pair,email) {
-    console.log("Pair running")
+    // console.log("Pair running")
     var i
     //checking x
     for (i=0;i<Flag.length;i++){
@@ -182,12 +182,12 @@ function pair(Flag,Pair,email) {
             }
         }
     }
-    console.log("pair round "+ i)
+    // console.log("pair round "+ i)
     if(i===Flag.length){
-        console.log("these re pair")
-        console.log("This is sta2 xs "+Pair[0][1].length+", and ys "+Pair[0][2].length)
-        console.log("This is sta3 xs "+Pair[1][1].length+", and ys "+Pair[1][2].length)
-        console.log("This is sta4 xs "+Pair[2][1].length+", and ys "+Pair[2][2].length)
+        // console.log("these re pair")
+        // console.log("This is sta2 xs "+Pair[0][1].length+", and ys "+Pair[0][2].length)
+        // console.log("This is sta3 xs "+Pair[1][1].length+", and ys "+Pair[1][2].length)
+        // console.log("This is sta4 xs "+Pair[2][1].length+", and ys "+Pair[2][2].length)
         // console.log(Pair[0])
         // console.log(Pair[1])
         // console.log(Pair[2])
@@ -198,7 +198,7 @@ function pair(Flag,Pair,email) {
 
 //trying to see the valid signals
 function valid(Pair,email){
-    console.log("valid has been ran")
+    // console.log("valid has been ran")
     var validing=[];
     //every stations
     for(var v=0; v<Pair.length; v++){
@@ -228,7 +228,7 @@ function valid(Pair,email){
                 else if(Date.parse(Pair[v][1][x][0].time)<Date.parse(Pair[v][2][y][0].time)
                     &&Date.parse(Pair[v][1][x][0].time)>Date.parse(Pair[v][2][y][1].time)){
 
-                    //[[{stationinfo},[[ [{xb},{xe}],[{yb},{ye}] ],...]
+                    //[[{stationinfo},[[ [begintime,endtime],[[{xb},{xe}],[{yb},{ye}]] ],...]
                     // ]
                     if(Pair[v][1][x][1].time>Pair[v][2][y][1].time){
                         validing[v][1].push([Pair[v][1][x][0].time,Pair[v][1][x][1].time],[Pair[v][1][x],Pair[v][2][y]])
@@ -236,18 +236,18 @@ function valid(Pair,email){
                     else{
                         validing[v][1].push([Pair[v][1][x][0].time,Pair[v][2][y][1].time],[Pair[v][1][x],Pair[v][2][y]])
                     }
-                    console.log("pushed")
+                    // console.log("pushed")
                     Pair[v][1].splice(x,1)
                     Pair[v][2].splice(y,1)
                 }
             }
         }
         if(v ===Pair.length-1){
-            console.log("vaid pairs")
-            console.log(validing)
-            console.log("station 2 xy pairs: "+validing[0][1].length)
-            console.log("station 3 xy pairs: "+validing[1][1].length)
-            console.log("station 4 xy pairs: "+validing[2][1].length)
+            // console.log("vaid pairs")
+            // console.log(validing)
+            // console.log("station 2 xy pairs: "+validing[0][1].length)
+            // console.log("station 3 xy pairs: "+validing[1][1].length)
+            // console.log("station 4 xy pairs: "+validing[2][1].length)
             match(validing,email)
         }
     }
@@ -256,7 +256,7 @@ function valid(Pair,email){
 
 //to see whether the time of different stations are matched with each other. If it is, then call the alarm and send the necessary info as parameters.
 function match(Pair,email){
-    console.log("match begin at"+Date())
+    // console.log("match begin at"+Date())
     var m=1;
     //check every station
     for(var v=0; v<Pair.length; v++){
@@ -275,7 +275,7 @@ function match(Pair,email){
                     // console.log(Pair[v][0].stationInfo.StationId)
                     if(Date.parse(Pair[v][m][t][0][1])>Date.parse(Pair[z][m][y][0][0])
                         &&Date.parse(Pair[v][m][t][0][1])<Date.parse(Pair[z][m][y][0][1])){
-                        console.log("hi there")
+                        // console.log("hi there")
                         // console.log(Pair[v][t][1].time)
                         // console.log(Pair[z][y][0].time)
                         // console.log(Pair[v][0].stationInfo.StationId)
@@ -298,7 +298,7 @@ function match(Pair,email){
                     }
                     else if(Date.parse(Pair[z][m][y][0][1])>Date.parse(Pair[v][m][t][0][0])
                         &&Date.parse(Pair[z][m][y][0][1])<Date.parse(Pair[v][m][t][0][1])){
-                        console.log("Hi there")
+                        // console.log("Hi there")
                         alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][m][t][0][0],Pair[v][m][t][0][1],Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email,
                             Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][m][y][0][0],Pair[z][m][y][0][1],Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,
                             Pair[v][m][t][1][0].Diff,Pair[v][m][t][2][0].Diff,
@@ -322,42 +322,42 @@ function match(Pair,email){
 }
 
 //If there is anomaly happened in two stations within 20s, which is flags. Then call the alarm.
-function seconds(Flag,email){
-    // console.log("match begin at"+Date())
-    //check every station
-    for(var v=0; v<Flag.length; v++){
-        //check every pair in one station
-        // console.log("stations: "+Pair.length+'/'+v)
-        for(var t=1; t<Flag[v].length; t++){
-            //compare with every other stations
-            // console.log('pairs: '+Pair[v].length+"/"+t)
-            for(var z=v+1; z<Flag.length; z++){
-                // console.log('other stations: '+Pair.length+'/'+z)
-                //compare with every pair in other stations
-                for(var y=1; y<Flag[z].length; y++){
-                    // console.log('pair in other stations:'+y)
-                    // console.log(Pair[v][t][1].time)
-                    // console.log(Pair[z][y][0].time)
-                    // console.log(Pair[v][0].stationInfo.StationId)
-                    if(Date.parse(Flag[v][t].time)>Date.parse(Flag[z][y].time)-20000
-                    &&Date.parse(Flag[v][t].time)<Date.parse(Flag[z][y].time)+20000){
-                        // console.log("hi there")
-                        // console.log(Pair[v][t][1].time)
-                        // console.log(Pair[z][y][0].time)
-                        // console.log(Pair[v][0].stationInfo.StationId)
-                        // console.log(Pair[v][t][0].time,Pair[v][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName)
-                        alarm(Flag[v][0].stationInfo.City, Flag[v][0].stationInfo.State, Flag[v][0].stationInfo.Longitude, Flag[v][0].stationInfo.Latitude, Flag[v][t].time,null,Flag[v][0].stationInfo.StationId,Flag[v][0].stationInfo.StationName,email,
-                            Flag[z][0].stationInfo.City, Flag[z][0].stationInfo.State, Flag[z][0].stationInfo.Longitude, Flag[z][0].stationInfo.Latitude, Flag[z][y].time,null,Flag[z][0].stationInfo.StationId,Flag[z][0].stationInfo.StationName,
-                            Pair[v][t].X,Pair[v][t].Y,Pair[v][t].Z,Pair[v][t].Diff,null,null,null,null,
-                            Pair[z][y].X,Pair[z][y].Y,Pair[z][y].Z,Pair[z][y].Diff,null,null,null,null);
-                        // alarm(Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][y][0].time,Pair[z][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,email)
-                        continue
-                    }
-                }
-            }
-        }
-    }
-}
+// function seconds(Flag,email){
+//     // console.log("match begin at"+Date())
+//     //check every station
+//     for(var v=0; v<Flag.length; v++){
+//         //check every pair in one station
+//         // console.log("stations: "+Pair.length+'/'+v)
+//         for(var t=1; t<Flag[v].length; t++){
+//             //compare with every other stations
+//             // console.log('pairs: '+Pair[v].length+"/"+t)
+//             for(var z=v+1; z<Flag.length; z++){
+//                 // console.log('other stations: '+Pair.length+'/'+z)
+//                 //compare with every pair in other stations
+//                 for(var y=1; y<Flag[z].length; y++){
+//                     // console.log('pair in other stations:'+y)
+//                     // console.log(Pair[v][t][1].time)
+//                     // console.log(Pair[z][y][0].time)
+//                     // console.log(Pair[v][0].stationInfo.StationId)
+//                     if(Date.parse(Flag[v][t].time)>Date.parse(Flag[z][y].time)-20000
+//                     &&Date.parse(Flag[v][t].time)<Date.parse(Flag[z][y].time)+20000){
+//                         // console.log("hi there")
+//                         // console.log(Pair[v][t][1].time)
+//                         // console.log(Pair[z][y][0].time)
+//                         // console.log(Pair[v][0].stationInfo.StationId)
+//                         // console.log(Pair[v][t][0].time,Pair[v][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName)
+//                         alarm(Flag[v][0].stationInfo.City, Flag[v][0].stationInfo.State, Flag[v][0].stationInfo.Longitude, Flag[v][0].stationInfo.Latitude, Flag[v][t].time,null,Flag[v][0].stationInfo.StationId,Flag[v][0].stationInfo.StationName,email,
+//                             Flag[z][0].stationInfo.City, Flag[z][0].stationInfo.State, Flag[z][0].stationInfo.Longitude, Flag[z][0].stationInfo.Latitude, Flag[z][y].time,null,Flag[z][0].stationInfo.StationId,Flag[z][0].stationInfo.StationName,
+//                             Pair[v][t].X,Pair[v][t].Y,Pair[v][t].Z,Pair[v][t].Diff,null,null,null,null,
+//                             Pair[z][y].X,Pair[z][y].Y,Pair[z][y].Z,Pair[z][y].Diff,null,null,null,null);
+//                         // alarm(Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][y][0].time,Pair[z][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,email)
+//                         continue
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 
 
 //this is part that responsible for the check the event (in historical page) where you can select specific time period.
@@ -425,21 +425,23 @@ function alarm(city,state,lo,la,timeFrom,timeTo,stationId,stationName,email,
 function Delete(Pair) {
     for(var i=0;i<Pair.length;i++){
         for(var a=0;a<Pair[i][1].length;a++){
-            if(Date.parse(Pair[i][1][a][1].time)>Date.parse(Date())+1800000){
+            if(Date.parse(Pair[i][1][a][0][1].time)>Date.parse(Date())+1800000){
                 Pair[i][1].splice(a,1)
                 //[[{StaInfo},{{},{}}],
                 // [{StaInfo}],
                 // [Sta]]
+                //[[{stationinfo},[[ [{xb},{xe}],[{yb},{ye}] ],...]
+                // ]
             }
         }
-        for(var b=0;b<Pair[i][2].length;b++){
-            if(Date.parse(Pair[i][2][b][1].time)>Date.parse(Date())+1800000){
-                Pair[i][2].splice(b,1)
-                //[[{StaInfo},{{},{}}],
-                // [{StaInfo}],
-                // [Sta]]
-            }
-        }
+        // for(var b=0;b<Pair[i][2].length;b++){
+        //     if(Date.parse(Pair[i][2][b][1].time)>Date.parse(Date())+1800000){
+        //         Pair[i][2].splice(b,1)
+        //         //[[{StaInfo},{{},{}}],
+        //         // [{StaInfo}],
+        //         // [Sta]]
+        //     }
+        // }
     }
 }
 
@@ -461,7 +463,7 @@ async function EventCheck(stations,Flag,Pair,email){
     });
     // console.log("all begin");
     //check each station's data one by one
-    console.log("stations length is "+stations.length)
+    // console.log("stations length is "+stations.length)
     for(var i=0;i<stations.length;i++){
 
         // console.log(Date());
@@ -471,8 +473,8 @@ async function EventCheck(stations,Flag,Pair,email){
         // console.log(querystatement);
         await influx.query(querystatement).then
         (result => {
-            console.log('this is result');
-            console.log(result.length);
+            // console.log('this is result');
+            // console.log(result.length);
             // console.log(result);
             // console.log(result[0].X);
             // console.log(re                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               sult[0].Y);
@@ -530,14 +532,14 @@ async function EventCheck(stations,Flag,Pair,email){
             console.log(err)
         });
         if (i === EQstations.length-1) {
-            console.log("flag round done at"+Date());
-            console.log("Flag length sta2 x is "+Flag[0][1].length+", and y is "+Flag[0][2].length);
-            console.log("Flag length sta3 x is "+Flag[1][1].length+", and y is "+Flag[1][2].length);
-            console.log("Flag length sta4 x is "+Flag[2][1].length+", and y is "+Flag[2][2].length);
+            // console.log("flag round done at"+Date());
+            // console.log("Flag length sta2 x is "+Flag[0][1].length+", and y is "+Flag[0][2].length);
+            // console.log("Flag length sta3 x is "+Flag[1][1].length+", and y is "+Flag[1][2].length);
+            // console.log("Flag length sta4 x is "+Flag[2][1].length+", and y is "+Flag[2][2].length);
             // console.log(Flag[1][2]);
             await pair(Flag,Pair,email)
-            console.log("PAIR has been run")
-            await seconds(Flag,email)
+            // console.log("PAIR has been run")
+            // await seconds(Flag,email)
         }
     }
 
@@ -560,7 +562,7 @@ app.get('/newEjs',function (req,res) {
 app.get('/newWind', function (req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     // console.log("Time FROM")
-    console.log(req.query.stationIs,req.query.timeFrom,req.query.timeTo)
+    // console.log(req.query.stationIs,req.query.timeFrom,req.query.timeTo)
     let queryHa = 'SELECT * FROM ' + req.query.stationIs + 'avg WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'";
     influx.query(queryHa).then
     (result => {
@@ -624,7 +626,7 @@ app.listen('3005');
 
 //to see whether the time of different stations are matched with each other. If it is, then call the alarm and send the necessary info as parameters.
 function matchbackuppair(Pair,email){
-    console.log("match begin at"+Date())
+    // console.log("match begin at"+Date())
     var m=1;
     //check every station
     for(var v=0; v<Pair.length; v++){
@@ -662,7 +664,7 @@ function matchbackuppair(Pair,email){
                     }
                     else if(Date.parse(Pair[z][y][1].time)>Date.parse(Pair[v][t][0].time)
                         &&Date.parse(Pair[z][y][1].time)<Date.parse(Pair[v][t][1].time)){
-                        console.log("Hi there")
+                        // console.log("Hi there")
                         alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][m][t][0].time,Pair[v][m][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email,
                             Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][m][y][0].time,Pair[z][m][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,
                             Pair[v][m][t][0].X,Pair[v][m][t][0].Y,Pair[v][m][t][0].Z,Pair[v][m][t][0].Diff,Pair[v][m][t][1].X,Pair[v][m][t][1].Y,Pair[v][m][t][1].Z,Pair[v][m][t][1].Diff,
