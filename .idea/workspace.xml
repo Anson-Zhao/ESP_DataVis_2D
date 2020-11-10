@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
-    </list>
+    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,7 +61,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="JupyterTrust" id="118f2b2d-30ad-43a4-91f4-f17972f50b79" />
+  <component name="JupyterTrust" id="71175b30-28b3-4906-9951-5f93c563cad4" />
   <component name="ProjectId" id="1SHx6bzrjPXVkXZUEq9ADSzFb2l" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -696,11 +693,11 @@
     <state x="240" y="23" key="CommitChangelistDialog2/0.23.2048.1061@0.23.2048.1061" timestamp="1603813902221" />
     <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1316@0.23.2560.1316" timestamp="1604955725632" />
     <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1318@0.23.2560.1318" timestamp="1603901336458" />
-    <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog" timestamp="1604522952760">
+    <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog" timestamp="1605021395836">
       <screen x="0" y="23" width="2560" height="1318" />
     </state>
     <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1604515051821" />
-    <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog/0.23.2560.1318@0.23.2560.1318" timestamp="1604522952760" />
+    <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog/0.23.2560.1318@0.23.2560.1318" timestamp="1605021395836" />
     <state x="715" y="431" key="Github.Dialog.Accounts.Choose" timestamp="1603813929284">
       <screen x="0" y="23" width="2048" height="1061" />
     </state>
@@ -792,10 +789,10 @@
     </state>
     <state x="494" y="23" key="SettingsEditor/0.23.2048.1061@0.23.2048.1061" timestamp="1603133845555" />
     <state x="618" y="23" key="SettingsEditor/0.23.2560.1316@0.23.2560.1316" timestamp="1604958123873" />
-    <state x="775" y="419" key="Vcs.Push.Dialog.v2" timestamp="1604955769612">
-      <screen x="0" y="23" width="2560" height="1316" />
+    <state x="409" y="124" key="Vcs.Push.Dialog.v2" timestamp="1604959408330">
+      <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="409" y="124" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1604592482128" />
+    <state x="409" y="124" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1604959408330" />
     <state x="281" y="107" key="Vcs.Push.Dialog.v2/0.23.1920.995@0.23.1920.995" timestamp="1597942318435" />
     <state x="327" y="114" key="Vcs.Push.Dialog.v2/0.23.2048.1061@0.23.2048.1061" timestamp="1603813926275" />
     <state x="775" y="419" key="Vcs.Push.Dialog.v2/0.23.2560.1316@0.23.2560.1316" timestamp="1604955769612" />
@@ -850,7 +847,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/espDataVis.js</url>
           <line>227</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
