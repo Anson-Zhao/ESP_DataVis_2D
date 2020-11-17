@@ -290,7 +290,7 @@
         // querystr = "timeFrom:" + timeFrom + "&timeTo:" + timeTo + "&stationIs:" + stationIs;
         // console.log(querystr);
         station = document.getElementById("station");
-        console.log(station);
+        // console.log(station);
         if (timeFrom && timeTo) {
             queryAndDisplay();
         } else {
@@ -303,7 +303,7 @@
     var z_arr = [];
 
     var queryAndDisplay = function () {
-        console.log(stationIs);
+        // console.log(stationIs);
         $.ajax({
             // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newWind',
             url: 'http://localhost:3005/newWind',
@@ -324,7 +324,7 @@
                     // console.log(el.time);
                     // console.log(el.time._nanoISO);
                     // console.log(el._nanoISO);
-                    console.log("h");
+                    // console.log("h");
                     x_arr[i] = [new Date(el.time), el.X];
                     y_arr[i] = [new Date(el.time), el.Y];
                     z_arr[i] = [new Date(el.time), el.Z];

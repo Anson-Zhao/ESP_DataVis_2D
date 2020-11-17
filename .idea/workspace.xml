@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="" />
+    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="WW Lib Changes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,17 +121,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Node.js.espDataVis.js">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -283,13 +274,7 @@
       <workItem from="1604522372182" duration="1170000" />
       <workItem from="1604606750603" duration="174000" />
       <workItem from="1604924942213" duration="1961000" />
-    </task>
-    <task id="LOCAL-00038" summary="V1.43">
-      <created>1582046134800</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1582046134800</updated>
+      <workItem from="1605123049929" duration="290000" />
     </task>
     <task id="LOCAL-00039" summary="V1.43">
       <created>1582062560334</created>
@@ -627,7 +612,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604955726236</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="WW Lib Changes">
+      <created>1605021420379</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1605021420379</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -666,7 +658,8 @@
     <MESSAGE value="V2" />
     <MESSAGE value="remove cors" />
     <MESSAGE value="add cors" />
-    <option name="LAST_COMMIT_MESSAGE" value="add cors" />
+    <MESSAGE value="WW Lib Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="WW Lib Changes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="597" y="57" width="1200" height="992" key="#Deployment" timestamp="1604506091094">
