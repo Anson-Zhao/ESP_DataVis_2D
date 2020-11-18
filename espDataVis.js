@@ -100,7 +100,7 @@ async function moon(timeFrom,timeTo,Flag,Pair,email){
                 for (var a = 0; a < result.length; a++) {
                     DifB = result[a+1].X - result[a].X;
                     DifA = result[a+1].Y - result[a].Y;
-                    if (Math.abs(DifB) > 9) {
+                    if (Math.abs(DifB) > 6) {
                         Flag[i][1].push({
                             // stationInfo: EQstations[i],
                             time: result[a].time._nanoISO,
@@ -111,7 +111,7 @@ async function moon(timeFrom,timeTo,Flag,Pair,email){
                         });
                         DifB = null;
                     }
-                    else if(Math.abs(DifA)>9){
+                    else if(Math.abs(DifA)>6){
                         Flag[i][2].push({
                             // stationInfo: stations[i],
                             time: result[a].time._nanoISO,
@@ -496,7 +496,7 @@ async function EventCheck(stations,Flag,Pair,email){
                     DifA = result[a+1].Y - result[a].Y;
                     // console.log("this is difference");
                     // console.log(DifB);
-                    if (Math.abs(DifB) > 9) {
+                    if (Math.abs(DifB) > 6) {
                         Flag[i][1].push({
                             // stationInfo: stations[i],
                             time: result[a].time._nanoISO,
@@ -508,7 +508,7 @@ async function EventCheck(stations,Flag,Pair,email){
                         // console.log("pushed")
                         DifB = null;
                     }
-                    else if(Math.abs(DifA)>9){
+                    else if(Math.abs(DifA)>6){
                         Flag[i][2].push({
                             // stationInfo: stations[i],
                             time: result[a].time._nanoISO,
