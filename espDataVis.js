@@ -143,6 +143,7 @@ async function moon(timeFrom,timeTo,Flag,Pair,email){
 
 //Match the Flags of different stations into pairs and push them into pair(an array), the step after flag.
 //The whole event checker part will use this function together.
+//pairing flag into x/y pairs
 function pair(Flag,Pair,email) {
     // console.log("Pair running")
     var i
@@ -196,7 +197,7 @@ function pair(Flag,Pair,email) {
     }
 }
 
-//trying to see the valid signals
+//trying to see the valid pairing xy signals
 function valid(Pair,email){
     // console.log("valid has been ran")
     var validing=[];
@@ -426,7 +427,7 @@ function alarm(city,state,lo,la,timeFrom,timeTo,stationId,stationName,email,
 function Delete(Pair) {
     for(var i=0;i<Pair.length;i++){
         for(var a=0;a<Pair[i][1].length;a++){
-            if(Date.parse(Pair[i][1][a][0][1].time)>Date.parse(Date())+1800000){
+            if(Date.parse(Pair[i][1][a][0][1].time)>Date.parse(Date())+43200000){
                 Pair[i][1].splice(a,1)
                 //[[{StaInfo},{{},{}}],
                 // [{StaInfo}],
@@ -445,6 +446,36 @@ function Delete(Pair) {
         // }
     }
 }
+
+
+
+function ThirdType(result){
+    for (var a = 0; a < result.length; a++) {
+        // DifA = result[a + 1].X - result[a].X;
+        // console.log(a);
+        // console.log(result.length)
+        DifB = result[a+1].X - result[a].X;
+        DifA = result[a+1].Y - result[a].Y;
+        // console.log("this is difference");
+        // console.log(DifB);
+        if (Math.abs(DifB) > 6) {
+            Flag[i][1].push({
+                // stationInfo: stations[i],
+                time: result[a].time._nanoISO,
+                X: result[a].X,
+                Y: result[a].Y,
+                Z: result[a].Z,
+                Diff: DifB
+            });
+            // console.log("pushed")
+            DifB = null;
+        }
+}
+
+
+
+
+
 
 var c=0;
 var minute="6m";
