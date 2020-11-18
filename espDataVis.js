@@ -321,6 +321,7 @@ function match(Pair,email){
     }
 }
 
+
 //If there is anomaly happened in two stations within 20s, which is flags. Then call the alarm.
 // function seconds(Flag,email){
 //     // console.log("match begin at"+Date())
@@ -473,6 +474,7 @@ async function EventCheck(stations,Flag,Pair,email){
         // console.log(querystatement);
         await influx.query(querystatement).then
         (result => {
+            // timer.set(1000, 'Timeout!')
             // console.log('this is result');
             // console.log(result.length);
             // console.log(result);
@@ -485,7 +487,7 @@ async function EventCheck(stations,Flag,Pair,email){
             // check the Flag here
             // console.log("begin flag")
             flag(result,Flag,Pair,email)
-            async function flag(result,Flag,Pair,email){
+            async function flag(result,Flag){
                 for (var a = 0; a < result.length; a++) {
                     // DifA = result[a + 1].X - result[a].X;
                     // console.log(a);
@@ -530,6 +532,20 @@ async function EventCheck(stations,Flag,Pair,email){
         }).catch(err => {
             console.log("Errors: ");
             console.log(err)
+            EventCheck(EQstations,FlagN,PairN,DeEmail)
+            const mailOptions = {
+                to: email,
+                subject: 'ESP Live Server Has Been Shut Down Unexpectly',
+                html: "<b>Error: </b>"+err+". The live server should restart by itself."
+            };
+            transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                    console.log(error);
+                } else {
+                    //http://localhost:3005/newEjs?stationID=3333&dateTime=8888
+                    console.log('Email sent: ' + info.response);
+                }
+            });
         });
         if (i === EQstations.length-1) {
             // console.log("flag round done at"+Date());

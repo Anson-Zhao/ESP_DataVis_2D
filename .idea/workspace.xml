@@ -20,8 +20,67 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/basic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/equation.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/equation1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/icon-144x144.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/icon-192x192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/icon-256x256.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/icon-384x384.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/icon-48x48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/icon-512x512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/icon-72x72.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/icon-96x96.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/npm-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/pxiByp8kv8JHgFVrLDz8Z1xlEw.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/pxiByp8kv8JHgFVrLDz8Z1xlFQ.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/pxiByp8kv8JHgFVrLGT9Z1xlEw.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/pxiByp8kv8JHgFVrLGT9Z1xlFQ.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/pxiEyp8kv8JHgFVrJJfecg.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/pxiEyp8kv8JHgFVrJJfedA.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/sort-arrow-sprite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/sort-arrow-sprite1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/term-size" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20,_3_43_PM_[Default_Changelist]/term-size.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_9_20__3_43_PM__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/.github/ISSUE_TEMPLATE.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/.github/ISSUE_TEMPLATE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/.github/PULL_REQUEST_TEMPLATE.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/.github/PULL_REQUEST_TEMPLATE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/.github/stale.yml" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/.github/stale.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/CONTRIBUTING.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/CONTRIBUTING.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/esdoc.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/esdoc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/backoff/backoff.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/backoff/backoff.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/backoff/exponential.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/backoff/exponential.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/backoff/exponential.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/backoff/exponential.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/builder.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/builder.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/builder.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/builder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/ds.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/ds.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/ds.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/ds.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/escape.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/escape.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/escape.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/escape.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/times.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/times.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/times.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/times.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/host.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/host.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/host.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/host.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/pool.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/pool.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/pool.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/pool.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/results.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/results.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/results.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/results.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/schema.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/schema.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/influx/renovate.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/renovate.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,8 +145,8 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="javascript.nodejs.core.library.configured.version" value="12.16.1" />
-    <property name="javascript.nodejs.core.library.typings.version" value="12.19.3" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.14.1" />
+    <property name="javascript.nodejs.core.library.typings.version" value="12.19.4" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/views" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -101,7 +160,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/indexbackup.html" />
   </component>
@@ -122,17 +181,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Node.js.espDataVis.js">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -286,13 +334,8 @@
       <workItem from="1604522372182" duration="1170000" />
       <workItem from="1604606750603" duration="174000" />
       <workItem from="1604924942213" duration="1961000" />
-    </task>
-    <task id="LOCAL-00038" summary="V1.43">
-      <created>1582046134800</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1582046134800</updated>
+      <workItem from="1605111129246" duration="689000" />
+      <workItem from="1605713956553" duration="2490000" />
     </task>
     <task id="LOCAL-00039" summary="V1.43">
       <created>1582062560334</created>
@@ -630,7 +673,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604955726236</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="add cors">
+      <created>1604959211627</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1604959211627</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -689,12 +739,12 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="755" y="310" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1598736915965" />
-    <state x="300" y="23" width="1085" height="905" key="CommitChangelistDialog2" timestamp="1604955725632">
+    <state x="300" y="23" width="1085" height="905" key="CommitChangelistDialog2" timestamp="1604959211235">
       <screen x="0" y="23" width="2560" height="1316" />
     </state>
     <state x="225" y="23" width="1085" height="905" key="CommitChangelistDialog2/0.23.1920.995@0.23.1920.995" timestamp="1597942306546" />
     <state x="240" y="23" key="CommitChangelistDialog2/0.23.2048.1061@0.23.2048.1061" timestamp="1603813902221" />
-    <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1316@0.23.2560.1316" timestamp="1604955725632" />
+    <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1316@0.23.2560.1316" timestamp="1604959211235" />
     <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1318@0.23.2560.1318" timestamp="1603901336458" />
     <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog" timestamp="1604522952760">
       <screen x="0" y="23" width="2560" height="1318" />
@@ -706,43 +756,43 @@
     </state>
     <state x="670" y="406" key="Github.Dialog.Accounts.Choose/0.23.1920.995@0.23.1920.995" timestamp="1597942325862" />
     <state x="715" y="431" key="Github.Dialog.Accounts.Choose/0.23.2048.1061@0.23.2048.1061" timestamp="1603813929284" />
-    <state width="824" height="348" key="GridCell.Tab.0.bottom" timestamp="1604516207108">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state width="2306" height="193" key="GridCell.Tab.0.bottom" timestamp="1604959274598">
+      <screen x="0" y="23" width="2560" height="1316" />
     </state>
     <state width="824" height="348" key="GridCell.Tab.0.bottom/0.0.2560.1440@0.0.2560.1440" timestamp="1604516207108" />
     <state width="1793" height="283" key="GridCell.Tab.0.bottom/0.23.1920.995@0.23.1920.995" timestamp="1597974298933" />
     <state width="1442" height="215" key="GridCell.Tab.0.bottom/0.23.2048.1061@0.23.2048.1061" timestamp="1603814002889" />
-    <state width="2417" height="282" key="GridCell.Tab.0.bottom/0.23.2560.1316@0.23.2560.1316" timestamp="1604320633836" />
+    <state width="2306" height="193" key="GridCell.Tab.0.bottom/0.23.2560.1316@0.23.2560.1316" timestamp="1604959274598" />
     <state width="627" height="348" key="GridCell.Tab.0.bottom/0.23.2560.1318@0.23.2560.1318" timestamp="1604421873330" />
     <state width="2417" height="282" key="GridCell.Tab.0.bottom/0.23.2560.1321@0.23.2560.1321" timestamp="1600269562261" />
     <state width="1793" height="294" key="GridCell.Tab.0.bottom/0.23.2560.1335@0.23.2560.1335" timestamp="1598734965682" />
-    <state width="824" height="348" key="GridCell.Tab.0.center" timestamp="1604516207108">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state width="2306" height="193" key="GridCell.Tab.0.center" timestamp="1604959274597">
+      <screen x="0" y="23" width="2560" height="1316" />
     </state>
     <state width="824" height="348" key="GridCell.Tab.0.center/0.0.2560.1440@0.0.2560.1440" timestamp="1604516207108" />
     <state width="1793" height="283" key="GridCell.Tab.0.center/0.23.1920.995@0.23.1920.995" timestamp="1597974298932" />
     <state width="1442" height="215" key="GridCell.Tab.0.center/0.23.2048.1061@0.23.2048.1061" timestamp="1603814002888" />
-    <state width="2417" height="282" key="GridCell.Tab.0.center/0.23.2560.1316@0.23.2560.1316" timestamp="1604320633835" />
+    <state width="2306" height="193" key="GridCell.Tab.0.center/0.23.2560.1316@0.23.2560.1316" timestamp="1604959274597" />
     <state width="627" height="348" key="GridCell.Tab.0.center/0.23.2560.1318@0.23.2560.1318" timestamp="1604421873329" />
     <state width="2417" height="282" key="GridCell.Tab.0.center/0.23.2560.1321@0.23.2560.1321" timestamp="1600269562260" />
     <state width="1793" height="294" key="GridCell.Tab.0.center/0.23.2560.1335@0.23.2560.1335" timestamp="1598734965681" />
-    <state width="824" height="348" key="GridCell.Tab.0.left" timestamp="1604516207107">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state width="2306" height="193" key="GridCell.Tab.0.left" timestamp="1604959274597">
+      <screen x="0" y="23" width="2560" height="1316" />
     </state>
     <state width="824" height="348" key="GridCell.Tab.0.left/0.0.2560.1440@0.0.2560.1440" timestamp="1604516207107" />
     <state width="1793" height="283" key="GridCell.Tab.0.left/0.23.1920.995@0.23.1920.995" timestamp="1597974298931" />
     <state width="1442" height="215" key="GridCell.Tab.0.left/0.23.2048.1061@0.23.2048.1061" timestamp="1603814002887" />
-    <state width="2417" height="282" key="GridCell.Tab.0.left/0.23.2560.1316@0.23.2560.1316" timestamp="1604320633835" />
+    <state width="2306" height="193" key="GridCell.Tab.0.left/0.23.2560.1316@0.23.2560.1316" timestamp="1604959274597" />
     <state width="627" height="348" key="GridCell.Tab.0.left/0.23.2560.1318@0.23.2560.1318" timestamp="1604421873328" />
     <state width="2417" height="282" key="GridCell.Tab.0.left/0.23.2560.1321@0.23.2560.1321" timestamp="1600269562259" />
     <state width="1793" height="294" key="GridCell.Tab.0.left/0.23.2560.1335@0.23.2560.1335" timestamp="1598734965680" />
-    <state width="824" height="348" key="GridCell.Tab.0.right" timestamp="1604516207108">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state width="2306" height="193" key="GridCell.Tab.0.right" timestamp="1604959274598">
+      <screen x="0" y="23" width="2560" height="1316" />
     </state>
     <state width="824" height="348" key="GridCell.Tab.0.right/0.0.2560.1440@0.0.2560.1440" timestamp="1604516207108" />
     <state width="1793" height="283" key="GridCell.Tab.0.right/0.23.1920.995@0.23.1920.995" timestamp="1597974298933" />
     <state width="1442" height="215" key="GridCell.Tab.0.right/0.23.2048.1061@0.23.2048.1061" timestamp="1603814002888" />
-    <state width="2417" height="282" key="GridCell.Tab.0.right/0.23.2560.1316@0.23.2560.1316" timestamp="1604320633836" />
+    <state width="2306" height="193" key="GridCell.Tab.0.right/0.23.2560.1316@0.23.2560.1316" timestamp="1604959274598" />
     <state width="627" height="348" key="GridCell.Tab.0.right/0.23.2560.1318@0.23.2560.1318" timestamp="1604421873330" />
     <state width="2417" height="282" key="GridCell.Tab.0.right/0.23.2560.1321@0.23.2560.1321" timestamp="1600269562260" />
     <state width="1793" height="294" key="GridCell.Tab.0.right/0.23.2560.1335@0.23.2560.1335" timestamp="1598734965682" />
@@ -787,18 +837,19 @@
     </state>
     <state x="864" y="361" key="NewModule_or_Project.wizard/0.0.2560.1440@0.0.2560.1440" timestamp="1604508055760" />
     <state x="691" y="289" key="NewModule_or_Project.wizard/0.23.2048.1061@0.23.2048.1061" timestamp="1603812513565" />
-    <state x="618" y="23" width="1263" height="902" key="SettingsEditor" timestamp="1604958123873">
-      <screen x="0" y="23" width="2560" height="1316" />
+    <state x="618" y="25" width="1350" height="1078" key="SettingsEditor" timestamp="1605714037243">
+      <screen x="0" y="25" width="2560" height="1318" />
     </state>
     <state x="494" y="23" key="SettingsEditor/0.23.2048.1061@0.23.2048.1061" timestamp="1603133845555" />
     <state x="618" y="23" key="SettingsEditor/0.23.2560.1316@0.23.2560.1316" timestamp="1604958123873" />
-    <state x="775" y="419" key="Vcs.Push.Dialog.v2" timestamp="1604955769612">
+    <state x="618" y="25" width="1350" height="1078" key="SettingsEditor/0.25.2560.1318@0.25.2560.1318" timestamp="1605714037243" />
+    <state x="775" y="419" key="Vcs.Push.Dialog.v2" timestamp="1604959249497">
       <screen x="0" y="23" width="2560" height="1316" />
     </state>
     <state x="409" y="124" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1604592482128" />
     <state x="281" y="107" key="Vcs.Push.Dialog.v2/0.23.1920.995@0.23.1920.995" timestamp="1597942318435" />
     <state x="327" y="114" key="Vcs.Push.Dialog.v2/0.23.2048.1061@0.23.2048.1061" timestamp="1603813926275" />
-    <state x="775" y="419" key="Vcs.Push.Dialog.v2/0.23.2560.1316@0.23.2560.1316" timestamp="1604955769612" />
+    <state x="775" y="419" key="Vcs.Push.Dialog.v2/0.23.2560.1316@0.23.2560.1316" timestamp="1604959249497" />
     <state x="409" y="137" key="Vcs.Push.Dialog.v2/0.23.2560.1329@0.23.2560.1329" timestamp="1601482746739" />
     <state x="224" y="546" width="1759" height="793" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1604959138857">
       <screen x="0" y="23" width="2560" height="1316" />
@@ -850,7 +901,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/espDataVis.js</url>
           <line>227</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
