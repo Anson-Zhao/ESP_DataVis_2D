@@ -122,6 +122,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Node.js.espDataVis.js">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
