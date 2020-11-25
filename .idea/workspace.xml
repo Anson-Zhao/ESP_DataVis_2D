@@ -276,14 +276,8 @@
       <workItem from="1604606750603" duration="174000" />
       <workItem from="1604924942213" duration="1961000" />
       <workItem from="1605111129246" duration="689000" />
-      <workItem from="1605713956553" duration="3318000" />
-    </task>
-    <task id="LOCAL-00041" summary="Merge branch 'master' of https://github.com/Anson-Zhao/ESP_DataVis_2D into Rachel&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;historical.html">
-      <created>1582217978744</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1582217978744</updated>
+      <workItem from="1605713956553" duration="4761000" />
+      <workItem from="1606253449679" duration="1190000" />
     </task>
     <task id="LOCAL-00042" summary="Merge branch 'master' of https://github.com/Anson-Zhao/ESP_DataVis_2D into Rachel&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;historical.html">
       <created>1582561406283</created>
@@ -621,7 +615,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605718126311</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="add cors">
+      <created>1605718922686</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1605718922686</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -680,14 +681,14 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="755" y="310" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1598736915965" />
-    <state x="300" y="25" width="1165" height="907" key="CommitChangelistDialog2" timestamp="1605718126079">
+    <state x="300" y="25" width="1165" height="907" key="CommitChangelistDialog2" timestamp="1605718922061">
       <screen x="0" y="25" width="2560" height="1318" />
     </state>
     <state x="225" y="23" width="1085" height="905" key="CommitChangelistDialog2/0.23.1920.995@0.23.1920.995" timestamp="1597942306546" />
     <state x="240" y="23" key="CommitChangelistDialog2/0.23.2048.1061@0.23.2048.1061" timestamp="1603813902221" />
     <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1316@0.23.2560.1316" timestamp="1604959211235" />
     <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1318@0.23.2560.1318" timestamp="1603901336458" />
-    <state x="300" y="25" width="1165" height="907" key="CommitChangelistDialog2/0.25.2560.1318@0.25.2560.1318" timestamp="1605718126079" />
+    <state x="300" y="25" width="1165" height="907" key="CommitChangelistDialog2/0.25.2560.1318@0.25.2560.1318" timestamp="1605718922061" />
     <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog" timestamp="1604522952760">
       <screen x="0" y="23" width="2560" height="1318" />
     </state>
@@ -785,7 +786,7 @@
     <state x="494" y="23" key="SettingsEditor/0.23.2048.1061@0.23.2048.1061" timestamp="1603133845555" />
     <state x="618" y="23" key="SettingsEditor/0.23.2560.1316@0.23.2560.1316" timestamp="1604958123873" />
     <state x="618" y="25" width="1350" height="1078" key="SettingsEditor/0.25.2560.1318@0.25.2560.1318" timestamp="1605714037243" />
-    <state x="775" y="422" key="Vcs.Push.Dialog.v2" timestamp="1605718133818">
+    <state x="775" y="422" key="Vcs.Push.Dialog.v2" timestamp="1605718931898">
       <screen x="0" y="25" width="2560" height="1318" />
     </state>
     <state x="409" y="124" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1604592482128" />
@@ -793,7 +794,7 @@
     <state x="327" y="114" key="Vcs.Push.Dialog.v2/0.23.2048.1061@0.23.2048.1061" timestamp="1603813926275" />
     <state x="775" y="419" key="Vcs.Push.Dialog.v2/0.23.2560.1316@0.23.2560.1316" timestamp="1604959249497" />
     <state x="409" y="137" key="Vcs.Push.Dialog.v2/0.23.2560.1329@0.23.2560.1329" timestamp="1601482746739" />
-    <state x="775" y="422" key="Vcs.Push.Dialog.v2/0.25.2560.1318@0.25.2560.1318" timestamp="1605718133818" />
+    <state x="775" y="422" key="Vcs.Push.Dialog.v2/0.25.2560.1318@0.25.2560.1318" timestamp="1605718931898" />
     <state x="224" y="546" width="1759" height="793" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1604959138857">
       <screen x="0" y="23" width="2560" height="1316" />
     </state>

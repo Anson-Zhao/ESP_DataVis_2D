@@ -407,7 +407,7 @@ function alarm(city,state,lo,la,timeFrom,timeTo,stationId,stationName,email,
         //     stationName + "&stationId=" + stationId + '"\">From ' + timeFrom + " to " + timeTo + ", there is an abnormal spike happened on station " + stationName + "</a></p>"
         // html: '<p><a href="https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&city='+city+'&state='+state+'&lo='+lo+'&la='+la+'&stationName='+stationName+'&stationId='+stationId+'">' +
         //     'From ' + timeFrom + " to " + timeTo + ", there is an anopoly happened on station " + stationName + '</a></p>'
-        html: '<p><a href="http://localhost:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&city='+city+'&state='+state+'&lo='+lo+'&la='+la+'&stationName='+stationName+'&stationId='+stationId
+        html: '<p><a href="https://localhost:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&city='+city+'&state='+state+'&lo='+lo+'&la='+la+'&stationName='+stationName+'&stationId='+stationId
             +'&timeFrom2='+timeFrom2+'&timeTo2='+timeTo2+'&city2='+city2+'&state2='+state2+'&lo2='+lo2+'&la2='+la2+'&stationName2='+stationName2+'&stationId2='+stationId2
             +'&bdx='+bd1x+'&bdy='+bd1y+'&bdx2='+bd2x+'&bdy2='+bd2y+'">' +
             'From ' + timeFrom + " to " + timeTo + ", there is an anomaly happened on station " + stationName
@@ -450,12 +450,12 @@ function Delete(Pair) {
 
 
 function ThirdType(result){
-    for (var a = 0; a < result.length; a++) {
+    for (var a = 0; a < result.length; a+=10) {
         // DifA = result[a + 1].X - result[a].X;
         // console.log(a);
         // console.log(result.length)
-        DifB = result[a+1].X - result[a].X;
-        DifA = result[a+1].Y - result[a].Y;
+        DifB = (result[a+1].X+result[a+2].X+result[a+3].X)/3 - (result[a].X+result[a-1].X+result[a-2].X)/3;
+        DifA = (result[a+1].Y+result[a+2].Y+result[a+3].Y)/3 - (result[a].Y+result[a-1].Y+result[a-2].Y)/3;
         // console.log("this is difference");
         // console.log(DifB);
         if (Math.abs(DifB) > 6) {
