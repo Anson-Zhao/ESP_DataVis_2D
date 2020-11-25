@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -288,13 +288,6 @@
       <workItem from="1604924942213" duration="1961000" />
       <workItem from="1605111129246" duration="689000" />
       <workItem from="1605713956553" duration="3318000" />
-    </task>
-    <task id="LOCAL-00043" summary="Merge branch 'master' of https://github.com/Anson-Zhao/ESP_DataVis_2D into Rachel&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;historical.html">
-      <created>1582909246784</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1582909246784</updated>
     </task>
     <task id="LOCAL-00044" summary="Merge branch 'master' of https://github.com/Anson-Zhao/ESP_DataVis_2D into Rachel&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;historical.html">
       <created>1583255581202</created>
@@ -632,7 +625,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606162387100</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="add cors">
+      <created>1606164296125</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1606164296125</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -691,14 +691,14 @@
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="755" y="310" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.2560.1337@0.23.2560.1337" timestamp="1598736915965" />
-    <state x="240" y="25" width="1165" height="907" key="CommitChangelistDialog2" timestamp="1606162386961">
+    <state x="240" y="25" width="1165" height="907" key="CommitChangelistDialog2" timestamp="1606164295954">
       <screen x="0" y="25" width="2048" height="1054" />
     </state>
     <state x="225" y="23" width="1085" height="905" key="CommitChangelistDialog2/0.23.1920.995@0.23.1920.995" timestamp="1597942306546" />
     <state x="240" y="23" key="CommitChangelistDialog2/0.23.2048.1061@0.23.2048.1061" timestamp="1603813902221" />
     <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1316@0.23.2560.1316" timestamp="1604959211235" />
     <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1318@0.23.2560.1318" timestamp="1603901336458" />
-    <state x="240" y="25" key="CommitChangelistDialog2/0.25.2048.1054@0.25.2048.1054" timestamp="1606162386961" />
+    <state x="240" y="25" key="CommitChangelistDialog2/0.25.2048.1054@0.25.2048.1054" timestamp="1606164295954" />
     <state x="300" y="25" width="1165" height="907" key="CommitChangelistDialog2/0.25.2560.1318@0.25.2560.1318" timestamp="1605718126079" />
     <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog" timestamp="1604522952760">
       <screen x="0" y="23" width="2560" height="1318" />
