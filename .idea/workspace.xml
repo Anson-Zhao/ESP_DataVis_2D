@@ -21,40 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="WW Lib Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/.github/ISSUE_TEMPLATE.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/.github/ISSUE_TEMPLATE.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/.github/PULL_REQUEST_TEMPLATE.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/.github/PULL_REQUEST_TEMPLATE.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/.github/stale.yml" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/.github/stale.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/CONTRIBUTING.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/CONTRIBUTING.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/esdoc.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/esdoc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/backoff/backoff.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/backoff/backoff.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/backoff/exponential.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/backoff/exponential.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/backoff/exponential.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/backoff/exponential.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/builder.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/builder.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/builder.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/builder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/ds.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/ds.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/ds.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/ds.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/escape.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/escape.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/escape.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/escape.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/times.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/times.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/times.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/grammar/times.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/host.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/host.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/host.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/host.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/pool.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/pool.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/pool.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/pool.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/results.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/results.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/results.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/results.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/schema.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/schema.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/lib/src/schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/lib/src/schema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/influx/renovate.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/influx/renovate.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -323,13 +290,7 @@
       <workItem from="1605625200671" duration="598000" />
       <workItem from="1605704567763" duration="900000" />
       <workItem from="1605788476515" duration="136000" />
-    </task>
-    <task id="LOCAL-00040" summary="V1.43">
-      <created>1582120385546</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1582120385546</updated>
+      <workItem from="1606321998020" duration="867000" />
     </task>
     <task id="LOCAL-00041" summary="Merge branch 'master' of https://github.com/Anson-Zhao/ESP_DataVis_2D into Rachel&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;historical.html">
       <created>1582217978744</created>
@@ -667,7 +628,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605625454926</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="WW Lib Changes">
+      <created>1606322081434</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1606322081434</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -734,17 +702,17 @@
     <state x="240" y="23" key="CommitChangelistDialog2/0.23.2048.1061@0.23.2048.1061" timestamp="1603813902221" />
     <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1316@0.23.2560.1316" timestamp="1604955725632" />
     <state x="300" y="23" key="CommitChangelistDialog2/0.23.2560.1318@0.23.2560.1318" timestamp="1603901336458" />
-    <state x="1353" y="100" width="1107" height="1240" key="DiffContextDialog" timestamp="1605705360658">
+    <state x="1353" y="100" width="1107" height="1240" key="DiffContextDialog" timestamp="1606322872779">
       <screen x="0" y="25" width="2560" height="1311" />
     </state>
     <state x="1353" y="100" width="1107" height="1240" key="DiffContextDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1605705330159" />
-    <state x="1353" y="100" width="1107" height="1240" key="DiffContextDialog/0.25.2560.1311@0.25.2560.1311" timestamp="1605705360658" />
-    <state x="1365" y="28" width="1195" height="1412" key="DirDiffDialog" timestamp="1605705360659">
+    <state x="1353" y="100" width="1107" height="1240" key="DiffContextDialog/0.25.2560.1311@0.25.2560.1311" timestamp="1606322872779" />
+    <state x="982" y="28" width="1195" height="1412" key="DirDiffDialog" timestamp="1606322872779">
       <screen x="0" y="25" width="2560" height="1311" />
     </state>
     <state x="1365" y="28" width="1195" height="1412" key="DirDiffDialog/0.0.2560.1440@0.0.2560.1440" timestamp="1605625843556" />
     <state x="1285" y="100" width="1175" height="1240" key="DirDiffDialog/0.23.2560.1318@0.23.2560.1318" timestamp="1605021395836" />
-    <state x="1365" y="28" width="1195" height="1412" key="DirDiffDialog/0.25.2560.1311@0.25.2560.1311" timestamp="1605705360659" />
+    <state x="982" y="28" width="1195" height="1412" key="DirDiffDialog/0.25.2560.1311@0.25.2560.1311" timestamp="1606322872779" />
     <state x="715" y="431" key="Github.Dialog.Accounts.Choose" timestamp="1603813929284">
       <screen x="0" y="23" width="2048" height="1061" />
     </state>
@@ -837,10 +805,10 @@
     <state x="618" y="0" key="SettingsEditor/0.0.2560.1440@0.0.2560.1440" timestamp="1605704650576" />
     <state x="494" y="23" key="SettingsEditor/0.23.2048.1061@0.23.2048.1061" timestamp="1603133845555" />
     <state x="618" y="23" key="SettingsEditor/0.23.2560.1316@0.23.2560.1316" timestamp="1604958123873" />
-    <state x="409" y="124" key="Vcs.Push.Dialog.v2" timestamp="1605625458055">
+    <state x="409" y="124" key="Vcs.Push.Dialog.v2" timestamp="1606322083718">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="409" y="124" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1605625458055" />
+    <state x="409" y="124" key="Vcs.Push.Dialog.v2/0.0.2560.1440@0.0.2560.1440" timestamp="1606322083718" />
     <state x="281" y="107" key="Vcs.Push.Dialog.v2/0.23.1920.995@0.23.1920.995" timestamp="1597942318435" />
     <state x="327" y="114" key="Vcs.Push.Dialog.v2/0.23.2048.1061@0.23.2048.1061" timestamp="1603813926275" />
     <state x="775" y="419" key="Vcs.Push.Dialog.v2/0.23.2560.1316@0.23.2560.1316" timestamp="1604955769612" />

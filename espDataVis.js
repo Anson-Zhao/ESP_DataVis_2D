@@ -401,10 +401,11 @@ function alarm(city,state,lo,la,timeFrom,timeTo,stationId,stationName,email,
         from: 'yge5095@gmail.com',
         to: email,
         subject: 'ESP Station Data',
-        // html:'<p><a href="http://localhost:3005/newEjs?timeFrom="'+ timeFrom + "&timeTo=" + timeTo + "&stationName=" +
-        //     stationName + "&stationId=" + stationId + '"\">From ' + timeFrom + " to " + timeTo + ", there is an abnormal spike happened on station " + stationName + "</a></p>"
-        // html: '<p><a href="https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&city='+city+'&state='+state+'&lo='+lo+'&la='+la+'&stationName='+stationName+'&stationId='+stationId+'">' +
-        //     'From ' + timeFrom + " to " + timeTo + ", there is an anopoly happened on station " + stationName + '</a></p>'
+        // html: '<p><a href="https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&city='+city+'&state='+state+'&lo='+lo+'&la='+la+'&stationName='+stationName+'&stationId='+stationId
+        //     +'&timeFrom2='+timeFrom2+'&timeTo2='+timeTo2+'&city2='+city2+'&state2='+state2+'&lo2='+lo2+'&la2='+la2+'&stationName2='+stationName2+'&stationId2='+stationId2
+        //     +'&bdx='+bd1x+'&bdy='+bd1y+'&bdx2='+bd2x+'&bdy2='+bd2y+'">' +
+        //     'From ' + timeFrom + " to " + timeTo + ", there is an anomaly happened on station " + stationName
+        //     + ". At the same time, there is an anomaly happened on station "+ stationName2+", and the time range is "+timeFrom2+" to "+timeTo2+". Notification: The time periods here are using the widest time(xUy) as a reference."+'</a></p>'
         html: '<p><a href="http://localhost:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&city='+city+'&state='+state+'&lo='+lo+'&la='+la+'&stationName='+stationName+'&stationId='+stationId
             +'&timeFrom2='+timeFrom2+'&timeTo2='+timeTo2+'&city2='+city2+'&state2='+state2+'&lo2='+lo2+'&la2='+la2+'&stationName2='+stationName2+'&stationId2='+stationId2
             +'&bdx='+bd1x+'&bdy='+bd1y+'&bdx2='+bd2x+'&bdy2='+bd2y+'">' +
