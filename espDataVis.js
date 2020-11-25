@@ -192,8 +192,121 @@ function pair(Flag,Pair,email) {
         // console.log(Pair[0])
         // console.log(Pair[1])
         // console.log(Pair[2])
-        // match(Pair,email)
-        valid(Pair,email)
+        matchbackuppair(Pair,email)
+        // valid(Pair,email)
+    }
+}
+
+//to see whether the time of different stations are matched with each other. If it is, then call the alarm and send the necessary info as parameters.
+function matchbackuppair(Pair,email){
+    // console.log("match begin at"+Date())
+
+    //check every station
+    for(var v=0; v<Pair.length; v++){
+        var m=1;
+        //check every pair in one station
+        // console.log("stations: "+Pair.length+'/'+v)
+        for(var t=0; t<Pair[v][m].length; t++){
+            //compare with every other stations
+            // console.log('pairs: '+Pair[v].length+"/"+t)
+            for(var z=v+1; z<Pair.length; z++){
+                // console.log('other stations: '+Pair.length+'/'+z)
+                //compare with every pair in other stations
+                for(var y=0; y<Pair[z][m].length; y++){
+                    // console.log('pair in other stations:'+y)
+                    // console.log(Pair[v][t][1].time)
+                    // console.log(Pair[z][y][0].time)
+                    // console.log(Pair[v][0].stationInfo.StationId)
+                    if(Date.parse(Pair[v][m][t][1].time)>Date.parse(Pair[z][m][y][0].time)
+                        &&Date.parse(Pair[v][m][t][1].time)<Date.parse(Pair[z][m][y][1].time)){
+                        console.log("hi there")
+                        // console.log(Pair[v][t][1].time)
+                        // console.log(Pair[z][y][0].time)
+                        // console.log(Pair[v][0].stationInfo.StationId)
+                        // console.log(Pair[v][t][0].time,Pair[v][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName)
+                        alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][m][t][0].time,Pair[v][m][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email,
+                            Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][m][y][0].time,Pair[z][m][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,
+                            Pair[v][m][t][0].X,Pair[v][m][t][0].Y,Pair[v][m][t][0].Z,Pair[v][m][t][0].Diff,Pair[v][m][t][1].X,Pair[v][m][t][1].Y,Pair[v][m][t][1].Z,Pair[v][m][t][1].Diff,
+                            Pair[z][m][y][0].X,Pair[z][m][y][0].Y,Pair[z][m][y][0].Z,Pair[z][m][y][0].Diff,Pair[z][m][y][1].X,Pair[z][m][y][1].Y,Pair[z][m][y][1].Z,Pair[z][m][y][1].Diff,
+                            Pair[v][m][t][2].Diff,Pair[v][m][t][3].Diff,Pair[z][m][y][2].Diff,Pair[z][m][y][3].Diff);
+                        // alarm(Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][y][0].time,Pair[z][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,email)
+                        Pair[z][1].splice(y,1)
+                        Pair[v][1].splice(t,1)
+                        // Pair[z][2].splice(y,1)
+                        // Pair[v][2].splice(t,1)
+                        continue
+                    }
+                    else if(Date.parse(Pair[z][y][1].time)>Date.parse(Pair[v][t][0].time)
+                        &&Date.parse(Pair[z][y][1].time)<Date.parse(Pair[v][t][1].time)){
+                        // console.log("Hi there")
+                        alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][m][t][0].time,Pair[v][m][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email,
+                            Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][m][y][0].time,Pair[z][m][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,
+                            Pair[v][m][t][0].X,Pair[v][m][t][0].Y,Pair[v][m][t][0].Z,Pair[v][m][t][0].Diff,Pair[v][m][t][1].X,Pair[v][m][t][1].Y,Pair[v][m][t][1].Z,Pair[v][m][t][1].Diff,
+                            Pair[z][m][y][0].X,Pair[z][m][y][0].Y,Pair[z][m][y][0].Z,Pair[z][m][y][0].Diff,Pair[z][m][y][1].X,Pair[z][m][y][1].Y,Pair[z][m][y][1].Z,Pair[z][m][y][1].Diff
+                            ,Pair[v][m][t][2].Diff,Pair[v][m][t][3].Diff,Pair[z][m][y][2].Diff,Pair[z][m][y][3].Diff);
+                        // alarm(Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][y][0].time,Pair[z][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,email)
+                        Pair[z][1].splice(y,1)
+                        Pair[v][1].splice(t,1)
+                        // Pair[z][2].splice(y,1)
+                        // Pair[v][2].splice(t,1)
+                        continue
+                    }
+                }
+            }
+        }
+    }
+    for(var v=0; v<Pair.length; v++){
+        var m=2;
+        //check every pair in one station
+        // console.log("stations: "+Pair.length+'/'+v)
+        for(var t=0; t<Pair[v][m].length; t++){
+            //compare with every other stations
+            // console.log('pairs: '+Pair[v].length+"/"+t)
+            for(var z=v+1; z<Pair.length; z++){
+                // console.log('other stations: '+Pair.length+'/'+z)
+                //compare with every pair in other stations
+                for(var y=0; y<Pair[z][m].length; y++){
+                    // console.log('pair in other stations:'+y)
+                    // console.log(Pair[v][t][1].time)
+                    // console.log(Pair[z][y][0].time)
+                    // console.log(Pair[v][0].stationInfo.StationId)
+                    if(Date.parse(Pair[v][m][t][1].time)>Date.parse(Pair[z][m][y][0].time)
+                        &&Date.parse(Pair[v][m][t][1].time)<Date.parse(Pair[z][m][y][1].time)){
+                        console.log("hi there")
+                        // console.log(Pair[v][t][1].time)
+                        // console.log(Pair[z][y][0].time)
+                        // console.log(Pair[v][0].stationInfo.StationId)
+                        // console.log(Pair[v][t][0].time,Pair[v][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName)
+                        alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][m][t][0].time,Pair[v][m][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email,
+                            Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][m][y][0].time,Pair[z][m][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,
+                            Pair[v][m][t][0].X,Pair[v][m][t][0].Y,Pair[v][m][t][0].Z,Pair[v][m][t][0].Diff,Pair[v][m][t][1].X,Pair[v][m][t][1].Y,Pair[v][m][t][1].Z,Pair[v][m][t][1].Diff,
+                            Pair[z][m][y][0].X,Pair[z][m][y][0].Y,Pair[z][m][y][0].Z,Pair[z][m][y][0].Diff,Pair[z][m][y][1].X,Pair[z][m][y][1].Y,Pair[z][m][y][1].Z,Pair[z][m][y][1].Diff,
+                            Pair[v][m][t][2].Diff,Pair[v][m][t][3].Diff,Pair[z][m][y][2].Diff,Pair[z][m][y][3].Diff);
+                        // alarm(Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][y][0].time,Pair[z][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,email)
+                        Pair[z][1].splice(y,1)
+                        Pair[v][1].splice(t,1)
+                        // Pair[z][2].splice(y,1)
+                        // Pair[v][2].splice(t,1)
+                        continue
+                    }
+                    else if(Date.parse(Pair[z][y][1].time)>Date.parse(Pair[v][t][0].time)
+                        &&Date.parse(Pair[z][y][1].time)<Date.parse(Pair[v][t][1].time)){
+                        // console.log("Hi there")
+                        alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][m][t][0].time,Pair[v][m][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email,
+                            Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][m][y][0].time,Pair[z][m][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,
+                            Pair[v][m][t][0].X,Pair[v][m][t][0].Y,Pair[v][m][t][0].Z,Pair[v][m][t][0].Diff,Pair[v][m][t][1].X,Pair[v][m][t][1].Y,Pair[v][m][t][1].Z,Pair[v][m][t][1].Diff,
+                            Pair[z][m][y][0].X,Pair[z][m][y][0].Y,Pair[z][m][y][0].Z,Pair[z][m][y][0].Diff,Pair[z][m][y][1].X,Pair[z][m][y][1].Y,Pair[z][m][y][1].Z,Pair[z][m][y][1].Diff
+                            ,Pair[v][m][t][2].Diff,Pair[v][m][t][3].Diff,Pair[z][m][y][2].Diff,Pair[z][m][y][3].Diff);
+                        // alarm(Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][y][0].time,Pair[z][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,email)
+                        Pair[z][1].splice(y,1)
+                        Pair[v][1].splice(t,1)
+                        // Pair[z][2].splice(y,1)
+                        // Pair[v][2].splice(t,1)
+                        continue
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -254,7 +367,7 @@ function valid(Pair,email){
     }
 }
 
-
+//this is match after validing(xy match of same station)
 //to see whether the time of different stations are matched with each other. If it is, then call the alarm and send the necessary info as parameters.
 function match(Pair,email){
     // console.log("match begin at"+Date())
@@ -671,61 +784,3 @@ app.listen('3005');
 
 
 
-//to see whether the time of different stations are matched with each other. If it is, then call the alarm and send the necessary info as parameters.
-function matchbackuppair(Pair,email){
-    // console.log("match begin at"+Date())
-    var m=1;
-    //check every station
-    for(var v=0; v<Pair.length; v++){
-        //check every pair in one station
-        // console.log("stations: "+Pair.length+'/'+v)
-        for(var t=0; t<Pair[v][m].length; t++){
-            //compare with every other stations
-            // console.log('pairs: '+Pair[v].length+"/"+t)
-            for(var z=v+1; z<Pair.length; z++){
-                // console.log('other stations: '+Pair.length+'/'+z)
-                //compare with every pair in other stations
-                for(var y=0; y<Pair[z][m].length; y++){
-                    // console.log('pair in other stations:'+y)
-                    // console.log(Pair[v][t][1].time)
-                    // console.log(Pair[z][y][0].time)
-                    // console.log(Pair[v][0].stationInfo.StationId)
-                    if(Date.parse(Pair[v][m][t][1].time)>Date.parse(Pair[z][m][y][0].time)
-                        &&Date.parse(Pair[v][m][t][1].time)<Date.parse(Pair[z][m][y][1].time)){
-                        console.log("hi there")
-                        // console.log(Pair[v][t][1].time)
-                        // console.log(Pair[z][y][0].time)
-                        // console.log(Pair[v][0].stationInfo.StationId)
-                        // console.log(Pair[v][t][0].time,Pair[v][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName)
-                        alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][m][t][0].time,Pair[v][m][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email,
-                            Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][m][y][0].time,Pair[z][m][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,
-                            Pair[v][m][t][0].X,Pair[v][m][t][0].Y,Pair[v][m][t][0].Z,Pair[v][m][t][0].Diff,Pair[v][m][t][1].X,Pair[v][m][t][1].Y,Pair[v][m][t][1].Z,Pair[v][m][t][1].Diff,
-                            Pair[z][m][y][0].X,Pair[z][m][y][0].Y,Pair[z][m][y][0].Z,Pair[z][m][y][0].Diff,Pair[z][m][y][1].X,Pair[z][m][y][1].Y,Pair[z][m][y][1].Z,Pair[z][m][y][1].Diff,
-                            Pair[v][m][t][2].Diff,Pair[v][m][t][3].Diff,Pair[z][m][y][2].Diff,Pair[z][m][y][3].Diff);
-                        // alarm(Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][y][0].time,Pair[z][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,email)
-                        Pair[z][1].splice(y,1)
-                        Pair[v][1].splice(t,1)
-                        // Pair[z][2].splice(y,1)
-                        // Pair[v][2].splice(t,1)
-                        continue
-                    }
-                    else if(Date.parse(Pair[z][y][1].time)>Date.parse(Pair[v][t][0].time)
-                        &&Date.parse(Pair[z][y][1].time)<Date.parse(Pair[v][t][1].time)){
-                        // console.log("Hi there")
-                        alarm(Pair[v][0].stationInfo.City, Pair[v][0].stationInfo.State, Pair[v][0].stationInfo.Longitude, Pair[v][0].stationInfo.Latitude, Pair[v][m][t][0].time,Pair[v][m][t][1].time,Pair[v][0].stationInfo.StationId,Pair[v][0].stationInfo.StationName,email,
-                            Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][m][y][0].time,Pair[z][m][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,
-                            Pair[v][m][t][0].X,Pair[v][m][t][0].Y,Pair[v][m][t][0].Z,Pair[v][m][t][0].Diff,Pair[v][m][t][1].X,Pair[v][m][t][1].Y,Pair[v][m][t][1].Z,Pair[v][m][t][1].Diff,
-                            Pair[z][m][y][0].X,Pair[z][m][y][0].Y,Pair[z][m][y][0].Z,Pair[z][m][y][0].Diff,Pair[z][m][y][1].X,Pair[z][m][y][1].Y,Pair[z][m][y][1].Z,Pair[z][m][y][1].Diff
-                            ,Pair[v][m][t][2].Diff,Pair[v][m][t][3].Diff,Pair[z][m][y][2].Diff,Pair[z][m][y][3].Diff);
-                        // alarm(Pair[z][0].stationInfo.City, Pair[z][0].stationInfo.State, Pair[z][0].stationInfo.Longitude, Pair[z][0].stationInfo.Latitude, Pair[z][y][0].time,Pair[z][y][1].time,Pair[z][0].stationInfo.StationId,Pair[z][0].stationInfo.StationName,email)
-                        Pair[z][1].splice(y,1)
-                        Pair[v][1].splice(t,1)
-                        // Pair[z][2].splice(y,1)
-                        // Pair[v][2].splice(t,1)
-                        continue
-                    }
-                }
-            }
-        }
-    }
-}
