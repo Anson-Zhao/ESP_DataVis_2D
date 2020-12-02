@@ -493,17 +493,6 @@ var DeEmail='lin.feng@g.northernacademy.org, ron@trilliumlearning.com, azhao@nor
 var EQstations;
 var FlagN=[];
 var PairN=[];
-con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.stationdata Where StationDescription = 'Earthquake'",function (err, result) {
-    EQstations=result;
-
-    for(var i=0;i<result.length;i++) {
-        FlagN.push([{stationInfo: result[i]},[],[]]);
-        PairN.push([{stationInfo: result[i]},[],[]]);
-        if(i===result.length-1){
-            EventCheck(result,FlagN,PairN,DeEmail);
-        }
-    }
-});
 
 //this is the alarm that will send out the notification link to the specific email
 // StationName,City,State,StationId,Longitude,Latitude
@@ -586,6 +575,17 @@ function ThirdType(result){
 }
 
 
+    con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.stationdata Where StationDescription = 'Earthquake'",function (err, result) {
+        EQstations=result;
+
+        for(var i=0;i<result.length;i++) {
+            FlagN.push([{stationInfo: result[i]},[],[]]);
+            PairN.push([{stationInfo: result[i]},[],[]]);
+            if(i===result.length-1){
+                EventCheck(result,FlagN,PairN,DeEmail);
+            }
+        }
+    });
 
 
 
@@ -780,7 +780,7 @@ app.get('/query', function (req, res) {
     })
 });
 
-app.listen('3005');
+app.listen('3005');}
 
 
 

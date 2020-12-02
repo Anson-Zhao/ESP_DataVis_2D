@@ -20,9 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_23_20,_3_12_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_23_20__3_12_PM__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,9 +41,6 @@
         <option value="CSS File" />
       </list>
     </option>
-  </component>
-  <component name="Git.Pull.Settings">
-    <option name="BRANCH" value="Ray" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -278,14 +275,7 @@
       <workItem from="1605111129246" duration="689000" />
       <workItem from="1605713956553" duration="3318000" />
       <workItem from="1606856175488" duration="229000" />
-      <workItem from="1606856493356" duration="264000" />
-    </task>
-    <task id="LOCAL-00044" summary="Merge branch 'master' of https://github.com/Anson-Zhao/ESP_DataVis_2D into Rachel&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;historical.html">
-      <created>1583255581202</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1583255581202</updated>
+      <workItem from="1606856493356" duration="2782000" />
     </task>
     <task id="LOCAL-00045" summary="chart date selectable">
       <created>1585444139166</created>
@@ -623,7 +613,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606164296125</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="add cors">
+      <created>1606856775659</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1606856775659</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
