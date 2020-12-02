@@ -89,6 +89,43 @@
             font-family: 'Helvetica', sans-serif;
             padding-right: 20px;
         }
+
+
+
+
+
+        /*stations' moving bar*/
+        .outer {
+            background-color: #eee;
+            box-shadow: inset 0 0 10px #ddd;
+            border-radius: 15px;
+            padding: 1em;
+        }
+
+        .inner {
+            max-height: 200px;
+            overflow: scroll;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            border-radius: 15px;
+            height:90%;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 15px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+        }
+
+        body {
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
@@ -124,12 +161,39 @@
 <!--    <input class = "station" value="RayTest" type="checkbox">&ndash;&gt;-->
 <!--            <input class = "station" value="Select Station" type="checkbox">-->
 <!--            <input class = "station" value="Select Station" type="checkbox">-->
-            <div>
+<!--            <div>-->
+<!--                <h4 class="floatingBox">Select Station:</h4>-->
+<!--            <select id="station">-->
+<!--                <option></option>-->
+<!--            </select>-->
+<!--            </div>-->
+
+
+            <div class="outer">
                 <h4 class="floatingBox">Select Station:</h4>
-            <select id="station">
-                <option></option>
-            </select>
+                <div class="inner">
+                    <div id="station">
+                    </div>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a iaculis enim. Fusce pellentesque mauris vitae urna sodales gravida. Pellentesque pharetra est sit amet sodales faucibus. Mauris ultrices scelerisque feugiat. Duis magna arcu, condimentum at nunc ac, aliquet congue mauris. Curabitur feugiat urna rutrum urna porttitor, facilisis lacinia nisl facilisis. Nulla porttitor, neque id varius tincidunt, nibh lectus ornare mauris, eget consectetur elit lectus quis magna. Sed fringilla semper est eu imperdiet. Phasellus accumsan orci vitae quam hendrerit venenatis. Sed rhoncus nulla non enim euismod, a pretium nisi feugiat.
+
+                    In blandit augue gravida, viverra quam vitae, malesuada sem. In mollis ante non felis accumsan ullamcorper. Cras egestas, mi ut varius elementum, libero libero ultricies nulla, vel suscipit nisi dolor vel massa. Sed non nunc nibh. Vivamus eu libero gravida, interdum justo eu, facilisis ipsum. Pellentesque accumsan justo nec odio vestibulum iaculis. Maecenas ac turpis nisi. Nullam pharetra eros at tellus convallis, sed ornare orci egestas.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a iaculis enim. Fusce pellentesque mauris vitae urna sodales gravida. Pellentesque pharetra est sit amet sodales faucibus. Mauris ultrices scelerisque feugiat. Duis magna arcu, condimentum at nunc ac, aliquet congue mauris. Curabitur feugiat urna rutrum urna porttitor, facilisis lacinia nisl facilisis. Nulla porttitor, neque id varius tincidunt, nibh lectus ornare mauris, eget consectetur elit lectus quis magna. Sed fringilla semper est eu imperdiet. Phasellus accumsan orci vitae quam hendrerit venenatis. Sed rhoncus nulla non enim euismod, a pretium nisi feugiat.
+
+                    In blandit augue gravida, viverra quam vitae, malesuada sem. In mollis ante non felis accumsan ullamcorper. Cras egestas, mi ut varius elementum, libero libero ultricies nulla, vel suscipit nisi dolor vel massa. Sed non nunc nibh. Vivamus eu libero gravida, interdum justo eu, facilisis ipsum. Pellentesque accumsan justo nec odio vestibulum iaculis. Maecenas ac turpis nisi. Nullam pharetra eros at tellus convallis, sed ornare orci egestas.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a iaculis enim. Fusce pellentesque mauris vitae urna sodales gravida. Pellentesque pharetra est sit amet sodales faucibus. Mauris ultrices scelerisque feugiat. Duis magna arcu, condimentum at nunc ac, aliquet congue mauris. Curabitur feugiat urna rutrum urna porttitor, facilisis lacinia nisl facilisis. Nulla porttitor, neque id varius tincidunt, nibh lectus ornare mauris, eget consectetur elit lectus quis magna. Sed fringilla semper est eu imperdiet. Phasellus accumsan orci vitae quam hendrerit venenatis. Sed rhoncus nulla non enim euismod, a pretium nisi feugiat.
+
+                    In blandit augue gravida, viverra quam vitae, malesuada sem. In mollis ante non felis accumsan ullamcorper. Cras egestas, mi ut varius elementum, libero libero ultricies nulla, vel suscipit nisi dolor vel massa. Sed non nunc nibh. Vivamus eu libero gravida, interdum justo eu, facilisis ipsum. Pellentesque accumsan justo nec odio vestibulum iaculis. Maecenas ac turpis nisi. Nullam pharetra eros at tellus convallis, sed ornare orci egestas.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a iaculis enim. Fusce pellentesque mauris vitae urna sodales gravida. Pellentesque pharetra est sit amet sodales faucibus. Mauris ultrices scelerisque feugiat. Duis magna arcu, condimentum at nunc ac, aliquet congue mauris. Curabitur feugiat urna rutrum urna porttitor, facilisis lacinia nisl facilisis. Nulla porttitor, neque id varius tincidunt, nibh lectus ornare mauris, eget consectetur elit lectus quis magna. Sed fringilla semper est eu imperdiet. Phasellus accumsan orci vitae quam hendrerit venenatis. Sed rhoncus nulla non enim euismod, a pretium nisi feugiat.
+
+                    In blandit augue gravida, viverra quam vitae, malesuada sem. In mollis ante non felis accumsan ullamcorper. Cras egestas, mi ut varius elementum, libero libero ultricies nulla, vel suscipit nisi dolor vel massa. Sed non nunc nibh. Vivamus eu libero gravida, interdum justo eu, facilisis ipsum. Pellentesque accumsan justo nec odio vestibulum iaculis. Maecenas ac turpis nisi. Nullam pharetra eros at tellus convallis, sed ornare orci egestas.
+
+                </div>
             </div>
+
+
+
+
+
             <div>
                 <h4 class="floatingBox">Please Enter your email here:</h4>
 <!--                <form >-->
@@ -236,10 +300,11 @@
         // console.log("build one option");
         // console.log(station.StationId);
         //build option
-        var option = document.createElement("option");
-        option.textContent = station.StationName+", "+station.City+", "+station.State;
-        option.value = JSON.stringify({'stationName':station.StationName,'stationId':station.StationId});
-        $('#station').append(option);
+        var checkbox = document.createElement("INPUT");
+        checkbox.setAttribute("type","checkbox")
+        checkbox.textContent = station.StationName+", "+station.City+", "+station.State;
+        checkbox.value = JSON.stringify({'stationName':station.StationName,'stationId':station.StationId});
+        $('#station').append(checkbox);
     }
 
     var timeFrom,timeTo,stationIs,querystr;

@@ -493,17 +493,101 @@ var DeEmail='lin.feng@g.northernacademy.org, ron@trilliumlearning.com, azhao@nor
 var EQstations;
 var FlagN=[];
 var PairN=[];
-con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.stationdata Where StationDescription = 'Earthquake'",function (err, result) {
-    EQstations=result;
 
-    for(var i=0;i<result.length;i++) {
-        FlagN.push([{stationInfo: result[i]},[],[]]);
-        PairN.push([{stationInfo: result[i]},[],[]]);
-        if(i===result.length-1){
-            EventCheck(result,FlagN,PairN,DeEmail);
+//this is the alarm that will send out the notification link to the specific email
+// StationName,City,State,StationId,Longitude,Latitude
+function alarm(city,state,lo,la,timeFrom,timeTo,stationId,stationName,email,
+               city2,state2,lo2,la2,timeFrom2,timeTo2,stationId2,stationName2,
+               bd1x,bd1y,bd2x,bd2y) {
+    // console.log(timeFrom,timeTo,stationId,stationName)
+
+    const mailOptions = {
+        from: 'yge5095@gmail.com',
+        to: email,
+        subject: 'ESP Station Data',
+        // html:'<p><a href="http://localhost:3005/newEjs?timeFrom="'+ timeFrom + "&timeTo=" + timeTo + "&stationName=" +
+        //     stationName + "&stationId=" + stationId + '"\">From ' + timeFrom + " to " + timeTo + ", there is an abnormal spike happened on station " + stationName + "</a></p>"
+        // html: '<p><a href="https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&city='+city+'&state='+state+'&lo='+lo+'&la='+la+'&stationName='+stationName+'&stationId='+stationId+'">' +
+        //     'From ' + timeFrom + " to " + timeTo + ", there is an anopoly happened on station " + stationName + '</a></p>'
+        html: '<p><a href="http://localhost:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&city='+city+'&state='+state+'&lo='+lo+'&la='+la+'&stationName='+stationName+'&stationId='+stationId
+            +'&timeFrom2='+timeFrom2+'&timeTo2='+timeTo2+'&city2='+city2+'&state2='+state2+'&lo2='+lo2+'&la2='+la2+'&stationName2='+stationName2+'&stationId2='+stationId2
+            +'&bdx='+bd1x+'&bdy='+bd1y+'&bdx2='+bd2x+'&bdy2='+bd2y+'">' +
+            'From ' + timeFrom + " to " + timeTo + ", there is an anomaly happened on station " + stationName
+            + ". At the same time, there is an anomaly happened on station "+ stationName2+", and the time range is "+timeFrom2+" to "+timeTo2+". Notification: The time periods here are using the widest time(xUy) as a reference."+'</a></p>'
+
+    };
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            //http://localhost:3005/newEjs?stationID=3333&dateTime=8888
+            // console.log('Email sent: ' + info.response);
         }
+    });
+}
+
+function Delete(Pair) {
+    for(var i=0;i<Pair.length;i++){
+        for(var a=0;a<Pair[i][1].length;a++){
+            if(Date.parse(Pair[i][1][a][0][1].time)>Date.parse(Date())+43200000){
+                Pair[i][1].splice(a,1)
+                //[[{StaInfo},{{},{}}],
+                // [{StaInfo}],
+                // [Sta]]
+                //[[{stationinfo},[[ [{xb},{xe}],[{yb},{ye}] ],...]
+                // ]
+            }
+        }
+        // for(var b=0;b<Pair[i][2].length;b++){
+        //     if(Date.parse(Pair[i][2][b][1].time)>Date.parse(Date())+1800000){
+        //         Pair[i][2].splice(b,1)
+        //         //[[{StaInfo},{{},{}}],
+        //         // [{StaInfo}],
+        //         // [Sta]]
+        //     }
+        // }
     }
-});
+}
+
+
+
+function ThirdType(result){
+    for (var a = 0; a < result.length; a++) {
+        // DifA = result[a + 1].X - result[a].X;
+        // console.log(a);
+        // console.log(result.length)
+        DifB = result[a+1].X - result[a].X;
+        DifA = result[a+1].Y - result[a].Y;
+        // console.log("this is difference");
+        // console.log(DifB);
+        if (Math.abs(DifB) > 6) {
+            Flag[i][1].push({
+                // stationInfo: stations[i],
+                time: result[a].time._nanoISO,
+                X: result[a].X,
+                Y: result[a].Y,
+                Z: result[a].Z,
+                Diff: DifB
+            });
+            // console.log("pushed")
+            DifB = null;
+        }
+}
+
+
+    con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.stationdata Where StationDescription = 'Earthquake'",function (err, result) {
+        EQstations=result;
+
+        for(var i=0;i<result.length;i++) {
+            FlagN.push([{stationInfo: result[i]},[],[]]);
+            PairN.push([{stationInfo: result[i]},[],[]]);
+            if(i===result.length-1){
+                EventCheck(result,FlagN,PairN,DeEmail);
+            }
+        }
+    });
+
+
 
 
 var c=0;
@@ -624,92 +708,6 @@ async function EventCheck(stations,Flag,Pair,email){
     setInterval(function () {
         Delete(PairN)}, 300000);
 }
-
-
-//this is the alarm that will send out the notification link to the specific email
-// StationName,City,State,StationId,Longitude,Latitude
-function alarm(city,state,lo,la,timeFrom,timeTo,stationId,stationName,email,
-               city2,state2,lo2,la2,timeFrom2,timeTo2,stationId2,stationName2,
-               bd1x,bd1y,bd2x,bd2y) {
-    // console.log(timeFrom,timeTo,stationId,stationName)
-
-    const mailOptions = {
-        from: 'yge5095@gmail.com',
-        to: email,
-        subject: 'ESP Station Data',
-        // html:'<p><a href="http://localhost:3005/newEjs?timeFrom="'+ timeFrom + "&timeTo=" + timeTo + "&stationName=" +
-        //     stationName + "&stationId=" + stationId + '"\">From ' + timeFrom + " to " + timeTo + ", there is an abnormal spike happened on station " + stationName + "</a></p>"
-        // html: '<p><a href="https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&city='+city+'&state='+state+'&lo='+lo+'&la='+la+'&stationName='+stationName+'&stationId='+stationId+'">' +
-        //     'From ' + timeFrom + " to " + timeTo + ", there is an anopoly happened on station " + stationName + '</a></p>'
-        html: '<p><a href="https://localhost:3005/newEjs?timeFrom='+timeFrom+'&timeTo='+timeTo+'&city='+city+'&state='+state+'&lo='+lo+'&la='+la+'&stationName='+stationName+'&stationId='+stationId
-            +'&timeFrom2='+timeFrom2+'&timeTo2='+timeTo2+'&city2='+city2+'&state2='+state2+'&lo2='+lo2+'&la2='+la2+'&stationName2='+stationName2+'&stationId2='+stationId2
-            +'&bdx='+bd1x+'&bdy='+bd1y+'&bdx2='+bd2x+'&bdy2='+bd2y+'">' +
-            'From ' + timeFrom + " to " + timeTo + ", there is an anomaly happened on station " + stationName
-            + ". At the same time, there is an anomaly happened on station "+ stationName2+", and the time range is "+timeFrom2+" to "+timeTo2+". Notification: The time periods here are using the widest time(xUy) as a reference."+'</a></p>'
-
-    };
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-            console.log(error);
-        } else {
-            //http://localhost:3005/newEjs?stationID=3333&dateTime=8888
-            // console.log('Email sent: ' + info.response);
-        }
-    });
-}
-
-function Delete(Pair) {
-    for(var i=0;i<Pair.length;i++){
-        for(var a=0;a<Pair[i][1].length;a++){
-            if(Date.parse(Pair[i][1][a][0][1].time)>Date.parse(Date())+43200000){
-                Pair[i][1].splice(a,1)
-                //[[{StaInfo},{{},{}}],
-                // [{StaInfo}],
-                // [Sta]]
-                //[[{stationinfo},[[ [{xb},{xe}],[{yb},{ye}] ],...]
-                // ]
-            }
-        }
-        // for(var b=0;b<Pair[i][2].length;b++){
-        //     if(Date.parse(Pair[i][2][b][1].time)>Date.parse(Date())+1800000){
-        //         Pair[i][2].splice(b,1)
-        //         //[[{StaInfo},{{},{}}],
-        //         // [{StaInfo}],
-        //         // [Sta]]
-        //     }
-        // }
-    }
-}
-
-
-
-function ThirdType(result){
-    for (var a = 0; a < result.length; a+=10) {
-        // DifA = result[a + 1].X - result[a].X;
-        // console.log(a);
-        // console.log(result.length)
-        DifB = (result[a+1].X+result[a+2].X+result[a+3].X)/3 - (result[a].X+result[a-1].X+result[a-2].X)/3;
-        DifA = (result[a+1].Y+result[a+2].Y+result[a+3].Y)/3 - (result[a].Y+result[a-1].Y+result[a-2].Y)/3;
-        // console.log("this is difference");
-        // console.log(DifB);
-        if (Math.abs(DifB) > 6) {
-            Flag[i][1].push({
-                // stationInfo: stations[i],
-                time: result[a].time._nanoISO,
-                X: result[a].X,
-                Y: result[a].Y,
-                Z: result[a].Z,
-                Diff: DifB
-            });
-            // console.log("pushed")
-            DifB = null;
-        }
-}
-
-
-
-
-
 
 app.get('/newEjs',function (req,res) {
     res.setHeader("Access-Control-Allow-Origin", "*"); // Allow cross domain header
