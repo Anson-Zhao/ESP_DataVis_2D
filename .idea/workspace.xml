@@ -119,6 +119,17 @@
     </key>
   </component>
   <component name="RunManager" selected="Node.js.espDataVis.js">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -275,14 +286,7 @@
       <workItem from="1605111129246" duration="689000" />
       <workItem from="1605713956553" duration="3318000" />
       <workItem from="1606856175488" duration="229000" />
-      <workItem from="1606856493356" duration="2782000" />
-    </task>
-    <task id="LOCAL-00045" summary="chart date selectable">
-      <created>1585444139166</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1585444139167</updated>
+      <workItem from="1606856493356" duration="9099000" />
     </task>
     <task id="LOCAL-00046" summary="chart date selectable">
       <created>1585444766747</created>
@@ -620,7 +624,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606856775659</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="add cors">
+      <created>1606924557388</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1606924557388</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
