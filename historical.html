@@ -384,15 +384,24 @@
     function query() {
         timeFrom = document.getElementById("begin").value;
         timeTo = document.getElementById("end").value;
-        stationIs = JSON.parse(document.getElementById("station").value).stationId;
+        // stationIs = JSON.parse(document.getElementById("station").value).stationId;
 
 
         // querystr = "timeFrom:" + timeFrom + "&timeTo:" + timeTo + "&stationIs:" + stationIs;
         // console.log(querystr);
-        station = document.getElementById("station");
-        console.log(station);
+        // station = document.getElementById("station");
+        var stations=[]
+        $("#multiselect_to option").each(function()
+        {
+            stations.push(JSON.parse($(this).val()).stationId)
+            // console.log($(this).val())
+        });
+        console.log(stations);
         if (timeFrom && timeTo) {
-            queryAndDisplay();
+            for(var i=0; i<stations.length;i++){
+                stationIs=stations[i]
+                queryAndDisplay();
+            }
         } else {
             confirm("Please select BOTH dates.");
         }
