@@ -19,10 +19,90 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
+    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="add cors">
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/.github/FUNDING.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/bower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/dist/js/multiselect.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/dist/js/multiselect.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/examples/custom-sort.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/examples/data-options.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/examples/javascript-options.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/examples/keep-rendering-sort.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/examples/move-up-down.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/examples/multiple-destinations.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/examples/multiple.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/examples/optgroup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/examples/search.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/examples/undo-redo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/examples/zero-configuration.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/gulpfile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/lib/google-code-prettify/prettify.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/lib/jasmine-html.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/lib/jasmine-jquery-1.1.2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/lib/jasmine.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/lib/jasmine.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/lib/jquery.simulate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/spec/data-options.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/spec/javascript-options.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/spec/keep-rendering-sort.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/spec/multiple-destinations.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/spec/search.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/spec/undo-redo.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/spec/zero-configuration.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-side-Multi-Select-Plugin-with-jQuery-multiselect-js/tests.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/dual-listbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/dual-listbox.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/dual-listbox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/dual-listbox.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/.babelrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/.bettercodehub.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/.jshintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/CODE_OF_CONDUCT.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/CONTRIBUTERS" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/_config.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/build/paths.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/build/tasks/build.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/build/tasks/clean.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/build/tasks/default.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/build/tasks/js.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/build/tasks/jsdoc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/build/tasks/lint.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/build/tasks/prepare-release.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/build/tasks/scss.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/build/tasks/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/dist/dual-listbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/dist/dual-listbox.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/dist/dual-listbox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/dist/dual-listbox.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/doc/dual-listbox.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/gulpfile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/karma.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/screenshots/select1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/screenshots/select2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/src/.eslintrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/src/dual-listbox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/src/dual-listbox.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/test/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/test/src/dual-listbox.spec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dual-listbox-master/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,14 +366,7 @@
       <workItem from="1605111129246" duration="689000" />
       <workItem from="1605713956553" duration="3318000" />
       <workItem from="1606856175488" duration="229000" />
-      <workItem from="1606856493356" duration="9099000" />
-    </task>
-    <task id="LOCAL-00046" summary="chart date selectable">
-      <created>1585444766747</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1585444766747</updated>
+      <workItem from="1606856493356" duration="9636000" />
     </task>
     <task id="LOCAL-00047" summary="minor bug fixed">
       <created>1585764475905</created>
@@ -631,7 +704,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606924557388</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="add cors">
+      <created>1607549699783</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1607549699783</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
