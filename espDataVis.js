@@ -52,8 +52,10 @@ app.use(bodyParser.json());
 
 app.get('/stations', function (req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
+    console.log("hi there")
     con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.stationdata Where Status = 'Active'", function (err, result) {
-        if (err) throw err;
+        if (err) console.log(err);
+        console.log(result);
         res.send(result);
     });
 });

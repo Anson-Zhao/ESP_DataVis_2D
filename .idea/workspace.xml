@@ -23,7 +23,6 @@
       <change afterPath="$PROJECT_DIR$/archive/espDataVis1202xxyy.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/espDataVis_trycatch.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -293,28 +292,7 @@
       <workItem from="1605111129246" duration="689000" />
       <workItem from="1605713956553" duration="3318000" />
       <workItem from="1606856175488" duration="229000" />
-      <workItem from="1606856493356" duration="2782000" />
-    </task>
-    <task id="LOCAL-00045" summary="chart date selectable">
-      <created>1585444139166</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1585444139167</updated>
-    </task>
-    <task id="LOCAL-00046" summary="chart date selectable">
-      <created>1585444766747</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1585444766747</updated>
-    </task>
-    <task id="LOCAL-00047" summary="minor bug fixed">
-      <created>1585764475905</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1585764475905</updated>
+      <workItem from="1606856493356" duration="11925000" />
     </task>
     <task id="LOCAL-00048" summary="update dygraph libraries">
       <created>1586912508046</created>
@@ -638,7 +616,28 @@
       <option name="project" value="LOCAL" />
       <updated>1606856775659</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="add cors">
+      <created>1606924557388</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1606924557388</updated>
+    </task>
+    <task id="LOCAL-00095" summary="add cors">
+      <created>1607549699783</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1607549699783</updated>
+    </task>
+    <task id="LOCAL-00096" summary="add cors">
+      <created>1607550243612</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1607550243612</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
