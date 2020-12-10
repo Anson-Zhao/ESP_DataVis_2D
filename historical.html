@@ -275,7 +275,7 @@
             // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stations',
             url: "http://localhost:3005/stations",
             method: "get",
-            data: "sent",
+            // data: "sent",
             success: function(res) {
                 // console.log("This is the stations result:");
                 // console.log(res);
@@ -300,11 +300,15 @@
         // console.log("build one option");
         // console.log(station.StationId);
         //build option
-        var checkbox = document.createElement("INPUT");
-        checkbox.setAttribute("type","checkbox")
-        checkbox.textContent = station.StationName+", "+station.City+", "+station.State;
-        checkbox.value = JSON.stringify({'stationName':station.StationName,'stationId':station.StationId});
-        $('#station').append(checkbox);
+        // var checkbox = document.createElement("INPUT");
+        // checkbox.setAttribute("type","checkbox")
+        // checkbox.textContent = station.StationName+", "+station.City+", "+station.State;
+        // checkbox.value = JSON.stringify({'stationName':station.StationName,'stationId':station.StationId});
+        var value = station.StationName+", "+station.City+", "+station.State;
+        $('#station')
+            .append(`<input type="checkbox" id="${value}" name="interest" value="${value}">`)
+            .append(`<label for="${value}">${value}</label></div>`)
+            .append(`<br>`);
     }
 
     var timeFrom,timeTo,stationIs,querystr;
