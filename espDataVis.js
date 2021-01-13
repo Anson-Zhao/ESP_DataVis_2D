@@ -5,6 +5,7 @@ const nodemailer = require('nodemailer');
 app.engine('ejs', require("ejs").renderFile);
 app.set('view engine', 'ejs');
 
+
 const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
@@ -49,6 +50,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 // parse application/json
 app.use(bodyParser.json());
+
+
+
 
 app.get('/stations', function (req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");

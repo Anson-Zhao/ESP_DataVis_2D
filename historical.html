@@ -233,6 +233,7 @@
     <a href="ESP%20Event%2011Apr20.pdf" download="Demo_Report">
         <input type="button" class="button button2" value="Download Demo report">
     </a>
+    <button type="button" name="refresh" class="button button2" onclick="refreshServer()">Refresh</button>
 
     <br><br>
 
@@ -263,6 +264,22 @@
 <!--</div>-->
 
 <script>
+    function refreshServer(){
+        $.ajax({
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stations',
+            url: "http://localhost:0909/refresh",
+            method: "get",
+            // data: "sent",
+            success: function (res) {
+                console.log("refreshed");
+                // console.log(res);
+
+            }
+        });
+    }
+
+
+
     //stations we have
     var stations = [];
     var button = document.getElementById("jumpToW");

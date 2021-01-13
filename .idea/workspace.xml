@@ -20,7 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/parallelServer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +38,8 @@
       <list>
         <option value="package" />
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -116,7 +119,18 @@
       <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.espDataVis.js">
+  <component name="RunManager" selected="Node.js.parallelServer.js">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -132,15 +146,20 @@
     <configuration name="espDataVis.js" type="NodeJSConfigurationType" nameIsGenerated="true" path-to-js-file="espDataVis.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
+    <configuration name="parallelServer.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/parallelServer.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="JavaScript Debug.index116.html?_ijt=4mhebuui7t5p4oes4q86ask3pg" />
       <item itemvalue="JavaScript Debug.historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" />
       <item itemvalue="JavaScript Debug.index.html" />
       <item itemvalue="Node.js.espDataVis.js" />
       <item itemvalue="Node.js.espDataVis1202xxyy.js" />
+      <item itemvalue="Node.js.parallelServer.js" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.parallelServer.js" />
         <item itemvalue="Node.js.espDataVis1202xxyy.js" />
         <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JavaScript Debug.historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" />
@@ -282,13 +301,7 @@
       <workItem from="1608139820850" duration="154000" />
       <workItem from="1608139990693" duration="127000" />
       <workItem from="1608140179557" duration="52000" />
-    </task>
-    <task id="LOCAL-00048" summary="update dygraph libraries">
-      <created>1586912508046</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1586912508046</updated>
+      <workItem from="1610554103572" duration="2739000" />
     </task>
     <task id="LOCAL-00049" summary="update dygraph libraries">
       <created>1587395103826</created>
@@ -626,7 +639,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607550243612</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="add cors">
+      <created>1610554115085</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1610554115085</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -666,40 +686,6 @@
     <MESSAGE value="remove cors" />
     <MESSAGE value="add cors" />
     <option name="LAST_COMMIT_MESSAGE" value="add cors" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="988" y="397" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1608140023456">
-      <screen x="0" y="25" width="2560" height="1310" />
-    </state>
-    <state x="988" y="397" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.25.2560.1310@0.25.2560.1310" timestamp="1608140023456" />
-    <state x="690" y="98" key="CommitChangelistDialog2" timestamp="1607614894602">
-      <screen x="0" y="25" width="2560" height="1310" />
-    </state>
-    <state x="690" y="98" key="CommitChangelistDialog2/0.25.2560.1310@0.25.2560.1310" timestamp="1607614894602" />
-    <state width="2346" height="310" key="GridCell.Tab.0.bottom" timestamp="1608138423725">
-      <screen x="0" y="25" width="2560" height="1310" />
-    </state>
-    <state width="2346" height="310" key="GridCell.Tab.0.bottom/0.25.2560.1310@0.25.2560.1310" timestamp="1608138423725" />
-    <state width="2346" height="310" key="GridCell.Tab.0.center" timestamp="1608138423725">
-      <screen x="0" y="25" width="2560" height="1310" />
-    </state>
-    <state width="2346" height="310" key="GridCell.Tab.0.center/0.25.2560.1310@0.25.2560.1310" timestamp="1608138423725" />
-    <state width="2346" height="310" key="GridCell.Tab.0.left" timestamp="1608138423724">
-      <screen x="0" y="25" width="2560" height="1310" />
-    </state>
-    <state width="2346" height="310" key="GridCell.Tab.0.left/0.25.2560.1310@0.25.2560.1310" timestamp="1608138423724" />
-    <state width="2346" height="310" key="GridCell.Tab.0.right" timestamp="1608138423725">
-      <screen x="0" y="25" width="2560" height="1310" />
-    </state>
-    <state width="2346" height="310" key="GridCell.Tab.0.right/0.25.2560.1310@0.25.2560.1310" timestamp="1608138423725" />
-    <state x="769" y="333" key="MultipleFileMergeDialog" timestamp="1607614913152">
-      <screen x="0" y="25" width="2560" height="1310" />
-    </state>
-    <state x="769" y="333" key="MultipleFileMergeDialog/0.25.2560.1310@0.25.2560.1310" timestamp="1607614913152" />
-    <state x="186" y="170" width="2208" height="1104" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1606927336632">
-      <screen x="0" y="25" width="2560" height="1310" />
-    </state>
-    <state x="186" y="170" width="2208" height="1104" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.25.2560.1310@0.25.2560.1310" timestamp="1606927336632" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
