@@ -19,8 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="Changes">
+    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/parallelServer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,33 +38,18 @@
       <list>
         <option value="package" />
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
-  </component>
-  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
-    <envs>
-      <env key="FLASK_APP" value="app" />
-    </envs>
-    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
-    <option name="myEnvs">
-      <map>
-        <entry key="FLASK_APP" value="app" />
-      </map>
-    </option>
-  </component>
-  <component name="Git.Pull.Settings">
-    <option name="BRANCH" value="Ray" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Rachel" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="InvalidFacetManager">
     <ignored-facets>
@@ -74,7 +62,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="JupyterTrust" id="71175b30-28b3-4906-9951-5f93c563cad4" />
+  <component name="JupyterTrust" id="118f2b2d-30ad-43a4-91f4-f17972f50b79" />
   <component name="ProjectId" id="1SHx6bzrjPXVkXZUEq9ADSzFb2l" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -96,9 +84,9 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="javascript.nodejs.core.library.configured.version" value="12.16.1" />
-    <property name="javascript.nodejs.core.library.typings.version" value="12.19.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/views" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.14.1" />
+    <property name="javascript.nodejs.core.library.typings.version" value="12.19.9" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -111,18 +99,11 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/indexbackup.html" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/views" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/new" />
-      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
-      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\jsLibrary" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D\archive" />
@@ -130,8 +111,26 @@
       <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$/img" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/archive" />
+      <recent name="$PROJECT_DIR$/views" />
+      <recent name="$PROJECT_DIR$/new" />
+      <recent name="C:\Users\Anson Zhao\IdeaProjects\ESP_DataVis_2D" />
+    </key>
   </component>
-  <component name="RunManager" selected="Node.js.espDataVis.js">
+  <component name="RunManager" selected="Node.js.parallelServer.js">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -141,7 +140,13 @@
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/ESP_DataVis_2D_BX/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
+    <configuration name="espDataVis1202xxyy.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/archive/espDataVis1202xxyy.js" working-dir="$PROJECT_DIR$/archive">
+      <method v="2" />
+    </configuration>
     <configuration name="espDataVis.js" type="NodeJSConfigurationType" nameIsGenerated="true" path-to-js-file="espDataVis.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="parallelServer.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/parallelServer.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <list>
@@ -149,9 +154,13 @@
       <item itemvalue="JavaScript Debug.historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" />
       <item itemvalue="JavaScript Debug.index.html" />
       <item itemvalue="Node.js.espDataVis.js" />
+      <item itemvalue="Node.js.espDataVis1202xxyy.js" />
+      <item itemvalue="Node.js.parallelServer.js" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.parallelServer.js" />
+        <item itemvalue="Node.js.espDataVis1202xxyy.js" />
         <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JavaScript Debug.historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" />
         <item itemvalue="JavaScript Debug.index116.html?_ijt=4mhebuui7t5p4oes4q86ask3pg" />
@@ -285,55 +294,14 @@
       <workItem from="1604522372182" duration="1170000" />
       <workItem from="1604606750603" duration="174000" />
       <workItem from="1604924942213" duration="1961000" />
-      <workItem from="1605123049929" duration="290000" />
-      <workItem from="1605625200671" duration="598000" />
-      <workItem from="1605704567763" duration="900000" />
-      <workItem from="1605788476515" duration="136000" />
-      <workItem from="1606321998020" duration="1808000" />
-      <workItem from="1606926068320" duration="1044000" />
-      <workItem from="1607353516683" duration="266000" />
-    </task>
-    <task id="LOCAL-00043" summary="Merge branch 'master' of https://github.com/Anson-Zhao/ESP_DataVis_2D into Rachel&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;historical.html">
-      <created>1582909246784</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1582909246784</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Merge branch 'master' of https://github.com/Anson-Zhao/ESP_DataVis_2D into Rachel&#10;&#10; Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;historical.html">
-      <created>1583255581202</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1583255581202</updated>
-    </task>
-    <task id="LOCAL-00045" summary="chart date selectable">
-      <created>1585444139166</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1585444139167</updated>
-    </task>
-    <task id="LOCAL-00046" summary="chart date selectable">
-      <created>1585444766747</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1585444766747</updated>
-    </task>
-    <task id="LOCAL-00047" summary="minor bug fixed">
-      <created>1585764475905</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1585764475905</updated>
-    </task>
-    <task id="LOCAL-00048" summary="update dygraph libraries">
-      <created>1586912508046</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1586912508046</updated>
+      <workItem from="1605111129246" duration="689000" />
+      <workItem from="1605713956553" duration="3318000" />
+      <workItem from="1606856175488" duration="229000" />
+      <workItem from="1606856493356" duration="11925000" />
+      <workItem from="1608139820850" duration="154000" />
+      <workItem from="1608139990693" duration="127000" />
+      <workItem from="1608140179557" duration="52000" />
+      <workItem from="1610554103572" duration="2739000" />
     </task>
     <task id="LOCAL-00049" summary="update dygraph libraries">
       <created>1587395103826</created>
@@ -601,42 +569,84 @@
       <option name="project" value="LOCAL" />
       <updated>1604955726236</updated>
     </task>
-    <task id="LOCAL-00087" summary="WW Lib Changes">
-      <created>1605021420379</created>
+    <task id="LOCAL-00087" summary="add cors">
+      <created>1604959211627</created>
       <option name="number" value="00087" />
       <option name="presentableId" value="LOCAL-00087" />
       <option name="project" value="LOCAL" />
-      <updated>1605021420379</updated>
+      <updated>1604959211627</updated>
     </task>
-    <task id="LOCAL-00088" summary="WW Lib Changes">
-      <created>1605625454925</created>
+    <task id="LOCAL-00088" summary="add cors">
+      <created>1605717939425</created>
       <option name="number" value="00088" />
       <option name="presentableId" value="LOCAL-00088" />
       <option name="project" value="LOCAL" />
-      <updated>1605625454926</updated>
+      <updated>1605717939425</updated>
     </task>
-    <task id="LOCAL-00089" summary="WW Lib Changes">
-      <created>1606322081434</created>
+    <task id="LOCAL-00089" summary="add cors">
+      <created>1605718126311</created>
       <option name="number" value="00089" />
       <option name="presentableId" value="LOCAL-00089" />
       <option name="project" value="LOCAL" />
-      <updated>1606322081434</updated>
+      <updated>1605718126311</updated>
     </task>
-    <task id="LOCAL-00090" summary="Changes">
-      <created>1606329509201</created>
+    <task id="LOCAL-00090" summary="add cors">
+      <created>1606162376933</created>
       <option name="number" value="00090" />
       <option name="presentableId" value="LOCAL-00090" />
       <option name="project" value="LOCAL" />
-      <updated>1606329509201</updated>
+      <updated>1606162376933</updated>
     </task>
-    <task id="LOCAL-00091" summary="Changes">
-      <created>1606329928648</created>
+    <task id="LOCAL-00091" summary="add cors">
+      <created>1606162387100</created>
       <option name="number" value="00091" />
       <option name="presentableId" value="LOCAL-00091" />
       <option name="project" value="LOCAL" />
-      <updated>1606329928648</updated>
+      <updated>1606162387100</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="add cors">
+      <created>1606164296125</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1606164296125</updated>
+    </task>
+    <task id="LOCAL-00093" summary="add cors">
+      <created>1606856775659</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1606856775659</updated>
+    </task>
+    <task id="LOCAL-00094" summary="add cors">
+      <created>1606924557388</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1606924557388</updated>
+    </task>
+    <task id="LOCAL-00095" summary="add cors">
+      <created>1607549699783</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1607549699783</updated>
+    </task>
+    <task id="LOCAL-00096" summary="add cors">
+      <created>1607550243612</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1607550243612</updated>
+    </task>
+    <task id="LOCAL-00097" summary="add cors">
+      <created>1610554115085</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1610554115085</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -675,9 +685,7 @@
     <MESSAGE value="V2" />
     <MESSAGE value="remove cors" />
     <MESSAGE value="add cors" />
-    <MESSAGE value="WW Lib Changes" />
-    <MESSAGE value="Changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="add cors" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -704,5 +712,9 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

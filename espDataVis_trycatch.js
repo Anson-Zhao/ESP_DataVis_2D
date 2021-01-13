@@ -5,7 +5,6 @@ const nodemailer = require('nodemailer');
 app.engine('ejs', require("ejs").renderFile);
 app.set('view engine', 'ejs');
 
-
 const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
@@ -51,15 +50,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 // parse application/json
 app.use(bodyParser.json());
 
-
-
-
 app.get('/stations', function (req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
-    console.log("hi there")
     con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.stationdata Where Status = 'Active'", function (err, result) {
-        if (err) console.log(err);
-        console.log(result);
+        if (err) throw err;
         res.send(result);
     });
 });
@@ -99,47 +93,56 @@ async function moon(timeFrom, timeTo, Flag, Pair, email) {
         Pair.push([{stationInfo: EQstations[i]}, [], []]);
         var Qstring = 'SELECT * FROM ' + EQstations[i].StationId + 'avg WHERE time >= ' + "\'" + timeFrom + "\'" + ' AND time<= ' + "\'" + timeTo + "\'";
         // console.log(Qstring)
-        await influx.query(Qstring).then
-        (result => {
-            // console.log("result")
-            // console.log(result.length)
-            for (var a = 0; a < result.length; a++) {
-                DifB = result[a + 1].X - result[a].X;
-                DifA = result[a + 1].Y - result[a].Y;
-                if (Math.abs(DifB) > 6) {
-                    Flag[i][1].push({
-                        // stationInfo: EQstations[i],
-                        time: result[a].time._nanoISO,
-                        X: result[a].X,
-                        Y: result[a].Y,
-                        Z: result[a].Z,
-                        Diff: DifB
-                    });
-                    DifB = null;
-                } else if (Math.abs(DifA) > 6) {
-                    Flag[i][2].push({
-                        // stationInfo: stations[i],
-                        time: result[a].time._nanoISO,
-                        X: result[a].X,
-                        Y: result[a].Y,
-                        Z: result[a].Z,
-                        Diff: DifA
-                    });
-                    DifA = null;
-                } else {
-                    DifB = null;
+        try {
+            await influx.query(Qstring).then
+            (result => {
+                // console.log("result")
+                // console.log(result.length)
+                for (var a = 0; a < result.length; a++) {
+                    DifB = result[a + 1].X - result[a].X;
+                    DifA = result[a + 1].Y - result[a].Y;
+                    if (Math.abs(DifB) > 6) {
+                        Flag[i][1].push({
+                            // stationInfo: EQstations[i],
+                            time: result[a].time._nanoISO,
+                            X: result[a].X,
+                            Y: result[a].Y,
+                            Z: result[a].Z,
+                            Diff: DifB
+                        });
+                        DifB = null;
+                    } else if (Math.abs(DifA) > 6) {
+                        Flag[i][2].push({
+                            // stationInfo: stations[i],
+                            time: result[a].time._nanoISO,
+                            X: result[a].X,
+                            Y: result[a].Y,
+                            Z: result[a].Z,
+                            Diff: DifA
+                        });
+                        DifA = null;
+                    } else {
+                        DifB = null;
+                    }
                 }
-            }
-        }).catch(err => {
-            console.log("Errors: ");
-            console.log(err)
-        });
+            }).catch(err => {
+                console.log("Errors: ");
+                console.log(err)
+            })
+        } catch (err) {
+            res.send('gen salt err :', err)
+        }
+
         if (i === EQstations.length - 1) {
             // console.log("this is flag")
             // console.log(Flag[0]);
             // console.log(Flag[1]);
             // console.log(Flag[2]);
-            await pair(Flag, Pair, email)
+            try {
+                await pair(Flag, Pair, email)
+            } catch (err) {
+                res.send('gen salt err :', err)
+            }
             // await seconds(Flag,email)
         }
     }
@@ -613,87 +616,96 @@ async function EventCheck(stations, Flag, Pair, email) {
         var test = 'SELECT * FROM ' + stations[i].StationId + 'avg WHERE time >=' + ' \'2020-10-15T00:00:10Z\'' + ' AND ' + 'time<= \'2020-10-24T00:00:50Z\'';
         // console.log(test);
         // console.log(querystatement);
-        await influx.query(querystatement).then
-        (result => {
-            // timer.set(1000, 'Timeout!')
-            // console.log('this is result');
-            // console.log(result.length);
-            // console.log(result);
-            // console.log(result[0].X);
-            // console.log(re                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               sult[0].Y);
-            // console.log(result[0].Z);
-            // console.log(i+querystatement);
-            // console.log(result[0].time._nanoISO);
-            // console.log(result);
-            // check the Flag here
-            // console.log("begin flag")
-            flag(result, Flag, Pair, email)
+        try {
+            await influx.query(querystatement).then
+            (result => {
+                // timer.set(1000, 'Timeout!')
+                // console.log('this is result');
+                // console.log(result.length);
+                // console.log(result);
+                // console.log(result[0].X);
+                // console.log(re                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               sult[0].Y);
+                // console.log(result[0].Z);
+                // console.log(i+querystatement);
+                // console.log(result[0].time._nanoISO);
+                // console.log(result);
+                // check the Flag here
+                // console.log("begin flag")
+                flag(result, Flag, Pair, email)
 
-            async function flag(result, Flag) {
-                for (var a = 0; a < result.length; a++) {
-                    // DifA = result[a + 1].X - result[a].X;
-                    // console.log(a);
-                    // console.log(result.length)
-                    DifB = result[a + 1].X - result[a].X;
-                    DifA = result[a + 1].Y - result[a].Y;
-                    // console.log("this is difference");
-                    // console.log(DifB);
-                    if (Math.abs(DifB) > 6) {
-                        Flag[i][1].push({
-                            // stationInfo: stations[i],
-                            time: result[a].time._nanoISO,
-                            X: result[a].X,
-                            Y: result[a].Y,
-                            Z: result[a].Z,
-                            Diff: DifB
-                        });
-                        // console.log("pushed")
-                        DifB = null;
-                    } else if (Math.abs(DifA) > 6) {
-                        Flag[i][2].push({
-                            // stationInfo: stations[i],
-                            time: result[a].time._nanoISO,
-                            X: result[a].X,
-                            Y: result[a].Y,
-                            Z: result[a].Z,
-                            Diff: DifA
-                        });
-                        // console.log("pushed")
-                        DifA = null;
-                    } else {
-                        DifA = null;
-                        DifB = null;
+                async function flag(result, Flag) {
+                    for (var a = 0; a < result.length; a++) {
+                        // DifA = result[a + 1].X - result[a].X;
+                        // console.log(a);
+                        // console.log(result.length)
+                        DifB = result[a + 1].X - result[a].X;
+                        DifA = result[a + 1].Y - result[a].Y;
+                        // console.log("this is difference");
+                        // console.log(DifB);
+                        if (Math.abs(DifB) > 6) {
+                            Flag[i][1].push({
+                                // stationInfo: stations[i],
+                                time: result[a].time._nanoISO,
+                                X: result[a].X,
+                                Y: result[a].Y,
+                                Z: result[a].Z,
+                                Diff: DifB
+                            });
+                            // console.log("pushed")
+                            DifB = null;
+                        } else if (Math.abs(DifA) > 6) {
+                            Flag[i][2].push({
+                                // stationInfo: stations[i],
+                                time: result[a].time._nanoISO,
+                                X: result[a].X,
+                                Y: result[a].Y,
+                                Z: result[a].Z,
+                                Diff: DifA
+                            });
+                            // console.log("pushed")
+                            DifA = null;
+                        } else {
+                            DifA = null;
+                            DifB = null;
+                        }
+                        // console.log(a)
+                        // console.log(result.length)
+
                     }
-                    // console.log(a)
-                    // console.log(result.length)
+                }
+            }).catch(err => {
+                console.log("Errors: ");
+                console.log(err)
+                EventCheck(EQstations, FlagN, PairN, DeEmail)
+                const mailOptions = {
+                    to: email,
+                    subject: 'ESP Live Server Has Been Shut Down Unexpectly',
+                    html: "<b>Error: </b>" + err + ". The live server should restart by itself."
+                };
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        //http://localhost:3005/newEjs?stationID=3333&dateTime=8888
+                        console.log('Email sent: ' + info.response);
+                    }
+                });
+            })
+        } catch (err) {
+            res.send('gen salt err :', err)
+        }
 
-                }
-            }
-        }).catch(err => {
-            console.log("Errors: ");
-            console.log(err)
-            EventCheck(EQstations, FlagN, PairN, DeEmail)
-            const mailOptions = {
-                to: email,
-                subject: 'ESP Live Server Has Been Shut Down Unexpectly',
-                html: "<b>Error: </b>" + err + ". The live server should restart by itself."
-            };
-            transporter.sendMail(mailOptions, function (error, info) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    //http://localhost:3005/newEjs?stationID=3333&dateTime=8888
-                    console.log('Email sent: ' + info.response);
-                }
-            });
-        });
         if (i === EQstations.length - 1) {
             // console.log("flag round done at"+Date());
             // console.log("Flag length sta2 x is "+Flag[0][1].length+", and y is "+Flag[0][2].length);
             // console.log("Flag length sta3 x is "+Flag[1][1].length+", and y is "+Flag[1][2].length);
             // console.log("Flag length sta4 x is "+Flag[2][1].length+", and y is "+Flag[2][2].length);
             // console.log(Flag[1][2]);
-            await pair(Flag, Pair, email)
+            try {
+                await pair(Flag, Pair, email)
+            } catch (err) {
+                res.send('gen salt err :', err)
+            }
             // console.log("PAIR has been run")
             // await seconds(Flag,email)
         }
@@ -753,19 +765,24 @@ app.get('/newSnow', async function (req, res) {
     let queryH = 'SELECT * FROM ' + req.query.stationIs + ' WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'";
     // console.log(queryH);
     let download = [];
-    await influx.query(queryH).then
-    (result => {
-        result.forEach(function (el, i) {
-            let a = '' + el.X;
-            let b = '' + el.Y;
-            let c = '' + el.Z;
-            let t = el.time;
-            // download += t + ',' + a + ',' + b + ',' + c + '\n';
-            download.push({time: t, x: a, y: b, z: c});
+    try {
+        await influx.query(queryH).then
+        (result => {
+            result.forEach(function (el, i) {
+                let a = '' + el.X;
+                let b = '' + el.Y;
+                let c = '' + el.Z;
+                let t = el.time;
+                // download += t + ',' + a + ',' + b + ',' + c + '\n';
+                download.push({time: t, x: a, y: b, z: c});
+            })
+        }).catch(err => {
+            res.status(500).send(err.stack)
         })
-    }).catch(err => {
-        res.status(500).send(err.stack)
-    });
+    } catch (err) {
+        res.send('gen salt err :', err)
+    }
+
 
     let exportFilename = req.query.stationName + "_" + req.query.timeFrom.slice(5, -11) + '-' + req.query.timeTo.slice(5, -11) + 'Raw.csv';
     let link = './rawData/' + exportFilename;
@@ -778,11 +795,16 @@ app.get('/newSnow', async function (req, res) {
             {id: 'z', title: 'Z'},
         ]
     });
-    await csvWriter
-        .writeRecords(download)
-        .then(() => {
-            res.send(link);
-        });
+    try {
+        await csvWriter
+            .writeRecords(download)
+            .then(() => {
+                res.send(link);
+            })
+    } catch (err) {
+        res.send('gen salt err :', err)
+    }
+
 });
 
 app.get('/query', function (req, res) {
