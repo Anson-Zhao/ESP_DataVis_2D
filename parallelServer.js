@@ -32,7 +32,7 @@ app.get('/refresh', function (req, res) {
     });
 
     const mailOptions = {
-        to: email,
+        to: 'azhao@northernacademy.org',
         subject: 'Someone restart the live server manually through the refresh button on historical page.',
         html: "The server has been restarted on<b>"+new Date()+"</b>"
     };
