@@ -227,9 +227,10 @@
     <img id="requesting" src="images/888.gif" alt="download in progress" width=130 height=130 style="display:none">
     <input type="button" onclick="enabled = false; demo();" class="button button2" value="Check the Event">
     <!--            <input type="button" onclick="window.location.replace('https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newEjs?timeFrom=2020-04-09T19:00:59Z&timeTo=2020-04-09T19:54:59Z&stationName=ESP04&stationId=station_for')" class="button button2" value="Demo">-->
-    <input type="button"
-           onclick="window.location.replace('http://localhost:3005/newEjs?timeFrom=2020-04-10T17:40:59Z&timeTo=2020-04-10T18:39:59Z&city=San%20Jose%20(North)&state=California&lo=-121.922422&la=37.402684&stationName=ESP03&stationId=station_the&timeFrom2=2020-04-10T18:02:01Z&timeTo2=2020-04-10T18:31:59Z&city2=San%20Jose%20(South)&state2=California&lo2=-121.823628&la2=37.175229&stationName2=ESP04&stationId2=station_for&bx=23059.350376666665&by=-6915.69726&bz=-31357.25732&bd=48.249223333335976&ex=23097.267363333332&ey=-6841.740126666667&ez=-31317.680093333332&ed=-14.067363333331741&bx2=23030.0674&by2=-8798&bz2=-42291.8659&bd2=10.910800000001473&ex2=23022.376336666668&ey2=-8804.468653333333&ez2=-42283.307283333335&ed2=-198.37633666666807')"
+    <input type="button" onclick="window.location.replace('http://localhost:3005/newEjs?timeFrom=2020-04-10T17:40:59Z&timeTo=2020-04-10T18:39:59Z&city=San%20Jose%20(North)&state=California&lo=-121.922422&la=37.402684&stationName=ESP03&stationId=station_the&timeFrom2=2020-04-10T18:02:01Z&timeTo2=2020-04-10T18:31:59Z&city2=San%20Jose%20(South)&state2=California&lo2=-121.823628&la2=37.175229&stationName2=ESP04&stationId2=station_for&bx=23059.350376666665&by=-6915.69726&bz=-31357.25732&bd=48.249223333335976&ex=23097.267363333332&ey=-6841.740126666667&ez=-31317.680093333332&ed=-14.067363333331741&bx2=23030.0674&by2=-8798&bz2=-42291.8659&bd2=10.910800000001473&ex2=23022.376336666668&ey2=-8804.468653333333&ez2=-42283.307283333335&ed2=-198.37633666666807')"
            class="button button2" value="Demo">
+<!--    <input type="button" onclick="window.location.replace('http://https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newEjs?timeFrom=2020-04-10T17:40:59Z&timeTo=2020-04-10T18:39:59Z&city=San%20Jose%20(North)&state=California&lo=-121.922422&la=37.402684&stationName=ESP03&stationId=station_the&timeFrom2=2020-04-10T18:02:01Z&timeTo2=2020-04-10T18:31:59Z&city2=San%20Jose%20(South)&state2=California&lo2=-121.823628&la2=37.175229&stationName2=ESP04&stationId2=station_for&bx=23059.350376666665&by=-6915.69726&bz=-31357.25732&bd=48.249223333335976&ex=23097.267363333332&ey=-6841.740126666667&ez=-31317.680093333332&ed=-14.067363333331741&bx2=23030.0674&by2=-8798&bz2=-42291.8659&bd2=10.910800000001473&ex2=23022.376336666668&ey2=-8804.468653333333&ez2=-42283.307283333335&ed2=-198.37633666666807')"-->
+<!--           class="button button2" value="Demo">-->
     <a href="ESP%20Event%2011Apr20.pdf" download="Demo_Report">
         <input type="button" class="button button2" value="Download Demo report">
     </a>
@@ -266,7 +267,7 @@
 <script>
     function refreshServer(){
         $.ajax({
-            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/stations',
+            // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3909/refresh',
             url: "http://localhost:3909/refresh",
             method: "get",
             // data: "sent",
