@@ -673,19 +673,7 @@ async function EventCheck(stations, Flag, Pair, email) {
             console.log("Errors: ");
             console.log(err)
             EventCheck(EQstations, FlagN, PairN, DeEmail)
-            const mailOptions = {
-                to: email,
-                subject: 'ESP Live Server Has Been Shut Down Unexpectly',
-                html: "<b>Error: </b>" + err + ". The live server should restart by itself."
-            };
-            transporter.sendMail(mailOptions, function (error, info) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    //http://localhost:3005/newEjs?stationID=3333&dateTime=8888
-                    console.log('Email sent: ' + info.response);
-                }
-            });
+
         });
         if (i === EQstations.length - 1) {
             // console.log("flag round done at"+Date());
