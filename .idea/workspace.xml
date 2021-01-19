@@ -19,7 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
+    <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="add cors">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -117,17 +118,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Node.js.parallelServer.js">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/ESP_DataVis_2D/historical.html?_ijt=q3msl7gs3fgunh19aig6tidn6r" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -298,7 +288,21 @@
       <workItem from="1608139820850" duration="154000" />
       <workItem from="1608139990693" duration="127000" />
       <workItem from="1608140179557" duration="52000" />
-      <workItem from="1610554103572" duration="5746000" />
+      <workItem from="1610554103572" duration="4968000" />
+    </task>
+    <task id="LOCAL-00052" summary="update dygraph libraries">
+      <created>1587613827271</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1587613827271</updated>
+    </task>
+    <task id="LOCAL-00053" summary="update dygraph libraries">
+      <created>1589081008471</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1589081008471</updated>
     </task>
     <task id="LOCAL-00054" summary="update chart text">
       <created>1590374107149</created>
@@ -629,21 +633,7 @@
       <option name="project" value="LOCAL" />
       <updated>1611070875990</updated>
     </task>
-    <task id="LOCAL-00101" summary="add cors">
-      <created>1611072071275</created>
-      <option name="number" value="00101" />
-      <option name="presentableId" value="LOCAL-00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1611072071275</updated>
-    </task>
-    <task id="LOCAL-00102" summary="add cors">
-      <created>1611072186996</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1611072186996</updated>
-    </task>
-    <option name="localTasksCounter" value="103" />
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
