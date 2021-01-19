@@ -1,8 +1,10 @@
+const Influx = require('influx');
 const express = require('express');
 const app = express();
 const nodemailer = require('nodemailer');
-// app.engine('ejs', require("ejs").renderFile);
-// app.set('view engine', 'ejs');
+app.engine('ejs', require("ejs").renderFile);
+app.set('view engine', 'ejs');
+var exec = require('child_process').exec;
 
 app.get('/refresh', function (req, res) {
     console.log("trying to refreshing")
@@ -18,7 +20,7 @@ app.get('/refresh', function (req, res) {
         }
         console.log(`stdout: ${stdout}`);
     });
-    res.send(result);
+    // res.send('yeah');
 });
 
-app.listen('3009');
+app.listen('3909');
