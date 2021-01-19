@@ -1,4 +1,4 @@
-const Influx = require('influx');
+// const Influx = require('influx');
 const express = require('express');
 const app = express();
 const nodemailer = require('nodemailer');
