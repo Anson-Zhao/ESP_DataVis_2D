@@ -20,7 +20,7 @@ app.get('/refresh', function (req, res) {
         }
         console.log(`stdout: ${stdout}`);
     });
-    res.send(result);
+    // res.send('yeah');
 });
 
 app.listen('3909');
