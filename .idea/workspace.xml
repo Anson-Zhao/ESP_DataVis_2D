@@ -20,7 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parallelServer.js" beforeDir="false" afterPath="$PROJECT_DIR$/parallelServer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -299,21 +299,7 @@
       <workItem from="1608139820850" duration="154000" />
       <workItem from="1608139990693" duration="127000" />
       <workItem from="1608140179557" duration="52000" />
-      <workItem from="1610554103572" duration="3509000" />
-    </task>
-    <task id="LOCAL-00050" summary="update dygraph libraries">
-      <created>1587613759978</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1587613759978</updated>
-    </task>
-    <task id="LOCAL-00051" summary="update dygraph libraries">
-      <created>1587613796018</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1587613796018</updated>
+      <workItem from="1610554103572" duration="4968000" />
     </task>
     <task id="LOCAL-00052" summary="update dygraph libraries">
       <created>1587613827271</created>
@@ -644,7 +630,21 @@
       <option name="project" value="LOCAL" />
       <updated>1610557522736</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="add cors">
+      <created>1611070696839</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1611070696839</updated>
+    </task>
+    <task id="LOCAL-00100" summary="add cors">
+      <created>1611070875990</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1611070875990</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
