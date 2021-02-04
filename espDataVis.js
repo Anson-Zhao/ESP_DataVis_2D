@@ -155,8 +155,8 @@ async function moon(timeFrom, timeTo, Flag, Pair, email) {
 function pair(Flag, Pair, email) {
     // console.log("Pair running")
     var i
-    //checking x
-    for (i = 0; i < Flag.length; i++) {
+
+    for (i = 0; i < Flag.length; i++) {//checking x
         for (var b = 0; b < Flag[i][1].length - 1; b++) {
             if (Date.parse(Flag[i][1][b + 1].time) - Date.parse(Flag[i][1][b].time) < 11000000 && Flag[i][1][b].Diff * Flag[i][1][b + 1].Diff < 0) {
                 var array = [];
@@ -595,7 +595,7 @@ var minute = "6m";
 
 async function EventCheck(stations, Flag, Pair, email) {
     try {
-        var preSta = EQstations;
+        var preSta = stations;
         con.query("SELECT StationName,City,State,StationId,Longitude,Latitude FROM ESP2.stationdata Where StationDescription = 'Earthquake'", function (err, result) {
             var newSta = result;
             if (newSta.length !== preSta.length && preSta.length < newSta.length) {
@@ -611,18 +611,17 @@ async function EventCheck(stations, Flag, Pair, email) {
         // console.log("all begin");
         //check each station's data one by one
         // console.log("stations length is "+stations.length)
-        for (var i = 0; i < stations.length; i++) {
-
+        for (var i = 0; i < stations.length-1; i++) {
             // console.log(Date());
             var querystatement = 'SELECT * FROM ' + stations[i].StationId + 'avg WHERE time >= now()-' + minute + ' AND time<= now()';
-            var test = 'SELECT * FROM ' + stations[i].StationId + 'avg WHERE time >=' + ' \'2020-10-15T00:00:10Z\'' + ' AND ' + 'time<= \'2020-10-24T00:00:50Z\'';
+            var test = 'SELECT * FROM ' + stations[i].StationId + 'avg WHERE time >=' + ' \'2021-01-10T00:00:10Z\'' + ' AND ' + 'time<= \'2021-01-20T00:00:50Z\'';
             // console.log(test);
             // console.log(querystatement);
-            influx.query(querystatement).then
-            (result => {
+            influx.query(test).then
+            ((result,k=i) => {
                 // timer.set(1000, 'Timeout!')
                 // console.log('this is result');
-                // console.log(result.length);
+                console.log(result.length);
                 // console.log(result);
                 // console.log(result[0].X);
                 // console.log(re                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               sult[0].Y);
@@ -632,9 +631,10 @@ async function EventCheck(stations, Flag, Pair, email) {
                 // console.log(result);
                 // check the Flag here
                 // console.log("begin flag")
-                flag(result, Flag, Pair, email)
+                // flag(result, Flag, Pair, email)
 
-                function flag(result, Flag) {
+                // function flag(result, Flag, Pair, email) {
+                console.log(k)
                     for (var a = 0; a < result.length; a++) {
                         // DifA = result[a + 1].X - result[a].X;
                         // console.log(a);
@@ -643,8 +643,10 @@ async function EventCheck(stations, Flag, Pair, email) {
                         DifA = result[a + 1].Y - result[a].Y;
                         // console.log("this is difference");
                         // console.log(DifB);
-                        if (Math.abs(DifB) > 6) {
-                            Flag[i][1].push({
+                         if (Math.abs(DifB) > 6) {
+                             console.log(k)
+                            console.log(Flag)
+                            Flag[k][1].push({
                                 // stationInfo: stations[i],
                                 time: result[a].time._nanoISO,
                                 X: result[a].X,
@@ -655,7 +657,8 @@ async function EventCheck(stations, Flag, Pair, email) {
                             // console.log("pushed")
                             DifB = null;
                         } else if (Math.abs(DifA) > 6) {
-                            Flag[i][2].push({
+                            console.log(Flag[k][2])
+                            Flag[k][2].push({
                                 // stationInfo: stations[i],
                                 time: result[a].time._nanoISO,
                                 X: result[a].X,
@@ -673,11 +676,11 @@ async function EventCheck(stations, Flag, Pair, email) {
                         // console.log(result.length)
 
                     }
-                }
+                // }
             }).catch(err => {
                 console.log("Errors: ");
                 console.log(err)
-                EventCheck(EQstations, FlagN, PairN, DeEmail)
+                // EventCheck(EQstations, FlagN, PairN, DeEmail)
 
             });
             if (i === EQstations.length - 1) {
