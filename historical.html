@@ -218,6 +218,7 @@
         <!--                <form >-->
         <input type="text" id="frm1"><br><br>
         <p>(If you want to put more than one email, please separate with comma.)</p>
+        <p>(For Check the Event button, there is no need to enter Select Station.)</p>
         <!--                    <input type="button" onclick="myFunction()" value="Submit">-->
         <!--                </form>-->
     </div>
@@ -239,10 +240,10 @@
     <br><br>
 
 </form>
-<div>
+<div id="dataCharts">
     <br><br>
     <p>Please click "Show Data Charts" button above before download Avg Data. The time stamp of any downloaded data is
-        UTC</p>
+        in UTC format.</p>
     <br>
     <button id="AvgData" disabled>Download Avg CSV</button>
     <br><br><br>
@@ -255,9 +256,9 @@
     <!--            <button id="jumpToW">2020-04-07T16:00:00.000Z</button>-->
 
     <br><br><br>
-    <div id="graphx"></div>
-    <div id="graphy"></div>
-    <div id="graphz"></div>
+<!--    <div id="graphx"></div>-->
+<!--    <div id="graphy"></div>-->
+<!--    <div id="graphz"></div>-->
 </div>
 <!--    </div>-->
 
@@ -411,14 +412,14 @@
         var stations=[]
         $("#multiselect_to option").each(function()
         {
-            stations.push(JSON.parse($(this).val()).stationId)
+            stations.push(JSON.parse($(this).val()))
             // console.log($(this).val())
         });
         console.log(stations);
         if (timeFrom && timeTo) {
             for(var i=0; i<stations.length;i++){
                 stationIs=stations[i]
-                queryAndDisplay();
+                queryAndDisplay(stations[i].stationId,stations[i].stationName);
             }
         } else {
             confirm("Please select BOTH dates.");
@@ -429,8 +430,9 @@
     var y_arr = [];
     var z_arr = [];
 
-    var queryAndDisplay = function () {
+    var queryAndDisplay = function (stationIs,Name) {
         console.log(stationIs);
+        console.log('graphz'+stationIs)
         $.ajax({
             // url: 'https://cors.aworldbridgelabs.com:9084/http://mockup.esp.aworldbridgelabs.com:3005/newWind',
             url: 'http://localhost:3005/newWind',
@@ -441,10 +443,17 @@
             beforeSend: function () {
                 // display a progress animation
                 $('#requesting').show()
+                $("#dataCharts"  ).append( "<h4>"+Name+"</h4>" );
+                $( "#dataCharts" ).append( "<div style='left: 90px; width: max-content; display: inline-table;' id="+stationIs+"></div>" );
+                $("#"+stationIs).append( "<div id=graphx"+stationIs+" style='float: left;'></div>" );
+                $("#"+stationIs).append( "<div id=graphy"+stationIs+" style='float: left;'></div>" );
+                $("#"+stationIs ).append( "<div id=graphz"+stationIs+" style='float: left;'></div>" );
+                $( "#dataCharts" ).append("<br><br><br>");
 
             },
             success: async function (res) {
-                // console.log("get responce");
+
+                console.log("get responce");
                 // console.log("1");
                 await res.forEach(function (el, i) {
                     // var time = new Date(el.time);
@@ -466,7 +475,7 @@
                 // console.log(res);
                 Z = new Dygraph(
                     // containing div
-                    document.getElementById("graphz"),
+                    document.getElementById("graphz"+stationIs),
 
                     // CSV or path to a CSV file.
                     z_arr,
@@ -489,7 +498,7 @@
                 );
                 Y = new Dygraph(
                     // containing div
-                    document.getElementById("graphy"),
+                    document.getElementById("graphy"+stationIs),
 
                     // CSV or path to a CSV file.
                     y_arr,
@@ -512,7 +521,7 @@
                 );
                 X = new Dygraph(
                     // containing div
-                    document.getElementById("graphx"),
+                    document.getElementById("graphx"+stationIs),
 
                     // CSV or path to a CSV file.
                     x_arr,

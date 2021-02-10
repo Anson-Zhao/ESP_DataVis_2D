@@ -741,6 +741,7 @@ app.get('/newWind', function (req, res) {
     let queryHa = 'SELECT * FROM ' + req.query.stationIs + 'avg WHERE time >= ' + "'" + req.query.timeFrom + "'" + ' AND time<= ' + "'" + req.query.timeTo + "'";
     influx.query(queryHa).then
     (result => {
+        console.log("got it")
         res.send(result);
     }).catch(err => {
         res.status(500).send(err.stack)
