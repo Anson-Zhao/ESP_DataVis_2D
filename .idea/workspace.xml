@@ -22,7 +22,6 @@
     <list default="true" id="2c868fd0-815a-4a77-b255-dd534c0232cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/espDataVis.js" beforeDir="false" afterPath="$PROJECT_DIR$/espDataVis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historical.html" beforeDir="false" afterPath="$PROJECT_DIR$/historical.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,14 +292,8 @@
       <workItem from="1611155265635" duration="642000" />
       <workItem from="1612459317431" duration="24000" />
       <workItem from="1612469165046" duration="35000" />
-      <workItem from="1612972802500" duration="3729000" />
-    </task>
-    <task id="LOCAL-00056" summary="update chart text">
-      <created>1593046548507</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1593046548507</updated>
+      <workItem from="1612972802500" duration="4040000" />
+      <workItem from="1613058716094" duration="4187000" />
     </task>
     <task id="LOCAL-00057" summary="update chart text">
       <created>1593046729018</created>
@@ -638,7 +631,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612458205237</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="add cors">
+      <created>1612977146925</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1612977146926</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
