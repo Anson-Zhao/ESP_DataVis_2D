@@ -470,7 +470,7 @@
                     var t = el.time;
                     download += t + ',' + a + ',' + b + ',' + c + '\n';
                 });
-                // console.log(download);
+                console.log(download);
 
                 // console.log(res);
                 Z = new Dygraph(
@@ -547,18 +547,21 @@
         });
     };
 
-    function download_csv(exportFilename) {
+    function download_csv() {
+        console.log(download)
 
-        if (exportFilename == null) {
-            exportFilename = JSON.parse(document.getElementById("station").value).stationName + '_' + timeFrom.slice(0, -11) + '-' + timeFrom.slice(14, -8) + '_' + timeTo.slice(0, -11) + '-' + timeTo.slice(14, -8) + 'AvgESPData';
-        }
+        exportFilename = JSON.parse(document.getElementById("station").value).stationName + '_' + timeFrom.slice(0, -11) + '-' + timeFrom.slice(14, -8) + '_' + timeTo.slice(0, -11) + '-' + timeTo.slice(14, -8) + 'AvgESPData';
+
+        console.log(exportFilename)
 
         var csvData = new Blob([download], {type: 'text/csv;charset=utf-8;'});
         //IE11 & Edge
         if (navigator.msSaveBlob) {
+            console.log(exportFilename)
             navigator.msSaveBlob(csvData, exportFilename);
         } else {
             //In FF link must be added to DOM to be clicked
+            console.log("here")
             var link = document.createElement('a');
             link.href = window.URL.createObjectURL(csvData);
             link.setAttribute('download', exportFilename);
